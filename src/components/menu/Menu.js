@@ -75,7 +75,7 @@ const CategoryRow = styled.div`
   margin-bottom: 28px;
   color: ${({ selected, theme }) =>
     selected ? theme.colors.white : theme.colors.disable};
-
+  cursor: pointer;
   &:hover {
     background-color: gray;
     color: ${({ selected, theme }) =>
