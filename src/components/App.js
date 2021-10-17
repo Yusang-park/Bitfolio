@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { authService } from "../firebase_config";
-import theme, { darkTheme, lightTheme } from "../styles/theme";
+import { darkTheme, lightTheme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
-import GlobalStyle from "../styles/global-style";
-import { Menu } from "./menu/Menu";
+// import GlobalStyle from "../styles/global-style";
+
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Sidebar } from "./menu/Sidebar";
+import { DashBoard } from "../routes/DashBoard";
+import { CryptoCurrencies } from "../routes/CryptoCurrencies";
+import { Exchanges } from "../routes/Exchanges";
+import { Portfolio } from "../routes/Portfolio";
+import { UpperSpace } from "./menu/UpperSpace";
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -21,10 +28,29 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Scaffold>
-        <Menu />
-        <span>Hello</span>
-        <div>hi</div>
-        <div></div>
+        <BrowserRouter>
+          <Sidebar />
+          <div>
+            <UpperSpace />
+            <Switch>
+              <Route exact path="/">
+                <DashBoard />
+              </Route>
+              <Route exact path="/currency">
+                <CryptoCurrencies />
+              </Route>
+              <Route exact path="/exchanges">
+                <Exchanges />
+              </Route>
+              <Route exact path="/portfolio">
+                <Portfolio />
+              </Route>
+              <Route exact path="/indexes">
+                <DashBoard />
+              </Route>
+            </Switch>
+          </div>
+        </BrowserRouter>
       </Scaffold>
     </ThemeProvider>
   );

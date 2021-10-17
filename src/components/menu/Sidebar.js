@@ -1,34 +1,25 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Divide } from "../ui/Divide";
+import { Link, useLocation } from "react-router-dom";
+import { categories } from "../../routes/categories";
 
-const categories = [
-  "Dashboard",
-  "Portfolio",
-  "CryptoCurrencies",
-  "Exchanges",
-  "Indexes",
-];
-
-export const Menu = () => {
-  const [selectedCategory, setCategory] = useState(categories[0]);
+export const Sidebar = () => {
+  const pathName = useLocation().pathname;
 
   return (
-    <MenuContainer>
+    <SidebarContainer>
       <LogoRow>
         <Logo src="img/139.png" alt="Logo" />
         <LogoTitle>CryptoFolio</LogoTitle>
       </LogoRow>
       <Divide />
       {categories.map((e) => (
-        <CategoryRow
-          selected={e === selectedCategory}
-          onClick={() => setCategory(e)}
-        >
-          {e}
+        <CategoryRow to={e.path} selected={e.path === pathName}>
+          {e.name}
         </CategoryRow>
       ))}
-    </MenuContainer>
+    </SidebarContainer>
   );
 };
 
@@ -42,7 +33,7 @@ const LogoRow = styled.div`
   }
 `;
 
-const MenuContainer = styled.div`
+const SidebarContainer = styled.div`
   width: 16.66%;
   max-width: 320px;
   padding-top: 76px;
@@ -68,17 +59,16 @@ const LogoTitle = styled.div`
   font-size: 32px;
 `;
 
-const CategoryRow = styled.div`
+const CategoryRow = styled(Link)`
   display: flex;
   font-size: 22px;
-  padding: 4px 32px;
+  padding: 8px 32px;
   margin-bottom: 28px;
+  text-decoration: inherit;
   color: ${({ selected, theme }) =>
-    selected ? theme.colors.white : theme.colors.disable};
+    selected ? css`white` : theme.colors.disable};
   cursor: pointer;
   &:hover {
     background-color: gray;
-    color: ${({ selected, theme }) =>
-      selected ? theme.colors.white : theme.colors.black};
   }
 `;
