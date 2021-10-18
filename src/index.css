@@ -106,6 +106,8 @@ section {
   display: block;
 }
 body {
+  height: 100%;
+  overflow: hidden;
   line-height: 1;
 }
 ol,

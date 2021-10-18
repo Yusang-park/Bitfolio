@@ -30,8 +30,9 @@ function App() {
       <Scaffold>
         <BrowserRouter>
           <Sidebar />
-          <div>
-            <UpperSpace />
+         
+           <ContentsSpace>
+          <UpperSpace />
             <Switch>
               <Route exact path="/">
                 <DashBoard />
@@ -49,7 +50,7 @@ function App() {
                 <DashBoard />
               </Route>
             </Switch>
-          </div>
+          </ContentsSpace>
         </BrowserRouter>
       </Scaffold>
     </ThemeProvider>
@@ -61,11 +62,18 @@ export default App;
 const Scaffold = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  height : 100vh;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
 
   ${(props) => props.theme.device.mobile} {
     display: block;
   }
+`;
+
+//TODO: 패딩 조절하기
+const ContentsSpace = styled.div`
+  width: 100vw;
+  height : 100%;
+  padding : 39px 50px
 `;

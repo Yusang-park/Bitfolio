@@ -10,12 +10,12 @@ export const Sidebar = () => {
   return (
     <SidebarContainer>
       <LogoRow>
-        <Logo src="img/139.png" alt="Logo" />
+        <Logo src="img/ico_logo.png" alt="Logo" />
         <LogoTitle>CryptoFolio</LogoTitle>
       </LogoRow>
       <Divide />
       {categories.map((e) => (
-        <CategoryRow to={e.path} selected={e.path === pathName}>
+        <CategoryRow to={e.path} key={e.name} selected={e.path === pathName}>
           {e.name}
         </CategoryRow>
       ))}
@@ -63,7 +63,7 @@ const CategoryRow = styled(Link)`
   display: flex;
   font-size: 22px;
   padding: 8px 32px;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   text-decoration: inherit;
   color: ${({ selected, theme }) =>
     selected ? css`white` : theme.colors.disable};
