@@ -76,6 +76,7 @@ const Scaffold = styled.div`
 //TODO: 패딩 조절하기
 const ContentsSpace = styled.div`
   display : flex;
+  flex : 83;
   flex-direction: column;
   width: 100vw;
   padding : 32px;

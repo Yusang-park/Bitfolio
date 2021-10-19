@@ -1,0 +1,143 @@
+
+
+export class CryptoInformation{
+
+    name;
+    fullName;
+    imageUrl;
+    price;
+    openDayPrice;
+    highDayPrice;
+    marketCap;
+    volumn;
+
+    constructor(data) {
+        this.name = data["CoinInfo"].Name;
+        this.fullName = data["CoinInfo"].FullName;
+        this.imageUrl = data["CoinInfo"].ImageUrl;
+        this.price = "$"+data["RAW"].USD.PRICE;
+        this.openDayPrice = data["RAW"].USD.OPENDAY;
+        this.highDayPrice = data["RAW"].USD.HIGHDAY;
+        this.todayChange = (100 - data["RAW"].USD.OPENDAY / data["RAW"].USD.PRICE * 100).toFixed(2) 
+        + "%";
+        this.marketCap = data["DISPLAY"].USD.MKTCAP;
+        this.volumn = data["DISPLAY"].USD.VOLUMEDAY;
+        this.currentSupply = data["DISPLAY"].USD.CIRCULATINGSUPPLY;
+    }
+}
+
+// Data: Array [10]
+//  0: Object
+//  CoinInfo: Object
+// Id: "1182"
+// Name: "BTC"
+// FullName: "Bitcoin"
+// Internal: "BTC"
+// ImageUrl: "/media/37746251/btc.png"
+// Url: "/coins/btc/overview"
+// Algorithm: "SHA-256"
+// ProofType: "PoW"
+//  Rating: Object
+// NetHashesPerSecond: 132902171779881400000
+// BlockNumber: 705696
+// BlockTime: 644
+// BlockReward: 6.25
+// AssetLaunchDate: "2009-01-03"
+// MaxSupply: 20999999.9769
+// Type: 1
+// DocumentType: "Webpagecoinp"
+//  RAW: Object
+//  USD: Object
+// TYPE: "5"
+// MARKET: "CCCAGG"
+// FROMSYMBOL: "BTC"
+// TOSYMBOL: "USD"
+// FLAGS: "2052"
+// PRICE: 62431.95
+// LASTUPDATE: 1634653327
+// MEDIAN: 62442.29
+// LASTVOLUME: 0.003543
+// LASTVOLUMETO: 221.12235015
+// LASTTRADEID: "22690958"
+// VOLUMEDAY: 19626.30386706001
+// VOLUMEDAYTO: 1225946420.1303053
+// VOLUME24HOUR: 39501.41826651
+// VOLUME24HOURTO: 2452970844.159882
+// OPENDAY: 62037.5
+// HIGHDAY: 63299.71
+// LOWDAY: 61696.02
+// OPEN24HOUR: 62111.79
+// HIGH24HOUR: 63351.73
+// LOW24HOUR: 60828.2
+// LASTMARKET: "binanceusa"
+// VOLUMEHOUR: 927.4031761299716
+// VOLUMEHOURTO: 57967665.284981884
+// OPENHOUR: 62629.3
+// HIGHHOUR: 62697.54
+// LOWHOUR: 62332.04
+// TOPTIERVOLUME24HOUR: 39501.27287251
+// TOPTIERVOLUME24HOURTO: 2452961938.530331
+// CHANGE24HOUR: 320.1599999999962
+// CHANGEPCT24HOUR: 0.5154576932978364
+// CHANGEDAY: 394.4499999999971
+// CHANGEPCTDAY: 0.6358251057827881
+// CHANGEHOUR: -197.35000000000582
+// CHANGEPCTHOUR: -0.31510810435372233
+// CONVERSIONTYPE: "direct"
+// CONVERSIONSYMBOL: ""
+// SUPPLY: 18822156
+// MKTCAP: 1175103902284.2
+// MKTCAPPENALTY: 0
+// CIRCULATINGSUPPLY: 18822156
+// CIRCULATINGSUPPLYMKTCAP: 1175103902284.2
+// TOTALVOLUME24H: 247197.16230434043
+// TOTALVOLUME24HTO: 15419821151.142508
+// TOTALTOPTIERVOLUME24H: 246950.0507281073
+// TOTALTOPTIERVOLUME24HTO: 15404393665.172089
+// IMAGEURL: "/media/37746251/btc.png"
+//  DISPLAY: Object
+//  USD: Object
+// FROMSYMBOL: "Ƀ"
+// TOSYMBOL: "$"
+// MARKET: "CryptoCompare Index"
+// PRICE: "$ 62,432.0"
+// LASTUPDATE: "Just now"
+// LASTVOLUME: "Ƀ 0.003543"
+// LASTVOLUMETO: "$ 221.12"
+// LASTTRADEID: "22690958"
+// VOLUMEDAY: "Ƀ 19,626.3"
+// VOLUMEDAYTO: "$ 1,225,946,420.1"
+// VOLUME24HOUR: "Ƀ 39,501.4"
+// VOLUME24HOURTO: "$ 2,452,970,844.2"
+// OPENDAY: "$ 62,037.5"
+// HIGHDAY: "$ 63,299.7"
+// LOWDAY: "$ 61,696.0"
+// OPEN24HOUR: "$ 62,111.8"
+// HIGH24HOUR: "$ 63,351.7"
+// LOW24HOUR: "$ 60,828.2"
+// LASTMARKET: "binanceusa"
+// VOLUMEHOUR: "Ƀ 927.40"
+// VOLUMEHOURTO: "$ 57,967,665.3"
+// OPENHOUR: "$ 62,629.3"
+// HIGHHOUR: "$ 62,697.5"
+// LOWHOUR: "$ 62,332.0"
+// TOPTIERVOLUME24HOUR: "Ƀ 39,501.3"
+// TOPTIERVOLUME24HOURTO: "$ 2,452,961,938.5"
+// CHANGE24HOUR: "$ 320.16"
+// CHANGEPCT24HOUR: "0.52"
+// CHANGEDAY: "$ 394.45"
+// CHANGEPCTDAY: "0.64"
+// CHANGEHOUR: "$ -197.35"
+// CHANGEPCTHOUR: "-0.32"
+// CONVERSIONTYPE: "direct"
+// CONVERSIONSYMBOL: ""
+// SUPPLY: "Ƀ 18,822,156.0"
+// MKTCAP: "$ 1,175.10 B"
+// MKTCAPPENALTY: "0 %"
+// CIRCULATINGSUPPLY: "Ƀ 18,822,156.0"
+// CIRCULATINGSUPPLYMKTCAP: "$ 1,175.10 B"
+// TOTALVOLUME24H: "Ƀ 247.20 K"
+// TOTALVOLUME24HTO: "$ 15.42 B"
+// TOTALTOPTIERVOLUME24H: "Ƀ 246.95 K"
+// TOTALTOPTIERVOLUME24HTO: "$ 15.40 B"
+// IMAGEURL: "/media/37746251/btc.png"

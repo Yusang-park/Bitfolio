@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import styled from "styled-components";
+import { Expanded, SizedBox } from "../ui/commonUI";
 
 export const UpperSpace = () => {
   const pathName = useLocation().pathname;
@@ -18,7 +19,8 @@ export const UpperSpace = () => {
 <Input placeholder="Search"></Input>
 <Button ><img src="img/ico_search.png"></img></Button>
     </SeachContainer>
-    <SizedBox width="32px" />
+    <SizedBox width="32px"/> 
+    
     <DropDownContaier>Pitter Park
 
       <img src="img/ico_w.arrow_nor.png"></img>
@@ -26,12 +28,11 @@ export const UpperSpace = () => {
   </UpperContainer>;
 };
 
-const Expanded = styled.div`
-  flex: ${(props)=>props.flex};
-`;
 
-const SizedBox = styled.div`
-width : ${(props)=>props.width}`;
+
+
+
+
 
 const UpperContainer = styled.div`
   display : flex;

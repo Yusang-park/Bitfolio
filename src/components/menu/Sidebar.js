@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { Divide } from "../ui/Divide";
+import { Divider, SizedBox } from "../ui/commonUI";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 
@@ -13,7 +13,9 @@ export const Sidebar = () => {
         <Logo src="img/ico_logo.png" alt="Logo" />
         <LogoTitle>CryptoFolio</LogoTitle>
       </LogoRow>
-      <Divide />
+
+      <Divider vertical="0px" horizontal="5%" />
+<SizedBox height="16px"/>
       {categories.map((e) => (
         <CategoryRow to={e.path} key={e.name} selected={e.path === pathName}>
           {e.name}
@@ -25,6 +27,7 @@ export const Sidebar = () => {
 
 const LogoRow = styled.div`
   display: flex;
+  height: 260px;
   align-items: center;
   justify-content: center;
 
@@ -34,9 +37,8 @@ const LogoRow = styled.div`
 `;
 
 const SidebarContainer = styled.div`
-  width: 16.66%;
+  flex : 17;
   max-width: 320px;
-  padding-top: 76px;
   background-color: ${(props) => props.theme.colors.container};
   color: white;
 
@@ -61,6 +63,7 @@ const LogoTitle = styled.div`
 
 const CategoryRow = styled(Link)`
   display: flex;
+  flex: 0;
   font-size: 20px;
   padding: 16px 32px;
   margin-bottom: 0px;
