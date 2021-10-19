@@ -38,9 +38,9 @@ const UpperContainer = styled.div`
   align-items:center;
   justify-content:space-between;
   width : 100%;
-  height : 79px;
-  padding-bottom:39px;
-  font-size : 32px;
+  height : 6%;
+  padding-bottom:32px;
+  font-size : 26px;
 `;
 
 const SeachContainer = styled.div`
@@ -48,7 +48,9 @@ const SeachContainer = styled.div`
   justify-content:space-between;
   align-items:center;
   width: 20%;
-  height : 75%;
+  height: 100%;
+  max-height:64px;
+  min-height:42px;
   border-radius: 21px;
   padding-left : 32px;
   padding-right:32px;
@@ -58,7 +60,7 @@ const SeachContainer = styled.div`
   
   const Input = styled.input`
   width: calc(100% - 72px);
-  font-size : 28px;
+  font-size : 20px;
   border : transparent;
   background: transparent;
   color: white;
@@ -71,8 +73,8 @@ const SeachContainer = styled.div`
 `;
 
 const Button = styled.button`
-width: 47px;
-height: 47px;
+width: 38px;
+height: 38px;
 vertical-align : middle;
 border-radius: 12px;
 border : 0;
@@ -85,11 +87,13 @@ const DropDownContaier = styled.div`
   justify-content:space-between;
   align-items:center;
   width: 16%;
-  height : 75%;
+  height: 100%;
+  max-height:64px;
+  min-height:42px;
   border-radius: 21px;
   border : 1px solid gray;
   padding-left : 32px;
   padding-right:32px;
-  font-size:1.5rem;
+  font-size:20px;
   background: #2b2a37;
   `;

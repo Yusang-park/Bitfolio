@@ -56,14 +56,14 @@ const Logo = styled.img`
 `;
 
 const LogoTitle = styled.div`
-  font-size: 32px;
+  font-size: 26px;
 `;
 
 const CategoryRow = styled(Link)`
   display: flex;
-  font-size: 22px;
-  padding: 8px 32px;
-  margin-bottom: 16px;
+  font-size: 20px;
+  padding: 16px 32px;
+  margin-bottom: 0px;
   text-decoration: inherit;
   color: ${({ selected, theme }) =>
     selected ? css`white` : theme.colors.disable};
