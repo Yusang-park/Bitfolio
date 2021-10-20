@@ -33,8 +33,9 @@ const fonts = {
 
 const colors = {
   background: "#1F1E2C",
-  gray: "#848490",
-  disable: "#3E3E3E",
+  gray: "#848490", //for text & hover background
+  gray2: "#2b2a37", //for background of inputfield
+  gray3: "#3E3E3E", //for divider
   container: "#252634",
   btnStart: "#4294F3",
   btnEnd: "#2C62A3",

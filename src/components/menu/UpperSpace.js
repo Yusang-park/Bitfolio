@@ -17,8 +17,9 @@ export const UpperSpace = () => {
     <TitleText >
     {getName()}
     </TitleText>
+
     <SearchInput/>
-    <SizedBox width="32px"/> 
+    <SizedBox width="24px"/> 
     
     <DropDownContaier>Pitter Park
 
@@ -27,23 +28,19 @@ export const UpperSpace = () => {
   </UpperContainer>;
 };
 
-
 const TitleText = styled.div`
 display: flex;
-flex:1;
+flex:auto;
 align-items: center;
-height: 100%;
 `;
-
-
-
 
 const UpperContainer = styled.div`
 
   display : flex;
-  align-items:center;
+  align-items:unset;
   justify-content:space-between;
   width : 100%;
+  height: 6.2vh;
   max-height:64px;
   min-height:42px;
   padding-bottom:32px;
@@ -55,13 +52,12 @@ const DropDownContaier = styled.div`
   justify-content:space-between;
   align-items:center;
   width: 16%;
-  height: 100%;
   max-height:64px;
   min-height:42px;
   border-radius: 21px;
   border : 1px solid gray;
-  padding-left : 32px;
-  padding-right:32px;
+  padding-left : 24px;
+  padding-right:24px;
   font-size:20px;
   background: #2b2a37;
   `;

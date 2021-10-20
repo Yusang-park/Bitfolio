@@ -69,7 +69,7 @@ const CategoryRow = styled(Link)`
   margin-bottom: 0px;
   text-decoration: inherit;
   color: ${({ selected, theme }) =>
-    selected ? css`white` : theme.colors.disable};
+    selected ? css`white` : theme.colors.gray3};
   cursor: pointer;
   &:hover {
     color : white;

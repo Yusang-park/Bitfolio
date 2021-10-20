@@ -3,7 +3,7 @@ import styled, {css} from "styled-components";
 export const Divider = styled.div`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
-  background-color: ${(props) => props.theme.colors.disable};
+  background-color: ${(props) => props.theme.colors.gray3};
 `;
 export const SizedBox = styled.div`
 align-self: center;
