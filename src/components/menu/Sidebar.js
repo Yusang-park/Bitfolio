@@ -72,6 +72,7 @@ const CategoryRow = styled(Link)`
     selected ? css`white` : theme.colors.disable};
   cursor: pointer;
   &:hover {
+    color : white;
     background-color: gray;
   }
 `;

@@ -38,6 +38,8 @@ const colors = {
   container: "#252634",
   btnStart: "#4294F3",
   btnEnd: "#2C62A3",
+  negative: "#CF304A",
+  positive : "#0ECB81"
 };
 
 const size = {
