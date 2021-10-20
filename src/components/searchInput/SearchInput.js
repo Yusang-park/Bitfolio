@@ -1,35 +1,90 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import { getCryptoObject } from "../../service/crypto_lank";
 import { Button } from "../ui/commonUI";
 
-
-export const SearchInput = () => {
+function searchObject (object, key)  {
+    let res = new Array();
+    let root = object;
+    try {
+        for (let i = 1; i <= key.length; i++) {
+            root = root[key.substring(0, i)];
+        }
+    } catch (e) { return []; }
     
+    if(root != undefined)
+    findLastElement(root,res);
+    return res;
+}
+
+function findLastElement(object, res) {
+    if (res.length > 10) return;
+
+    if (object.hasOwnProperty("*key")) {
+            res.push(object["*key"]);
+            if (object.length == 1) {
+                return;
+            }
+        }
+    for (const [k, v] of Object.entries(object)) {
+        if(k != "*key")
+            findLastElement(v,res);
+        }
+    }
+
+
+
+//TODO: focus out, 불변성
+export const SearchInput = () => {
+    const _cryptoList = useRef(null);
+    const [inputText, setInputText] = useState("");
+    const [recommandedKeyword, setRecommendedKeyword] = useState([]);
+    let loaded = false;
+    
+    
+    async function requestCryptoList() {
+        if (_cryptoList.current == null) {
+            getCryptoObject().then((response) => {
+                _cryptoList.current = response;
+                loaded = true;
+                console.log("getting API done");
+          })
+     }
+    }
+
+    function onChange(e) {
+        setInputText(e.target.value);
+        if (e.target.value == "") {
+            setRecommendedKeyword([]);
+        }else
+
+        if (_cryptoList != null)
+            setRecommendedKeyword(searchObject(_cryptoList.current, e.target.value));
+        
+    }
+
     return (
-        <Whole>
+    <Whole>
         <SeachContainer >
-          
-                <Input placeholder="Seach" />
-                
-<Button ><FontAwesomeIcon icon="search" size="1x" color="white" /></Button>
-            </SeachContainer>
+        <Input placeholder="Seach" onFocus={requestCryptoList}  value={inputText} onChange={onChange} />
+                <Button>
+                    <FontAwesomeIcon icon="search" size="1x" color="white" />
+                </Button>
+        </SeachContainer>
             <RecommendedContainer>
-                <ElementRow>123</ElementRow>
- 
-            </RecommendedContainer>
-            </Whole>
+                {recommandedKeyword.map((e, i) => <ElementRow key={i}>{e.name} ({e.symbol.toUpperCase()})</ElementRow>)}
+        </RecommendedContainer>
+    </Whole>
     )
 }
 const Whole = styled.div`
     flex:1;
     max-width: 26%;
-    
 `;
 
 const SeachContainer = styled.div`
     display : flex;
-    
     justify-content:space-between;
     align-items:center;
     height:6.2vh;
@@ -59,23 +114,29 @@ const RecommendedContainer = styled.div`
     flex-direction: column;
     position: relative;
     z-index: 1;
-    overflow: scroll;
+    overflow-y: scroll;
     margin-left: 8%;
     margin-right:8%;
-    max-height: 25vh;
- 
-    background-color: ${(props)=>props.theme.colors.gray2};
-    
+    max-height: 40vh;
+    background-color: ${(props) => props.theme.colors.gray};
+    &::-webkit-scrollbar {
+    width:8px;
+    border-radius: 6px;
+    background: gray;
+}
+&::-webkit-scrollbar-thumb{
+    background-color: lightgray;
+    border-radius: 6px;
+}
 `;
 
 const ElementRow = styled.div`
     display: flex;
-       padding : 12px 12px;
-    font-size:20px;
+    padding : 12px 12px;
+    font-size:16px;
     color : white;
-
+    cursor: pointer;
     &:hover{
-        background-color: ${(props)=>props.theme.colors.gray};
+        background-color: ${(props)=>props.theme.colors.gray3};
     }
-    
 `;

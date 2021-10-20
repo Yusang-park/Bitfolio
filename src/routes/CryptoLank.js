@@ -75,7 +75,7 @@ useEffect(() => {
 <FontAwesomeIcon icon="chevron-left" size="1x" color="white"/></a>
   <SizedBox width="16px"/>  
       {[...Array(10)].map((n, index) => 
-        (<ATag selected={index+1 + pageSectionIndex*10 == pageIndex} id={index+1 + pageSectionIndex*10} onClick={changePageIndex}> {index+1+ pageSectionIndex*10}</ATag>)
+        (<ATag key={index} selected={index+1 + pageSectionIndex*10 == pageIndex} id={index+1 + pageSectionIndex*10} onClick={changePageIndex}> {index+1+ pageSectionIndex*10}</ATag>)
       )}
       <SizedBox width="16px" />
            <a onClick={nextPagePagination}>
