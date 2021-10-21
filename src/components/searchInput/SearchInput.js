@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../service/apis";
-import { Button } from "../../styles/components";
+import { FixedSizeButton } from "../../styles/components";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -39,15 +39,15 @@ export const SearchInput = () => {
   const _cryptoList = useRef(null);
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const history = useHistory();
-  let loaded = false;
 
   async function requestCryptoList() {
     if (_cryptoList.current == null) {
       getCryptoObject().then((response) => {
         _cryptoList.current = response;
-        loaded = true;
         console.log("getting API done");
+        setLoaded(true);
       });
     }
   }
@@ -87,17 +87,19 @@ export const SearchInput = () => {
           value={inputText}
           onChange={onChange}
         />
-        <Button>
+        <FixedSizeButton>
           <FontAwesomeIcon icon="search" size="1x" color="white" />
-        </Button>
+        </FixedSizeButton>
       </SeachContainer>
-      <RecommendedContainer>
-        {recommandedKeyword.map((e, i) => (
-          <ElementRow key={i} onClick={() => routeDetails(e.id)}>
-            {e.name} ({e.symbol.toUpperCase()})
-          </ElementRow>
-        ))}
-      </RecommendedContainer>
+      {loaded && (
+        <RecommendedContainer>
+          {recommandedKeyword.map((e, i) => (
+            <ElementRow key={i} onClick={() => routeDetails(e.id)}>
+              {e.name} ({e.symbol.toUpperCase()})
+            </ElementRow>
+          ))}
+        </RecommendedContainer>
+      )}
     </Whole>
   );
 };

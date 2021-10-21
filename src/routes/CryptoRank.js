@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { apiKey, providerUrl } from "../api_config";
 import {
-  Button,
+  FixedSizeButton,
   Divider,
   Expanded,
   SizedBox,

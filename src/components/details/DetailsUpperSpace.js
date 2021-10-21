@@ -32,13 +32,12 @@ export const DetailsUpperSpace = ({ data }) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-
   width: 100%;
-  height: 83px;
+  margin-bottom: 3.75%;
 `;
 
 const Image = styled.img`
-  width: 83px;
+  width: 56px;
   padding-right: 32px;
 `;
 

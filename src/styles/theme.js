@@ -41,7 +41,8 @@ const colors = {
   btnStart: "#4294F3",
   btnEnd: "#2C62A3",
   negative: "#CF304A",
-  positive : "#0ECB81"
+  positive: "#0ECB81",
+  yellow: "#FFCD00",
 };
 
 const size = {

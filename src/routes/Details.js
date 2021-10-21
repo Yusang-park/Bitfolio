@@ -3,14 +3,19 @@ import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import { getCryptoDetails } from "../service/apis";
 import { fadeIn } from "../styles/animation";
-import { Row, SizedBox } from "../styles/components";
+import { Button, Row, SizedBox } from "../styles/components";
 import { useLocation } from "react-router";
 import { DetailsUpperSpace } from "../components/details/DetailsUpperSpace";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
+import { DetailsInfoContainer } from "../components/details/InfoContainer";
 
 export const Details = (props) => {
   const id = useLocation().state.id;
   const [data, setData] = useState(null);
+  const [selectedMenuIndex, setMenuIndex] = useState(0);
+
+  const menu = [{ key: "Information", component: <DetailsInfoContainer /> }];
+
   useEffect(() => {
     getCryptoDetails(id).then((response) => {
       setData(response);
@@ -23,6 +28,12 @@ export const Details = (props) => {
     <Row>
       <DetailsContainer>
         <DetailsUpperSpace data={data}></DetailsUpperSpace>
+        <MenuContainer>
+          {menu.map((e, i) => (
+            <Button key={i}>{e.key}</Button>
+          ))}
+        </MenuContainer>
+        {menu[selectedMenuIndex].component}
       </DetailsContainer>
       <SizedBox width="32px" />
       <BoardContainer> </BoardContainer>
@@ -51,4 +62,10 @@ const BoardContainer = styled.div`
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
+`;
+
+const MenuContainer = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
+  padding-bottom: 4px;
+  margin-bottom: 3.75%;
 `;

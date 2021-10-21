@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import styled from "styled-components";
-import { Expanded, SizedBox, Button } from "../../styles/components";
+import { Expanded, SizedBox, FixedSizeButton } from "../../styles/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchInput } from "../searchInput/SearchInput";
 

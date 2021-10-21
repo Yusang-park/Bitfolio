@@ -20,15 +20,26 @@ export const Expanded = styled.div`
 
 export const Button = styled.button`
   vertical-align: middle;
-  width: 38px;
+
   height: 38px;
+  padding: 0px 24px;
   border-radius: 12px;
   border: 0;
+  color: white;
+  font-size: 16px;
+
   background: linear-gradient(#4294f3 0%, #2c62a3 100%);
 
   &:hover {
     background: linear-gradient(#69a8f0 0%, #5074a1 100%);
   }
+`;
+
+export const FixedSizeButton = styled(Button)`
+  vertical-align: middle;
+  width: 38px;
+  padding: 0px 0px;
+  border-radius: 12px;
 `;
 
 export const PercentText = styled.div`
