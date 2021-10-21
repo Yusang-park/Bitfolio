@@ -35,7 +35,7 @@ function findLastElement(object, res) {
 
 
 
-//TODO: focus out, 불변성
+//TODO: focus out
 export const SearchInput = () => {
     const _cryptoList = useRef(null);
     const [inputText, setInputText] = useState("");
@@ -55,13 +55,14 @@ export const SearchInput = () => {
 
     function onChange(e) {
         setInputText(e.target.value);
+        let temp = recommandedKeyword.filter((e) => false);
         if (e.target.value == "") {
-            setRecommendedKeyword([]);
-        }else
-
-        if (_cryptoList != null)
-            setRecommendedKeyword(searchObject(_cryptoList.current, e.target.value));
-        
+            setRecommendedKeyword(temp);
+        } else
+            if (_cryptoList != null) {
+                temp = temp.concat(searchObject(_cryptoList.current, e.target.value))
+                setRecommendedKeyword(temp);
+            }
     }
 
     return (
