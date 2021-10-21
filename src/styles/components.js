@@ -45,3 +45,10 @@ color : white;
   background: ${(props) => props.selected ? css`linear-gradient(#69A8F0 0%, #5074A1 100%)` : props.theme.colors.gray};
 }
 `
+
+
+export const Row = styled.div`
+    display:flex;
+    justify-content: space-between;
+    height:100%;
+`;

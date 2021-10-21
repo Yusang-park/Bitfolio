@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { Divider, SizedBox } from "../ui/commonUI";
+import { Divider, SizedBox } from "../../styles/components";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
+import { useHistory } from 'react-router-dom';
 
 export const Sidebar = () => {
   const pathName = useLocation().pathname;
+  const history = useHistory();
+
+  function onClickLogo(e) {
+    history.push("/")
+  }
 
   return (
     <SidebarContainer>
-      <LogoRow>
+      <LogoRow onClick={onClickLogo}>
         <Logo src="img/ico_logo.png" alt="Logo" />
         <LogoTitle>CryptoFolio</LogoTitle>
       </LogoRow>
@@ -30,6 +36,7 @@ const LogoRow = styled.div`
   height: 260px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   ${({ theme }) => theme.device.desktopL} {
     flex-direction: column;

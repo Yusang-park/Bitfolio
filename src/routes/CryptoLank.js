@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styled, {keyframes} from "styled-components";
 import { apiKey,providerUrl } from "../api_config";
-import { Button, Divider, Expanded, SizedBox, ATag } from "../components/ui/commonUI";
-import { getCryptoLank } from "../service/crypto_lank";
+import { Button, Divider, Expanded, SizedBox, ATag } from "../styles/components";
+import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
-
+import { useHistory } from 'react-router-dom';
+import { fadeIn } from "../styles/animation";
 
 const maxPage = 179;
 
@@ -16,11 +17,10 @@ export const CryptoLank = () => {
   const [cryptoList, setCryptoList] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
-  
+  const history = useHistory();
   
 useEffect(() => {
-  getCryptoLank(pageIndex).then(e=>{
-   
+  getCryptoSummaryDataList(pageIndex).then(e=>{
     setCryptoList(e);
   });
 }, [pageIndex]); //It is performed when mounted.
@@ -41,6 +41,10 @@ useEffect(() => {
     if(pageSectionIndex != maxPage)
     setPageSectionIndex(pageSectionIndex + 1);
   }
+
+  function routeDetails(id) {
+    history.push(`/details/${id}`);
+  }
   
   return <CryptoLankContainer>
     
@@ -56,10 +60,10 @@ useEffect(() => {
       {cryptoList.length != 0 ?
       cryptoList.map((e, i) =>
         (
-          <ElementRow key={i}>
+          <ElementRow key={i} onClick={()=>routeDetails(e.id)}>
             <SizedBox width="2%" ><SymbolText> {i + ((pageIndex - 1) * 10) + 1}</SymbolText></SizedBox>
             <Expanded justify_content="right" flex={sortation[1].flex}>  <Icon src={e.imageUrl}/> </Expanded>
-            <Expanded justify_content="space-between" flex={sortation[2].flex}>{e.fullName } <SymbolText> {e.name.toUpperCase()}</SymbolText> </Expanded>
+            <Expanded justify_content="space-between" flex={sortation[2].flex}>{e.fullName } <SymbolText> {e.symbol.toUpperCase()}</SymbolText> </Expanded>
             <Expanded justify_content="right" flex={sortation[3].flex}>{'$' + e.price.toLocaleString()}</Expanded>
             <Expanded justify_content="right" flex={sortation[4].flex}>{'$' + e.marketCap.toLocaleString()}</Expanded>
             <Expanded justify_content="right" flex={sortation[5].flex}>{e.currentSupply.toLocaleString()}</Expanded>
@@ -85,33 +89,17 @@ useEffect(() => {
 };
 
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const fadeOut = keyframes`
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`;
 
 
 const CryptoLankContainer = styled.div`
   display : flex;
   flex-direction: column;
-  flex : 1;
+  
+  height: 100%;
   padding : 32px 32px 16px 32px;
 
   border-radius: 27px;
-  background: #262736;
+  background: ${({theme})=>theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 
   animation-duration: 0.5s;

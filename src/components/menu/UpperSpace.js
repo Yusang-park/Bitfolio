@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import styled from "styled-components";
-import { Expanded, SizedBox,Button } from "../ui/commonUI";
+import { Expanded, SizedBox,Button } from "../../styles/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchInput } from "../searchInput/SearchInput";
 
@@ -10,7 +10,11 @@ export const UpperSpace = () => {
   const pathName = useLocation().pathname;
   
   function getName() {
-    return categories.find(c => c.path === pathName).name;
+    try {
+      return categories.find(c => c.path === pathName).name;
+    } catch (e) {
+      return 'Details';
+    }
   }
   
   return <UpperContainer>
@@ -32,6 +36,7 @@ const TitleText = styled.div`
 display: flex;
 flex:auto;
 align-items: center;
+  height: 6.2vh;
 `;
 
 const UpperContainer = styled.div`
@@ -52,6 +57,7 @@ const DropDownContaier = styled.div`
   justify-content:space-between;
   align-items:center;
   width: 16%;
+  height: 6.2vh;
   max-height:64px;
   min-height:42px;
   border-radius: 21px;

@@ -12,6 +12,7 @@ import { CryptoLank } from "../routes/CryptoLank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
 import { UpperSpace } from "./menu/UpperSpace";
+import { Details } from "../routes/Details";
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -35,10 +36,10 @@ function App() {
             <UpperSpace />
             
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/dashboard">
                 <DashBoard />
               </Route>
-              <Route exact path="/currency">
+              <Route exact path="/">
                 <CryptoLank />
               </Route>
               <Route exact path="/exchanges">
@@ -49,6 +50,9 @@ function App() {
               </Route>
               <Route exact path="/indexes">
                 <DashBoard />
+              </Route>
+              <Route exact path="/details/:id">
+            <Details />
               </Route>
             </Switch>
           </ContentsSpace>

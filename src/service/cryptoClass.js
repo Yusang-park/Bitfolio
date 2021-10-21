@@ -1,8 +1,7 @@
 
-
-export class CryptoInformation{
-
-    name;
+export class CryptoSummaryData{
+    id;
+    symbol;
     fullName;
     imageUrl;
     price;
@@ -12,7 +11,8 @@ export class CryptoInformation{
     currentSupply;
 
     constructor(data) {
-        this.name = data.symbol;
+        this.id = data.id;
+        this.symbol = data.symbol;
         this.fullName = data.name;
         this.imageUrl = data.image;
         this.current_price = data.price;
@@ -21,19 +21,32 @@ export class CryptoInformation{
         this.price = data.current_price;
         this.todayChange = data.price_change_percentage_24h.toFixed(2)+"%";
         this.currentSupply = data.circulating_supply;
-        // this.name = data["CoinInfo"].Name;
-        // this.fullName = data["CoinInfo"].FullName;
-        // this.imageUrl = data["CoinInfo"].ImageUrl;
-        // this.price = "$"+data["RAW"].USD.PRICE;
-        // this.openDayPrice = data["RAW"].USD.OPENDAY;
-        // this.highDayPrice = data["RAW"].USD.HIGHDAY;
-        // this.todayChange = (100 - data["RAW"].USD.OPENDAY / data["RAW"].USD.PRICE * 100).toFixed(2) 
-        // + "%";
-        // this.marketCap = data["DISPLAY"].USD.MKTCAP;
-        // this.volumn = data["DISPLAY"].USD.VOLUMEDAY;
-        // this.currentSupply = data["DISPLAY"].USD.CIRCULATINGSUPPLY;
     }
 }
+
+export class CryptoDetailData extends CryptoSummaryData{
+    imageUrlLarge;
+    total_supply;
+    max_supply;
+    market_cap_rank;
+    genesis_date;
+    high_24h;
+    low_24h;
+    price_change_24h;
+    price_change_percentage_1y;
+    homepage;
+    blockchain_site;
+    official_forrum_url;
+    chat_url;
+    
+
+    constructor(data) {
+        this.high_24h = data.high_24h.usd;
+        this.low_24h = data.low_24h.usd;
+        
+    }
+}
+
 //  "id": "bitcoin",
 //     "symbol": "btc",
 //     "name": "Bitcoin",

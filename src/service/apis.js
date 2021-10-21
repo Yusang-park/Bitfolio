@@ -1,15 +1,14 @@
 import axios from "axios";
 import { apiKey } from "../api_config";
-import { CryptoInformation } from "./crypto_info_class";
+import { CryptoSummaryData } from "./cryptoClass";
 
 
 
-export async function getCryptoLank(pageIndex) {
+export async function getCryptoSummaryDataList(pageIndex) {
     let res = [];
-    
     const response = await axios.get
     (`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`);
-    response.data.forEach(e => res.push(new CryptoInformation(e)));
+    response.data.forEach(e => res.push(new CryptoSummaryData(e)));
     return res;
 }
 
@@ -33,4 +32,11 @@ export async function getCryptoObject() {
         });
     });
     return res;
+}
+
+export async function getCryptoInforamtionClass(id) {
+    let res = [];
+    const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
+    
+    
 }

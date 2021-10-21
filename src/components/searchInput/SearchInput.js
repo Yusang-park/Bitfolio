@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { getCryptoObject } from "../../service/crypto_lank";
-import { Button } from "../ui/commonUI";
+import { getCryptoObject } from "../../service/apis";
+import { Button } from "../../styles/components";
+import {useHistory} from "react-router-dom";
 
 function searchObject (object, key)  {
     let res = new Array();
@@ -34,12 +35,12 @@ function findLastElement(object, res) {
     }
 
 
-
 //TODO: focus out
 export const SearchInput = () => {
     const _cryptoList = useRef(null);
     const [inputText, setInputText] = useState("");
     const [recommandedKeyword, setRecommendedKeyword] = useState([]);
+    const history = useHistory();
     let loaded = false;
     
     
@@ -65,6 +66,17 @@ export const SearchInput = () => {
             }
     }
 
+    function reset() {
+        let temp = recommandedKeyword.filter((e) => false);
+        setRecommendedKeyword(temp);
+    }
+
+    function routeDetails(id) {
+        history.push(`/details/${id}`);
+        reset();
+    }
+
+
     return (
     <Whole>
         <SeachContainer >
@@ -74,7 +86,7 @@ export const SearchInput = () => {
                 </Button>
         </SeachContainer>
             <RecommendedContainer>
-                {recommandedKeyword.map((e, i) => <ElementRow key={i}>{e.name} ({e.symbol.toUpperCase()})</ElementRow>)}
+                {recommandedKeyword.map((e, i) => <ElementRow key={i} onClick={()=>routeDetails(e.id)} >{e.name} ({e.symbol.toUpperCase()})</ElementRow>)}
         </RecommendedContainer>
     </Whole>
     )
