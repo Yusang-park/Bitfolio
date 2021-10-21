@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Sidebar } from "./menu/Sidebar";
 import { DashBoard } from "../routes/DashBoard";
-import { CryptoLank } from "../routes/CryptoLank";
+import { CryptoLank } from "../routes/CryptoRank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
 import { UpperSpace } from "./menu/UpperSpace";
@@ -31,10 +31,10 @@ function App() {
       <Scaffold>
         <BrowserRouter>
           <Sidebar />
-         
-           <ContentsSpace>
+
+          <ContentsSpace>
             <UpperSpace />
-            
+
             <Switch>
               <Route exact path="/dashboard">
                 <DashBoard />
@@ -52,7 +52,7 @@ function App() {
                 <DashBoard />
               </Route>
               <Route exact path="/details/:id">
-            <Details />
+                <Details />
               </Route>
             </Switch>
           </ContentsSpace>
@@ -67,8 +67,8 @@ export default App;
 const Scaffold = styled.div`
   display: flex;
   width: 100%;
-  height : 100%;
-    position: absolute;
+  height: 100%;
+  position: absolute;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
 
@@ -79,9 +79,8 @@ const Scaffold = styled.div`
 
 //TODO: 패딩 조절하기
 const ContentsSpace = styled.div`
-  display : flex;
-  flex : 83;
+  display: flex;
+  flex: 83;
   flex-direction: column;
-  width: 100vw;
-  padding : 32px;
+  padding: 32px;
 `;

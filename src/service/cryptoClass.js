@@ -1,50 +1,98 @@
-
-export class CryptoSummaryData{
-    id;
-    symbol;
-    fullName;
-    imageUrl;
-    price;
-    todayChange;
-    marketCap;
-    volumn;
-    currentSupply;
-
-    constructor(data) {
-        this.id = data.id;
-        this.symbol = data.symbol;
-        this.fullName = data.name;
-        this.imageUrl = data.image;
-        this.current_price = data.price;
-        this.marketCap = data.market_cap;
-        this.volumn = data.total_volume;
-        this.price = data.current_price;
-        this.todayChange = data.price_change_percentage_24h.toFixed(2)+"%";
-        this.currentSupply = data.circulating_supply;
-    }
+class CryptoSimpleData {
+  id;
+  symbol;
+  fullName;
+  marketCapRank;
+  constructor(data) {
+    this.id = data.id;
+    this.symbol = data.symbol;
+    this.fullName = data.name;
+    this.marketCapRank = data.market_cap_rank;
+  }
 }
 
-export class CryptoDetailData extends CryptoSummaryData{
-    imageUrlLarge;
-    total_supply;
-    max_supply;
-    market_cap_rank;
-    genesis_date;
-    high_24h;
-    low_24h;
-    price_change_24h;
-    price_change_percentage_1y;
-    homepage;
-    blockchain_site;
-    official_forrum_url;
-    chat_url;
-    
+export class CryptoSummaryData extends CryptoSimpleData {
+  imageUrl;
+  price;
+  pricePercent24h;
+  marketCap;
 
-    constructor(data) {
-        this.high_24h = data.high_24h.usd;
-        this.low_24h = data.low_24h.usd;
-        
-    }
+  volume;
+  currentSupply;
+  total_supply;
+  max_supply;
+
+  constructor(data) {
+    super(data);
+    this.imageUrl = data.image;
+    this.current_price = data.price;
+    this.marketCap = data.market_cap;
+
+    this.volume = data.total_volume;
+    this.price = data.current_price;
+    this.pricePercent24h = data.price_change_percentage_24h.toFixed(2) + "%";
+    this.currentSupply = data.circulating_supply;
+    this.totalSupply = data.total_supply;
+    this.maxSupply = data.max_supply;
+  }
+}
+
+export class CryptoDetailData extends CryptoSimpleData {
+  marketCap;
+  imageUrlLarge;
+  genesisDate;
+  price;
+  priceHigh24h;
+  priceLow24h;
+  priceChange24h;
+  pricePercent24h;
+  priceChangePercentage1y;
+  volume;
+  homepage;
+  blockchain_site;
+  official_forrum_url;
+  chat_url;
+  announcement_url;
+  twitter_screen_name;
+  facebook_username;
+  bitcointalk_thread_identifier;
+  telegram_channel_identifier;
+  subreddit_url;
+  github_url;
+  currentSupply;
+  total_supply;
+  max_supply;
+  constructor(data) {
+    super(data);
+    this.price = data.market_data.current_price.usd.toFixed(1);
+    this.volume = data.market_data.total_volume;
+    this.marketCap = data.market_data.market_cap.usd;
+    this.priceHigh24h = data.market_data.high_24h.usd;
+    this.priceLow24h = data.market_data.low_24h.usd;
+    this.priceChange24h = data.market_data.price_change_24h;
+    this.pricePercent24h =
+      data.market_data.price_change_percentage_24h.toFixed(2) + "%";
+    this.priceChangePercentage1y = data.market_data.price_change_percentage;
+
+    this.currentSupply = data.market_data.circulating_supply;
+    this.totalSupply = data.market_data.total_supply;
+    this.maxSupply = data.market_data.max_supply;
+
+    this.imageUrlLarge = data.image.large;
+    this.genesisDate = data.genesis_date;
+    this.homepage = data.links.homepage;
+    this.blockchain_site = data.links.blockchain_site;
+    this.official_forrum_url = data.links.official_forrum_url;
+    this.chat_url = data.links.chat_url;
+    this.announcement_url = data.links.announcement_url;
+    this.twitter_screen_name = data.links.twitter_screen_name;
+    this.facebook_username = data.links.facebook_username;
+    this.bitcointalk_thread_identifier =
+      data.links.bitcointalk_thread_identifier;
+    this.telegram_channel_identifier = data.links.telegram_channel_identifier;
+    this.subreddit_url = data.links.subreddit_url;
+    this.github_url = data.links.repos_url.github;
+  }
 }
 
 //  "id": "bitcoin",
