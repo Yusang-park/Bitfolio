@@ -1,19 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Expanded, PercentText } from "../../styles/components";
+import { CryptoDataContext } from "../../routes/Details";
+import { Expanded, PercentText, SizedBox } from "../../styles/components";
 
-export const DetailsUpperSpace = ({ data }) => {
+export const DetailsUpperSpace = () => {
+  const { data } = useContext(CryptoDataContext);
+
   return (
     <Container>
       <Image src={data.imageUrlLarge}></Image>
       <Column>
         <BoldText>{data.fullName}</BoldText>
-        <SubText>{data.symbol}</SubText>
+        <SizedBox height="4px" />
+        <SubText>{data.symbol.toUpperCase()}</SubText>
       </Column>
       <Column>
-        {/* //TODO: it doesn't work */}
         <BoldText>{"$ " + data.price.toLocaleString()}</BoldText>
+        <SizedBox height="4px" />
         <PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}
         </PercentText>

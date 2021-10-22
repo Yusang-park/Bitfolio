@@ -52,10 +52,11 @@ export const Row = styled.div`
   height: 100%;
 `;
 
-export const ATag = styled.button`
+export const ATag = styled(Button)`
   vertical-align: middle;
-  width: 38px;
+  width: ${(props) => (props.width ? props.width : null)};
   height: 38px;
+  padding: ${(props) => (props.width ? "0px" : "0px 16px")};
   margin: 0px 2px;
   border-radius: 12px;
   border: 0;

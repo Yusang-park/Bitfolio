@@ -52,13 +52,13 @@ export const SearchInput = () => {
     }
   }
 
-  function onChange(e) {
-    setInputText(e.target.value);
+  function onChange({ target: { value } }) {
+    setInputText(value);
     let temp = recommandedKeyword.filter((e) => false);
-    if (e.target.value === "") {
+    if (value === "") {
       setRecommendedKeyword(temp);
     } else if (_cryptoList != null) {
-      temp = temp.concat(searchObject(_cryptoList.current, e.target.value));
+      temp = temp.concat(searchObject(_cryptoList.current, value));
       setRecommendedKeyword(temp);
     }
   }
@@ -66,16 +66,17 @@ export const SearchInput = () => {
   function reset() {
     let temp = recommandedKeyword.filter((e) => false);
     setRecommendedKeyword(temp);
+    setInputText("");
   }
 
   function routeDetails(id) {
-    history.push({
+    reset();
+    history.replace({
       pathname: `/details/${id}`,
       state: {
         id: id,
       },
     });
-    reset();
   }
 
   return (

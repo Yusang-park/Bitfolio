@@ -75,7 +75,6 @@ export const CryptoLank = () => {
         </SortContainer>
         <SizedBox height="16px" />
         <Divider vertical="0px" horizontal="0px" />
-
         <ElementContainer>
           {cryptoList.length !== 0 ? (
             cryptoList.map((e, i) => (
@@ -126,11 +125,13 @@ export const CryptoLank = () => {
           {[...Array(10)].map((n, index) => (
             <ATag
               key={index}
-              selected={index + 1 + pageSectionIndex * 10 === pageIndex}
+              selected={
+                index + 1 + pageSectionIndex * 10 === parseInt(pageIndex)
+              }
               id={index + 1 + pageSectionIndex * 10}
               onClick={changePageIndex}
+              width={"38px"}
             >
-              {" "}
               {index + 1 + pageSectionIndex * 10}
             </ATag>
           ))}

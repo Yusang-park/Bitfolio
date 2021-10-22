@@ -60,12 +60,12 @@ export class CryptoDetailData extends CryptoSimpleData {
   subreddit_url;
   github_url;
   currentSupply;
-  total_supply;
-  max_supply;
+  maxSupply;
+  tradingViewCoinId;
   constructor(data) {
     super(data);
-    this.price = data.market_data.current_price.usd.toFixed(1);
-    this.volume = data.market_data.total_volume;
+    this.price = data.market_data.current_price.usd;
+    this.volume = data.market_data.total_volume.usd;
     this.marketCap = data.market_data.market_cap.usd;
     this.priceHigh24h = data.market_data.high_24h.usd;
     this.priceLow24h = data.market_data.low_24h.usd;
@@ -74,9 +74,11 @@ export class CryptoDetailData extends CryptoSimpleData {
       data.market_data.price_change_percentage_24h.toFixed(2) + "%";
     this.priceChangePercentage1y = data.market_data.price_change_percentage;
 
-    this.currentSupply = data.market_data.circulating_supply;
-    this.totalSupply = data.market_data.total_supply;
-    this.maxSupply = data.market_data.max_supply;
+    this.currentSupply = Math.floor(data.market_data.circulating_supply);
+
+    this.maxSupply = data.market_data.max_supply
+      ? Math.floor(data.market_data.max_supply)
+      : "";
 
     this.imageUrlLarge = data.image.large;
     this.genesisDate = data.genesis_date;
@@ -92,8 +94,75 @@ export class CryptoDetailData extends CryptoSimpleData {
     this.telegram_channel_identifier = data.links.telegram_channel_identifier;
     this.subreddit_url = data.links.subreddit_url;
     this.github_url = data.links.repos_url.github;
+
+    let i = 0;
+
+    const exceptedCurrncyUnit = ["GBP", "JPY", "EUR"];
+    while (true) {
+      if (
+        !supportingExchangesByTradingView.includes(
+          data.tickers[i].market.name.toLowerCase()
+        ) ||
+        exceptedCurrncyUnit.includes(data.tickers[i].target)
+      ) {
+        i++;
+        if (data.tickers.length == i) {
+          this.tradingViewCoinId = null;
+          break;
+        }
+      } else {
+        this.tradingViewCoinId = `${data.tickers[i].market.name}:${data.tickers[i].base}${data.tickers[i].target}`;
+        break;
+      }
+    }
   }
 }
+
+const supportingExchangesByTradingView = [
+  "ascendex",
+  "deribit",
+  "binance",
+  "exmo",
+  "binanceus",
+  "ftx",
+  "bingbon",
+  "gemini",
+  "bitcoke",
+  "glassnode",
+  "bitfinex",
+  "honeyswap",
+  "bitflyer",
+  "huobi",
+  "bitget",
+  "korbit",
+  "bithumb",
+  "kraken",
+  "bitkub",
+  "kucoin",
+  "bitmex",
+  "mercado",
+  "bitpanda pro",
+  "okcoin",
+  "bitso",
+  "okex",
+  "bitstamp",
+  "phemex",
+  "bittrex",
+  "poloniex",
+  "btcyou",
+  "sushiswap",
+  "btse",
+  "the rock trading",
+  "bybit",
+  "timex",
+  "cex.io",
+  "tradestation",
+  "coinbase",
+  "uniswap",
+  "coinfloor",
+  "upbit",
+  "currencycom",
+];
 
 //  "id": "bitcoin",
 //     "symbol": "btc",
