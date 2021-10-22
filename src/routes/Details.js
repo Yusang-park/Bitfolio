@@ -1,5 +1,4 @@
-import React, { useState, createContext, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, createContext, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../service/apis";
 import { fadeIn } from "../styles/animation";

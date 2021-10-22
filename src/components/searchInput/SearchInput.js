@@ -81,9 +81,9 @@ export const SearchInput = () => {
 
   return (
     <Whole>
-      <SeachContainer>
+      <SearchContainer>
         <Input
-          placeholder="Seach"
+          placeholder="Search"
           onFocus={requestCryptoList}
           value={inputText}
           onChange={onChange}
@@ -91,7 +91,7 @@ export const SearchInput = () => {
         <FixedSizeButton>
           <FontAwesomeIcon icon="search" size="1x" color="white" />
         </FixedSizeButton>
-      </SeachContainer>
+      </SearchContainer>
       {loaded && (
         <RecommendedContainer>
           {recommandedKeyword.map((e, i) => (
@@ -110,7 +110,7 @@ const Whole = styled.div`
   max-width: 300px;
 `;
 
-const SeachContainer = styled.div`
+const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
