@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { CryptoDataContext } from "../../routes/Details";
 import { fadeIn } from "../../styles/animation";
 import { Expanded, SizedBox } from "../../styles/components";
-import { Chart } from "./Chart";
+import useWindowDimensions from "../../useWindowDimensions";
+import { Chart } from "./TradingViewChart";
 
 export const DetailsInfoContainer = () => {
   const { data } = useContext(CryptoDataContext);
   const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
   const ref = useRef(0); //Get ChartContainer height
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     setChartSize({
@@ -16,7 +18,7 @@ export const DetailsInfoContainer = () => {
       height: ref.current.clientHeight,
       width: ref.current.clientWidth,
     });
-  }, []);
+  }, [width]);
 
   const MarketCapBox = () => (
     <ColumnAlignEnd>

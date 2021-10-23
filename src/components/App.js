@@ -51,27 +51,28 @@ function App() {
 
             <ContentsSpace>
               <UpperSpace />
-
-              <Switch>
-                <Route exact path="/dashboard">
-                  <DashBoard />
-                </Route>
-                <Route exact path="/">
-                  <CryptoRank />
-                </Route>
-                <Route exact path="/exchanges">
-                  <Exchanges />
-                </Route>
-                <Route exact path="/portfolio">
-                  <Portfolio />
-                </Route>
-                <Route exact path="/indexes">
-                  <DashBoard />
-                </Route>
-                <Route exact path="/details/:id">
-                  <Details />
-                </Route>
-              </Switch>
+              <MiddleSpace>
+                <Switch>
+                  <Route exact path="/dashboard">
+                    <DashBoard />
+                  </Route>
+                  <Route exact path="/">
+                    <CryptoRank />
+                  </Route>
+                  <Route exact path="/exchanges">
+                    <Exchanges />
+                  </Route>
+                  <Route exact path="/portfolio">
+                    <Portfolio />
+                  </Route>
+                  <Route exact path="/indexes">
+                    <DashBoard />
+                  </Route>
+                  <Route exact path="/details/:id">
+                    <Details />
+                  </Route>
+                </Switch>
+              </MiddleSpace>
             </ContentsSpace>
           </BrowserRouter>
         </Scaffold>
@@ -84,21 +85,24 @@ export default App;
 
 const Scaffold = styled.div`
   display: flex;
-  width: 100%;
+
   height: 100%;
-  position: absolute;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
-
   ${(props) => props.theme.device.mobile} {
     display: block;
   }
 `;
 
-//TODO: 패딩 조절하기
 const ContentsSpace = styled.div`
   display: flex;
-  flex: 83;
   flex-direction: column;
-  padding: 32px;
+  flex: 83;
+  margin: 32px;
+  height: calc(100% - 64px);
+`;
+
+const MiddleSpace = styled.div`
+  display: flex;
+  height: calc(100% - 64px);
 `;

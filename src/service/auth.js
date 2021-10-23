@@ -7,7 +7,7 @@ import {
   signInWithRedirect,
   signInWithPopup,
   signOut,
-} from "@firebase/auth";
+} from "firebase/auth";
 import { authService } from "../firebase_config";
 
 export async function registerWithEamil(email, password) {
@@ -41,6 +41,7 @@ export async function loginWithSocial(provider) {
         // const credential = provider.credentialFromResult(authService, result);
         // const token = credential.accessToken;
       }
+      return;
     } catch (error) {
       return error;
     }
@@ -57,6 +58,7 @@ export async function loginWithSocial(provider) {
         // const token = credential.accessToken;
       }
       // const operationType = result.operationType;
+      return;
     } catch (error) {
       return error;
     }
@@ -65,4 +67,5 @@ export async function loginWithSocial(provider) {
 
 export async function logout() {
   await signOut(authService);
+  return;
 }

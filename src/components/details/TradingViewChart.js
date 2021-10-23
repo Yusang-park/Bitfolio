@@ -4,8 +4,6 @@ import { TradingViewStockChartWidget } from "react-tradingview-components";
 import useWindowDimensions from "../../useWindowDimensions";
 
 export const Chart = ({ chartSize, coin }) => {
-  const { height, width } = useWindowDimensions();
-
   return (
     <TradingViewStockChartWidget
       symbol={coin}

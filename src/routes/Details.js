@@ -7,14 +7,15 @@ import { useLocation } from "react-router";
 import { DetailsUpperSpace } from "../components/details/DetailsUpperSpace";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { DetailsInfoContainer } from "../components/details/DetailsInfoContainer";
-import { getUserDB } from "../service/firestore";
+import { ChatContainer } from "../components/chat/ChatContainer";
 
 export const CryptoDataContext = createContext({
   data: null,
 });
 export const Details = (props) => {
-  getUserDB();
-  const id = useLocation().state.id;
+  let temp = useLocation().pathname.split("/");
+
+  const id = temp[temp.length - 1];
   const [data, setData] = useState(null);
   const [selectedMenuIndex, setMenuIndex] = useState(0);
 
@@ -39,40 +40,36 @@ export const Details = (props) => {
     </Center>
   ) : (
     <CryptoDataContext.Provider value={{ data: data }}>
-      <Row>
-        <DetailsContainer>
-          <DetailsUpperSpace />
-          <MenuContainer>
-            {menu.map((e, i) => (
-              <ATag
-                id={i}
-                key={i}
-                selected={i === parseInt(selectedMenuIndex) ? true : false}
-                onClick={changeMenu}
-              >
-                {e.key}
-              </ATag>
-            ))}
-          </MenuContainer>
-          {menu[selectedMenuIndex].component}
-        </DetailsContainer>
-        <SizedBox width="32px" />
-        <BoardContainer> </BoardContainer>
-      </Row>
+      <DetailsContainer>
+        <DetailsUpperSpace />
+        <MenuContainer>
+          {menu.map((e, i) => (
+            <ATag
+              id={i}
+              key={i}
+              selected={i === parseInt(selectedMenuIndex) ? true : false}
+              onClick={changeMenu}
+            >
+              {e.key}
+            </ATag>
+          ))}
+        </MenuContainer>
+        {menu[selectedMenuIndex].component}
+      </DetailsContainer>
+      <SizedBox width="32px" />
+      <ChatContainer></ChatContainer>
     </CryptoDataContext.Provider>
   );
 };
-//TODO: progress bar to center
 
 const Center = styled.div`
   margin: auto;
 `;
 
 const DetailsContainer = styled.div`
-  flex: 5;
   display: flex;
   flex-direction: column;
-  margin: 0px auto;
+  width: 67%;
   padding: 48px;
   border-radius: 25px;
   background-color: ${({ theme }) => theme.colors.boxBackground};
@@ -80,28 +77,14 @@ const DetailsContainer = styled.div`
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
-
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   ${({ theme }) => theme.device.desktopL} {
     padding: 32px;
   }
 `;
 
-const BoardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 2;
-  padding: 32px 32px 16px 32px;
-  border-radius: 25px;
-  background-color: ${({ theme }) => theme.colors.boxBackground};
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
-`;
-
 const MenuContainer = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
   padding-bottom: 4px;
-
   margin-bottom: 24px;
 `;

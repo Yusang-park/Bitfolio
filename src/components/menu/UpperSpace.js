@@ -14,6 +14,7 @@ import { UserContext } from "../../provider/userProvider";
 import { LoginButtonContaienr } from "../auth/LoginButtonContainer";
 import { authService } from "../../firebase_config";
 import { LogoutButtonContainer } from "../auth/LogoutButtonContainer";
+import { updateProfile } from "@firebase/auth";
 
 export const UpperSpace = () => {
   const { isLoggedIn, testfunction } = useContext(UserContext);
@@ -26,6 +27,10 @@ export const UpperSpace = () => {
       return "Details";
     }
   }
+
+  function changeDisplayName() {
+    // updateProfile(authService.currentUser, { displayName: "PitterPark" });
+  }
   return (
     <UpperContainer>
       <TitleText>{getName()}</TitleText>
@@ -33,7 +38,7 @@ export const UpperSpace = () => {
       <SearchInput />
       <SizedBox width="24px" />
       {isLoggedIn ? (
-        <DropDownContaier>
+        <DropDownContaier onClick={changeDisplayName}>
           {authService.currentUser.displayName}
           <LogoutButtonContainer />
           {/* <FontAwesomeIcon icon="chevron-down" size="1x" color="white" /> */}

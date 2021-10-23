@@ -105,16 +105,22 @@ nav,
 section {
   display: block;
 }
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
-html {
-  font-family: "Lato", sans-serif;
-}
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+html,
 body {
+  font-family: "Lato", sans-serif;
+  position: absolute;
   height: 100%;
   overflow: hidden;
   line-height: 1;
+  width: 100%;
 }
+div#root {
+  height: 100%;
+  margin: auto;
+}
+
 ol,
 ul {
   list-style: none;
