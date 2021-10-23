@@ -32,7 +32,7 @@ export function TalkBalloonR({ data }) {
           </Time>
           <Name>{name}</Name>
         </InfoRow>
-        {message}
+        <Message> {message}</Message>
       </Balloon_R>
       <Avatar src="http://placehold.jp/50x50.png"></Avatar>
     </Talk_R>
@@ -84,6 +84,8 @@ const Balloon = styled.div`
 `;
 
 const Balloon_L = styled(Balloon)`
+  width: 21vw;
+  height: 100%;
   margin: 0 0 0 1rem;
   &::before {
     border-top: 10px solid transparent;
@@ -99,6 +101,7 @@ const Balloon_L = styled(Balloon)`
   }
 `;
 const Balloon_R = styled(Balloon)`
+  width: 21vw;
   margin: 0 1rem 0 0;
   &::before {
     border-top: 10px solid transparent;
@@ -112,4 +115,8 @@ const Balloon_R = styled(Balloon)`
     transform: rotate(90deg);
     width: 0;
   }
+`;
+const Message = styled.div`
+  width: 21vw;
+  height: 100%;
 `;

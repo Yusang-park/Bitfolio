@@ -64,6 +64,7 @@ export const ChatContainer = () => {
       )}
 
       <ChatInput
+        maxLength="60"
         disabled={authService.currentUser === null}
         placeholder={
           authService.currentUser === null ? "Login first to chat" : ""
@@ -100,6 +101,7 @@ const ChatHistory = styled.div`
   padding-right: 8px;
   color: black;
   overflow-y: auto;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 4px;
