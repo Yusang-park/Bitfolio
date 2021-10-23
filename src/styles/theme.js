@@ -45,6 +45,7 @@ const colors = {
   negative: "#CF304A",
   positive: "#0ECB81",
   yellow: "#FFCD00",
+  blue: "#4294F3",
 };
 
 const size = {

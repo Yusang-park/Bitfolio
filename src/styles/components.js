@@ -20,7 +20,7 @@ export const Expanded = styled.div`
 
 export const Button = styled.button`
   vertical-align: middle;
-
+  width: ${(props) => (props.width ? props.width : null)};
   height: 38px;
   padding: 0px 24px;
   border-radius: 12px;
@@ -54,7 +54,6 @@ export const Row = styled.div`
 
 export const ATag = styled(Button)`
   vertical-align: middle;
-  width: ${(props) => (props.width ? props.width : null)};
   height: 38px;
   padding: ${(props) => (props.width ? "0px" : "0px 16px")};
   margin: 0px 2px;

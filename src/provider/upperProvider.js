@@ -2,57 +2,27 @@ import React, { useReducer, createContext } from "react";
 
 //to send Sortation Dropbox and SearchInputField data to ContentsContainer from UpperSpace
 const initialState = {
-    action: null,
-    keyword: ""
+  action: null,
+  keyword: "",
 };
 
 const UpperContext = createContext({
-    action: null,
-    keyword: "",
-    onSearch: () => { },
-    onSortation:() => { },
+  action: null,
+  keyword: "",
+  onSearch: () => {},
+  onSortation: () => {},
 });
 
 //==============================================================================//
 
 function reducer(state, action) {
-    switch (action.type) {
-        case "onSearch":
-            return {
-                ...state,
-                action : "onSearch",
-        onSearch: action.payload
-        
-      };
-
-    case "setWeather":
-      //json 호출 후 날씨별 filtering
-      let res = {};
-
-      for (const [key, value] of Object.entries(dataJson)) {
-        let tempArray = Object.values(value).filter(
-          (e) =>
-            action.payload === "A" ? true :
-            e["필터"] === action.payload || "B"
-        );
-        res[key] = tempArray.reduce(
-          (ac, a, i) => ({
-            ...ac,
-            [i]: a,
-          }),
-          {}
-        );
-      }
-      // console.log(res);
-
-      // dataJson.forEach((key, value) => console.log(key));
-
+  switch (action.type) {
+    case "onSearch":
       return {
         ...state,
-        weather: action.payload,
-        data: res,
+        action: "onSearch",
+        onSearch: action.payload,
       };
-
     default:
   }
 }
@@ -62,7 +32,7 @@ function UpperProvider(props, children) {
 
   function setSearchKeyword(keyword) {
     dispatch({
-      type: "setWeather",
+      type: "onSearch",
       payload: weather,
     });
   }

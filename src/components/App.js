@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authService } from "../firebase_config";
 import { darkTheme, lightTheme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -8,15 +8,31 @@ import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Sidebar } from "./menu/Sidebar";
 import { DashBoard } from "../routes/DashBoard";
-import { CryptoLank } from "../routes/CryptoRank";
+import { CryptoRank } from "../routes/CryptoRank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
 import { UpperSpace } from "./menu/UpperSpace";
 import { Details } from "../routes/Details";
+import { UserProvider } from "../provider/userProvider";
 
 function App() {
+  const auth = authService;
   const [theme, setTheme] = useState(lightTheme);
   const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
+
+  // const [initFirebase, setInitFirebase] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      // setInitFirebase(true);
+    });
+  });
 
   // 각 theme은 state로 관리되며 버튼 클릭 이벤트 시 변경됩니다.
   const switchTheme = () => {
@@ -28,36 +44,38 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Scaffold>
-        <BrowserRouter>
-          <Sidebar />
+      <UserProvider isLoggedIn={isLoggedIn}>
+        <Scaffold>
+          <BrowserRouter>
+            <Sidebar />
 
-          <ContentsSpace>
-            <UpperSpace />
+            <ContentsSpace>
+              <UpperSpace />
 
-            <Switch>
-              <Route exact path="/dashboard">
-                <DashBoard />
-              </Route>
-              <Route exact path="/">
-                <CryptoLank />
-              </Route>
-              <Route exact path="/exchanges">
-                <Exchanges />
-              </Route>
-              <Route exact path="/portfolio">
-                <Portfolio />
-              </Route>
-              <Route exact path="/indexes">
-                <DashBoard />
-              </Route>
-              <Route exact path="/details/:id">
-                <Details />
-              </Route>
-            </Switch>
-          </ContentsSpace>
-        </BrowserRouter>
-      </Scaffold>
+              <Switch>
+                <Route exact path="/dashboard">
+                  <DashBoard />
+                </Route>
+                <Route exact path="/">
+                  <CryptoRank />
+                </Route>
+                <Route exact path="/exchanges">
+                  <Exchanges />
+                </Route>
+                <Route exact path="/portfolio">
+                  <Portfolio />
+                </Route>
+                <Route exact path="/indexes">
+                  <DashBoard />
+                </Route>
+                <Route exact path="/details/:id">
+                  <Details />
+                </Route>
+              </Switch>
+            </ContentsSpace>
+          </BrowserRouter>
+        </Scaffold>
+      </UserProvider>
     </ThemeProvider>
   );
 }

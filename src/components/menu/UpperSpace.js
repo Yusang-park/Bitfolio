@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import styled from "styled-components";
-import { Expanded, SizedBox, FixedSizeButton } from "../../styles/components";
+import {
+  Expanded,
+  SizedBox,
+  FixedSizeButton,
+  Button,
+} from "../../styles/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchInput } from "../searchInput/SearchInput";
+import { UserContext } from "../../provider/userProvider";
+import { LoginButtonContaienr } from "../auth/LoginButtonContainer";
+import { authService } from "../../firebase_config";
+import { LogoutButtonContainer } from "../auth/LogoutButtonContainer";
 
 export const UpperSpace = () => {
+  const { isLoggedIn, testfunction } = useContext(UserContext);
   const pathName = useLocation().pathname;
 
   function getName() {
@@ -16,18 +26,21 @@ export const UpperSpace = () => {
       return "Details";
     }
   }
-
   return (
     <UpperContainer>
       <TitleText>{getName()}</TitleText>
 
       <SearchInput />
       <SizedBox width="24px" />
-
-      <DropDownContaier>
-        Pitter Park
-        <FontAwesomeIcon icon="chevron-down" size="1x" color="white" />
-      </DropDownContaier>
+      {isLoggedIn ? (
+        <DropDownContaier>
+          {authService.currentUser.displayName}
+          <LogoutButtonContainer />
+          {/* <FontAwesomeIcon icon="chevron-down" size="1x" color="white" /> */}
+        </DropDownContaier>
+      ) : (
+        <LoginButtonContaienr />
+      )}
     </UpperContainer>
   );
 };

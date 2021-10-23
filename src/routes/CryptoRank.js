@@ -18,9 +18,9 @@ import { fadeIn } from "../styles/animation";
 
 const maxPage = 179;
 
-export const CryptoLank = () => {
+export const CryptoRank = () => {
   const sortation = [
-    { name: "", flex: 1 },
+    { name: "", flex: 2 },
     { name: "Name", flex: 4 },
     { name: "Symbol", flex: 7 },
     { name: "Price", flex: 5 },
@@ -65,7 +65,7 @@ export const CryptoLank = () => {
 
   return (
     <Whole>
-      <CryptoLankContainer>
+      <CryptoRankContainer>
         <SortContainer>
           {sortation.map(({ name, flex }, i) => (
             <Expanded justify_content="flex-end" flex={flex} key={i}>
@@ -79,9 +79,11 @@ export const CryptoLank = () => {
           {cryptoList.length !== 0 ? (
             cryptoList.map((e, i) => (
               <ElementRow key={i} onClick={() => routeDetails(e.id)}>
-                <SizedBox width="2%">
-                  <SymbolText> {i + (pageIndex - 1) * 10 + 1}</SymbolText>
-                </SizedBox>
+                <IndexRow width="5%">
+                  <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
+                  <FontAwesomeIcon icon={"bookmark"} />
+                </IndexRow>
+
                 <Expanded justify_content="flex-end" flex={sortation[1].flex}>
                   {" "}
                   <Icon src={e.imageUrl} />{" "}
@@ -90,8 +92,7 @@ export const CryptoLank = () => {
                   justify_content="space-between"
                   flex={sortation[2].flex}
                 >
-                  {e.fullName}{" "}
-                  <SymbolText> {e.symbol.toUpperCase()}</SymbolText>{" "}
+                  {e.fullName} <GrayText> {e.symbol.toUpperCase()}</GrayText>{" "}
                 </Expanded>
                 <Expanded justify_content="flex-end" flex={sortation[3].flex}>
                   {"$" + e.price.toLocaleString()}
@@ -140,7 +141,7 @@ export const CryptoLank = () => {
             <FontAwesomeIcon icon="chevron-right" size="1x" color="white" />
           </span>
         </PagePagination>
-      </CryptoLankContainer>
+      </CryptoRankContainer>
     </Whole>
   );
 };
@@ -150,7 +151,7 @@ const Whole = styled.div`
   flex: 1;
 `;
 
-const CryptoLankContainer = styled.div`
+const CryptoRankContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -193,9 +194,16 @@ const PagePagination = styled.div`
   align-items: center;
 `;
 
-const SymbolText = styled.div`
+const GrayText = styled.div`
   padding-left: 8px;
   color: ${(props) => props.theme.colors.gray};
+`;
+
+const IndexRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: ${(props) => props.width};
 `;
 
 const ElementRow = styled.div`
@@ -213,7 +221,7 @@ const ElementRow = styled.div`
     background-color: gray;
   }
 
-  &:hover ${SymbolText} {
+  &:hover ${GrayText} {
     color: white;
   }
 `;
