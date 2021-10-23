@@ -7,11 +7,13 @@ import { useLocation } from "react-router";
 import { DetailsUpperSpace } from "../components/details/DetailsUpperSpace";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { DetailsInfoContainer } from "../components/details/DetailsInfoContainer";
+import { getUserDB } from "../service/firestore";
 
 export const CryptoDataContext = createContext({
   data: null,
 });
 export const Details = (props) => {
+  getUserDB();
   const id = useLocation().state.id;
   const [data, setData] = useState(null);
   const [selectedMenuIndex, setMenuIndex] = useState(0);

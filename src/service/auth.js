@@ -10,7 +10,7 @@ import {
 } from "@firebase/auth";
 import { authService } from "../firebase_config";
 
-export async function signupWithEamil(email, password) {
+export async function registerWithEamil(email, password) {
   try {
     let data = await createUserWithEmailAndPassword(
       authService,
