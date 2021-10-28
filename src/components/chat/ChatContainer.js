@@ -19,7 +19,9 @@ export const ChatContainer = () => {
 
   //Overflow(Scroll) 발생 시 height 크기가 의도한대로 출력되지 않는 문제를 해결하기 위함
   useEffect(() => {
-    setChatBoxSize(`${useRefWhole.current.clientHeight * 0.8}px`);
+    setChatBoxSize({
+      height: `${useRefWhole.current.clientHeight * 0.8}px`,
+    });
 
     getChatMessages(data.id, (value) => {
       if (value)
@@ -51,7 +53,11 @@ export const ChatContainer = () => {
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
       {chatData.length !== 0 && (
-        <ChatHistory id="chatContent" ChatHistory height={chatBoxSize}>
+        <ChatHistory
+          id="chatContent"
+          ChatHistory
+          height={chatBoxSize["height"]}
+        >
           {Object.values(chatData).map((e, i) =>
             authService.currentUser != null &&
             e[1].uid === authService.currentUser.uid ? (
@@ -64,7 +70,6 @@ export const ChatContainer = () => {
       )}
 
       <ChatInput
-        maxLength="60"
         disabled={authService.currentUser === null}
         placeholder={
           authService.currentUser === null ? "Login first to chat" : ""
@@ -96,6 +101,8 @@ const TitleText = styled.div`
 `;
 
 const ChatHistory = styled.div`
+  display: flex;
+  flex-direction: column;
   height: ${(props) => props.height};
   width: calc(100% - 8px);
   padding-right: 8px;

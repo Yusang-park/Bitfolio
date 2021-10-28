@@ -2,8 +2,9 @@ import styled from "styled-components";
 import React from "react";
 import { Timestamp } from "@firebase/firestore";
 
-export function TalkBalloonL({ data }) {
+export const TalkBalloonL = React.memo(({ data }) => {
   const { createdAt, message, name } = data[1];
+  let date = new Timestamp(createdAt.seconds, createdAt.nanoseconds).toDate();
 
   return (
     <Talk_L>
@@ -11,23 +12,26 @@ export function TalkBalloonL({ data }) {
       <Balloon_L>
         <InfoRow>
           <Name>{name}</Name>
-          <Time>{}</Time>
+          <Time>
+            {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
+            {date.getMinutes()}
+          </Time>
         </InfoRow>
-        {message}
+        <Message> {message}</Message>
       </Balloon_L>
     </Talk_L>
   );
-}
+});
 
-export function TalkBalloonR({ data }) {
+export const TalkBalloonR = React.memo(({ data }) => {
   const { createdAt, message, name } = data[1];
-  let date = new Date(createdAt.seconds * 1000);
+  let date = new Timestamp(createdAt.seconds, createdAt.nanoseconds).toDate();
   return (
     <Talk_R>
       <Balloon_R>
         <InfoRow>
           <Time>
-            {date.getMonth()}.{date.getDay()} {date.getHours()}:
+            {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
             {date.getMinutes()}
           </Time>
           <Name>{name}</Name>
@@ -37,7 +41,7 @@ export function TalkBalloonR({ data }) {
       <Avatar src="http://placehold.jp/50x50.png"></Avatar>
     </Talk_R>
   );
-}
+});
 
 const Talk = styled.div`
   display: grid;
@@ -77,16 +81,15 @@ const Time = styled.div`
 `;
 
 const Balloon = styled.div`
-  background: white;
+  background: #f5f5f5;
   border-radius: 25px;
   padding: 1rem;
   position: relative;
 `;
 
 const Balloon_L = styled(Balloon)`
-  width: 21vw;
-  height: 100%;
   margin: 0 0 0 1rem;
+
   &::before {
     border-top: 10px solid transparent;
     border-left: 10px solid #f5f5f5;
@@ -101,7 +104,6 @@ const Balloon_L = styled(Balloon)`
   }
 `;
 const Balloon_R = styled(Balloon)`
-  width: 21vw;
   margin: 0 1rem 0 0;
   &::before {
     border-top: 10px solid transparent;
@@ -117,6 +119,10 @@ const Balloon_R = styled(Balloon)`
   }
 `;
 const Message = styled.div`
-  width: 21vw;
-  height: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  display: inline-grid;
+  -webkit-line-clamp: 4; // max nb lines to show
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 `;
