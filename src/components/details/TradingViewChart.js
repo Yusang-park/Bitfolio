@@ -10,7 +10,7 @@ export const Chart = ({ chartSize, coin }) => {
       theme="Dark"
       range="12m"
       width={chartSize.width}
-      height={chartSize.height * 0.95}
+      height={chartSize.height * 0.9}
     />
   );
 };

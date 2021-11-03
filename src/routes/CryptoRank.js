@@ -9,12 +9,15 @@ import {
   SizedBox,
   ATag,
   PercentText,
+  Row,
+  AnimatedDiv,
+  Container,
+  Column,
 } from "../styles/components";
 import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { useHistory } from "react-router-dom";
-import { fadeIn } from "../styles/animation";
 
 const maxPage = 179;
 
@@ -64,24 +67,24 @@ export const CryptoRank = () => {
   }
 
   return (
-    <CryptoRankContainer>
-      <SortContainer>
+    <Scaffold>
+      <Row>
         {sortation.map(({ name, flex }, i) => (
           <Expanded justify_content="flex-end" flex={flex} key={i}>
             {name}
           </Expanded>
         ))}
-      </SortContainer>
+      </Row>
       <SizedBox height="16px" />
       <Divider vertical="0px" horizontal="0px" />
-      <ElementContainer>
+      <Column>
         {cryptoList.length !== 0 ? (
           cryptoList.map((e, i) => (
             <ElementRow key={i} onClick={() => routeDetails(e.id)}>
-              <IndexRow width="5%">
+              <Row width="5%" justify_content="space-between">
                 <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
                 <FontAwesomeIcon icon={"bookmark"} />
-              </IndexRow>
+              </Row>
 
               <Expanded justify_content="flex-end" flex={sortation[1].flex}>
                 {" "}
@@ -115,9 +118,9 @@ export const CryptoRank = () => {
         ) : (
           <ProgressIndicator />
         )}
-      </ElementContainer>
+      </Column>
       <SizedBox height="16px" />
-      <PagePagination>
+      <Row justify_content="center">
         <span onClick={prevPagePagination}>
           <FontAwesomeIcon icon="chevron-left" size="1x" color="white" />
         </span>
@@ -137,42 +140,15 @@ export const CryptoRank = () => {
         <span onClick={nextPagePagination}>
           <FontAwesomeIcon icon="chevron-right" size="1x" color="white" />
         </span>
-      </PagePagination>
-    </CryptoRankContainer>
+      </Row>
+    </Scaffold>
   );
 };
 
-const CryptoRankContainer = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+const Scaffold = styled(Container)`
   max-width: 1440px;
-
-  margin: 0px auto;
-  padding: 32px 32px 16px 32px;
-
-  border-radius: 27px;
-
-  background: ${({ theme }) => theme.colors.boxBackground};
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
-`;
-
-const SortContainer = styled.div`
-  display: flex;
   font-size: 14px;
   font-weight: bold;
-`;
-
-const ElementContainer = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 const Icon = styled.img`
@@ -180,33 +156,16 @@ const Icon = styled.img`
   padding-right: 16px;
 `;
 
-const PagePagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const GrayText = styled.div`
   padding-left: 8px;
   color: ${(props) => props.theme.colors.gray};
 `;
 
-const IndexRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: ${(props) => props.width};
-`;
-
-const ElementRow = styled.div`
+const ElementRow = styled(AnimatedDiv)`
   display: flex;
   flex: 1;
   font-size: 16px;
-  padding: 2px 0px;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
+
   cursor: pointer;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
   &:hover {

@@ -18,6 +18,7 @@ export const DetailsInfoContainer = () => {
       height: ref.current.clientHeight,
       width: ref.current.clientWidth,
     });
+    console.log(chartSize);
   }, [width]);
 
   const MarketCapBox = () => (

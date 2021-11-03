@@ -97,7 +97,7 @@ export class CryptoDetailData extends CryptoSimpleData {
 
     let i = 0;
 
-    const exceptedCurrncyUnit = ["GBP", "JPY", "EUR"];
+    const exceptedCurrncyUnit = ["GBP", "JPY", "EUR", "BTC"];
     while (true) {
       if (
         !supportingExchangesByTradingView.includes(

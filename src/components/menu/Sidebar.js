@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { Divider, SizedBox } from "../../styles/components";
+import { Divider, Row, SizedBox, TitleText } from "../../styles/components";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 export const Sidebar = () => {
   const pathName = useLocation().pathname;
   const history = useHistory();
 
   function onClickLogo(e) {
-    history.push("/")
+    history.push("/");
   }
 
   return (
     <SidebarContainer>
       <LogoRow onClick={onClickLogo}>
         <Logo src="img/ico_logo.png" alt="Logo" />
-        <LogoTitle>CryptoFolio</LogoTitle>
+        <TitleText>CryptoFolio</TitleText>
       </LogoRow>
 
       <Divider vertical="0px" horizontal="5%" />
-<SizedBox height="16px"/>
+      <SizedBox height="16px" />
       {categories.map((e) => (
         <CategoryRow to={e.path} key={e.name} selected={e.path === pathName}>
           {e.name}
@@ -31,11 +31,8 @@ export const Sidebar = () => {
   );
 };
 
-const LogoRow = styled.div`
-  display: flex;
+const LogoRow = styled(Row)`
   height: 260px;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 
   ${({ theme }) => theme.device.desktopL} {
@@ -44,7 +41,7 @@ const LogoRow = styled.div`
 `;
 
 const SidebarContainer = styled.div`
-  flex : 17;
+  flex: 17;
   max-width: 320px;
   background-color: ${(props) => props.theme.colors.container};
   color: white;
@@ -64,13 +61,8 @@ const Logo = styled.img`
   width: 96px;
 `;
 
-const LogoTitle = styled.div`
-  font-size: 26px;
-`;
-
 const CategoryRow = styled(Link)`
   display: flex;
-  flex: 0;
   font-size: 20px;
   padding: 16px 32px;
   margin-bottom: 0px;
@@ -79,7 +71,7 @@ const CategoryRow = styled(Link)`
     selected ? css`white` : theme.colors.gray3};
   cursor: pointer;
   &:hover {
-    color : white;
+    color: white;
     background-color: gray;
   }
 `;

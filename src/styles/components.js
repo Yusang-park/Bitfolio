@@ -1,10 +1,37 @@
 import styled, { css } from "styled-components";
+import { fadeIn } from "./animation";
+
+export const TitleText = styled.div`
+  font-size: 26px;
+`;
+
+export const AnimatedDiv = styled.div`
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
+`;
+
+export const Container = styled(AnimatedDiv)`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  margin: 0px auto;
+  padding: 32px 32px 16px 32px;
+
+  border-radius: 27px;
+
+  background: ${({ theme }) => theme.colors.boxBackground};
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+`;
 
 export const Divider = styled.div`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
   background-color: ${(props) => props.theme.colors.gray3};
 `;
+
 export const SizedBox = styled.div`
   align-self: center;
   width: ${(props) => props.width};
@@ -46,10 +73,22 @@ export const PercentText = styled.div`
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
 `;
+
 export const Row = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: ${({ justify_content }) =>
+    justify_content ? justify_content : css`center`};
+  align-items: center;
+  width: ${({ width }) => (width ? width : css`100%`)};
+  height: ${({ height }) => (height ? height : css`auto`)};
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: ${({ width }) => (width ? width : css`auto`)};
+  height: ${({ height }) => (height ? height : css`100%`)};
 `;
 
 export const ATag = styled(Button)`
