@@ -1,7 +1,6 @@
 import React from "react";
 
 import { TradingViewStockChartWidget } from "react-tradingview-components";
-import useWindowDimensions from "../../useWindowDimensions";
 
 export const Chart = ({ chartSize, coin }) => {
   return (

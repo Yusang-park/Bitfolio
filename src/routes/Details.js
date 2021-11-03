@@ -2,12 +2,18 @@ import React, { useState, createContext, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../service/apis";
 import { fadeIn } from "../styles/animation";
-import { Button, Row, SizedBox, ATag } from "../styles/components";
+import {
+  Button,
+  Row,
+  SizedBox,
+  ATag,
+  ScaffoldStyle,
+} from "../styles/components";
 import { useLocation } from "react-router";
-import { DetailsUpperSpace } from "../components/details/DetailsUpperSpace";
+import { DetailsUpperContainer } from "../components/details/DetailsUpperSpace";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { DetailsInfoContainer } from "../components/details/DetailsInfoContainer";
-import { ChatContainer } from "../components/chat/ChatContainer";
+import { ChatScaffold } from "../components/chat/ChatContainer";
 
 export const CryptoDataContext = createContext({
   data: null,
@@ -40,9 +46,9 @@ export const Details = (props) => {
     </Center>
   ) : (
     <CryptoDataContext.Provider value={{ data: data }}>
-      <DetailsContainer>
-        <DetailsUpperSpace />
-        <MenuContainer>
+      <DetailScaffold>
+        <DetailsUpperContainer />
+        <TabBar>
           {menu.map((e, i) => (
             <ATag
               id={i}
@@ -53,11 +59,11 @@ export const Details = (props) => {
               {e.key}
             </ATag>
           ))}
-        </MenuContainer>
+        </TabBar>
         {menu[selectedMenuIndex].component}
-      </DetailsContainer>
+      </DetailScaffold>
       <SizedBox width="32px" />
-      <ChatContainer></ChatContainer>
+      <ChatScaffold></ChatScaffold>
     </CryptoDataContext.Provider>
   );
 };
@@ -66,24 +72,15 @@ const Center = styled.div`
   margin: auto;
 `;
 
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const DetailScaffold = styled(ScaffoldStyle)`
   width: 67%;
-  padding: 48px;
-  border-radius: 25px;
-  background-color: ${({ theme }) => theme.colors.boxBackground};
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+
   ${({ theme }) => theme.device.desktopL} {
     padding: 32px;
   }
 `;
 
-const MenuContainer = styled.div`
+const TabBar = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
   padding-bottom: 4px;
   margin-bottom: 24px;

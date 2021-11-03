@@ -11,7 +11,7 @@ import { DashBoard } from "../routes/DashBoard";
 import { CryptoRank } from "../routes/CryptoRank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
-import { UpperSpace } from "./menu/UpperSpace";
+import { UpperSpace as NavSpace } from "./menu/UpperSpace";
 import { Details } from "../routes/Details";
 import { UserProvider } from "../provider/userProvider";
 
@@ -50,8 +50,8 @@ function App() {
             <Sidebar />
 
             <ContentsSpace>
-              <UpperSpace />
-              <MiddleSpace>
+              <NavSpace />
+              <MainSpace>
                 <Switch>
                   <Route exact path="/dashboard">
                     <DashBoard />
@@ -72,7 +72,7 @@ function App() {
                     <Details />
                   </Route>
                 </Switch>
-              </MiddleSpace>
+              </MainSpace>
             </ContentsSpace>
           </BrowserRouter>
         </Scaffold>
@@ -102,7 +102,7 @@ const ContentsSpace = styled.div`
   height: calc(100% - 64px);
 `;
 
-const MiddleSpace = styled.div`
+const MainSpace = styled.div`
   display: flex;
   height: calc(100% - 64px);
 `;

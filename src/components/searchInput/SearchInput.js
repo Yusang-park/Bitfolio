@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../service/apis";
-import { FixedSizeButton } from "../../styles/components";
+import { NonPaddingButton } from "../../styles/components";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -88,9 +88,9 @@ export const SearchInput = () => {
           value={inputText}
           onChange={onChange}
         />
-        <FixedSizeButton>
+        <NonPaddingButton>
           <FontAwesomeIcon icon="search" size="1x" color="white" />
-        </FixedSizeButton>
+        </NonPaddingButton>
       </SearchContainer>
       {loaded && (
         <RecommendedContainer>

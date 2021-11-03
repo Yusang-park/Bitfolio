@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {
   Expanded,
   SizedBox,
-  FixedSizeButton,
+  NonPaddingButton,
   Button,
 } from "../../styles/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

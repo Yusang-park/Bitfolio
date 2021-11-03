@@ -3,13 +3,19 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { fadeIn } from "../../styles/animation";
 import { CryptoDataContext } from "../../routes/Details";
-import { Button, SizedBox } from "../../styles/components";
+import {
+  Button,
+  Row,
+  ScaffoldStyle,
+  SizedBox,
+  TitleText,
+} from "../../styles/components";
 import { authService } from "../../firebase_config";
 import { getChatMessages, sendChatMessage } from "../../service/fireDb";
-import { TalkBalloonL, TalkBalloonR } from "./TalkBalloon";
+import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
 
-export const ChatContainer = () => {
+export const ChatScaffold = () => {
   const useRefWhole = useRef();
   const useRefScroll = useRef();
   const [chatBoxSize, setChatBoxSize] = useState(0);
@@ -49,63 +55,54 @@ export const ChatContainer = () => {
   }
 
   return (
-    <Whole ref={useRefWhole}>
+    <Scaffold ref={useRefWhole}>
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
       {chatData.length !== 0 && (
-        <ChatHistory
+        <ChatContainer
           id="chatContent"
           ChatHistory
           height={chatBoxSize["height"]}
         >
-          {Object.values(chatData).map((e, i) =>
-            authService.currentUser != null &&
-            e[1].uid === authService.currentUser.uid ? (
-              <TalkBalloonR key={i} data={e} />
-            ) : (
-              <TalkBalloonL key={i} data={e} />
-            )
+          {Object.values(chatData).map(
+            (e, i) =>
+              authService.currentUser != null && (
+                <TalkBox
+                  key={i}
+                  data={e}
+                  isMine={e[1].uid === authService.currentUser.uid}
+                />
+              )
           )}
-        </ChatHistory>
+        </ChatContainer>
       )}
 
-      <ChatInput
-        disabled={authService.currentUser === null}
-        placeholder={
-          authService.currentUser === null ? "Login first to chat" : ""
-        }
-        value={inputText}
-        onChange={onChange}
-      ></ChatInput>
-    </Whole>
+      <InputContainer>
+        <textarea
+          disabled={authService.currentUser === null}
+          placeholder={
+            authService.currentUser === null ? "Login first to chat" : ""
+          }
+          value={inputText}
+          onChange={onChange}
+        ></textarea>
+        <Button>Send</Button>
+      </InputContainer>
+    </Scaffold>
   );
 };
 
-const Whole = styled.span`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+const Scaffold = styled(ScaffoldStyle)`
   width: 33%;
-  padding: 32px 32px 32px 32px;
-  border-radius: 25px;
-  background-color: ${({ theme }) => theme.colors.boxBackground};
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  padding-right: 28px;
 `;
 
-const TitleText = styled.div`
-  font-size: 26px;
-`;
-
-const ChatHistory = styled.div`
+const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: ${(props) => props.height};
-  width: calc(100% - 8px);
-  padding-right: 8px;
+  width: calc(100% - 4px);
+  padding-right: 4px;
   color: black;
   overflow-y: auto;
   overflow-x: hidden;
@@ -121,7 +118,7 @@ const ChatHistory = styled.div`
   }
 `;
 
-const ChatInput = styled.textarea`
+const InputContainer = styled(Row)`
   width: 100%;
   height: 15%;
   max-height: 96px;

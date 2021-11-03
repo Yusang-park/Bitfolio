@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { apiKey, providerUrl } from "../api_config";
 import {
-  FixedSizeButton,
+  NonPaddingButton,
   Divider,
   Expanded,
   SizedBox,
@@ -11,7 +11,7 @@ import {
   PercentText,
   Row,
   AnimatedDiv,
-  Container,
+  ScaffoldStyle,
   Column,
 } from "../styles/components";
 import { getCryptoSummaryDataList } from "../service/apis";
@@ -94,7 +94,7 @@ export const CryptoRank = () => {
                 justify_content="space-between"
                 flex={sortation[2].flex}
               >
-                {e.fullName} <GrayText> {e.symbol.toUpperCase()}</GrayText>{" "}
+                {e.fullName} <GrayText> {e.symbol.toUpperCase()}</GrayText>
               </Expanded>
               <Expanded justify_content="flex-end" flex={sortation[3].flex}>
                 {"$" + e.price.toLocaleString()}
@@ -145,10 +145,11 @@ export const CryptoRank = () => {
   );
 };
 
-const Scaffold = styled(Container)`
+const Scaffold = styled(ScaffoldStyle)`
   max-width: 1440px;
   font-size: 14px;
   font-weight: bold;
+  padding-bottom: 16px;
 `;
 
 const Icon = styled.img`
@@ -157,7 +158,6 @@ const Icon = styled.img`
 `;
 
 const GrayText = styled.div`
-  padding-left: 8px;
   color: ${(props) => props.theme.colors.gray};
 `;
 

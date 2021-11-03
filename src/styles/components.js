@@ -12,13 +12,13 @@ export const AnimatedDiv = styled.div`
   animation-fill-mode: forwards;
 `;
 
-export const Container = styled(AnimatedDiv)`
+export const ScaffoldStyle = styled(AnimatedDiv)`
   display: flex;
   flex: 1;
   flex-direction: column;
 
   margin: 0px auto;
-  padding: 32px 32px 16px 32px;
+  padding: 32px 32px 32px 32px;
 
   border-radius: 27px;
 
@@ -48,7 +48,7 @@ export const Expanded = styled.div`
 export const Button = styled.button`
   vertical-align: middle;
   width: ${(props) => (props.width ? props.width : null)};
-  height: 38px;
+  height: ${(props) => (props.height ? props.height : css`38px`)};
   padding: 0px 24px;
   border-radius: 12px;
   border: 0;
@@ -62,7 +62,7 @@ export const Button = styled.button`
   }
 `;
 
-export const FixedSizeButton = styled(Button)`
+export const NonPaddingButton = styled(Button)`
   vertical-align: middle;
   width: 38px;
   padding: 0px 0px;

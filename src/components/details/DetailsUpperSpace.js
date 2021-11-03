@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { CryptoDataContext } from "../../routes/Details";
 import { Expanded, PercentText, SizedBox } from "../../styles/components";
 
-export const DetailsUpperSpace = () => {
+export const DetailsUpperContainer = () => {
   const { data } = useContext(CryptoDataContext);
 
   return (
