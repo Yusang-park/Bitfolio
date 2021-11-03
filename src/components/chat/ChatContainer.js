@@ -9,6 +9,7 @@ import {
   ScaffoldStyle,
   SizedBox,
   TitleText,
+  YellowButton,
 } from "../../styles/components";
 import { authService } from "../../firebase_config";
 import { getChatMessages, sendChatMessage } from "../../service/fireDb";
@@ -46,12 +47,14 @@ export const ChatScaffold = () => {
   function onChange(e) {
     if (e.target.value.endsWith("\n")) {
       onSubmit(e.target.value.replace("\n", ""));
-      setInputText("");
     } else setInputText(e.target.value);
   }
 
   function onSubmit(message) {
-    if (message.replace(" ", "").length > 0) sendChatMessage(data.id, message);
+    if (message.replace(" ", "").length > 0) {
+      sendChatMessage(data.id, message);
+      setInputText("");
+    }
   }
 
   return (
@@ -69,6 +72,7 @@ export const ChatScaffold = () => {
               authService.currentUser != null && (
                 <TalkBox
                   key={i}
+                  docKey={Object.keys(chatData)[i]}
                   data={e}
                   isMine={e[1].uid === authService.currentUser.uid}
                 />
@@ -78,15 +82,15 @@ export const ChatScaffold = () => {
       )}
 
       <InputContainer>
-        <textarea
+        <Input
           disabled={authService.currentUser === null}
           placeholder={
             authService.currentUser === null ? "Login first to chat" : ""
           }
           value={inputText}
           onChange={onChange}
-        ></textarea>
-        <Button>Send</Button>
+        ></Input>
+        <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
       </InputContainer>
     </Scaffold>
   );
@@ -122,19 +126,35 @@ const InputContainer = styled(Row)`
   width: 100%;
   height: 15%;
   max-height: 96px;
-  padding: 5px;
-  box-sizing: border-box;
-
-  resize: none;
+  padding: 12px;
   border-radius: 25px;
-  border: 1px solid gray;
+  border: 1px solid white;
 
   background-color: ${({ theme }) => theme.colors.gray2};
+`;
+
+const SendButton = styled(Button)`
+  height: 100%;
+  color: black;
+  background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
+
+  &:hover {
+    background: linear-gradient(#f9de73 0%, #f9de73 100%);
+  }
+`;
+
+const Input = styled.textarea`
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  resize: none;
   color: white;
+  background-color: transparent;
+  border: 0px;
   font-size: 18px;
   &:focus {
     outline: transparent;
-    border: 1px solid ${({ theme }) => theme.colors.blue};
+    border: 0px solid transparent;
     box-shadow: 0 0 10px transparent;
   }
 `;

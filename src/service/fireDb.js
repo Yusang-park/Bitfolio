@@ -8,8 +8,14 @@ import {
   onValue,
   orderByChild,
   query,
+  remove,
 } from "@firebase/database";
-import { addDoc, collection, Timestamp } from "@firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteField,
+  Timestamp,
+} from "@firebase/firestore";
 import { authService, dbService, realtimeDbService } from "../firebase_config";
 
 export async function sendChatMessage(cryptoId, message) {
@@ -33,31 +39,6 @@ export async function getChatMessages(cryptoId, callBack) {
   });
 }
 
-// export async function sendChatMessage(cryptoId, message) {
-//   await addDoc(collection(dbService, cryptoId), {
-//     uid: authService.currentUser.uid,
-//     name: authService.currentUser.displayName,
-//     message,
-//     createdAt: Timestamp.fromDate(new Date()),
-//   });
-// }
-
-// const q = query(
-//   collection(getFirestore(), data.id),
-//   // where('text', '==', 'hehe') // where뿐만아니라 각종 조건 이 영역에 때려부우면 됨
-//   orderBy("createdAt")
-// );
-// const unsubscribe = onSnapshot(q, (querySnapshot) => {
-//   const newArray = querySnapshot.docs.map((doc) => {
-//     return {
-//       id: doc.id,
-//       ...doc.data(),
-//     };
-//   });
-//   // setTweets(newArray);
-//   console.log("new Chat", newArray);
-// });
-
-// return () => {
-//   unsubscribe();
-// };
+export async function delChatMessage(cryptoId, docKey) {
+  remove(ref(realtimeDbService, `chat/${cryptoId}/${docKey}`));
+}

@@ -3,7 +3,7 @@ import React from "react";
 import { Timestamp } from "@firebase/firestore";
 import { Button, Divider, Row, SizedBox } from "../../styles/components";
 
-export const TalkBox = React.memo(({ data, isMine }) => {
+export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   const { createdAt, message, name } = data[1];
   let date = new Timestamp(createdAt.seconds, createdAt.nanoseconds).toDate();
 
@@ -12,7 +12,7 @@ export const TalkBox = React.memo(({ data, isMine }) => {
       <Row justify_content="space-between">
         <span>
           {name}
-          {isMine && <Button height="20px">Delete</Button>}
+          {/* {isMine && <Button height="20px">Delete</Button>} */}
         </span>
         <Time>
           {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:

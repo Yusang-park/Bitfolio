@@ -146,6 +146,7 @@ export const CryptoRank = () => {
 };
 
 const Scaffold = styled(ScaffoldStyle)`
+  width: 100%;
   max-width: 1440px;
   font-size: 14px;
   font-weight: bold;

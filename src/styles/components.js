@@ -14,7 +14,7 @@ export const AnimatedDiv = styled.div`
 
 export const ScaffoldStyle = styled(AnimatedDiv)`
   display: flex;
-  flex: 1;
+
   flex-direction: column;
 
   margin: 0px auto;
