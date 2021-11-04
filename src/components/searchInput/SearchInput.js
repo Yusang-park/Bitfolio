@@ -80,7 +80,7 @@ export const SearchInput = () => {
   }
 
   return (
-    <Whole>
+    <Container>
       <SearchContainer>
         <Input
           placeholder="Search"
@@ -101,10 +101,10 @@ export const SearchInput = () => {
           ))}
         </RecommendedContainer>
       )}
-    </Whole>
+    </Container>
   );
 };
-const Whole = styled.div`
+const Container = styled.div`
   flex: 1;
   max-width: 26%;
   max-width: 300px;

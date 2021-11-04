@@ -12,18 +12,18 @@ export const LoginButtonContaienr = () => {
   }
 
   return (
-    <Whole>
+    <Container>
       {showLoginModal && (
         <Modal setShowModal={setShowLoginModal}>
           <LoginBox />
         </Modal>
       )}
       <Button onClick={onClickHandler}>Login</Button>
-    </Whole>
+    </Container>
   );
 };
 
-const Whole = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
 `;

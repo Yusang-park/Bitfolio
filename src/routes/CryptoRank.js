@@ -13,6 +13,7 @@ import {
   AnimatedDiv,
   ScaffoldStyle,
   Column,
+  GrayText,
 } from "../styles/components";
 import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -156,10 +157,6 @@ const Scaffold = styled(ScaffoldStyle)`
 const Icon = styled.img`
   width: 36px;
   padding-right: 16px;
-`;
-
-const GrayText = styled.div`
-  color: ${(props) => props.theme.colors.gray};
 `;
 
 const ElementRow = styled(AnimatedDiv)`

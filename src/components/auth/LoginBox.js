@@ -2,22 +2,20 @@ import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import { loginWithSocial } from "../../service/auth";
-import { Button } from "../../styles/components";
+import { Button, Column } from "../../styles/components";
 
 export const LoginBox = () => {
   const history = useHistory();
 
   return (
-    <Whole>
+    <Container>
       <Button onClick={() => loginWithSocial("google")}>
         SignIn With Google
       </Button>
-    </Whole>
+    </Container>
   );
 };
 
-const Whole = styled.div`
-  display: flex;
-  flex-direction: column;
+const Container = styled(Column)`
   margin: 48px;
 `;

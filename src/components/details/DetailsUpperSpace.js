@@ -2,7 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { CryptoDataContext } from "../../routes/Details";
-import { Expanded, PercentText, SizedBox } from "../../styles/components";
+import {
+  Expanded,
+  PercentText,
+  SizedBox,
+  Column,
+  BoldTitleText,
+  GrayText,
+} from "../../styles/components";
 
 export const DetailsUpperContainer = () => {
   const { data } = useContext(CryptoDataContext);
@@ -11,12 +18,13 @@ export const DetailsUpperContainer = () => {
     <Container>
       <Image src={data.imageUrlLarge}></Image>
       <Column>
-        <BoldText>{data.fullName}</BoldText>
+        <BoldTitleText>{data.fullName}</BoldTitleText>
         <SizedBox height="4px" />
-        <SubText>{data.symbol.toUpperCase()}</SubText>
+        <GrayText>{data.symbol.toUpperCase()}</GrayText>
       </Column>
+      <SizedBox width="32px" />
       <Column>
-        <BoldText>{"$ " + data.price.toLocaleString()}</BoldText>
+        <BoldTitleText>{"$ " + data.price.toLocaleString()}</BoldTitleText>
         <SizedBox height="4px" />
         <PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}
@@ -42,21 +50,5 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 56px;
-  padding-right: 32px;
-`;
-
-const BoldText = styled.div`
-  font-size: 26px;
-  font-weight: bold;
-`;
-
-const SubText = styled.div`
-  color: ${(props) => props.theme.colors.gray};
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   padding-right: 32px;
 `;

@@ -32,21 +32,21 @@ export const UpperSpace = () => {
     // updateProfile(authService.currentUser, { displayName: "PitterPark" });
   }
   return (
-    <UpperContainer>
+    <Container>
       <TitleText>{getName()}</TitleText>
 
       <SearchInput />
       <SizedBox width="24px" />
       {isLoggedIn ? (
-        <DropDownContaier onClick={changeDisplayName}>
+        <UserContainer onClick={changeDisplayName}>
           {authService.currentUser.displayName}
           <LogoutButtonContainer />
           {/* <FontAwesomeIcon icon="chevron-down" size="1x" color="white" /> */}
-        </DropDownContaier>
+        </UserContainer>
       ) : (
         <LoginButtonContaienr />
       )}
-    </UpperContainer>
+    </Container>
   );
 };
 
@@ -56,7 +56,7 @@ const TitleText = styled.div`
   align-items: center;
 `;
 
-const UpperContainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: unset;
   justify-content: space-between;
@@ -68,7 +68,7 @@ const UpperContainer = styled.div`
   font-size: 26px;
 `;
 
-const DropDownContaier = styled.div`
+const UserContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

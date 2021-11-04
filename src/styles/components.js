@@ -5,6 +5,25 @@ export const TitleText = styled.div`
   font-size: 26px;
 `;
 
+export const BoldTitleText = styled.div`
+  font-size: 26px;
+  font-weight: bold;
+`;
+
+export const GrayText = styled.div`
+  color: ${(props) => props.theme.colors.gray};
+`;
+
+export const YellowTitleCircle = styled.div`
+  padding: 6px 16px;
+  border-radius: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  background-color: ${({ theme }) => theme.colors.yellow};
+  color: black;
+`;
+
 export const AnimatedDiv = styled.div`
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -78,7 +97,8 @@ export const Row = styled.div`
   display: flex;
   justify-content: ${({ justify_content }) =>
     justify_content ? justify_content : css`center`};
-  align-items: center;
+  align-items: ${({ align_items }) =>
+    align_items ? align_items : css`center`};
   width: ${({ width }) => (width ? width : css`100%`)};
   height: ${({ height }) => (height ? height : css`auto`)};
 `;
@@ -86,7 +106,8 @@ export const Row = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${({ justify_content }) =>
+    justify_content ? justify_content : css`center`};
   width: ${({ width }) => (width ? width : css`auto`)};
   height: ${({ height }) => (height ? height : css`100%`)};
 `;

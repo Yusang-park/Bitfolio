@@ -53,10 +53,10 @@ function App() {
               <NavSpace />
               <MainSpace>
                 <Switch>
-                  <Route exact path="/dashboard">
+                  <Route exact path="/">
                     <DashBoard />
                   </Route>
-                  <Route exact path="/">
+                  <Route exact path="/cryptorank">
                     <CryptoRank />
                   </Route>
                   <Route exact path="/exchanges">
