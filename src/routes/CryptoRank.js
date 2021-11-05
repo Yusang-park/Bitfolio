@@ -19,6 +19,7 @@ import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { useHistory } from "react-router-dom";
+import { setFavoriteCrypto } from "../service/fireDb";
 
 const maxPage = 179;
 
@@ -84,7 +85,10 @@ export const CryptoRank = () => {
             <ElementRow key={i} onClick={() => routeDetails(e.id)}>
               <Row width="5%" justify_content="space-between">
                 <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
-                <FontAwesomeIcon icon={"bookmark"} />
+                <FontAwesomeIcon
+                  icon={"bookmark"}
+                  onClick={(m) => m.stopPropagation(setFavoriteCrypto(e.id))}
+                />
               </Row>
 
               <Expanded justify_content="flex-end" flex={sortation[1].flex}>
