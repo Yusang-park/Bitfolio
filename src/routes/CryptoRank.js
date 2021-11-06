@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { apiKey, providerUrl } from "../api_config";
 import {
@@ -19,7 +19,8 @@ import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
 import { useHistory } from "react-router-dom";
-import { setFavoriteCrypto } from "../service/fireDb";
+
+import { UserContext } from "../provider/userProvider";
 
 const maxPage = 179;
 
@@ -37,6 +38,7 @@ export const CryptoRank = () => {
   const [cryptoList, setCryptoList] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
+  const { favorites, setFavoriteCrypto } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -87,6 +89,7 @@ export const CryptoRank = () => {
                 <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
                 <FontAwesomeIcon
                   icon={"bookmark"}
+                  color={favorites[e.id] === true ? "red" : "white"}
                   onClick={(m) => m.stopPropagation(setFavoriteCrypto(e.id))}
                 />
               </Row>

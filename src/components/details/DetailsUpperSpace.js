@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../../provider/userProvider";
 import { CryptoDataContext } from "../../routes/Details";
 import {
   Expanded,
@@ -12,6 +13,7 @@ import {
 } from "../../styles/components";
 
 export const DetailsUpperContainer = () => {
+  const { setFavoriteCrypto, favorites } = useContext(UserContext);
   const { data } = useContext(CryptoDataContext);
 
   return (
@@ -34,8 +36,9 @@ export const DetailsUpperContainer = () => {
 
       <FontAwesomeIcon
         icon="bookmark"
-        color="lightblue"
+        color={favorites[data.id] === true ? "red" : "white"}
         size="2x"
+        onClick={() => setFavoriteCrypto(data.id)}
       ></FontAwesomeIcon>
     </Container>
   );

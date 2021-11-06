@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { UserContext } from "../provider/userProvider";
+import { Divider } from "../styles/components";
 
 export const DashBoard = () => {
-  return <div>123</div>;
+  const { favorites } = useContext(UserContext);
+
+  return (
+    <div>
+      <p>Your favorites</p>
+      <Divider />
+      {Object.keys(favorites).map((e, i) => (
+        <p key={i}>{e}</p>
+      ))}
+    </div>
+  );
 };
 
 const D = styled.div`

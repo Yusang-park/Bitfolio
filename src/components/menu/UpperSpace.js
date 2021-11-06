@@ -17,7 +17,7 @@ import { LogoutButtonContainer } from "../auth/LogoutButtonContainer";
 import { updateProfile } from "@firebase/auth";
 
 export const UpperSpace = () => {
-  const { isLoggedIn, testfunction } = useContext(UserContext);
+  const { isLoggedIn } = useContext(UserContext);
   const pathName = useLocation().pathname;
 
   function getName() {

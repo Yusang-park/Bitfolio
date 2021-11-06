@@ -15,6 +15,7 @@ import {
   collection,
   deleteField,
   doc,
+  getDoc,
   setDoc,
   Timestamp,
 } from "@firebase/firestore";
@@ -45,8 +46,14 @@ export async function delChatMessage(cryptoId, docKey) {
   remove(ref(realtimeDbService, `chat/${cryptoId}/${docKey}`));
 }
 
-export async function setFavoriteCrypto(cryptoId) {
+export async function setFavoritesToDB(cryptoId, value) {
   const ref = doc(dbService, "User", authService.currentUser.uid);
 
-  setDoc(ref, { [cryptoId]: true }, { merge: true });
+  setDoc(ref, { [cryptoId]: value }, { merge: true });
+}
+
+export async function getFavorites() {
+  const ref = doc(dbService, "User", authService.currentUser.uid);
+  let res = await getDoc(ref);
+  return res.data();
 }

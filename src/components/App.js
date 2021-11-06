@@ -21,18 +21,7 @@ function App() {
   const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
 
   // const [initFirebase, setInitFirebase] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      // setInitFirebase(true);
-    });
-  });
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // 각 theme은 state로 관리되며 버튼 클릭 이벤트 시 변경됩니다.
   const switchTheme = () => {
@@ -44,7 +33,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <UserProvider isLoggedIn={isLoggedIn}>
+      <UserProvider>
         <Scaffold>
           <BrowserRouter>
             <Sidebar />
