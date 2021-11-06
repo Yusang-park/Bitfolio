@@ -22,3 +22,6 @@
 * TradingView Chart
 * Chatting rooms
 * Google Sign In
+
+2021.11.6
+* Favorites feature
