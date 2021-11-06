@@ -14,7 +14,8 @@ import {
   ScaffoldStyle,
   Column,
   GrayText,
-} from "../styles/components";
+  Bookmark,
+} from "../components/global-components";
 import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
@@ -87,10 +88,10 @@ export const CryptoRank = () => {
             <ElementRow key={i} onClick={() => routeDetails(e.id)}>
               <Row width="5%" justify_content="space-between">
                 <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
-                <FontAwesomeIcon
-                  icon={"bookmark"}
-                  color={favorites[e.id] === true ? "red" : "white"}
-                  onClick={(m) => m.stopPropagation(setFavoriteCrypto(e.id))}
+                <Bookmark
+                  isSelected={favorites[e.id]}
+                  onClick={() => setFavoriteCrypto(e.id)}
+                  size="1x"
                 />
               </Row>
 

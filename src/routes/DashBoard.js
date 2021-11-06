@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../provider/userProvider";
-import { Divider } from "../styles/components";
+import { Divider } from "../components/global-components";
 
 export const DashBoard = () => {
   const { favorites } = useContext(UserContext);

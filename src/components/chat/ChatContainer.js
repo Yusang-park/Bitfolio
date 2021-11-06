@@ -10,7 +10,7 @@ import {
   SizedBox,
   TitleText,
   YellowButton,
-} from "../../styles/components";
+} from "../global-components";
 import { authService } from "../../firebase_config";
 import { getChatMessages, sendChatMessage } from "../../service/fireDb";
 import { TalkBox } from "./TalkBalloon";
@@ -36,7 +36,7 @@ export const ChatScaffold = () => {
           $("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
         });
     });
-  }, []);
+  }, [data.id]);
 
   useEffect(() => {
     try {
@@ -105,7 +105,8 @@ const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: ${(props) => props.height};
-  width: calc(100% - 4px);
+
+  width: 100%;
   padding-right: 4px;
   color: black;
   overflow-y: auto;
@@ -123,10 +124,9 @@ const ChatContainer = styled.div`
 `;
 
 const InputContainer = styled(Row)`
-  width: 100%;
   height: 15%;
   max-height: 96px;
-  padding: 12px;
+  padding: 12px 0px;
   border-radius: 25px;
   border: 1px solid white;
 
@@ -135,6 +135,7 @@ const InputContainer = styled(Row)`
 
 const SendButton = styled(Button)`
   height: 100%;
+  margin-right: 12px;
   color: black;
   background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
 
@@ -144,8 +145,9 @@ const SendButton = styled(Button)`
 `;
 
 const Input = styled.textarea`
-  width: 100%;
+  flex: 1;
   height: 100%;
+  padding-left: 12px;
   box-sizing: border-box;
   resize: none;
   color: white;

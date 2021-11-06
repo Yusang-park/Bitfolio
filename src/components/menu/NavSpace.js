@@ -7,7 +7,7 @@ import {
   SizedBox,
   NonPaddingButton,
   Button,
-} from "../../styles/components";
+} from "../global-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchInput } from "../searchInput/SearchInput";
 import { UserContext } from "../../provider/userProvider";
@@ -16,7 +16,7 @@ import { authService } from "../../firebase_config";
 import { LogoutButtonContainer } from "../auth/LogoutButtonContainer";
 import { updateProfile } from "@firebase/auth";
 
-export const UpperSpace = () => {
+export const NavSpace = () => {
   const { isLoggedIn } = useContext(UserContext);
   const pathName = useLocation().pathname;
 

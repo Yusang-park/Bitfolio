@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { Divider, Row, SizedBox, TitleText } from "../../styles/components";
+import { Divider, Row, SizedBox, TitleText } from "../global-components";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import { useHistory } from "react-router-dom";

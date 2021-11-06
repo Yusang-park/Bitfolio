@@ -11,7 +11,7 @@ import { DashBoard } from "../routes/DashBoard";
 import { CryptoRank } from "../routes/CryptoRank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
-import { UpperSpace as NavSpace } from "./menu/UpperSpace";
+import { NavSpace } from "./menu/NavSpace";
 import { Details } from "../routes/Details";
 import { UserProvider } from "../provider/userProvider";
 
@@ -87,11 +87,12 @@ const ContentsSpace = styled.div`
   display: flex;
   flex-direction: column;
   flex: 83;
-  margin: 32px;
+  padding: 0px 32px;
+  padding-top: 32px;
   height: calc(100% - 64px);
 `;
 
 const MainSpace = styled.div`
   display: flex;
-  height: calc(100% - 64px);
+  height: 100%;
 `;

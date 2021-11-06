@@ -8,7 +8,7 @@ import {
   SizedBox,
   ATag,
   ScaffoldStyle,
-} from "../styles/components";
+} from "../components/global-components";
 import { useLocation } from "react-router";
 import { DetailsUpperContainer } from "../components/details/DetailsUpperSpace";
 import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
@@ -63,7 +63,7 @@ export const Details = (props) => {
         {menu[selectedMenuIndex].component}
       </DetailScaffold>
       <SizedBox width="32px" />
-      <ChatScaffold></ChatScaffold>
+      <ChatScaffold />
     </CryptoDataContext.Provider>
   );
 };

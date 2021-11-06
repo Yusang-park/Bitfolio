@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { Timestamp } from "@firebase/firestore";
-import { Button, Divider, Row, SizedBox } from "../../styles/components";
+import { Button, Divider, Row, SizedBox } from "../global-components";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   const { createdAt, message, name } = data[1];
@@ -31,8 +31,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 16px;
-  padding: 20px;
+  margin: 16px 0px;
+  padding: 16px;
   border-radius: 21px;
   border: 1px solid gray;
   background: #2b2a37;

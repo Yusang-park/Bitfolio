@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../service/apis";
-import { NonPaddingButton } from "../../styles/components";
+import { NonPaddingButton } from "../global-components";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -150,7 +150,7 @@ const RecommendedContainer = styled.div`
   &::-webkit-scrollbar {
     width: 8px;
     border-radius: 6px;
-    background: gray;
+    background: ${(props) => props.theme.colors.gray3};
   }
   &::-webkit-scrollbar-thumb {
     background-color: lightgray;

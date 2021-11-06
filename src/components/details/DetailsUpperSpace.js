@@ -10,7 +10,8 @@ import {
   Column,
   BoldTitleText,
   GrayText,
-} from "../../styles/components";
+  Bookmark,
+} from "../global-components";
 
 export const DetailsUpperContainer = () => {
   const { setFavoriteCrypto, favorites } = useContext(UserContext);
@@ -34,12 +35,11 @@ export const DetailsUpperContainer = () => {
       </Column>
       <Expanded flex="1" />
 
-      <FontAwesomeIcon
-        icon="bookmark"
-        color={favorites[data.id] === true ? "red" : "white"}
-        size="2x"
+      <Bookmark
+        isSelected={favorites[data.id]}
         onClick={() => setFavoriteCrypto(data.id)}
-      ></FontAwesomeIcon>
+        size="2x"
+      />
     </Container>
   );
 };

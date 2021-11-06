@@ -1,7 +1,8 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
-import { fadeIn } from "./animation";
-
+import { fadeIn } from "../styles/animation";
+// ====================================================================================
 export const TitleText = styled.div`
   font-size: 26px;
 `;
@@ -15,15 +16,11 @@ export const GrayText = styled.div`
   color: ${(props) => props.theme.colors.gray};
 `;
 
-export const YellowTitleCircle = styled.div`
-  padding: 6px 16px;
-  border-radius: 35px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 16px;
-  background-color: ${({ theme }) => theme.colors.yellow};
-  color: black;
+export const PercentText = styled.div`
+  color: ${({ theme, negative }) =>
+    negative ? theme.colors.negative : theme.colors.positive};
 `;
+// ====================================================================================
 
 export const AnimatedDiv = styled.div`
   animation-duration: 0.5s;
@@ -46,6 +43,39 @@ export const ScaffoldStyle = styled(AnimatedDiv)`
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 `;
 
+export const YellowTitleCircle = styled.div`
+  padding: 6px 16px;
+  border-radius: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  background-color: ${({ theme }) => theme.colors.yellow};
+  color: black;
+`;
+
+export const Bookmark = ({ isSelected, onClick, size }) => {
+  return (
+    <BookmarkStyle isSelected={isSelected}>
+      <FontAwesomeIcon
+        icon={"bookmark"}
+        onClick={(m) => m.stopPropagation(onClick())}
+        size={size}
+      />
+    </BookmarkStyle>
+  );
+};
+
+const BookmarkStyle = styled.div`
+  color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors.blue : "white"};
+  cursor: grab;
+
+  &:hover {
+  }
+`;
+
+// ====================================================================================
+
 export const Divider = styled.div`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
@@ -54,6 +84,7 @@ export const Divider = styled.div`
 
 export const SizedBox = styled.div`
   align-self: center;
+
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
@@ -64,6 +95,27 @@ export const Expanded = styled.div`
   align-items: center;
   flex: ${(props) => props.flex};
 `;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: ${({ justify_content }) =>
+    justify_content ? justify_content : css`center`};
+  align-items: ${({ align_items }) =>
+    align_items ? align_items : css`center`};
+  width: ${({ width }) => (width ? width : css`100%`)};
+  height: ${({ height }) => (height ? height : css`auto`)};
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ justify_content }) =>
+    justify_content ? justify_content : css`center`};
+  width: ${({ width }) => (width ? width : css`auto`)};
+  height: ${({ height }) => (height ? height : css`100%`)};
+`;
+
+// =========================================================================
 
 export const Button = styled.button`
   vertical-align: middle;
@@ -89,30 +141,6 @@ export const NonPaddingButton = styled(Button)`
   border-radius: 12px;
 `;
 
-export const PercentText = styled.div`
-  color: ${({ theme, negative }) =>
-    negative ? theme.colors.negative : theme.colors.positive};
-`;
-
-export const Row = styled.div`
-  display: flex;
-  justify-content: ${({ justify_content }) =>
-    justify_content ? justify_content : css`center`};
-  align-items: ${({ align_items }) =>
-    align_items ? align_items : css`center`};
-  width: ${({ width }) => (width ? width : css`100%`)};
-  height: ${({ height }) => (height ? height : css`auto`)};
-`;
-
-export const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: ${({ justify_content }) =>
-    justify_content ? justify_content : css`center`};
-  width: ${({ width }) => (width ? width : css`auto`)};
-  height: ${({ height }) => (height ? height : css`100%`)};
-`;
-
 export const ATag = styled(Button)`
   vertical-align: middle;
   height: 38px;
@@ -132,3 +160,5 @@ export const ATag = styled(Button)`
         : props.theme.colors.gray};
   }
 `;
+
+// =========================================================================

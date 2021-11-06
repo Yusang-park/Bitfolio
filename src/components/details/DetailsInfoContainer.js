@@ -10,24 +10,13 @@ import {
   YellowTitleCircle,
   Row,
   Column,
-} from "../../styles/components";
+} from "../global-components";
 import useWindowDimensions from "../../useWindowDimensions";
 import { Chart } from "./TradingViewChart";
 
 export const DetailsInfoContainer = () => {
   const { data } = useContext(CryptoDataContext);
   const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
-  const ref = useRef(0); //Get ChartContainer height
-  const { width, height } = useWindowDimensions();
-
-  useEffect(() => {
-    setChartSize({
-      ...chartSize,
-      height: ref.current.clientHeight,
-      width: ref.current.clientWidth,
-    });
-    console.log(chartSize);
-  }, [width]);
 
   const MarketCapBox = () => (
     <InfoElementContainer>
@@ -74,9 +63,7 @@ export const DetailsInfoContainer = () => {
         <VolumeBox />
       </Row>
       <SizedBox height="16px" />
-      <ChartContainer ref={ref}>
-        <Chart chartSize={chartSize} coin={data.tradingViewCoinId} />
-      </ChartContainer>
+      <Chart chartSize={chartSize} coin={data.tradingViewCoinId} />
     </Container>
   );
 };
