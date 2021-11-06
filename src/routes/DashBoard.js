@@ -1,23 +1,17 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { UserContext } from "../provider/userProvider";
-import { Divider } from "../components/global-components";
+import { Favorite } from "../components/dashboard/Favorites";
+import { Row } from "../components/global-components";
 
 export const DashBoard = () => {
-  const { favorites } = useContext(UserContext);
-
   return (
-    <div>
-      <p>Your favorites</p>
-      <Divider />
-      {Object.keys(favorites).map((e, i) => (
-        <p key={i}>{e}</p>
-      ))}
-    </div>
+    <Row align_items="flex-start" justify_content="left">
+      <Favorite />
+      <Temp></Temp>
+    </Row>
   );
 };
 
-const D = styled.div`
-  background-color: white;
-  width: 100%;
+const Temp = styled.div`
+  flex: 1;
 `;
