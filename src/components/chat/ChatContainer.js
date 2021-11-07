@@ -6,7 +6,7 @@ import { CryptoDataContext } from "../../routes/Details";
 import {
   Button,
   Row,
-  ScaffoldStyle,
+  BoxStyle,
   SizedBox,
   TitleText,
   YellowButton,
@@ -17,19 +17,13 @@ import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
 
 export const ChatScaffold = () => {
-  const useRefWhole = useRef();
   const useRefScroll = useRef();
-  const [chatBoxSize, setChatBoxSize] = useState(0);
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
   const [chatData, setChatData] = useState({});
 
   //Overflow(Scroll) 발생 시 height 크기가 의도한대로 출력되지 않는 문제를 해결하기 위함
   useEffect(() => {
-    setChatBoxSize({
-      height: `${useRefWhole.current.clientHeight * 0.8}px`,
-    });
-
     getChatMessages(data.id, (value) => {
       if (value)
         setChatData(Object.entries(value), () => {
@@ -58,15 +52,12 @@ export const ChatScaffold = () => {
   }
 
   return (
-    <Scaffold ref={useRefWhole}>
+    <Scaffold>
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
+
       {chatData.length !== 0 && (
-        <ChatContainer
-          id="chatContent"
-          ChatHistory
-          height={chatBoxSize["height"]}
-        >
+        <ChatContainer id="chatContent" ChatHistory>
           {Object.values(chatData).map(
             (e, i) =>
               authService.currentUser != null && (
@@ -96,17 +87,17 @@ export const ChatScaffold = () => {
   );
 };
 
-const Scaffold = styled(ScaffoldStyle)`
-  width: 33%;
+const Scaffold = styled(BoxStyle)`
+  flex: 1;
   padding-right: 28px;
 `;
 
 const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: ${(props) => props.height};
+  /* width: 100%; */
+  height: 70vh;
 
-  width: 100%;
   padding-right: 4px;
   color: black;
   overflow-y: auto;
@@ -133,9 +124,17 @@ const InputContainer = styled(Row)`
   background-color: ${({ theme }) => theme.colors.gray2};
 `;
 
-const SendButton = styled(Button)`
+const SendButton = styled.div`
+  display: flex;
+  width: 20%;
+  min-width: 45px;
+  max-width: 85px;
   height: 100%;
   margin-right: 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-size: 16px;
   color: black;
   background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
 
@@ -145,7 +144,7 @@ const SendButton = styled(Button)`
 `;
 
 const Input = styled.textarea`
-  flex: 1;
+  width: 100%;
   height: 100%;
   padding-left: 12px;
   box-sizing: border-box;

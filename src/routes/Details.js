@@ -7,7 +7,7 @@ import {
   Row,
   SizedBox,
   ATag,
-  ScaffoldStyle,
+  BoxStyle,
 } from "../components/global-components";
 import { useLocation } from "react-router";
 import { DetailsUpperContainer } from "../components/details/DetailsUpperSpace";
@@ -18,6 +18,7 @@ import { ChatScaffold } from "../components/chat/ChatContainer";
 export const CryptoDataContext = createContext({
   data: null,
 });
+
 export const Details = (props) => {
   let temp = useLocation().pathname.split("/");
 
@@ -72,8 +73,8 @@ const Center = styled.div`
   margin: auto;
 `;
 
-const DetailScaffold = styled(ScaffoldStyle)`
-  width: 67%;
+const DetailScaffold = styled(BoxStyle)`
+  width: 50vw;
 
   ${({ theme }) => theme.device.desktopL} {
     padding: 32px;

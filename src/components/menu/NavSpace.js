@@ -61,9 +61,8 @@ const Container = styled.div`
   align-items: unset;
   justify-content: space-between;
   width: 100%;
-  height: 90%;
   max-height: 56px;
-  min-height: 42px;
+  min-height: 46px;
   padding-bottom: 32px;
   font-size: 26px;
 `;
@@ -75,11 +74,10 @@ const UserContainer = styled.div`
   width: 16%;
   max-width: 200px;
   max-height: 64px;
-  min-height: 42px;
+  min-height: 46px;
   border-radius: 21px;
   border: 1px solid gray;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 0px 24px;
   font-size: 20px;
   background: #2b2a37;
 `;

@@ -37,7 +37,6 @@ function App() {
         <Scaffold>
           <BrowserRouter>
             <Sidebar />
-
             <ContentsSpace>
               <NavSpace />
               <MainSpace>
@@ -74,8 +73,7 @@ export default App;
 
 const Scaffold = styled.div`
   display: flex;
-
-  height: 100%;
+  height: 100vh;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
   ${(props) => props.theme.device.mobile} {
@@ -86,13 +84,13 @@ const Scaffold = styled.div`
 const ContentsSpace = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 83;
+  flex: 1;
   padding: 0px 32px;
   padding-top: 32px;
-  height: calc(100% - 64px);
+  height: calc(100vh - 64px);
 `;
 
 const MainSpace = styled.div`
   display: flex;
-  height: 100%;
+  height: 100vh;
 `;

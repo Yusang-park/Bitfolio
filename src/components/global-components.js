@@ -29,16 +29,11 @@ export const AnimatedDiv = styled.div`
   animation-fill-mode: forwards;
 `;
 
-export const ScaffoldStyle = styled(AnimatedDiv)`
+export const BoxStyle = styled(AnimatedDiv)`
   display: flex;
-
   flex-direction: column;
-
-  margin: 0px auto;
   padding: 32px 32px 32px 32px;
-
   border-radius: 27px;
-
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 `;

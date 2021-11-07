@@ -11,7 +11,7 @@ import {
   PercentText,
   Row,
   AnimatedDiv,
-  ScaffoldStyle,
+  BoxStyle,
   Column,
   GrayText,
   Bookmark,
@@ -154,7 +154,7 @@ export const CryptoRank = () => {
   );
 };
 
-const Scaffold = styled(ScaffoldStyle)`
+const Scaffold = styled(BoxStyle)`
   width: 100%;
   max-width: 1440px;
   font-size: 14px;

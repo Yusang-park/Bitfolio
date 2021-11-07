@@ -18,6 +18,7 @@ export const Sidebar = () => {
       <LogoRow onClick={onClickLogo}>
         <Logo src="img/ico_logo.png" alt="Logo" />
         <TitleText>CryptoFolio</TitleText>
+        <SizedBox width="24px"></SizedBox>
       </LogoRow>
 
       <Divider vertical="0px" horizontal="5%" />
@@ -41,7 +42,7 @@ const LogoRow = styled(Row)`
 `;
 
 const SidebarContainer = styled.div`
-  flex: 17;
+  width: 16.66vw;
   max-width: 320px;
   background-color: ${(props) => props.theme.colors.container};
   color: white;
