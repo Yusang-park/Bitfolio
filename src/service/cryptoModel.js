@@ -39,7 +39,8 @@ export class CryptoSummaryData extends CryptoSimpleData {
 
 export class CryptoDetailData extends CryptoSimpleData {
   marketCap;
-  imageUrlLarge;
+
+  imageUrl;
   genesisDate;
   price;
   priceHigh24h;
@@ -80,7 +81,8 @@ export class CryptoDetailData extends CryptoSimpleData {
       ? Math.floor(data.market_data.max_supply)
       : "";
 
-    this.imageUrlLarge = data.image.large;
+    this.imageUrl = data.image.small;
+    this.imageUrl = data.image.large;
     this.genesisDate = data.genesis_date;
     this.homepage = data.links.homepage;
     this.blockchain_site = data.links.blockchain_site;

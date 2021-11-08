@@ -90,7 +90,9 @@ export const CryptoRank = () => {
                 <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
                 <Bookmark
                   isSelected={favorites[e.id]}
-                  onClick={() => setFavoriteCrypto(e.id)}
+                  onClick={() =>
+                    setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
+                  }
                   size="1x"
                 />
               </Row>
@@ -164,7 +166,8 @@ const Scaffold = styled(BoxStyle)`
 
 const Icon = styled.img`
   width: 36px;
-  padding-right: 16px;
+  margin-right: 16px;
+  border-radius: 50px;
 `;
 
 const ElementRow = styled(AnimatedDiv)`
@@ -174,6 +177,8 @@ const ElementRow = styled(AnimatedDiv)`
 
   cursor: pointer;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
+  transition: background-color 300ms ease-out 100ms;
+
   &:hover {
     background-color: gray;
   }

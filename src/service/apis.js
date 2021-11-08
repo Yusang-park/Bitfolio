@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiKey } from "../api_config";
-import { CryptoSummaryData, CryptoDetailData } from "./cryptoClass";
+import { CryptoSummaryData, CryptoDetailData } from "./cryptoModel";
 
 export async function getCryptoSummaryDataList(pageIndex) {
   let res = [];

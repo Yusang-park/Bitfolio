@@ -19,7 +19,7 @@ export const DetailsUpperContainer = () => {
 
   return (
     <Container>
-      <Image src={data.imageUrlLarge}></Image>
+      <Image src={data.imageUrl}></Image>
       <Column>
         <BoldTitleText>{data.fullName}</BoldTitleText>
         <SizedBox height="4px" />
@@ -37,7 +37,7 @@ export const DetailsUpperContainer = () => {
 
       <Bookmark
         isSelected={favorites[data.id]}
-        onClick={() => setFavoriteCrypto(data.id)}
+        onClick={() => setFavoriteCrypto(data.id, data.fullName, data.imageUrl)}
         size="2x"
       />
     </Container>
@@ -53,5 +53,6 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 56px;
-  padding-right: 32px;
+  margin-right: 32px;
+  border-radius: 50px;
 `;

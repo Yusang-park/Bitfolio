@@ -147,7 +147,7 @@ const RecommendedContainer = styled.div`
   margin-right: 8%;
   max-height: 40vh;
   background-color: ${(props) => props.theme.colors.gray};
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 8px;
     border-radius: 6px;
     background: ${(props) => props.theme.colors.gray3};
@@ -155,7 +155,7 @@ const RecommendedContainer = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: lightgray;
     border-radius: 6px;
-  }
+  } */
 `;
 
 const ElementRow = styled.div`

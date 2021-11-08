@@ -12,7 +12,12 @@ export const BoldTitleText = styled.div`
   font-weight: bold;
 `;
 
+export const SubTitleText = styled.div`
+  font-size: 18px;
+`;
+
 export const GrayText = styled.div`
+  transition: color 300ms ease-out 100ms;
   color: ${(props) => props.theme.colors.gray};
 `;
 
@@ -36,6 +41,7 @@ export const BoxStyle = styled(AnimatedDiv)`
   border-radius: 27px;
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  transition: background-color 300ms ease-out 100ms;
 `;
 
 export const YellowTitleCircle = styled.div`
@@ -63,8 +69,8 @@ export const Bookmark = ({ isSelected, onClick, size }) => {
 const BookmarkStyle = styled.div`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
-  cursor: grab;
-
+  cursor: auto;
+  transition: color 300ms ease-out 100ms;
   &:hover {
   }
 `;
@@ -123,7 +129,7 @@ export const Button = styled.button`
   font-size: 16px;
 
   background: linear-gradient(#4294f3 0%, #2c62a3 100%);
-
+  transition: background-color 300ms ease-out 100ms;
   &:hover {
     background: linear-gradient(#69a8f0 0%, #5074a1 100%);
   }

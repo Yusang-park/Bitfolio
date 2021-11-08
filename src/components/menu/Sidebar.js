@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../routes/categories";
 import { useHistory } from "react-router-dom";
 
-export const Sidebar = () => {
+export const Sidebar = React.memo(() => {
   const pathName = useLocation().pathname;
   const history = useHistory();
 
@@ -30,7 +30,11 @@ export const Sidebar = () => {
       ))}
     </SidebarContainer>
   );
-};
+});
+
+const Logo = styled.img`
+  width: 96px;
+`;
 
 const LogoRow = styled(Row)`
   height: 260px;
@@ -38,6 +42,19 @@ const LogoRow = styled(Row)`
 
   ${({ theme }) => theme.device.desktopL} {
     flex-direction: column;
+  }
+  ${TitleText} {
+    transition: font-size 200ms ease-out 100ms;
+  }
+  ${Logo} {
+    transition: width 200ms ease-out 100ms;
+  }
+
+  &:hover ${TitleText} {
+    font-size: 29px;
+  }
+  &:hover ${Logo} {
+    width: 100px;
   }
 `;
 
@@ -58,10 +75,6 @@ const SidebarContainer = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  width: 96px;
-`;
-
 const CategoryRow = styled(Link)`
   display: flex;
   font-size: 20px;
@@ -71,6 +84,8 @@ const CategoryRow = styled(Link)`
   color: ${({ selected, theme }) =>
     selected ? css`white` : theme.colors.gray3};
   cursor: pointer;
+  transition: background-color 300ms ease-out 100ms;
+
   &:hover {
     color: white;
     background-color: gray;

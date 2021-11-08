@@ -27,7 +27,7 @@ function reducer(state, action) {
         ...state,
         favorites: {
           ...state.favorites,
-          [action.payload]: true,
+          ...action.payload,
         },
       };
     case "delFavoriteCrypto":
@@ -76,14 +76,20 @@ function UserProvider(props, children) {
     });
   }
 
-  function setFavoriteCrypto(cryptoId) {
+  function setFavoriteCrypto(cryptoId, fullName, imageUrl) {
     let existed = !state.favorites[cryptoId] === true;
-    updateFavorites(cryptoId, existed);
-
-    dispatch({
-      type: existed ? "setFavoriteCrypto" : "delFavoriteCrypto",
-      payload: cryptoId,
-    });
+    updateFavorites(cryptoId, fullName, imageUrl, existed);
+    if (existed) {
+      dispatch({
+        type: "setFavoriteCrypto",
+        payload: { [cryptoId]: { fullName: fullName, imageUrl: imageUrl } },
+      });
+    } else {
+      dispatch({
+        type: "delFavoriteCrypto",
+        payload: cryptoId,
+      });
+    }
   }
 
   return (

@@ -2,23 +2,36 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { useHistory } from 'react-router';
 import styled from "styled-components";
 import { UserContext } from '../../provider/userProvider';
 import { getCryptoPricesList } from '../../service/apis';
-import { Row, BoxStyle, TitleText, SizedBox } from '../global-components';
+import { Row, BoxStyle, TitleText, SizedBox, GrayText, SubTitleText } from '../global-components';
 
 export const Favorite = () => {
-
+  const history = useHistory();
   const [prices, setPrices] = useState({});
   const { favorites } = useContext(UserContext);
 
   useEffect(() => {
-    getCryptoPricesList(Object.keys(favorites)).then((response) => {
+    if (Object.keys(favorites).length !== 0) {
+      getCryptoPricesList(Object.keys(favorites)).then((response) => {
     
-      setPrices(response);
+        setPrices(response);
+      });
+    }
+  }, [favorites])
+  
+ 
+  function routeDetails(id) {
+    history.push({
+      pathname: `/details/${id}`,
+      state: {
+        id: id,
+      },
     });
-},[favorites])
- getCryptoPricesList(Object.keys(favorites))
+  }
+ 
     return (
        <>
         <TitleText>Favorites</TitleText>
@@ -27,11 +40,13 @@ export const Favorite = () => {
           {Object.keys(favorites).length !== 0 ?
           
               Object.keys(favorites).map((e, i) => (
-                <span key={i}><ElementContainer>
-                
-                  <p>{e}</p>
+                <span key={i} onClick={()=>routeDetails(e)}><ElementContainer>
+                  <Logo src={favorites[e].imageUrl} />
+                  <div>
+                    <SubTitleText>{favorites[e].fullName}</SubTitleText>
+                    <SizedBox height="4px"/>
                 {Object.keys(prices).includes(e)&&
-                  <p>{`$${prices[e].usd}`}</p>}
+                  <GrayText>{`$${prices[e].usd}`}</GrayText>}</div>
                 </ElementContainer></span>
               ))
              : 
@@ -61,13 +76,33 @@ display: flex;
 justify-content: center;
 align-items: center;
   width:100%;
-  height:8vh;
-  margin : 32px;
+  height:9vh;
+  margin : 24px;
   font-weight: bold;
 `;
 
+const Logo = styled.img`
+width:4.5vh;
+border-radius:50px;
+transition: width 300ms ease-out 100ms;
+`;
+
 const ElementContainer = styled(BoxStyle)`
-width:8vh;
-height:8vh;
+align-items:space-around;
+justify-content: space-between;
+width:9vh;
+height:9vh;
 margin-right:32px;
+padding:24px;
+
+&:hover{
+  background-color: grey;
+  cursor: pointer
+}
+  &:hover ${GrayText} {
+    color: white;
+  }
+  &:hover ${Logo}{
+  width:5vh;
+}
 `;

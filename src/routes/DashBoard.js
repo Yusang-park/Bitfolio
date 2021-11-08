@@ -15,10 +15,10 @@ export const DashBoard = () => {
       <LeftSpace>
         <Favorite />
         <SizedBox height="32px" />
-        <HotCrypto />
+        {/* <HotCrypto /> */}
       </LeftSpace>
       <SizedBox width="32px" />
-      <RightSpace>Portfolio</RightSpace>
+      {/* <RightSpace>Portfolio</RightSpace> */}
     </Row>
   );
 };
