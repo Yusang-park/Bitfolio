@@ -27,4 +27,4 @@
 * Favorites feature
 
 2021.11.8
-* Add Favorites component in Dashboard
+* Add Favorites component to Dashboard
