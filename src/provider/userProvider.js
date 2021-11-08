@@ -1,6 +1,6 @@
 import React, { useReducer, createContext, useEffect } from "react";
 import { authService } from "../firebase_config";
-import { getFavorites, setFavoritesToDB } from "../service/fireDb";
+import { getFavorites, updateFavorites } from "../service/fireDb";
 
 //to send Sortation Dropbox and SearchInputField data to ContentsContainer from UpperSpace
 const initialState = {
@@ -27,9 +27,13 @@ function reducer(state, action) {
         ...state,
         favorites: {
           ...state.favorites,
-          ...action.payload,
+          [action.payload]: true,
         },
       };
+    case "delFavoriteCrypto":
+      let temp = state.favorites;
+      delete temp[action.payload];
+      return { ...state, favorites: temp };
 
     case "setIsLoggedIn":
       return {
@@ -74,12 +78,11 @@ function UserProvider(props, children) {
 
   function setFavoriteCrypto(cryptoId) {
     let existed = !state.favorites[cryptoId] === true;
-
-    setFavoritesToDB(cryptoId, existed);
+    updateFavorites(cryptoId, existed);
 
     dispatch({
-      type: "setFavoriteCrypto",
-      payload: { [cryptoId]: existed },
+      type: existed ? "setFavoriteCrypto" : "delFavoriteCrypto",
+      payload: cryptoId,
     });
   }
 

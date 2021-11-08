@@ -18,7 +18,7 @@ export const DashBoard = () => {
         <HotCrypto />
       </LeftSpace>
       <SizedBox width="32px" />
-      {/* <RightSpace>125555555553</RightSpace> */}
+      <RightSpace>Portfolio</RightSpace>
     </Row>
   );
 };

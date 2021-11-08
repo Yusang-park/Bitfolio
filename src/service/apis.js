@@ -44,3 +44,13 @@ export async function getCryptoDetails(id) {
 
   return new CryptoDetailData(response.data);
 }
+
+export async function getCryptoPricesList(idList) {
+  let s = idList.join(",");
+
+  const response = await axios.get(
+    `https://api.coingecko.com/api/v3/simple/price?ids=${s}&vs_currencies=usd`
+  );
+  console.log(response.data);
+  return response.data;
+}
