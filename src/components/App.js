@@ -76,6 +76,7 @@ const Scaffold = styled.div`
   height: 100vh;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
+
   ${(props) => props.theme.device.mobile} {
     display: block;
   }
@@ -85,6 +86,7 @@ const ContentsSpace = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+
   padding: 0px 32px;
   padding-top: 32px;
   height: calc(100vh - 64px);
@@ -92,5 +94,6 @@ const ContentsSpace = styled.div`
 
 const MainSpace = styled.div`
   display: flex;
+  justify-content: center;
   height: 100vh;
 `;

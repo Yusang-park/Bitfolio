@@ -37,7 +37,7 @@ export const AnimatedDiv = styled.div`
 export const BoxStyle = styled(AnimatedDiv)`
   display: flex;
   flex-direction: column;
-  padding: 32px 32px 32px 32px;
+  padding: 32px;
   border-radius: 27px;
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -72,6 +72,7 @@ const BookmarkStyle = styled.div`
   cursor: auto;
   transition: color 300ms ease-out 100ms;
   &:hover {
+    cursor: pointer;
   }
 `;
 

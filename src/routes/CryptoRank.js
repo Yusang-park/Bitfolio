@@ -74,57 +74,62 @@ export const CryptoRank = () => {
   return (
     <Scaffold>
       <Row>
+        <SizedBox width="32px" />
         {sortation.map(({ name, flex }, i) => (
           <Expanded justify_content="flex-end" flex={flex} key={i}>
             {name}
           </Expanded>
         ))}
+        <SizedBox width="32px" />
       </Row>
       <SizedBox height="16px" />
-      <Divider vertical="0px" horizontal="0px" />
+      <Divider vertical="0px" horizontal="32px" />
       <Column>
         {cryptoList.length !== 0 ? (
           cryptoList.map((e, i) => (
-            <ElementRow key={i} onClick={() => routeDetails(e.id)}>
-              <Row width="5%" justify_content="space-between">
-                <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
-                <Bookmark
-                  isSelected={favorites[e.id]}
-                  onClick={() =>
-                    setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
-                  }
-                  size="1x"
-                />
-              </Row>
+            <Column>
+              <ElementRow key={i} onClick={() => routeDetails(e.id)}>
+                <Row width="5%" justify_content="space-between">
+                  <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
+                  <Bookmark
+                    isSelected={favorites[e.id]}
+                    onClick={() =>
+                      setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
+                    }
+                    size="1x"
+                  />
+                </Row>
 
-              <Expanded justify_content="flex-end" flex={sortation[1].flex}>
-                {" "}
-                <Icon src={e.imageUrl} />{" "}
-              </Expanded>
-              <Expanded
-                justify_content="space-between"
-                flex={sortation[2].flex}
-              >
-                {e.fullName} <GrayText> {e.symbol.toUpperCase()}</GrayText>
-              </Expanded>
-              <Expanded justify_content="flex-end" flex={sortation[3].flex}>
-                {"$" + e.price.toLocaleString()}
-              </Expanded>
-              <Expanded justify_content="flex-end" flex={sortation[4].flex}>
-                {"$" + e.marketCap.toLocaleString()}
-              </Expanded>
-              <Expanded justify_content="flex-end" flex={sortation[5].flex}>
-                {e.currentSupply.toLocaleString()}
-              </Expanded>
-              <Expanded justify_content="flex-end" flex={sortation[6].flex}>
-                {"$" + e.volume.toLocaleString()}
-              </Expanded>
-              <Expanded justify_content="flex-end" flex={sortation[7].flex}>
-                <PercentText negative={e.pricePercent24h.includes("-")}>
-                  {e.pricePercent24h}
-                </PercentText>
-              </Expanded>
-            </ElementRow>
+                <Expanded justify_content="flex-end" flex={sortation[1].flex}>
+                  {" "}
+                  <Icon src={e.imageUrl} />{" "}
+                </Expanded>
+                <Expanded
+                  justify_content="space-between"
+                  flex={sortation[2].flex}
+                >
+                  {e.fullName} <GrayText> {e.symbol.toUpperCase()}</GrayText>
+                </Expanded>
+                <Expanded justify_content="flex-end" flex={sortation[3].flex}>
+                  {"$" + e.price.toLocaleString()}
+                </Expanded>
+                <Expanded justify_content="flex-end" flex={sortation[4].flex}>
+                  {"$" + e.marketCap.toLocaleString()}
+                </Expanded>
+                <Expanded justify_content="flex-end" flex={sortation[5].flex}>
+                  {e.currentSupply.toLocaleString()}
+                </Expanded>
+                <Expanded justify_content="flex-end" flex={sortation[6].flex}>
+                  {"$" + e.volume.toLocaleString()}
+                </Expanded>
+                <Expanded justify_content="flex-end" flex={sortation[7].flex}>
+                  <PercentText negative={e.pricePercent24h.includes("-")}>
+                    {e.pricePercent24h}
+                  </PercentText>
+                </Expanded>
+              </ElementRow>
+              <Divider vertical="0px" horizontal="32px" />
+            </Column>
           ))
         ) : (
           <ProgressIndicator />
@@ -161,7 +166,7 @@ const Scaffold = styled(BoxStyle)`
   max-width: 1440px;
   font-size: 14px;
   font-weight: bold;
-  padding-bottom: 16px;
+  padding: 32px 0px 16px 0px;
 `;
 
 const Icon = styled.img`
@@ -174,9 +179,9 @@ const ElementRow = styled(AnimatedDiv)`
   display: flex;
   flex: 1;
   font-size: 16px;
-
+  padding: 0px 32px;
   cursor: pointer;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
+
   transition: background-color 300ms ease-out 100ms;
 
   &:hover {
