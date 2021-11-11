@@ -40,7 +40,11 @@ export const NavSpace = () => {
 
   return (
     <Container>
-      <Sidebar isOpened={openedSideBar} setClose={onClickHamberger} />
+      <Sidebar
+        forPopup={true}
+        isOpened={openedSideBar}
+        setClose={onClickHamberger}
+      />
       <Hamberger onClick={onClickHamberger} />
       <TitleText>{getName()}</TitleText>
       <SearchInput />

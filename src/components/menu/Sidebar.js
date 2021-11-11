@@ -12,7 +12,7 @@ import { categories } from "../../routes/categories";
 import { useHistory } from "react-router-dom";
 
 export const Sidebar = React.memo(
-  ({ isPopup = false, isOpened = false, setClose }) => {
+  ({ forPopup = false, isOpened = false, setClose }) => {
     const pathName = useLocation().pathname;
     const history = useHistory();
 
@@ -24,7 +24,7 @@ export const Sidebar = React.memo(
     return (
       <>
         <Dimmer isOpened={isOpened} onClick={setClose}></Dimmer>
-        <SidebarContainer isOpened={isOpened}>
+        <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
             <Logo src="img/ico_logo.png" alt="Logo" />
             <TitleText>CryptoFolio</TitleText>
@@ -89,7 +89,7 @@ const LogoRow = styled(Row)`
 `;
 
 const SidebarContainer = styled.div`
-  display: ${({ isPopup }) => (isPopup ? css`block` : css`none`)};
+  display: ${({ forPopup }) => (!forPopup ? css`block` : css`none`)};
   width: 16.66vw;
   max-width: 320px;
   background-color: ${(props) => props.theme.colors.container};
@@ -119,6 +119,7 @@ const SidebarContainer = styled.div`
     ${({ isOpened }) =>
       isOpened
         ? css`
+            display: block;
             position: absolute;
             z-index: 20;
             width: 60vw;
