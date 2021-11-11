@@ -38,7 +38,7 @@ export async function getCryptoObject() {
 }
 
 export async function getCryptoDetails(id) {
-  const response = await axios.get(`${providerUrl}/v3/coins/${id}`);
+  const response = await axios.get(`${providerUrl}/coins/${id}`);
 
   return new CryptoDetailData(response.data);
 }
@@ -47,7 +47,7 @@ export async function getCryptoPricesList(idList) {
   let s = idList.join(",");
 
   const response = await axios.get(
-    `${providerUrl}/v3/simple/price?ids=${s}&vs_currencies=usd`
+    `${providerUrl}/simple/price?ids=${s}&vs_currencies=usd`
   );
   console.log(response.data);
   return response.data;

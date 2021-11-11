@@ -105,16 +105,7 @@ const SidebarContainer = styled.div`
       top: 0;
     }
   }
-  @keyframes fadeOut {
-    to {
-      left: -150px;
-    }
 
-    from {
-      top: 0;
-    }
-  }
-  animation-timing-function: ease-out;
   ${({ theme }) => theme.device.desktopM} {
     ${({ isOpened }) =>
       isOpened

@@ -107,10 +107,11 @@ const UserContainer = styled.div`
   align-items: center;
   width: 16%;
   max-width: 200px;
+  height: 4.1vh;
   max-height: 64px;
   min-height: 46px;
   border-radius: 21px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   padding: 0px 24px;
   font-size: 20px;
   background: #2b2a37;

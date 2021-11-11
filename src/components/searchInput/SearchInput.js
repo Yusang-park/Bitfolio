@@ -106,8 +106,11 @@ export const SearchInput = () => {
 };
 const Container = styled.div`
   flex: 1;
-  max-width: 26%;
+
   max-width: 300px;
+  height: 4.1vh;
+  max-height: 64px;
+  min-height: 46px;
 `;
 
 const SearchContainer = styled.div`
@@ -125,7 +128,7 @@ const Input = styled.input`
   width: calc(100% - 68px);
   padding-right: 16px;
   font-size: 20px;
-  height: 6.2vh;
+
   border: transparent;
   background: transparent;
   color: white;
@@ -147,15 +150,6 @@ const RecommendedContainer = styled.div`
   margin-right: 8%;
   max-height: 40vh;
   background-color: ${(props) => props.theme.colors.gray};
-  /* &::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 6px;
-    background: ${(props) => props.theme.colors.gray3};
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: lightgray;
-    border-radius: 6px;
-  } */
 `;
 
 const ElementRow = styled.div`

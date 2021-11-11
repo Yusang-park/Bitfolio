@@ -23,11 +23,21 @@ export const DashBoard = () => {
   );
 };
 
+const RowCustom = styled.div`
+  ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+  }
+`;
+
 const LeftSpace = styled.div`
   display: flex;
   flex-direction: column;
   width: 50vw;
   height: 100%;
+
+  ${({ theme }) => theme.device.tablet} {
+    width: calc(100vw - 64px);
+  }
 `;
 
 const RightSpace = styled(BoxStyle)`

@@ -9,7 +9,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
 
   return (
     <Container>
-      <Row justify_content="space-between">
+      <RowCustom justify_content="space-between">
         <span>
           {name}
           {/* {isMine && <Button height="20px">Delete</Button>} */}
@@ -18,7 +18,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
           {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
           {date.getMinutes()}
         </Time>
-      </Row>
+      </RowCustom>
       <SizedBox height="12px" />
       <Divider />
       <SizedBox height="12px" />
@@ -26,6 +26,10 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
     </Container>
   );
 });
+
+const RowCustom = styled(Row)`
+  flex-wrap: wrap;
+`;
 
 const Container = styled.div`
   display: flex;

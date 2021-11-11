@@ -76,10 +76,6 @@ const Scaffold = styled.div`
   height: 100vh;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
-
-  ${(props) => props.theme.device.mobile} {
-    display: block;
-  }
 `;
 
 const ContentsSpace = styled.div`
@@ -87,8 +83,9 @@ const ContentsSpace = styled.div`
   flex-direction: column;
   flex: 1;
 
-  padding: 0px 32px;
-  padding-top: 32px;
+  margin: 32px;
+  /* margin-top: 32px; */
+
   height: calc(100vh - 64px);
 `;
 
@@ -96,4 +93,10 @@ const MainSpace = styled.div`
   display: flex;
   justify-content: center;
   height: 100vh;
+
+  ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+    height: fit-content;
+    padding-bottom: 32px;
+  }
 `;

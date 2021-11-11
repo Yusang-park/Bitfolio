@@ -25,9 +25,9 @@ export const DetailsUpperContainer = () => {
         <SizedBox height="4px" />
         <GrayText>{data.symbol.toUpperCase()}</GrayText>
       </Column>
-      <SizedBox width="32px" />
+      <SizedBox width="3%" />
       <Column>
-        <BoldTitleText>{"$ " + data.price.toLocaleString()}</BoldTitleText>
+        <BoldTitleText>{"$" + data.price.toLocaleString()}</BoldTitleText>
         <SizedBox height="4px" />
         <PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}

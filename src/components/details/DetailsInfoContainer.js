@@ -16,12 +16,11 @@ import { Chart } from "./TradingViewChart";
 
 export const DetailsInfoContainer = () => {
   const { data } = useContext(CryptoDataContext);
-  const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
 
   const MarketCapBox = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Market Cap</YellowTitleCircle>
-      {"$ " + data.marketCap.toLocaleString()}
+      {"$" + data.marketCap.toLocaleString()}
       <SizedBox height="4px" />
       <GrayText>{"Rank. #" + data.marketCapRank}</GrayText>
     </InfoElementContainer>
@@ -51,27 +50,33 @@ export const DetailsInfoContainer = () => {
   const VolumeBox = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
-      {"$ " + data.volume.toLocaleString()}
+      {"$" + data.volume.toLocaleString()}
     </InfoElementContainer>
   );
 
   return (
     <Container>
-      <Row justify_content="flex-start" align_items="flex-start">
+      <RowCustom justify_content="flex-start" align_items="flex-start">
         <MarketCapBox />
         <SupplyAmountBox />
         <VolumeBox />
-      </Row>
+      </RowCustom>
       <SizedBox height="16px" />
-      <Chart chartSize={chartSize} coin={data.tradingViewCoinId} />
+      <Chart coin={data.tradingViewCoinId} />
     </Container>
   );
 };
 
+const RowCustom = styled(Row)`
+  flex-wrap: wrap;
+`;
+
 const InfoElementContainer = styled(Column)`
   justify-content: flex-start;
   align-items: flex-end;
-  margin-right: 5%;
+  height: fit-content;
+  margin-right: 32px;
+  margin-bottom: 16px;
 `;
 
 const Container = styled(AnimatedDiv)`

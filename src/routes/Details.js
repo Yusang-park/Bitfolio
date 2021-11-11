@@ -76,8 +76,11 @@ const Center = styled.div`
 const DetailScaffold = styled(BoxStyle)`
   width: 50vw;
 
-  ${({ theme }) => theme.device.desktopL} {
-    padding: 32px;
+  ${({ theme }) => theme.device.tablet} {
+    width: auto;
+    height: 65vh;
+    padding: 24px;
+    margin-bottom: 32px;
   }
 `;
 
