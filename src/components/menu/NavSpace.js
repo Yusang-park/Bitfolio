@@ -15,9 +15,11 @@ import { LoginButtonContaienr } from "../auth/LoginButtonContainer";
 import { authService } from "../../firebase_config";
 import { LogoutButtonContainer } from "../auth/LogoutButtonContainer";
 import { updateProfile } from "@firebase/auth";
+import { Sidebar } from "./Sidebar";
 
 export const NavSpace = () => {
   const { isLoggedIn } = useContext(UserContext);
+  const [openedSideBar, setOpenedSideBar] = useState(false);
   const pathName = useLocation().pathname;
 
   function getName() {
@@ -31,10 +33,16 @@ export const NavSpace = () => {
   function changeDisplayName() {
     // updateProfile(authService.currentUser, { displayName: "PitterPark" });
   }
+
+  function onClickHamberger() {
+    setOpenedSideBar(!openedSideBar);
+  }
+
   return (
     <Container>
+      <Sidebar isOpened={openedSideBar} setClose={onClickHamberger} />
+      <Hamberger onClick={onClickHamberger} />
       <TitleText>{getName()}</TitleText>
-
       <SearchInput />
       <SizedBox width="24px" />
       {isLoggedIn ? (
@@ -54,6 +62,28 @@ const TitleText = styled.div`
   display: flex;
   flex: auto;
   align-items: center;
+`;
+
+const Hamberger = ({ onClick }) => (
+  <HambergerStyle>
+    <FontAwesomeIcon icon="bars" onClick={onClick} />
+  </HambergerStyle>
+);
+
+const HambergerStyle = styled.div`
+  display: none;
+  margin: auto 0px;
+  margin-right: 16px;
+  cursor: auto;
+  transition: color 300ms ease-out 100ms;
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
+
+  ${({ theme }) => theme.device.desktopM} {
+    display: block;
+  }
 `;
 
 const Container = styled.div`

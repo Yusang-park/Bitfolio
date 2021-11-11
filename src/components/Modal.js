@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { fadeIn } from "../styles/animation";
+import { StyledDimmer } from "./global-components";
 
 export const Modal = ({ setShowModal, children }) => {
   return (
@@ -10,23 +11,7 @@ export const Modal = ({ setShowModal, children }) => {
   );
 };
 
-const Dimmer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 48px;
-  background-color: #00000080;
-  z-index: 10000;
-  animation-duration: 0.2s;
-  animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
-`;
+const Dimmer = styled(StyledDimmer)``;
 
 const Innder = styled.div`
   display: flex;

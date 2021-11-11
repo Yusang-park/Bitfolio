@@ -15,6 +15,8 @@ import {
   Column,
   GrayText,
   Bookmark,
+  Icon,
+  ElementRow,
 } from "../components/global-components";
 import { getCryptoSummaryDataList } from "../service/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -102,7 +104,7 @@ export const CryptoRank = () => {
 
                 <Expanded justify_content="flex-end" flex={sortation[1].flex}>
                   {" "}
-                  <Icon src={e.imageUrl} />{" "}
+                  <Icon src={e.imageUrl} /> <SizedBox width="16px" />
                 </Expanded>
                 <Expanded
                   justify_content="space-between"
@@ -167,28 +169,4 @@ const Scaffold = styled(BoxStyle)`
   font-size: 14px;
   font-weight: bold;
   padding: 32px 0px 16px 0px;
-`;
-
-const Icon = styled.img`
-  width: 36px;
-  margin-right: 16px;
-  border-radius: 50px;
-`;
-
-const ElementRow = styled(AnimatedDiv)`
-  display: flex;
-  flex: 1;
-  font-size: 16px;
-  padding: 0px 32px;
-  cursor: pointer;
-
-  transition: background-color 300ms ease-out 100ms;
-
-  &:hover {
-    background-color: gray;
-  }
-
-  &:hover ${GrayText} {
-    color: white;
-  }
 `;

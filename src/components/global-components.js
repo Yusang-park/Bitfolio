@@ -76,6 +76,30 @@ const BookmarkStyle = styled.div`
   }
 `;
 
+export const Icon = styled.img`
+  width: 36px;
+
+  border-radius: 50px;
+`;
+
+export const ElementRow = styled(AnimatedDiv)`
+  display: flex;
+  flex: 1;
+  font-size: 16px;
+  padding: 0px 32px;
+  cursor: pointer;
+
+  transition: background-color 300ms ease-out 100ms;
+
+  &:hover {
+    background-color: gray;
+  }
+
+  &:hover ${GrayText} {
+    color: white;
+  }
+`;
+
 // ====================================================================================
 
 export const Divider = styled.div`
@@ -115,6 +139,24 @@ export const Column = styled.div`
     justify_content ? justify_content : css`center`};
   width: ${({ width }) => (width ? width : css`auto`)};
   height: ${({ height }) => (height ? height : css`100%`)};
+`;
+
+export const StyledDimmer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 48px;
+  background-color: #00000080;
+  z-index: 10;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
 `;
 
 // =========================================================================
