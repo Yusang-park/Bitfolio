@@ -2,10 +2,12 @@ import axios from "axios";
 import { apiKey } from "../api_config";
 import { CryptoSummaryData, CryptoDetailData } from "./cryptoModel";
 
+const providerUrl = "https://api.coingecko.com/api/v3";
+
 export async function getCryptoSummaryDataList(pageIndex) {
   let res = [];
   const response = await axios.get(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
+    `${providerUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
   );
   response.data.forEach((e) => res.push(new CryptoSummaryData(e)));
   return res;
@@ -13,9 +15,7 @@ export async function getCryptoSummaryDataList(pageIndex) {
 
 export async function getCryptoObject() {
   let res = {};
-  const response = await axios.get(
-    `https://api.coingecko.com/api/v3/coins/list`
-  );
+  const response = await axios.get(`${providerUrl}/coins/list`);
   response.data.forEach((e, index) => {
     let str = [
       e.name.replaceAll(" ", "").toLowerCase(),
@@ -38,9 +38,7 @@ export async function getCryptoObject() {
 }
 
 export async function getCryptoDetails(id) {
-  const response = await axios.get(
-    `https://api.coingecko.com/api/v3/coins/${id}`
-  );
+  const response = await axios.get(`${providerUrl}/v3/coins/${id}`);
 
   return new CryptoDetailData(response.data);
 }
@@ -49,7 +47,7 @@ export async function getCryptoPricesList(idList) {
   let s = idList.join(",");
 
   const response = await axios.get(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${s}&vs_currencies=usd`
+    `${providerUrl}/v3/simple/price?ids=${s}&vs_currencies=usd`
   );
   console.log(response.data);
   return response.data;
