@@ -32,7 +32,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   );
 });
 
-const RowCustom = styled(Button)`
+const RowCustom = styled(Row)`
   flex-wrap: wrap;
 `;
 

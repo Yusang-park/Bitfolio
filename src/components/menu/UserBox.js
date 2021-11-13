@@ -11,9 +11,9 @@ export const UserBox = () => {
 
   return (
     <div>
-      <IconButton>
+      <UserBtn>
         <FontAwesomeIcon icon="user"></FontAwesomeIcon>
-      </IconButton>
+      </UserBtn>
       <UserContainer onClick={changeDisplayName}>
         {authService.currentUser.displayName}
         <SizedBox width="16px" />
@@ -23,11 +23,18 @@ export const UserBox = () => {
   );
 };
 
+const UserBtn = styled(IconButton)`
+  display: none;
+  ${({ theme }) => theme.device.tablet} {
+    display: block;
+  }
+`;
+
 const UserContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 48px;
+  height: 46px;
   max-width: 250px;
   padding: 0px 24px;
   border: 1px solid grey;

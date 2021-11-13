@@ -34,7 +34,7 @@ export const FavoriteContainer = () => {
   }
  
     return (
-       <>
+       <Wrapper>
         <TitleText>Favorites</TitleText>
         <SizedBox height="16px" />
         <Relative>
@@ -55,8 +55,11 @@ export const FavoriteContainer = () => {
            <EmptyWapper>Add to favorites!</EmptyWapper>
             }
           </ScrollRow>
-          </Relative></>)
+          </Relative></Wrapper>)
 }
+const Wrapper = styled.div`
+ 
+`;
 
 const Relative = styled.div`
 position: relative;
@@ -81,26 +84,27 @@ padding-bottom: 16px;
 `;
 
 const EmptyWapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width:100%;
-  height:9vh;
+  height:13vh;
   margin : 24px;
   font-weight: bold;
 `;
 
 const Logo = styled.img`
-width:4.5vh;
+width:7.5vh;
 border-radius:50px;
 transition: width 300ms ease-out 100ms;
+
 `;
 
 const ElementContainer = styled(BoxStyle)`
 align-items:space-around;
 justify-content: space-between;
-width:9vh;
-height:9vh;
+width:13vh;
+height:13vh;
 margin-right:32px;
 padding:24px;
 
@@ -112,6 +116,6 @@ padding:24px;
     color: white;
   }
   &:hover ${Logo}{
-  width:5vh;
+  width:6.5vh;
 }
 `;

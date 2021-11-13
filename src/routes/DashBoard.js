@@ -10,15 +10,24 @@ import { FavoriteContainer } from "./DashBoard/Favorites";
 
 export const DashBoard = () => {
   return (
-    <Row align_items="flex-start" justify_content="left" width="100%">
+    <Wrapper>
       <LeftContent>
         <FavoriteContainer />
       </LeftContent>
       {/* <HotCrypto /> */}
-      <RightContent>Portfolio</RightContent>
-    </Row>
+      {/* <RightContent>Portfolio</RightContent> */}
+    </Wrapper>
   );
 };
+
+const Wrapper = styled(Row)`
+  justify-content: left;
+  align-items: flex-start;
+  width: 100%;
+  ${({ theme }) => theme.device.tablet} {
+    flex-direction: column;
+  }
+`;
 
 const LeftContent = styled.div`
   display: flex;

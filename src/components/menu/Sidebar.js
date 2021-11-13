@@ -81,10 +81,10 @@ const LogoRow = styled(Row)`
   }
 
   &:hover ${TitleText} {
-    font-size: 29px;
+    font-size: 24px;
   }
   &:hover ${Logo} {
-    width: 100px;
+    width: 89px;
   }
 `;
 

@@ -76,30 +76,6 @@ const BookmarkStyle = styled.div`
   }
 `;
 
-export const Icon = styled.img`
-  width: 36px;
-
-  border-radius: 50px;
-`;
-
-export const ElementRow = styled(AnimatedDiv)`
-  display: flex;
-  flex: 1;
-  font-size: 16px;
-  padding: 0px 32px;
-  cursor: pointer;
-
-  transition: background-color 300ms ease-out 100ms;
-
-  &:hover {
-    background-color: gray;
-  }
-
-  &:hover ${GrayText} {
-    color: white;
-  }
-`;
-
 // ====================================================================================
 
 export const Divider = styled.div`
