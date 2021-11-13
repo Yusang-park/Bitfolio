@@ -78,7 +78,7 @@ const DetailScaffold = styled(BoxStyle)`
 
   ${({ theme }) => theme.device.tablet} {
     width: auto;
-    height: 65vh;
+    height: 80vh;
     padding: 24px;
     margin-bottom: 32px;
   }

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../service/apis";
-import { NonPaddingButton } from "../global-components";
+import { NonPaddingButton, Row } from "../global-components";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -82,15 +82,13 @@ export const SearchInput = () => {
   return (
     <Container>
       <SearchContainer>
+        <FontAwesomeIcon icon="search" size="1x" color="grey" />
         <Input
           placeholder="Search"
           onFocus={requestCryptoList}
           value={inputText}
           onChange={onChange}
         />
-        <NonPaddingButton>
-          <FontAwesomeIcon icon="search" size="1x" color="white" />
-        </NonPaddingButton>
       </SearchContainer>
       {loaded && (
         <RecommendedContainer>
@@ -101,34 +99,45 @@ export const SearchInput = () => {
           ))}
         </RecommendedContainer>
       )}
+      <SearchButton>
+        <FontAwesomeIcon icon="search" size="1x" color="white" />
+      </SearchButton>
     </Container>
   );
 };
-const Container = styled.div`
-  flex: 1;
 
-  max-width: 300px;
-  height: 4.1vh;
-  max-height: 64px;
-  min-height: 46px;
+const SearchButton = styled(NonPaddingButton)`
+  display: none;
+  ${({ theme }) => theme.device.tablet} {
+    display: block;
+  }
+`;
+
+const Container = styled(Row)`
+  position: relative;
+  height: 100%;
+  justify-content: right;
 `;
 
 const SearchContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   height: 100%;
   border-radius: 21px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
   background: ${(props) => props.theme.colors.gray2};
+  ${({ theme }) => theme.device.tablet} {
+    display: none;
+  }
 `;
 
 const Input = styled.input`
-  width: calc(100% - 68px);
-  padding-right: 16px;
-  font-size: 20px;
+  width: auto;
 
+  font-size: 20px;
+  margin-left: 16px;
   border: transparent;
   background: transparent;
   color: white;
@@ -143,7 +152,8 @@ const Input = styled.input`
 const RecommendedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+  width: auto;
   z-index: 1;
   overflow-y: scroll;
   margin-left: 8%;

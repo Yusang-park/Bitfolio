@@ -35,7 +35,8 @@ export const Favorite = () => {
     return (
        <>
         <TitleText>Favorites</TitleText>
-        <SizedBox height="16px"/>
+        <SizedBox height="16px" />
+        <Relative>
         <ScrollRow>
           {Object.keys(favorites).length !== 0 ?
           
@@ -52,11 +53,18 @@ export const Favorite = () => {
              : 
            <EmptyWapper>Add to favorites!</EmptyWapper>
             }
-            </ScrollRow></>)
+          </ScrollRow>
+          </Relative></>)
 }
 
+const Relative = styled.div`
+position: relative;
+width:100%;
+`;
 
 const ScrollRow = styled.div`
+position: absolute;
+width:100%;
 display:flex;
 overflow-x: scroll;
 padding-bottom: 16px;

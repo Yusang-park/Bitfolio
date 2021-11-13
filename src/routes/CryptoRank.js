@@ -165,8 +165,13 @@ export const CryptoRank = () => {
 
 const Scaffold = styled(BoxStyle)`
   width: 100%;
+  height: auto;
   max-width: 1440px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
   padding: 32px 0px 16px 0px;
+
+  ${({ theme }) => theme.device.tablet} {
+    height: 110vh;
+  }
 `;

@@ -11,9 +11,10 @@ import { DashBoard } from "../routes/DashBoard";
 import { CryptoRank } from "../routes/CryptoRank";
 import { Exchanges } from "../routes/Exchanges";
 import { Portfolio } from "../routes/Portfolio";
-import { NavSpace } from "./menu/NavSpace";
+import { NavSpace as Nav } from "./menu/NavSpace";
 import { Details } from "../routes/Details";
 import { UserProvider } from "../provider/userProvider";
+import { Column } from "./global-components";
 
 function App() {
   const auth = authService;
@@ -37,9 +38,9 @@ function App() {
         <Scaffold>
           <BrowserRouter>
             <Sidebar />
-            <ContentsSpace>
-              <NavSpace />
-              <MainSpace>
+            <MainSpace>
+              <Nav />
+              <Content>
                 <Switch>
                   <Route exact path="/">
                     <DashBoard />
@@ -60,8 +61,8 @@ function App() {
                     <Details />
                   </Route>
                 </Switch>
-              </MainSpace>
-            </ContentsSpace>
+              </Content>
+            </MainSpace>
           </BrowserRouter>
         </Scaffold>
       </UserProvider>
@@ -73,30 +74,39 @@ export default App;
 
 const Scaffold = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
 `;
 
-const ContentsSpace = styled.div`
+const MainSpace = styled(Column)`
   display: flex;
   flex-direction: column;
   flex: 1;
-
+  height: auto;
   margin: 32px;
-  /* margin-top: 32px; */
-
-  height: calc(100vh - 64px);
+  justify-content: flex-start;
+  ${({ theme }) => theme.device.tablet} {
+    width: 100%;
+    margin: 24px;
+  }
+  ${({ theme }) => theme.device.tablet} {
+    width: 100%;
+    margin: 16px;
+  }
 `;
 
-const MainSpace = styled.div`
+const Content = styled.div`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  flex: 1;
 
   ${({ theme }) => theme.device.tablet} {
     flex-direction: column;
     height: fit-content;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
+  }
+  ${({ theme }) => theme.device.mobile} {
+    padding-bottom: 16px;
   }
 `;

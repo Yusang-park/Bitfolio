@@ -15,9 +15,8 @@ export const DashBoard = () => {
       <LeftSpace>
         <Favorite />
         <SizedBox height="32px" />
-        {/* <HotCrypto /> */}
       </LeftSpace>
-      <SizedBox width="32px" />
+      {/* <HotCrypto /> */}
       {/* <RightSpace>Portfolio</RightSpace> */}
     </Row>
   );
@@ -32,11 +31,12 @@ const RowCustom = styled.div`
 const LeftSpace = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50vw;
+
+  width: 66%;
   height: 100%;
 
   ${({ theme }) => theme.device.tablet} {
-    width: calc(100vw - 64px);
+    width: 100%;
   }
 `;
 

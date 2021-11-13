@@ -56,21 +56,23 @@ export const ChatScaffold = () => {
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
 
-      {chatData.length !== 0 && (
-        <ChatContainer id="chatContent" ChatHistory>
-          {Object.values(chatData).map(
-            (e, i) =>
-              authService.currentUser != null && (
-                <TalkBox
-                  key={i}
-                  docKey={Object.keys(chatData)[i]}
-                  data={e}
-                  isMine={e[1].uid === authService.currentUser.uid}
-                />
-              )
-          )}
-        </ChatContainer>
-      )}
+      <ChatContainer>
+        {chatData.length !== 0 && (
+          <ChatScrollBox id="chatContent" ChatHistory>
+            {Object.values(chatData).map(
+              (e, i) =>
+                authService.currentUser != null && (
+                  <TalkBox
+                    key={i}
+                    docKey={Object.keys(chatData)[i]}
+                    data={e}
+                    isMine={e[1].uid === authService.currentUser.uid}
+                  />
+                )
+            )}
+          </ChatScrollBox>
+        )}
+      </ChatContainer>
 
       <InputContainer>
         <Input
@@ -87,17 +89,27 @@ export const ChatScaffold = () => {
   );
 };
 
+const ChatContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  ${({ theme }) => theme.device.tablet} {
+    height: 65vh;
+  }
+`;
+
 const Scaffold = styled(BoxStyle)`
   flex: 1;
   padding-right: 28px;
 `;
 
-const ChatContainer = styled.div`
+const ChatScrollBox = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
-  /* width: 100%; */
-  height: 70vh;
-
+  width: 100%;
+  height: 100%;
   padding-right: 4px;
   color: black;
   overflow-y: auto;
