@@ -18,7 +18,7 @@ export const Sidebar = React.memo(
 
     function onClickLogo(e) {
       history.push("/");
-      setClose();
+      if (setClose !== undefined) setClose();
     }
 
     return (
