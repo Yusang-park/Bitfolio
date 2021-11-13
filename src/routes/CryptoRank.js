@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import { apiKey, providerUrl } from "../api_config";
 import {
-  NonPaddingButton,
+  IconButton,
   Divider,
   Expanded,
   SizedBox,
@@ -17,13 +17,13 @@ import {
   Bookmark,
   Icon,
   ElementRow,
-} from "../components/global-components";
-import { getCryptoSummaryDataList } from "../service/apis";
+} from "../Components/GlobalComponents";
+import { getCryptoSummaryDataList } from "../Service/Apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
+import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 import { useHistory } from "react-router-dom";
 
-import { UserContext } from "../provider/userProvider";
+import { UserContext } from "../Provider/UserProvider";
 
 const maxPage = 179;
 
@@ -74,7 +74,7 @@ export const CryptoRank = () => {
   }
 
   return (
-    <Scaffold>
+    <Wrapper>
       <Row>
         <SizedBox width="32px" />
         {sortation.map(({ name, flex }, i) => (
@@ -159,11 +159,11 @@ export const CryptoRank = () => {
           <FontAwesomeIcon icon="chevron-right" size="1x" color="white" />
         </span>
       </Row>
-    </Scaffold>
+    </Wrapper>
   );
 };
 
-const Scaffold = styled(BoxStyle)`
+const Wrapper = styled(BoxStyle)`
   width: 100%;
   height: auto;
   max-width: 1440px;

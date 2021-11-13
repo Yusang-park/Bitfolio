@@ -1,45 +1,39 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { Favorite } from "../components/dashboard/Favorites";
-import { HotCrypto } from "../components/dashboard/HotCrypto";
 import {
   Column,
   Row,
   BoxStyle as BoxStyle,
   SizedBox,
-} from "../components/global-components";
+} from "../Components/GlobalComponents";
+import { FavoriteContainer } from "./DashBoard/Favorites";
 
 export const DashBoard = () => {
   return (
     <Row align_items="flex-start" justify_content="left" width="100%">
-      <LeftSpace>
-        <Favorite />
-        <SizedBox height="32px" />
-      </LeftSpace>
+      <LeftContent>
+        <FavoriteContainer />
+      </LeftContent>
       {/* <HotCrypto /> */}
-      {/* <RightSpace>Portfolio</RightSpace> */}
+      <RightContent>Portfolio</RightContent>
     </Row>
   );
 };
 
-const RowCustom = styled.div`
-  ${({ theme }) => theme.device.tablet} {
-    flex-direction: column;
-  }
-`;
-
-const LeftSpace = styled.div`
+const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
 
   width: 66%;
   height: 100%;
+  margin-right: 32px;
 
   ${({ theme }) => theme.device.tablet} {
     width: 100%;
+    margin-right: 0px;
   }
 `;
 
-const RightSpace = styled(BoxStyle)`
+const RightContent = styled(BoxStyle)`
   flex: 1;
 `;

@@ -1,19 +1,19 @@
 import React, { useState, createContext, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { getCryptoDetails } from "../service/apis";
-import { fadeIn } from "../styles/animation";
+import { getCryptoDetails } from "../Service/Apis";
+
 import {
   Button,
   Row,
   SizedBox,
   ATag,
   BoxStyle,
-} from "../components/global-components";
+} from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
-import { DetailsUpperContainer } from "../components/details/DetailsUpperSpace";
-import { ProgressIndicator } from "../components/progressIndicator/progressIndicator";
-import { DetailsInfoContainer } from "../components/details/DetailsInfoContainer";
-import { ChatScaffold } from "../components/chat/ChatContainer";
+import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
+import { ChatScaffold } from "./Details/ChatContainer";
+import { DetailsHeader } from "./Details/DetailsHeader";
+import { DetailsInfoTabContainer } from "./Details/DetailsInfoTabContainer";
 
 export const CryptoDataContext = createContext({
   data: null,
@@ -33,7 +33,7 @@ export const Details = (props) => {
   }, [id]);
 
   const menu = [
-    { key: "Information", component: <DetailsInfoContainer /> },
+    { key: "Information", component: <DetailsInfoTabContainer /> },
     { key: "Market", component: <div /> },
   ];
 
@@ -47,8 +47,8 @@ export const Details = (props) => {
     </Center>
   ) : (
     <CryptoDataContext.Provider value={{ data: data }}>
-      <DetailScaffold>
-        <DetailsUpperContainer />
+      <DetailContainer>
+        <DetailsHeader />
         <TabBar>
           {menu.map((e, i) => (
             <ATag
@@ -62,7 +62,7 @@ export const Details = (props) => {
           ))}
         </TabBar>
         {menu[selectedMenuIndex].component}
-      </DetailScaffold>
+      </DetailContainer>
       <SizedBox width="32px" />
       <ChatScaffold />
     </CryptoDataContext.Provider>
@@ -73,7 +73,7 @@ const Center = styled.div`
   margin: auto;
 `;
 
-const DetailScaffold = styled(BoxStyle)`
+const DetailContainer = styled(BoxStyle)`
   width: 50vw;
 
   ${({ theme }) => theme.device.tablet} {

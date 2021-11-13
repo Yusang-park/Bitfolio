@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "../../provider/userProvider";
-import { CryptoDataContext } from "../../routes/Details";
+import { UserContext } from "../../Provider/UserProvider";
+import { CryptoDataContext } from "../Details";
 import {
   Expanded,
   PercentText,
@@ -11,9 +11,9 @@ import {
   BoldTitleText,
   GrayText,
   Bookmark,
-} from "../global-components";
+} from "../../Components/GlobalComponents";
 
-export const DetailsUpperContainer = () => {
+export const DetailsHeader = () => {
   const { setFavoriteCrypto, favorites } = useContext(UserContext);
   const { data } = useContext(CryptoDataContext);
 

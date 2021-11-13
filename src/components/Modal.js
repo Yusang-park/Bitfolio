@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { fadeIn } from "../styles/animation";
-import { StyledDimmer } from "./global-components";
+import { fadeIn } from "../Styles/Animation";
+import { StyledDimmer } from "./GlobalComponents";
 
 export const Modal = ({ setShowModal, children }) => {
   return (

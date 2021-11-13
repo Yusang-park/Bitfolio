@@ -1,23 +1,18 @@
 import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { categories } from "../../routes/categories";
+import { categories } from "../../Routes/Categories";
 import styled from "styled-components";
-import {
-  Expanded,
-  SizedBox,
-  NonPaddingButton,
-  Button,
-} from "../global-components";
+import { Expanded, SizedBox, IconButton, Button } from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SearchInput } from "../searchInput/SearchInput";
-import { UserContext } from "../../provider/userProvider";
-import { LoginButtonContaienr } from "../auth/LoginButtonContainer";
+import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
+import { UserContext } from "../../Provider/UserProvider";
+import { LoginBtn } from "../User/LoginBtn";
 import { updateProfile } from "@firebase/auth";
 import { Sidebar } from "./Sidebar";
-import { UserInfoContainer } from "./UserInfoContainer";
+import { UserBox } from "./UserBox";
 
-export const NavSpace = () => {
-  const { isLoggedIn } = useContext(UserContext);
+export const Nav = () => {
+  const { isLoggedIn, initialize } = useContext(UserContext);
   const [openedSideBar, setOpenedSideBar] = useState(false);
   const pathName = useLocation().pathname;
 
@@ -40,11 +35,12 @@ export const NavSpace = () => {
         isOpened={openedSideBar}
         setClose={onClickHamberger}
       />
-      <Hamberger onClick={onClickHamberger} />
+      <HambergerBtn onClick={onClickHamberger} />
       <TitleText>{getName()}</TitleText>
-      <SearchInput />
+      <CryptoSearchBox />
       <SizedBox width="16px" />
-      {/* {isLoggedIn ? <UserInfoContainer /> : <LoginButtonContaienr />} */}
+
+      {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
     </Container>
   );
 };
@@ -53,10 +49,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-  height: 4.7vh;
-  min-height: 48px;
+  height: fit-content;
   margin-bottom: 32px;
   font-size: 26px;
 `;
@@ -67,7 +61,7 @@ const TitleText = styled.div`
   align-items: center;
 `;
 
-const Hamberger = ({ onClick }) => (
+const HambergerBtn = ({ onClick }) => (
   <HambergerStyle>
     <FontAwesomeIcon icon="bars" onClick={onClick} />
   </HambergerStyle>

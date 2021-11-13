@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import styled from "styled-components";
-import { CryptoDataContext } from "../../routes/Details";
-import { fadeIn } from "../../styles/animation";
+import { CryptoDataContext } from "../Details";
+import { fadeIn } from "../../Styles/Animation";
 import {
   AnimatedDiv,
   Expanded,
@@ -10,11 +10,11 @@ import {
   YellowTitleCircle,
   Row,
   Column,
-} from "../global-components";
+} from "../../Components/GlobalComponents";
 import useWindowDimensions from "../../useWindowDimensions";
-import { Chart } from "./TradingViewChart";
+import { Chart } from "../../Components/TradingViewChart";
 
-export const DetailsInfoContainer = () => {
+export const DetailsInfoTabContainer = () => {
   const { data } = useContext(CryptoDataContext);
 
   const MarketCapBox = () => (

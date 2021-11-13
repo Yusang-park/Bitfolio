@@ -6,9 +6,9 @@ import {
   SizedBox,
   StyledDimmer,
   TitleText,
-} from "../global-components";
+} from "../GlobalComponents";
 import { Link, useLocation } from "react-router-dom";
-import { categories } from "../../routes/categories";
+import { categories } from "../../Routes/Categories";
 import { useHistory } from "react-router-dom";
 
 export const Sidebar = React.memo(

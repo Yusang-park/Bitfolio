@@ -1,6 +1,6 @@
 import axios from "axios";
 import { apiKey } from "../api_config";
-import { CryptoSummaryData, CryptoDetailData } from "./cryptoModel";
+import { CryptoSummaryData, CryptoDetailData } from "./Models";
 
 const providerUrl = "https://api.coingecko.com/api/v3";
 

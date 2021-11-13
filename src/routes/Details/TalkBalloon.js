@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import React from "react";
 import { Timestamp } from "@firebase/firestore";
-import { Button, Divider, Row, SizedBox } from "../global-components";
+import {
+  Button,
+  Divider,
+  Row,
+  SizedBox,
+} from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   const { createdAt, message, name } = data[1];
@@ -27,7 +32,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   );
 });
 
-const RowCustom = styled(Row)`
+const RowCustom = styled(Button)`
   flex-wrap: wrap;
 `;
 

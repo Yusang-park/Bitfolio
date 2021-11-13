@@ -1,17 +1,15 @@
 import React, { useReducer, createContext, useEffect } from "react";
 import { authService } from "../firebase_config";
-import { getFavorites, updateFavorites } from "../service/fireDb";
+import { getFavorites, updateFavorites } from "../Service/FirebaseFunctions";
 
 //to send Sortation Dropbox and SearchInputField data to ContentsContainer from UpperSpace
 const initialState = {
+  initialize: false,
   isLoggedIn: false,
   favorites: {},
 };
 
-const UserContext = createContext({
-  isLoggedIn: false,
-  favorites: {},
-});
+const UserContext = createContext();
 
 //==============================================================================//
 
@@ -21,6 +19,7 @@ function reducer(state, action) {
       return {
         ...state,
         ...initialState,
+        initialize: true,
       };
     case "setFavoriteCrypto":
       return {
@@ -40,6 +39,7 @@ function reducer(state, action) {
         ...state,
         ...action.payload,
         isLoggedIn: true,
+        initialize: true,
       };
 
     default:

@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRef } from "react";
 import styled from "styled-components";
-import { fadeIn } from "../../styles/animation";
-import { CryptoDataContext } from "../../routes/Details";
-import {
-  Button,
-  Row,
-  BoxStyle,
-  SizedBox,
-  TitleText,
-  YellowButton,
-} from "../global-components";
+import { fadeIn } from "../../Styles/Animation";
+import { CryptoDataContext } from "../Details";
 import { authService } from "../../firebase_config";
-import { getChatMessages, sendChatMessage } from "../../service/fireDb";
+import {
+  getChatMessages,
+  sendChatMessage,
+} from "../../Service/FirebaseFunctions";
 import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
+import {
+  BoxStyle,
+  Row,
+  SizedBox,
+  TitleText,
+} from "../../Components/GlobalComponents";
 
 export const ChatScaffold = () => {
   const useRefScroll = useRef();
@@ -52,7 +53,7 @@ export const ChatScaffold = () => {
   }
 
   return (
-    <Scaffold>
+    <Wrapper>
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
 
@@ -85,7 +86,7 @@ export const ChatScaffold = () => {
         ></Input>
         <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
       </InputContainer>
-    </Scaffold>
+    </Wrapper>
   );
 };
 
@@ -99,7 +100,7 @@ const ChatContainer = styled.div`
   }
 `;
 
-const Scaffold = styled(BoxStyle)`
+const Wrapper = styled(BoxStyle)`
   flex: 1;
   padding-right: 28px;
 `;

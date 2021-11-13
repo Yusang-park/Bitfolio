@@ -1,14 +1,15 @@
 
 import React, { useContext, useState } from "react";
 import { useEffect } from 'react';
-import { useRef } from 'react';
+
 import { useHistory } from 'react-router';
 import styled from "styled-components";
-import { UserContext } from '../../provider/userProvider';
-import { getCryptoPricesList } from '../../service/apis';
-import { Row, BoxStyle, TitleText, SizedBox, GrayText, SubTitleText } from '../global-components';
+import { BoxStyle , TitleText,  GrayText, SubTitleText, SizedBox} from '../../Components/GlobalComponents';
+import { UserContext } from '../../Provider/UserProvider';
+import { getCryptoPricesList } from '../../Service/Apis';
 
-export const Favorite = () => {
+
+export const FavoriteContainer = () => {
   const history = useHistory();
   const [prices, setPrices] = useState({});
   const { favorites } = useContext(UserContext);

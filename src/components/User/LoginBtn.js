@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../global-components";
+import { Button } from "../GlobalComponents";
 import { Modal } from "../Modal";
-import { LoginBox } from "./LoginBox";
+import { LoginBox } from "./LoginDialog";
 
-export const LoginButtonContaienr = () => {
+export const LoginBtn = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   function onClickHandler() {

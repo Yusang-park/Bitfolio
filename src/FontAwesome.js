@@ -7,6 +7,7 @@ import {
   faBookmark,
   faSignOutAlt,
   faBars,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
@@ -16,3 +17,4 @@ library.add(faChevronDown);
 library.add(faBookmark);
 library.add(faSignOutAlt);
 library.add(faBars);
+library.add(faUser);

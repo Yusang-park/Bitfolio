@@ -1,4 +1,4 @@
-import { fadeIn } from "./animation";
+import { fadeIn } from "./Animation";
 
 const margins = {
   sm: ".5rem",

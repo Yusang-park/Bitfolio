@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { getCryptoObject } from "../../service/apis";
-import { NonPaddingButton, Row } from "../global-components";
+import { getCryptoObject } from "../../Service/Apis";
+import { IconButton, Row } from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -35,7 +35,7 @@ function findLastElement(object, res) {
 }
 
 //TODO: focus out
-export const SearchInput = () => {
+export const CryptoSearchBox = () => {
   const _cryptoList = useRef(null);
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
@@ -106,7 +106,7 @@ export const SearchInput = () => {
   );
 };
 
-const SearchButton = styled(NonPaddingButton)`
+const SearchButton = styled(IconButton)`
   display: none;
   ${({ theme }) => theme.device.tablet} {
     display: block;
@@ -115,7 +115,7 @@ const SearchButton = styled(NonPaddingButton)`
 
 const Container = styled(Row)`
   position: relative;
-  height: 100%;
+  height: 48px;
   justify-content: right;
 `;
 

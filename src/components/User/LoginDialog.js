@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { loginWithSocial } from "../../service/auth";
-import { Button, Column } from "../global-components";
+import { loginWithSocial } from "../../Service/Auth";
+import { Button, Column } from "../GlobalComponents";
 
 export const LoginBox = () => {
   const history = useHistory();

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
-import { fadeIn } from "../styles/animation";
+import { fadeIn } from "../Styles/Animation";
 // ====================================================================================
 export const TitleText = styled.div`
   font-size: 26px;
@@ -178,7 +178,7 @@ export const Button = styled.button`
   }
 `;
 
-export const NonPaddingButton = styled(Button)`
+export const IconButton = styled(Button)`
   vertical-align: middle;
   width: 38px;
   padding: 0px 0px;
