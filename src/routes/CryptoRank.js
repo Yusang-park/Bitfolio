@@ -135,10 +135,11 @@ const BasicInfoSection = React.memo(
             </Row>
             <Expanded flex="1">
               <Icon src={e.imageUrl} />
-
-              {e.fullName}
-              <br></br>
-              <GrayText>{e.symbol.toUpperCase()}</GrayText>
+              <Column>
+                {e.fullName}
+                <br></br>
+                <GrayText>{e.symbol.toUpperCase()}</GrayText>
+              </Column>
             </Expanded>
           </Row>
         ))}
@@ -262,6 +263,6 @@ const Wrapper = styled(BoxStyle)`
   padding: 32px 0px 16px 0px;
 
   ${({ theme }) => theme.device.tablet} {
-    height: 100vh;
+    height: 90vh;
   }
 `;
