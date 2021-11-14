@@ -262,6 +262,6 @@ const Wrapper = styled(BoxStyle)`
   padding: 32px 0px 16px 0px;
 
   ${({ theme }) => theme.device.tablet} {
-    height: 90vh;
+    height: 100vh;
   }
 `;
