@@ -118,30 +118,34 @@ const BasicInfoSection = React.memo(
         </Row>
 
         {cryptoList.map((e, i) => (
-          <Row
-            key={i * 10}
-            height="100%"
-            justify_content="flex-start"
-            align="flex-start"
-            onClick={() => routeDetails(e.id)}
-          >
-            <Row width="8vw" justify_content="space-evenly">
-              <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
-              <Bookmark
-                isSelected={favorites[e.id]}
-                onClick={() => setFavoriteCrypto(e.id, e.fullName, e.imageUrl)}
-                size="1x"
-              />
+          <ElementRow key={i} onClick={() => routeDetails(e.id)}>
+            <Row
+              key={i * 10}
+              height="100%"
+              justify_content="flex-start"
+              align="flex-start"
+              onClick={() => routeDetails(e.id)}
+            >
+              <Row width="8vw" justify_content="space-evenly">
+                <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
+                <Bookmark
+                  isSelected={favorites[e.id]}
+                  onClick={() =>
+                    setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
+                  }
+                  size="1x"
+                />
+              </Row>
+              <Expanded flex="1">
+                <Icon src={e.imageUrl} />
+                <Column>
+                  {e.fullName}
+                  <br></br>
+                  <GrayText>{e.symbol.toUpperCase()}</GrayText>
+                </Column>
+              </Expanded>
             </Row>
-            <Expanded flex="1">
-              <Icon src={e.imageUrl} />
-              <Column>
-                {e.fullName}
-                <br></br>
-                <GrayText>{e.symbol.toUpperCase()}</GrayText>
-              </Column>
-            </Expanded>
-          </Row>
+          </ElementRow>
         ))}
       </StyledBasicInfoSection>
     );
@@ -198,8 +202,9 @@ const ElementRow = styled(Row)`
 const Element = styled(Expanded)`
   ${({ theme }) => theme.device.tablet} {
     flex: none;
-    width: ${({ flex }) => css`calc( 32px * ${flex})`};
-    margin-right: 55px;
+    width: ${({ flex }) => css`calc( 28px * ${flex})`};
+    margin-left: 16px;
+    margin-right: 16px;
     padding: 0px 0px;
   }
 `;
@@ -237,18 +242,16 @@ const StyledDetailInfoSection = styled(Column)`
   width: 100%;
   height: 100%;
   overflow-x: auto;
-  ${({ theme }) => theme.device.tablet} {
-    width: calc(100% - 32px);
-    margin-left: 32px;
-  }
 
   &::-webkit-scrollbar {
-    height: 4px;
+    position: fixed;
+    height: 0px;
     border-radius: 25px;
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    height: 4px;
+    position: fixed;
+    height: 0px;
     background-color: gray;
     border-radius: 4px;
   }
