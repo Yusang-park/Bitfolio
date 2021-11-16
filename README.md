@@ -28,3 +28,6 @@
 
 2021.11.8
 * Add Favorites component to Dashboard
+
+2021.11.14
+* Apply reactive design to mobile, tablet
