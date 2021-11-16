@@ -172,7 +172,9 @@ const DetailInfoSection = React.memo(
               <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
               <Element flex="4">${e.volume.toLocaleString()}</Element>
               <Element flex="2">
-                <PercentText>{e.pricePercent24h}</PercentText>
+                <PercentText negative={e.pricePercent24h.includes("-")}>
+                  {e.pricePercent24h}
+                </PercentText>
               </Element>
             </ElementRow>
           ))}
