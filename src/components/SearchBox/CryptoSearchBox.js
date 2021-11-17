@@ -115,6 +115,7 @@ const SearchButton = styled(IconButton)`
 
 const Container = styled(Row)`
   position: relative;
+  width: fit-content;
   height: 48px;
   justify-content: right;
 `;

@@ -30,6 +30,7 @@ export const CryptoRank = () => {
   const [cryptoList, setCryptoList] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
+  const [hoverIndex, setHoverIndex] = useState(-1);
   const history = useHistory();
 
   useEffect(() => {
@@ -72,11 +73,15 @@ export const CryptoRank = () => {
               pageIndex={pageIndex}
               cryptoList={cryptoList}
               routeDetails={routeDetails}
+              hoverIndex={hoverIndex}
+              setHoverIndex={setHoverIndex}
             ></BasicInfoSection>
             <DetailInfoSection
               pageIndex={pageIndex}
               cryptoList={cryptoList}
               routeDetails={routeDetails}
+              hoverIndex={hoverIndex}
+              setHoverIndex={setHoverIndex}
             ></DetailInfoSection>
           </>
         )}
@@ -108,7 +113,7 @@ export const CryptoRank = () => {
 };
 
 const BasicInfoSection = React.memo(
-  ({ cryptoList, pageIndex, routeDetails }) => {
+  ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
     const { favorites, setFavoriteCrypto } = useContext(UserContext);
     return (
       <StyledBasicInfoSection>
@@ -118,7 +123,17 @@ const BasicInfoSection = React.memo(
         </Row>
 
         {cryptoList.map((e, i) => (
-          <ElementRow key={i} onClick={() => routeDetails(e.id)}>
+          <ElementRow
+            onMouseOver={() => {
+              if (hoverIndex !== i) setHoverIndex(i);
+            }}
+            onMouseOut={() => {
+              setHoverIndex(-1);
+            }}
+            isHovered={hoverIndex === i}
+            key={i}
+            onClick={() => routeDetails(e.id)}
+          >
             <Row
               key={i * 10}
               height="100%"
@@ -153,11 +168,11 @@ const BasicInfoSection = React.memo(
 );
 
 const DetailInfoSection = React.memo(
-  ({ cryptoList, pageIndex, routeDetails }) => {
+  ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
     return (
       <Relative>
         <StyledDetailInfoSection>
-          <Row justify_content="flex-start" align="flex-start">
+          <Row id="1" justify_content="flex-start" align="flex-start">
             <Element flex="2">Price</Element>
             <Element flex="5">MarketCap</Element>
             <Element flex="5">CirculatingSupply</Element>
@@ -166,7 +181,17 @@ const DetailInfoSection = React.memo(
           </Row>
 
           {cryptoList.map((e, i) => (
-            <ElementRow key={i} onClick={() => routeDetails(e.id)}>
+            <ElementRow
+              onMouseOver={() => {
+                if (hoverIndex !== i) setHoverIndex(i);
+              }}
+              onMouseOut={() => {
+                setHoverIndex(-1);
+              }}
+              isHovered={hoverIndex === i}
+              key={i}
+              onClick={() => routeDetails(e.id)}
+            >
               <Element flex="2">${e.price}</Element>
               <Element flex="5">${e.marketCap.toLocaleString()}</Element>
               <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
@@ -188,17 +213,13 @@ const ElementRow = styled(Row)`
   height: 100%;
   justify-content: flex-start;
   align-items: center;
+  background-color: ${({ isHovered }) => isHovered && css`grey`};
+  /* border-bottom: 1px solid; */
+  ${GrayText} {
+    color: ${({ isHovered }) => isHovered && css`white`};
+  }
   cursor: pointer;
-
   transition: background-color 300ms ease-out 100ms;
-
-  &:hover {
-    background-color: gray;
-  }
-
-  &:hover ${GrayText} {
-    color: white;
-  }
 `;
 
 const Element = styled(Expanded)`

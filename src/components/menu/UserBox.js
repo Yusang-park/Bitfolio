@@ -10,7 +10,7 @@ export const UserBox = () => {
   }
 
   return (
-    <div>
+    <>
       <UserBtn>
         <FontAwesomeIcon icon="user"></FontAwesomeIcon>
       </UserBtn>
@@ -19,7 +19,7 @@ export const UserBox = () => {
         <SizedBox width="16px" />
         <LogoutBtn />
       </UserContainer>
-    </div>
+    </>
   );
 };
 
@@ -35,7 +35,7 @@ const UserContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 46px;
-  max-width: 250px;
+  max-width: 500px;
   padding: 0px 24px;
   border: 1px solid grey;
   border-radius: 21px;
