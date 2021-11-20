@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useHistory } from 'react-router';
 import styled from "styled-components";
-import { BoxStyle , TitleText,  GrayText, SubTitleText, SizedBox} from '../../Components/GlobalComponents';
+import { StyledBox , TitleText,  GrayText, SubTitleText, SizedBox} from '../../Components/GlobalComponents';
 import { UserContext } from '../../Provider/UserProvider';
 import { getCryptoPricesList } from '../../Service/Apis';
 
@@ -45,7 +45,7 @@ export const FavoriteContainer = () => {
                 <span key={i} onClick={()=>routeDetails(e)}><ElementContainer>
                   <Logo src={favorites[e].imageUrl} />
                   <div>
-                    <SubTitleText>{favorites[e].fullName}</SubTitleText>
+                    <CryptoName>{favorites[e].fullName}</CryptoName>
                     <SizedBox height="4px"/>
                 {Object.keys(prices).includes(e)&&
                   <GrayText>{`$${prices[e].usd}`}</GrayText>}</div>
@@ -59,6 +59,10 @@ export const FavoriteContainer = () => {
 }
 const Wrapper = styled.div`
  
+`;
+
+const CryptoName = styled(SubTitleText)`
+
 `;
 
 const Relative = styled.div`
@@ -90,6 +94,7 @@ const EmptyWapper = styled.div`
   width:100%;
   height:13vh;
   margin : 24px;
+  font-size : 1.6rem;
   font-weight: bold;
 `;
 
@@ -100,13 +105,14 @@ transition: width 300ms ease-out 100ms;
 
 `;
 
-const ElementContainer = styled(BoxStyle)`
+const ElementContainer = styled(StyledBox)`
 align-items:space-around;
 justify-content: space-between;
 width:13vh;
 height:13vh;
 margin-right:32px;
 padding:24px;
+
 
 &:hover{
   background-color: grey;

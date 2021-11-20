@@ -11,7 +11,7 @@ import {
   PercentText,
   Row,
   AnimatedDiv,
-  BoxStyle,
+  StyledBox,
   Column,
   GrayText,
   Bookmark,
@@ -280,11 +280,11 @@ const StyledDetailInfoSection = styled(Column)`
   }
 `;
 
-const Wrapper = styled(BoxStyle)`
+const Wrapper = styled(StyledBox)`
   width: 100%;
   height: auto;
   max-width: 1440px;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 500;
   padding: 32px 0px 16px 0px;
 

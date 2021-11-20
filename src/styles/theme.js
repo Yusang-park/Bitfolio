@@ -15,22 +15,22 @@ const paddings = {
 };
 
 const fonts = {
-  //   family: {
-  //     base: `'Noto Sans KR', sans-serif`,
-  //     title: `'Merriweather', serif`,
-  //   },
-  //   size: {
-  //     sm: "1.4rem",
-  //     base: "1.6rem",
-  //     lg: "2rem",
-  //     xl: "2.5rem",
-  //     title: "6rem",
-  //   },
-  //   weight: {
-  //     light: 100,
-  //     normal: 400,
-  //     bold: 700,
-  //   },
+  // family: {
+  //   base: `'Noto Sans KR', sans-serif`,
+  //   title: `'Merriweather', serif`,
+  // },
+  size: {
+    sm: "1.4rem",
+    base: "1.6rem",
+    lg: "2rem",
+    xl: "2.5rem",
+    title: "6rem",
+  },
+  // weight: {
+  //   light: 100,
+  //   normal: 400,
+  //   bold: 700,
+  // },
 };
 
 const colors = {

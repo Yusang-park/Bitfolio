@@ -7,13 +7,14 @@ import {
   Row,
   SizedBox,
   ATag,
-  BoxStyle,
+  StyledBox,
 } from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
-import { ChatScaffold } from "./Details/ChatContainer";
+
 import { DetailsHeader } from "./Details/DetailsHeader";
 import { DetailsInfoTabContainer } from "./Details/DetailsInfoTabContainer";
+import { ChatContainer } from "./Details/ChatContainer";
 
 export const CryptoDataContext = createContext({
   data: null,
@@ -64,7 +65,7 @@ export const Details = (props) => {
         {menu[selectedMenuIndex].component}
       </DetailContainer>
       <SizedBox width="32px" />
-      <ChatScaffold />
+      <ChatContainer />
     </CryptoDataContext.Provider>
   );
 };
@@ -73,7 +74,7 @@ const Center = styled.div`
   margin: auto;
 `;
 
-const DetailContainer = styled(BoxStyle)`
+const DetailContainer = styled(StyledBox)`
   width: 50vw;
 
   ${({ theme }) => theme.device.tablet} {

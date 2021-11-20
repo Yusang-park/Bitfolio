@@ -20,6 +20,7 @@ export const DetailsHeader = () => {
   return (
     <Container>
       <Image src={data.imageUrl}></Image>
+      <SizedBox width="3%" />
       <Column>
         <BoldTitleText>{data.fullName}</BoldTitleText>
         <SizedBox height="4px" />
@@ -32,9 +33,9 @@ export const DetailsHeader = () => {
         <PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}
         </PercentText>
-      </Column>
+      </Column>{" "}
+      <SizedBox width="3%" />
       <Expanded flex="1" />
-
       <Bookmark
         isSelected={favorites[data.id]}
         onClick={() => setFavoriteCrypto(data.id, data.fullName, data.imageUrl)}
@@ -53,6 +54,6 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 56px;
-  margin-right: 32px;
+
   border-radius: 50px;
 `;

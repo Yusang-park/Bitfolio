@@ -4,26 +4,32 @@ import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
 // ====================================================================================
 export const TitleText = styled.div`
-  font-size: 26px;
+  font-size: 2.6rem;
 `;
 
 export const BoldTitleText = styled.div`
-  font-size: 26px;
+  font-size: 2.6rem;
   font-weight: bold;
 `;
 
 export const SubTitleText = styled.div`
-  font-size: 18px;
+  font-size: 1.8rem;
 `;
 
 export const GrayText = styled.div`
+  font-size: 1.6rem;
   transition: color 300ms ease-out 100ms;
   color: ${(props) => props.theme.colors.gray};
 `;
 
 export const PercentText = styled.div`
+  font-size: 1.6rem;
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
+`;
+
+export const Text = styled.p`
+  font-size: 1.6rem;
 `;
 // ====================================================================================
 
@@ -34,7 +40,7 @@ export const AnimatedDiv = styled.div`
   animation-fill-mode: forwards;
 `;
 
-export const BoxStyle = styled(AnimatedDiv)`
+export const StyledBox = styled(AnimatedDiv)`
   display: flex;
   flex-direction: column;
   padding: 32px;
@@ -45,28 +51,29 @@ export const BoxStyle = styled(AnimatedDiv)`
 `;
 
 export const YellowTitleCircle = styled.div`
-  padding: 6px 16px;
-  border-radius: 35px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
-  background-color: ${({ theme }) => theme.colors.yellow};
+  padding: 6px 16px;
+  border-radius: 35px;
   color: black;
+  font-size: 1.6rem;
+  background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
 export const Bookmark = ({ isSelected, onClick, size }) => {
   return (
-    <BookmarkStyle isSelected={isSelected}>
+    <StyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
         onClick={(m) => m.stopPropagation(onClick())}
         size={size}
       />
-    </BookmarkStyle>
+    </StyledBookmark>
   );
 };
 
-const BookmarkStyle = styled.div`
+const StyledBookmark = styled.div`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
   cursor: auto;
@@ -145,7 +152,7 @@ export const Button = styled.button`
   border-radius: 12px;
   border: 0;
   color: white;
-  font-size: 16px;
+  font-size: 1.6rem;
 
   background: linear-gradient(#4294f3 0%, #2c62a3 100%);
   transition: background-color 300ms ease-out 100ms;

@@ -11,13 +11,13 @@ import {
 import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
 import {
-  BoxStyle,
+  StyledBox,
   Row,
   SizedBox,
   TitleText,
 } from "../../Components/GlobalComponents";
 
-export const ChatScaffold = () => {
+export const ChatContainer = () => {
   const useRefScroll = useRef();
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
@@ -57,7 +57,7 @@ export const ChatScaffold = () => {
       <TitleText>{data.fullName} Chat </TitleText>
       <SizedBox height="32px" />
 
-      <ChatContainer>
+      <ChatSpace>
         {chatData.length !== 0 && (
           <ChatScrollBox id="chatContent" ChatHistory>
             {Object.values(chatData).map(
@@ -73,7 +73,7 @@ export const ChatScaffold = () => {
             )}
           </ChatScrollBox>
         )}
-      </ChatContainer>
+      </ChatSpace>
 
       <InputContainer>
         <Input
@@ -90,7 +90,7 @@ export const ChatScaffold = () => {
   );
 };
 
-const ChatContainer = styled.div`
+const ChatSpace = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
@@ -100,7 +100,7 @@ const ChatContainer = styled.div`
   }
 `;
 
-const Wrapper = styled(BoxStyle)`
+const Wrapper = styled(StyledBox)`
   flex: 1;
   padding-right: 28px;
 `;
@@ -147,7 +147,7 @@ const SendButton = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: black;
   background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
 
@@ -165,7 +165,7 @@ const Input = styled.textarea`
   color: white;
   background-color: transparent;
   border: 0px;
-  font-size: 18px;
+  font-size: 1.8rem;
   &:focus {
     outline: transparent;
     border: 0px solid transparent;

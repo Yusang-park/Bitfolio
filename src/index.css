@@ -109,18 +109,30 @@ section {
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 html,
 body {
+  font-size: 10px;
   font-family: "Lato", sans-serif;
   position: absolute;
   height: 100%;
-  /* overflow-x: hidden; */
+
   overflow-x: hidden;
   line-height: 1;
   width: 100%;
   background-color: #1f1e2c;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
+  html,
+  body {
     overflow-y: scroll;
   }
 }
+@media screen and (max-width: 425px) {
+  html,
+  body {
+    font-size: 9px;
+  }
+}
+
 div#root {
   height: 100%;
   margin: auto;

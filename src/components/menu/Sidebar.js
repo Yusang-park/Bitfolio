@@ -81,7 +81,7 @@ const LogoRow = styled(Row)`
   }
 
   &:hover ${TitleText} {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
   &:hover ${Logo} {
     width: 89px;
@@ -126,7 +126,7 @@ const SidebarContainer = styled.div`
 
 const CategoryRow = styled(Link)`
   display: flex;
-  font-size: 20px;
+  font-size: 2rem;
   padding: 16px 32px;
   margin-bottom: 0px;
   text-decoration: inherit;

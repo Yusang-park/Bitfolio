@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   Column,
   Row,
-  BoxStyle as BoxStyle,
+  StyledBox as StyledBox,
   SizedBox,
 } from "../Components/GlobalComponents";
 import { FavoriteContainer } from "./DashBoard/Favorites";
@@ -43,6 +43,6 @@ const LeftContent = styled.div`
   }
 `;
 
-const RightContent = styled(BoxStyle)`
+const RightContent = styled(StyledBox)`
   flex: 1;
 `;

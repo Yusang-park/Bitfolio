@@ -49,7 +49,7 @@ const Container = styled.div`
 `;
 
 const Time = styled.div`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: gray;
 `;
 

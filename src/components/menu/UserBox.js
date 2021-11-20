@@ -40,7 +40,7 @@ const UserContainer = styled.div`
   border: 1px solid grey;
   border-radius: 21px;
   background: #2b2a37;
-  font-size: 20px;
+  font-size: 2rem;
 
   ${({ theme }) => theme.device.tablet} {
     display: none;

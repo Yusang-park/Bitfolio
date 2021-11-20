@@ -52,7 +52,7 @@ const Container = styled.div`
   width: 100%;
   height: fit-content;
   margin-bottom: 32px;
-  font-size: 26px;
+  font-size: 2.6rem;
 `;
 
 const TitleText = styled.div`

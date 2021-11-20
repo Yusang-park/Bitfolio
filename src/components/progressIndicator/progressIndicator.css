@@ -261,7 +261,7 @@ body {
   animation: loading-text-opacity 2s linear 0s infinite normal;
   color: #ffffff;
   font-family: "Helvetica Neue, " Helvetica ", " "arial";
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: bold;
   margin-top: 45px;
   opacity: 0;

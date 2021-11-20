@@ -46,7 +46,7 @@ export const CryptoSearchBox = () => {
     if (_cryptoList.current == null) {
       getCryptoObject().then((response) => {
         _cryptoList.current = response;
-        console.log("getting API done");
+        // console.log("getting API done");
         setLoaded(true);
       });
     }
@@ -137,7 +137,7 @@ const SearchContainer = styled.div`
 const Input = styled.input`
   width: auto;
 
-  font-size: 20px;
+  font-size: 2rem;
   margin-left: 16px;
   border: transparent;
   background: transparent;
@@ -154,11 +154,13 @@ const RecommendedContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: auto;
+  width: 100%;
   z-index: 1;
+  top: 48px;
+
   overflow-y: scroll;
-  margin-left: 8%;
-  margin-right: 8%;
+  /* margin-left: 8%;
+  margin-right: 8%; */
   max-height: 40vh;
   background-color: ${(props) => props.theme.colors.gray};
 `;
@@ -166,7 +168,7 @@ const RecommendedContainer = styled.div`
 const ElementRow = styled.div`
   display: flex;
   padding: 12px 12px;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: white;
   cursor: pointer;
   &:hover {

@@ -49,6 +49,6 @@ export async function getCryptoPricesList(idList) {
   const response = await axios.get(
     `${providerUrl}/simple/price?ids=${s}&vs_currencies=usd`
   );
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 }

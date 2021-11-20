@@ -10,6 +10,7 @@ import {
   YellowTitleCircle,
   Row,
   Column,
+  Text,
 } from "../../Components/GlobalComponents";
 import useWindowDimensions from "../../useWindowDimensions";
 import { Chart } from "../../Components/TradingViewChart";
@@ -20,7 +21,7 @@ export const DetailsInfoTabContainer = () => {
   const MarketCapBox = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Market Cap</YellowTitleCircle>
-      {"$" + data.marketCap.toLocaleString()}
+      <Text>{"$" + data.marketCap.toLocaleString()}</Text>
       <SizedBox height="4px" />
       <GrayText>{"Rank. #" + data.marketCapRank}</GrayText>
     </InfoElementContainer>
@@ -31,9 +32,9 @@ export const DetailsInfoTabContainer = () => {
       <YellowTitleCircle>Supply Amount</YellowTitleCircle>
 
       <Row justify_content="space-between">
-        Current
+        <Text>Current</Text>
         <SizedBox width="12px" />
-        {data.currentSupply.toLocaleString()}
+        <Text>{data.currentSupply.toLocaleString()}</Text>
       </Row>
 
       <SizedBox height="4px" />
@@ -50,7 +51,7 @@ export const DetailsInfoTabContainer = () => {
   const VolumeBox = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
-      {"$" + data.volume.toLocaleString()}
+      <Text> {"$" + data.volume.toLocaleString()}</Text>
     </InfoElementContainer>
   );
 
@@ -58,8 +59,9 @@ export const DetailsInfoTabContainer = () => {
     <Container>
       <RowCustom justify_content="flex-start" align_items="flex-start">
         <MarketCapBox />
-        <SupplyAmountBox />
+
         <VolumeBox />
+        <SupplyAmountBox />
       </RowCustom>
       <SizedBox height="16px" />
       <Chart coin={data.tradingViewCoinId} />
