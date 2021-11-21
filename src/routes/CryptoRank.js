@@ -3,18 +3,18 @@ import React, { useState, useEffect, useContext } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { apiKey, providerUrl } from "../api_config";
 import {
-  IconButton,
-  Divider,
-  Expanded,
-  SizedBox,
-  ATag,
-  PercentText,
-  Row,
-  AnimatedDiv,
-  StyledBox,
-  Column,
-  GrayText,
-  Bookmark,
+  _IconButton,
+  _Divider,
+  _Expanded,
+  _SizedBox,
+  _ATag,
+  _PercentText,
+  _Row,
+  _AnimatedDiv,
+  _StyledBox,
+  _Column,
+  _GrayText,
+  _Bookmark,
 } from "../Components/GlobalComponents";
 import { getCryptoSummaryDataList } from "../Service/Apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -64,7 +64,7 @@ export const CryptoRank = () => {
 
   return (
     <Wrapper>
-      <RowCustom>
+      <Row>
         {cryptoList.length == 0 ? (
           <ProgressIndicator />
         ) : (
@@ -85,15 +85,15 @@ export const CryptoRank = () => {
             ></DetailInfoSection>
           </>
         )}
-      </RowCustom>
-      <Divider vertical="16px" horizontal="32px" />
-      <Row justify_content="center">
+      </Row>
+      <_Divider vertical="16px" horizontal="32px" />
+      <_Row justify_content="center">
         <span onClick={prevPagePagination}>
           <FontAwesomeIcon icon="chevron-left" size="1x" color="white" />
         </span>
-        <SizedBox width="16px" />
+        <_SizedBox width="16px" />
         {[...Array(5)].map((n, index) => (
-          <ATag
+          <_ATag
             key={index}
             selected={index + 1 + pageSectionIndex * 5 === parseInt(pageIndex)}
             id={index + 1 + pageSectionIndex * 5}
@@ -101,13 +101,13 @@ export const CryptoRank = () => {
             width={"38px"}
           >
             {index + 1 + pageSectionIndex * 5}
-          </ATag>
+          </_ATag>
         ))}
-        <SizedBox width="16px" />
+        <_SizedBox width="16px" />
         <span onClick={nextPagePagination}>
           <FontAwesomeIcon icon="chevron-right" size="1x" color="white" />
         </span>
-      </Row>
+      </_Row>
     </Wrapper>
   );
 };
@@ -117,10 +117,10 @@ const BasicInfoSection = React.memo(
     const { favorites, setFavoriteCrypto } = useContext(UserContext);
     return (
       <StyledBasicInfoSection>
-        <Row justify_content="flex-start" align="flex-start">
-          <SizedBox width="8vw" />
-          <Expanded flex="1">Name</Expanded>
-        </Row>
+        <_Row justify_content="flex-start" align="flex-start">
+          <_SizedBox width="8vw" />
+          <_Expanded flex="1">Name</_Expanded>
+        </_Row>
 
         {cryptoList.map((e, i) => (
           <ElementRow
@@ -134,32 +134,32 @@ const BasicInfoSection = React.memo(
             key={i}
             onClick={() => routeDetails(e.id)}
           >
-            <Row
+            <_Row
               key={i * 10}
               height="100%"
               justify_content="flex-start"
               align="flex-start"
               onClick={() => routeDetails(e.id)}
             >
-              <Row width="8vw" justify_content="space-evenly">
-                <GrayText> {i + (pageIndex - 1) * 10 + 1}</GrayText>
-                <Bookmark
+              <_Row width="8vw" justify_content="space-evenly">
+                <_GrayText> {i + (pageIndex - 1) * 10 + 1}</_GrayText>
+                <_Bookmark
                   isSelected={favorites[e.id]}
                   onClick={() =>
                     setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
                   }
                   size="1x"
                 />
-              </Row>
-              <Expanded flex="1">
+              </_Row>
+              <_Expanded flex="1">
                 <Icon src={e.imageUrl} />
-                <Column>
+                <_Column>
                   {e.fullName}
                   <br></br>
-                  <GrayText>{e.symbol.toUpperCase()}</GrayText>
-                </Column>
-              </Expanded>
-            </Row>
+                  <_GrayText>{e.symbol.toUpperCase()}</_GrayText>
+                </_Column>
+              </_Expanded>
+            </_Row>
           </ElementRow>
         ))}
       </StyledBasicInfoSection>
@@ -172,13 +172,13 @@ const DetailInfoSection = React.memo(
     return (
       <Relative>
         <StyledDetailInfoSection>
-          <Row id="1" justify_content="flex-start" align="flex-start">
+          <_Row id="1" justify_content="flex-start" align="flex-start">
             <Element flex="2">Price</Element>
             <Element flex="5">MarketCap</Element>
             <Element flex="5">CirculatingSupply</Element>
             <Element flex="4">Volume</Element>
             <Element flex="2">24Hours</Element>
-          </Row>
+          </_Row>
 
           {cryptoList.map((e, i) => (
             <ElementRow
@@ -197,9 +197,9 @@ const DetailInfoSection = React.memo(
               <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
               <Element flex="4">${e.volume.toLocaleString()}</Element>
               <Element flex="2">
-                <PercentText negative={e.pricePercent24h.includes("-")}>
+                <_PercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
-                </PercentText>
+                </_PercentText>
               </Element>
             </ElementRow>
           ))}
@@ -209,20 +209,20 @@ const DetailInfoSection = React.memo(
   }
 );
 
-const ElementRow = styled(Row)`
+const ElementRow = styled(_Row)`
   height: 100%;
   justify-content: flex-start;
   align-items: center;
   background-color: ${({ isHovered }) => isHovered && css`grey`};
   /* border-bottom: 1px solid; */
-  ${GrayText} {
+  ${_GrayText} {
     color: ${({ isHovered }) => isHovered && css`white`};
   }
   cursor: pointer;
   transition: background-color 300ms ease-out 100ms;
 `;
 
-const Element = styled(Expanded)`
+const Element = styled(_Expanded)`
   ${({ theme }) => theme.device.tablet} {
     flex: none;
     width: ${({ flex }) => css`calc( 28px * ${flex})`};
@@ -248,11 +248,11 @@ const Icon = styled.img`
   }
 `;
 
-const RowCustom = styled(Row)`
+const Row = styled(_Row)`
   flex: 1;
 `;
 
-const StyledBasicInfoSection = styled(Column)`
+const StyledBasicInfoSection = styled(_Column)`
   flex: 3;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -260,7 +260,7 @@ const StyledBasicInfoSection = styled(Column)`
   animation-fill-mode: forwards;
 `;
 
-const StyledDetailInfoSection = styled(Column)`
+const StyledDetailInfoSection = styled(_Column)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -280,7 +280,7 @@ const StyledDetailInfoSection = styled(Column)`
   }
 `;
 
-const Wrapper = styled(StyledBox)`
+const Wrapper = styled(_StyledBox)`
   width: 100%;
   height: auto;
   max-width: 1440px;

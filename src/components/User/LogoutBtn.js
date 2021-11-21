@@ -5,13 +5,13 @@ import { logout } from "../../Service/Auth";
 
 export const LogoutBtn = () => {
   return (
-    <IconButton onClick={logout}>
+    <_IconButton onClick={logout}>
       <FontAwesomeIcon icon="sign-out-alt"></FontAwesomeIcon>
-    </IconButton>
+    </_IconButton>
   );
 };
 
-const IconButton = styled.div`
+const _IconButton = styled.div`
   color: gray;
   &:hover {
     color: ${({ theme }) => theme.colors.blue};

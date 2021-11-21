@@ -11,10 +11,10 @@ import {
 import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
 import {
-  StyledBox,
-  Row,
-  SizedBox,
-  TitleText,
+  _StyledBox,
+  _Row,
+  _SizedBox,
+  _TitleText,
 } from "../../Components/GlobalComponents";
 
 export const ChatContainer = () => {
@@ -54,8 +54,8 @@ export const ChatContainer = () => {
 
   return (
     <Wrapper>
-      <TitleText>{data.fullName} Chat </TitleText>
-      <SizedBox height="32px" />
+      <_TitleText>{data.fullName} Chat </_TitleText>
+      <_SizedBox height="32px" />
 
       <ChatSpace>
         {chatData.length !== 0 && (
@@ -100,7 +100,7 @@ const ChatSpace = styled.div`
   }
 `;
 
-const Wrapper = styled(StyledBox)`
+const Wrapper = styled(_StyledBox)`
   flex: 1;
   padding-right: 28px;
 `;
@@ -127,7 +127,7 @@ const ChatScrollBox = styled.div`
   }
 `;
 
-const InputContainer = styled(Row)`
+const InputContainer = styled(_Row)`
   height: 15%;
   max-height: 96px;
   padding: 12px 0px;

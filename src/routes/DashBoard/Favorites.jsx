@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useHistory } from 'react-router';
 import styled from "styled-components";
-import { StyledBox , TitleText,  GrayText, SubTitleText, SizedBox} from '../../Components/GlobalComponents';
+import { _StyledBox , _TitleText,  _GrayText, _SubTitleText, _SizedBox} from '../../Components/GlobalComponents';
 import { UserContext } from '../../Provider/UserProvider';
 import { getCryptoPricesList } from '../../Service/Apis';
 
@@ -35,8 +35,8 @@ export const FavoriteContainer = () => {
  
     return (
        <Wrapper>
-        <TitleText>Favorites</TitleText>
-        <SizedBox height="16px" />
+        <_TitleText>Favorites</_TitleText>
+        <_SizedBox height="16px" />
         <Relative>
         <ScrollRow>
           {Object.keys(favorites).length !== 0 ?
@@ -46,9 +46,9 @@ export const FavoriteContainer = () => {
                   <Logo src={favorites[e].imageUrl} />
                   <div>
                     <CryptoName>{favorites[e].fullName}</CryptoName>
-                    <SizedBox height="4px"/>
+                    <_SizedBox height="4px"/>
                 {Object.keys(prices).includes(e)&&
-                  <GrayText>{`$${prices[e].usd}`}</GrayText>}</div>
+                  <_GrayText>{`$${prices[e].usd}`}</_GrayText>}</div>
                 </ElementContainer></span>
               ))
              : 
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
  
 `;
 
-const CryptoName = styled(SubTitleText)`
+const CryptoName = styled(_SubTitleText)`
 
 `;
 
@@ -105,7 +105,7 @@ transition: width 300ms ease-out 100ms;
 
 `;
 
-const ElementContainer = styled(StyledBox)`
+const ElementContainer = styled(_StyledBox)`
 align-items:space-around;
 justify-content: space-between;
 width:13vh;
@@ -118,7 +118,7 @@ padding:24px;
   background-color: grey;
   cursor: pointer
 }
-  &:hover ${GrayText} {
+  &:hover ${_GrayText} {
     color: white;
   }
   &:hover ${Logo}{

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../GlobalComponents";
-import { Modal } from "../Modal";
-import { LoginBox } from "./LoginDialog";
+import { _Button } from "../GlobalComponents";
+import { Dialog } from "../Modal";
+import { LoginModalBox } from "./LoginModalBox";
 
 export const LoginBtn = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -14,11 +14,11 @@ export const LoginBtn = () => {
   return (
     <Container>
       {showLoginModal && (
-        <Modal setShowModal={setShowLoginModal}>
-          <LoginBox />
-        </Modal>
+        <Dialog setShowModal={setShowLoginModal}>
+          <LoginModalBox />
+        </Dialog>
       )}
-      <Button onClick={onClickHandler}>Login</Button>
+      <_Button onClick={onClickHandler}>Login</_Button>
     </Container>
   );
 };

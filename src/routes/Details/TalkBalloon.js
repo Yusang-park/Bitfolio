@@ -3,9 +3,9 @@ import React from "react";
 import { Timestamp } from "@firebase/firestore";
 import {
   Button,
-  Divider,
-  Row,
-  SizedBox,
+  _Divider,
+  _Row,
+  _SizedBox,
 } from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
@@ -24,15 +24,15 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
           {date.getMinutes()}
         </Time>
       </RowCustom>
-      <SizedBox height="12px" />
-      <Divider />
-      <SizedBox height="12px" />
+      <_SizedBox height="12px" />
+      <_Divider />
+      <_SizedBox height="12px" />
       <Message> {message}</Message>
     </Container>
   );
 });
 
-const RowCustom = styled(Row)`
+const RowCustom = styled(_Row)`
   flex-wrap: wrap;
 `;
 

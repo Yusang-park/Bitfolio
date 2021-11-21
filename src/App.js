@@ -14,7 +14,7 @@ import { Portfolio } from "./Routes/Portfolio";
 import { Nav } from "./Components/Menu/Nav";
 import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
-import { Column } from "./Components/GlobalComponents";
+import { _Column } from "./Components/GlobalComponents";
 
 function App() {
   const auth = authService;
@@ -79,7 +79,7 @@ const Wrapper = styled.div`
   color: white;
 `;
 
-const Container = styled(Column)`
+const Container = styled(_Column)`
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
 import {
-  Button,
-  Row,
-  SizedBox,
-  ATag,
-  StyledBox,
+  _Button,
+  _Row,
+  _SizedBox,
+  _ATag,
+  _StyledBox,
 } from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
@@ -52,19 +52,19 @@ export const Details = (props) => {
         <DetailsHeader />
         <TabBar>
           {menu.map((e, i) => (
-            <ATag
+            <_ATag
               id={i}
               key={i}
               selected={i === parseInt(selectedMenuIndex) ? true : false}
               onClick={changeMenu}
             >
               {e.key}
-            </ATag>
+            </_ATag>
           ))}
         </TabBar>
         {menu[selectedMenuIndex].component}
       </DetailContainer>
-      <SizedBox width="32px" />
+      <_SizedBox width="32px" />
       <ChatContainer />
     </CryptoDataContext.Provider>
   );
@@ -74,7 +74,7 @@ const Center = styled.div`
   margin: auto;
 `;
 
-const DetailContainer = styled(StyledBox)`
+const DetailContainer = styled(_StyledBox)`
   width: 50vw;
 
   ${({ theme }) => theme.device.tablet} {

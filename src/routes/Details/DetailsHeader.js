@@ -4,13 +4,13 @@ import styled from "styled-components";
 import { UserContext } from "../../Provider/UserProvider";
 import { CryptoDataContext } from "../Details";
 import {
-  Expanded,
-  PercentText,
-  SizedBox,
-  Column,
-  BoldTitleText,
-  GrayText,
-  Bookmark,
+  _Expanded,
+  _PercentText,
+  _SizedBox,
+  _Column,
+  _BoldTitleText,
+  _GrayText,
+  _Bookmark,
 } from "../../Components/GlobalComponents";
 
 export const DetailsHeader = () => {
@@ -20,23 +20,23 @@ export const DetailsHeader = () => {
   return (
     <Container>
       <Image src={data.imageUrl}></Image>
-      <SizedBox width="3%" />
-      <Column>
-        <BoldTitleText>{data.fullName}</BoldTitleText>
-        <SizedBox height="4px" />
-        <GrayText>{data.symbol.toUpperCase()}</GrayText>
-      </Column>
-      <SizedBox width="3%" />
-      <Column>
-        <BoldTitleText>{"$" + data.price.toLocaleString()}</BoldTitleText>
-        <SizedBox height="4px" />
-        <PercentText negative={data.pricePercent24h.includes("-")}>
+      <_SizedBox width="3%" />
+      <_Column>
+        <_BoldTitleText>{data.fullName}</_BoldTitleText>
+        <_SizedBox height="4px" />
+        <_GrayText>{data.symbol.toUpperCase()}</_GrayText>
+      </_Column>
+      <_SizedBox width="3%" />
+      <_Column>
+        <_BoldTitleText>{"$" + data.price.toLocaleString()}</_BoldTitleText>
+        <_SizedBox height="4px" />
+        <_PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}
-        </PercentText>
-      </Column>{" "}
-      <SizedBox width="3%" />
-      <Expanded flex="1" />
-      <Bookmark
+        </_PercentText>
+      </_Column>{" "}
+      <_SizedBox width="3%" />
+      <_Expanded flex="1" />
+      <_Bookmark
         isSelected={favorites[data.id]}
         onClick={() => setFavoriteCrypto(data.id, data.fullName, data.imageUrl)}
         size="2x"

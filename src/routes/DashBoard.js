@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import {
-  Column,
-  Row,
-  StyledBox as StyledBox,
-  SizedBox,
+  _Column,
+  _Row,
+  _StyledBox as _StyledBox,
+  _SizedBox,
 } from "../Components/GlobalComponents";
 import { FavoriteContainer } from "./DashBoard/Favorites";
 
@@ -20,7 +20,7 @@ export const DashBoard = () => {
   );
 };
 
-const Wrapper = styled(Row)`
+const Wrapper = styled(_Row)`
   justify-content: left;
   align-items: flex-start;
   width: 100%;
@@ -43,6 +43,6 @@ const LeftContent = styled.div`
   }
 `;
 
-const RightContent = styled(StyledBox)`
+const RightContent = styled(_StyledBox)`
   flex: 1;
 `;

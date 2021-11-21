@@ -1,34 +1,27 @@
 import React, { useState, useContext } from "react";
-import { Expanded, SizedBox, IconButton, Button } from "../GlobalComponents";
+import {
+  _Expanded,
+  _SizedBox,
+  _IconButton,
+  _Button,
+} from "../GlobalComponents";
 import { LogoutBtn } from "../User/LogoutBtn";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UserBtn } from "../User/UserBtn";
 export const UserBox = () => {
-  function changeDisplayName() {
-    // updateProfile(authService.currentUser, { displayName: "PitterPark" });
-  }
-
   return (
     <>
-      <UserBtn>
-        <FontAwesomeIcon icon="user"></FontAwesomeIcon>
-      </UserBtn>
-      <UserContainer onClick={changeDisplayName}>
+      <UserBtn />
+      <UserContainer>
         {authService.currentUser.displayName}
-        <SizedBox width="16px" />
+        <_SizedBox width="16px" />
         <LogoutBtn />
       </UserContainer>
     </>
   );
 };
-
-const UserBtn = styled(IconButton)`
-  display: none;
-  ${({ theme }) => theme.device.tablet} {
-    display: block;
-  }
-`;
 
 const UserContainer = styled.div`
   display: flex;

@@ -3,44 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
 // ====================================================================================
-export const TitleText = styled.div`
+export const _TitleText = styled.p`
   font-size: 2.6rem;
 `;
 
-export const BoldTitleText = styled.div`
+export const _BoldTitleText = styled.p`
   font-size: 2.6rem;
   font-weight: bold;
 `;
 
-export const SubTitleText = styled.div`
+export const _SubTitleText = styled.p`
   font-size: 1.8rem;
 `;
 
-export const GrayText = styled.div`
+export const _GrayText = styled.div`
   font-size: 1.6rem;
   transition: color 300ms ease-out 100ms;
   color: ${(props) => props.theme.colors.gray};
 `;
 
-export const PercentText = styled.div`
+export const _PercentText = styled.div`
   font-size: 1.6rem;
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
 `;
 
-export const Text = styled.p`
+export const _Text = styled.p`
   font-size: 1.6rem;
 `;
 // ====================================================================================
 
-export const AnimatedDiv = styled.div`
+export const _AnimatedDiv = styled.div`
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
 `;
 
-export const StyledBox = styled(AnimatedDiv)`
+export const _StyledBox = styled(_AnimatedDiv)`
   display: flex;
   flex-direction: column;
   padding: 32px;
@@ -50,7 +50,7 @@ export const StyledBox = styled(AnimatedDiv)`
   transition: background-color 300ms ease-out 100ms;
 `;
 
-export const YellowTitleCircle = styled.div`
+export const _YellowTitleCircle = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
@@ -61,19 +61,19 @@ export const YellowTitleCircle = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-export const Bookmark = ({ isSelected, onClick, size }) => {
+export const _Bookmark = ({ isSelected, onClick, size }) => {
   return (
-    <StyledBookmark isSelected={isSelected}>
+    <_StyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
         onClick={(m) => m.stopPropagation(onClick())}
         size={size}
       />
-    </StyledBookmark>
+    </_StyledBookmark>
   );
 };
 
-const StyledBookmark = styled.div`
+const _StyledBookmark = styled.div`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
   cursor: auto;
@@ -85,27 +85,27 @@ const StyledBookmark = styled.div`
 
 // ====================================================================================
 
-export const Divider = styled.div`
+export const _Divider = styled.div`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
   background-color: ${(props) => props.theme.colors.gray3};
 `;
 
-export const SizedBox = styled.div`
+export const _SizedBox = styled.div`
   align-self: center;
 
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
 
-export const Expanded = styled.div`
+export const _Expanded = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify_content ?? "left"};
   align-items: center;
   flex: ${(props) => props.flex};
 `;
 
-export const Row = styled.div`
+export const _Row = styled.div`
   display: flex;
   justify-content: ${({ justify_content }) =>
     justify_content ? justify_content : css`center`};
@@ -115,7 +115,7 @@ export const Row = styled.div`
   height: ${({ height }) => (height ? height : css`auto`)};
 `;
 
-export const Column = styled.div`
+export const _Column = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${({ justify_content }) =>
@@ -124,7 +124,7 @@ export const Column = styled.div`
   height: ${({ height }) => (height ? height : css`100%`)};
 `;
 
-export const StyledDimmer = styled.div`
+export const _StyledDimmer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +144,7 @@ export const StyledDimmer = styled.div`
 
 // =========================================================================
 
-export const Button = styled.button`
+export const _Button = styled.button`
   vertical-align: middle;
   width: ${(props) => (props.width ? props.width : null)};
   height: ${(props) => (props.height ? props.height : css`38px`)};
@@ -161,14 +161,14 @@ export const Button = styled.button`
   }
 `;
 
-export const IconButton = styled(Button)`
+export const _IconButton = styled(_Button)`
   vertical-align: middle;
   width: 38px;
   padding: 0px 0px;
   border-radius: 12px;
 `;
 
-export const ATag = styled(Button)`
+export const _ATag = styled(_Button)`
   vertical-align: middle;
   height: 38px;
   padding: ${(props) => (props.width ? "0px" : "0px 16px")};
@@ -185,6 +185,19 @@ export const ATag = styled(Button)`
       props.selected
         ? css`linear-gradient(#69A8F0 0%, #5074A1 100%)`
         : props.theme.colors.gray};
+  }
+`;
+
+export const _Input = styled.input`
+  background: #fdfcff;
+  border: 1px solid #8e8e8e;
+  box-sizing: border-box;
+  border-radius: 30px;
+
+  &:focus {
+    outline: transparent;
+    border: 1px solid $main-color;
+    box-shadow: 0 0 10px transparent;
   }
 `;
 

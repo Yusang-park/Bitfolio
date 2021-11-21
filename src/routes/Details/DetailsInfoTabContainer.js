@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { CryptoDataContext } from "../Details";
 import { fadeIn } from "../../Styles/Animation";
 import {
-  AnimatedDiv,
-  Expanded,
-  GrayText,
-  SizedBox,
-  YellowTitleCircle,
-  Row,
-  Column,
-  Text,
+  _AnimatedDiv,
+  _Expanded,
+  _GrayText,
+  _SizedBox,
+  _YellowTitleCircle,
+  _Row,
+  _Column,
+  _Text,
 } from "../../Components/GlobalComponents";
 import useWindowDimensions from "../../useWindowDimensions";
 import { Chart } from "../../Components/TradingViewChart";
@@ -20,38 +20,38 @@ export const DetailsInfoTabContainer = () => {
 
   const MarketCapBox = () => (
     <InfoElementContainer>
-      <YellowTitleCircle>Market Cap</YellowTitleCircle>
-      <Text>{"$" + data.marketCap.toLocaleString()}</Text>
-      <SizedBox height="4px" />
-      <GrayText>{"Rank. #" + data.marketCapRank}</GrayText>
+      <_YellowTitleCircle>Market Cap</_YellowTitleCircle>
+      <_Text>{"$" + data.marketCap.toLocaleString()}</_Text>
+      <_SizedBox height="4px" />
+      <_GrayText>{"Rank. #" + data.marketCapRank}</_GrayText>
     </InfoElementContainer>
   );
 
   const SupplyAmountBox = () => (
     <InfoElementContainer>
-      <YellowTitleCircle>Supply Amount</YellowTitleCircle>
+      <_YellowTitleCircle>Supply Amount</_YellowTitleCircle>
 
-      <Row justify_content="space-between">
-        <Text>Current</Text>
-        <SizedBox width="12px" />
-        <Text>{data.currentSupply.toLocaleString()}</Text>
-      </Row>
+      <_Row justify_content="space-between">
+        <_Text>Current</_Text>
+        <_SizedBox width="12px" />
+        <_Text>{data.currentSupply.toLocaleString()}</_Text>
+      </_Row>
 
-      <SizedBox height="4px" />
-      <Row justify_content="space-between">
-        <GrayText>Max</GrayText>
-        <SizedBox width="12px" />
-        <GrayText>
+      <_SizedBox height="4px" />
+      <_Row justify_content="space-between">
+        <_GrayText>Max</_GrayText>
+        <_SizedBox width="12px" />
+        <_GrayText>
           {data.maxSupply ? data.maxSupply.toLocaleString() : "♾️"}
-        </GrayText>
-      </Row>
+        </_GrayText>
+      </_Row>
     </InfoElementContainer>
   );
 
   const VolumeBox = () => (
     <InfoElementContainer>
-      <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
-      <Text> {"$" + data.volume.toLocaleString()}</Text>
+      <_YellowTitleCircle>Volume(24h)</_YellowTitleCircle>
+      <_Text> {"$" + data.volume.toLocaleString()}</_Text>
     </InfoElementContainer>
   );
 
@@ -63,17 +63,17 @@ export const DetailsInfoTabContainer = () => {
         <VolumeBox />
         <SupplyAmountBox />
       </RowCustom>
-      <SizedBox height="16px" />
+      <_SizedBox height="16px" />
       <Chart coin={data.tradingViewCoinId} />
     </Container>
   );
 };
 
-const RowCustom = styled(Row)`
+const RowCustom = styled(_Row)`
   flex-wrap: wrap;
 `;
 
-const InfoElementContainer = styled(Column)`
+const InfoElementContainer = styled(_Column)`
   justify-content: flex-start;
   align-items: flex-end;
   height: fit-content;
@@ -81,7 +81,7 @@ const InfoElementContainer = styled(Column)`
   margin-bottom: 16px;
 `;
 
-const Container = styled(AnimatedDiv)`
+const Container = styled(_AnimatedDiv)`
   display: flex;
   flex-direction: column;
   flex: 1;

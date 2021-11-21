@@ -2,7 +2,12 @@ import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 import styled from "styled-components";
-import { Expanded, SizedBox, IconButton, Button } from "../GlobalComponents";
+import {
+  _Expanded,
+  _SizedBox,
+  _IconButton,
+  _Button,
+} from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
 import { UserContext } from "../../Provider/UserProvider";
@@ -36,9 +41,9 @@ export const Nav = () => {
         setClose={onClickHamberger}
       />
       <HambergerBtn onClick={onClickHamberger} />
-      <TitleText>{getName()}</TitleText>
+      <_TitleText>{getName()}</_TitleText>
       <CryptoSearchBox />
-      <SizedBox width="16px" />
+      <_SizedBox width="16px" />
 
       {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
     </Container>
@@ -55,7 +60,7 @@ const Container = styled.div`
   font-size: 2.6rem;
 `;
 
-const TitleText = styled.div`
+const _TitleText = styled.div`
   display: flex;
   flex: auto;
   align-items: center;

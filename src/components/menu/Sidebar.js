@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import {
-  Divider,
-  Row,
-  SizedBox,
-  StyledDimmer,
-  TitleText,
+  _Divider,
+  _Row,
+  _SizedBox,
+  _StyledDimmer,
+  _TitleText,
 } from "../GlobalComponents";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
@@ -27,14 +27,14 @@ export const Sidebar = React.memo(
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
             <Logo src="img/ico_logo.png" alt="Logo" />
-            <TitleText>CryptoFolio</TitleText>
-            <SizedBox width="24px"></SizedBox>
+            <_TitleText>CryptoFolio</_TitleText>
+            <_SizedBox width="24px"></_SizedBox>
           </LogoRow>
 
-          <Divider vertical="0px" horizontal="5%" />
-          <SizedBox height="16px" />
-          {categories.map((e) => (
-            <div onClick={setClose}>
+          <_Divider vertical="0px" horizontal="5%" />
+          <_SizedBox height="16px" />
+          {categories.map((e, i) => (
+            <div key={i} onClick={setClose}>
               <CategoryRow
                 to={e.path}
                 key={e.name}
@@ -50,7 +50,7 @@ export const Sidebar = React.memo(
   }
 );
 
-const Dimmer = styled(StyledDimmer)`
+const Dimmer = styled(_StyledDimmer)`
   display: none;
   ${({ theme }) => theme.device.desktopM} {
     ${({ isOpened }) =>
@@ -66,21 +66,21 @@ const Logo = styled.img`
   width: 96px;
 `;
 
-const LogoRow = styled(Row)`
+const LogoRow = styled(_Row)`
   height: 260px;
   cursor: pointer;
 
   ${({ theme }) => theme.device.desktopL} {
     flex-direction: column;
   }
-  ${TitleText} {
+  ${_TitleText} {
     transition: font-size 200ms ease-out 100ms;
   }
   ${Logo} {
     transition: width 200ms ease-out 100ms;
   }
 
-  &:hover ${TitleText} {
+  &:hover ${_TitleText} {
     font-size: 2.4rem;
   }
   &:hover ${Logo} {

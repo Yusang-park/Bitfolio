@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../Service/Apis";
-import { IconButton, Row } from "../GlobalComponents";
+import { _IconButton, _Row } from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -106,14 +106,14 @@ export const CryptoSearchBox = () => {
   );
 };
 
-const SearchButton = styled(IconButton)`
+const SearchButton = styled(_IconButton)`
   display: none;
   ${({ theme }) => theme.device.tablet} {
     display: block;
   }
 `;
 
-const Container = styled(Row)`
+const Container = styled(_Row)`
   position: relative;
   width: fit-content;
   height: 48px;

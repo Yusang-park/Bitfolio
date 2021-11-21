@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { fadeIn } from "../Styles/Animation";
-import { StyledDimmer } from "./GlobalComponents";
+import { _StyledDimmer } from "./GlobalComponents";
 
-export const Modal = ({ setShowModal, children }) => {
+export const Dialog = ({ setShowModal, children }) => {
   return (
     <Dimmer onClick={() => setShowModal(false)}>
-      <Innder onClick={(e) => e.stopPropagation()}>{children}</Innder>
+      <Inner onClick={(e) => e.stopPropagation()}>{children}</Inner>
     </Dimmer>
   );
 };
 
-const Dimmer = styled(StyledDimmer)``;
+const Dimmer = styled(_StyledDimmer)``;
 
-const Innder = styled.div`
+const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 55%;
   max-width: 640px;
-  height: 60%;
-  background-color: ${({ theme }) => theme.colors.gray3};
-  border-radius: 30px;
+
+  background-color: ${({ theme }) => theme.colors.gray2};
+  border-radius: 20px;
 `;
