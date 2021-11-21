@@ -4,28 +4,19 @@ import styled from "styled-components";
 import { _IconButton } from "../GlobalComponents";
 import { Dialog } from "../Modal";
 import { UserModalBox } from "./UserModalBox";
-export const UserBtn = () => {
-  const [showLoginModal, setShowModal] = useState(false);
-
-  function onClickHandler() {
-    setShowModal(true);
-  }
-
+export const UserBtn = ({ setShowModal }) => {
   return (
-    <Container>
-      {showLoginModal && (
-        <Dialog setShowModal={setShowModal}>
-          <UserModalBox setShowModal={setShowModal} />
-        </Dialog>
-      )}
-      <_IconButton onClick={onClickHandler}>
-        <FontAwesomeIcon icon="user"></FontAwesomeIcon>
-      </_IconButton>
-    </Container>
+    <IconButton
+      onClick={() => {
+        setShowModal(true);
+      }}
+    >
+      <FontAwesomeIcon icon="user"></FontAwesomeIcon>
+    </IconButton>
   );
 };
 
-const Container = styled(_IconButton)`
+const IconButton = styled(_IconButton)`
   display: none;
   ${({ theme }) => theme.device.tablet} {
     display: block;

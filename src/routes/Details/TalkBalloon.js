@@ -6,6 +6,7 @@ import {
   _Divider,
   _Row,
   _SizedBox,
+  _Text,
 } from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
@@ -16,7 +17,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
     <Container>
       <RowCustom justify_content="space-between">
         <span>
-          {name}
+          <_Text> {name}</_Text>
           {/* {isMine && <Button height="20px">Delete</Button>} */}
         </span>
         <Time>
@@ -60,4 +61,5 @@ const Message = styled.div`
   -webkit-line-clamp: 4; // max nb lines to show
   -webkit-box-orient: vertical;
   word-break: break-all;
+  font-size: 1.6rem;
 `;

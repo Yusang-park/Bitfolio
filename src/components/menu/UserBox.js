@@ -10,11 +10,24 @@ import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserBtn } from "../User/UserBtn";
+import { Dialog } from "../Modal";
+import { UserModalBox } from "../User/UserModalBox";
 export const UserBox = () => {
+  const [showLoginModal, setShowModal] = useState(false);
+
+  function onClickHandler() {
+    setShowModal(true);
+  }
+
   return (
     <>
-      <UserBtn />
-      <UserContainer>
+      {showLoginModal && (
+        <Dialog setShowModal={setShowModal}>
+          <UserModalBox setShowModal={setShowModal} />
+        </Dialog>
+      )}
+      <UserBtn setShowModal={setShowModal} />
+      <UserContainer onClick={onClickHandler}>
         {authService.currentUser.displayName}
         <_SizedBox width="16px" />
         <LogoutBtn />

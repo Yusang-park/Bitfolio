@@ -16,9 +16,9 @@ const Dimmer = styled(_StyledDimmer)``;
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 60%;
   max-width: 640px;
 
-  background-color: ${({ theme }) => theme.colors.gray2};
+  background-color: ${({ theme }) => theme.colors.gray3};
   border-radius: 20px;
 `;
