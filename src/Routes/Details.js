@@ -31,7 +31,7 @@ export const Details = (props) => {
     getCryptoDetails(id).then((response) => {
       setData(response);
     });
-  }, [id]);
+  }, [id, setData, getCryptoDetails]);
 
   const menu = [
     { key: "Information", component: <DetailsInfoTabContainer /> },

@@ -20,7 +20,7 @@ export const DetailsHeader = () => {
   return (
     <Container>
       <Image src={data.imageUrl}></Image>
-      <_SizedBox width="3%" />
+      <_SizedBox width="5%" />
       <_Column>
         <_BoldTitleText>{data.fullName}</_BoldTitleText>
         <_SizedBox height="4px" />
@@ -33,8 +33,8 @@ export const DetailsHeader = () => {
         <_PercentText negative={data.pricePercent24h.includes("-")}>
           {data.pricePercent24h}
         </_PercentText>
-      </_Column>{" "}
-      <_SizedBox width="3%" />
+      </_Column>
+      <_SizedBox width="5%" />
       <_Expanded flex="1" />
       <_Bookmark
         isSelected={favorites[data.id]}

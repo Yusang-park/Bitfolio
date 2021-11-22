@@ -108,7 +108,7 @@ export class CryptoDetailData extends CryptoSimpleData {
         exceptedCurrncyUnit.includes(data.tickers[i].target)
       ) {
         i++;
-        if (data.tickers.length == i) {
+        if (data.tickers.length === i) {
           this.tradingViewCoinId = null;
           break;
         }

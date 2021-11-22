@@ -18,6 +18,7 @@ const Inner = styled.div`
   flex-direction: column;
   width: 60%;
   max-width: 640px;
+  min-width: 260px;
 
   background-color: ${({ theme }) => theme.colors.gray3};
   border-radius: 20px;

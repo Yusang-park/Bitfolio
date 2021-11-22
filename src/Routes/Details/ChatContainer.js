@@ -17,21 +17,19 @@ import {
   _TitleText,
 } from "../../Components/GlobalComponents";
 
-export const ChatContainer = () => {
+export const ChatContainer = React.memo(() => {
   const useRefScroll = useRef();
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
   const [chatData, setChatData] = useState({});
 
-  //Overflow(Scroll) 발생 시 height 크기가 의도한대로 출력되지 않는 문제를 해결하기 위함
   useEffect(() => {
     getChatMessages(data.id, (value) => {
-      if (value)
-        setChatData(Object.entries(value), () => {
-          $("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-        });
+      if (value) {
+        setChatData(Object.entries(value));
+      }
     });
-  }, [data.id]);
+  }, [data.id, getChatMessages, setChatData]);
 
   useEffect(() => {
     try {
@@ -88,7 +86,7 @@ export const ChatContainer = () => {
       </InputContainer>
     </Wrapper>
   );
-};
+});
 
 const ChatSpace = styled.div`
   height: 100%;
