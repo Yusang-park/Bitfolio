@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { S_IconButton } from "../GlobalComponents";
+import { SIconButton } from "../GlobalComponents";
 import { Dialog } from "../Modal";
 import { UserModalBox } from "./UserModalBox";
 export const UserBtn = ({ setShowModal }) => {
@@ -16,7 +16,7 @@ export const UserBtn = ({ setShowModal }) => {
   );
 };
 
-const IconButton = styled(S_IconButton)`
+const IconButton = styled(SIconButton)`
   display: none;
   ${({ theme }) => theme.device.tablet} {
     display: block;

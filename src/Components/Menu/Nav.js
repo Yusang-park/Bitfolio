@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 import styled from "styled-components";
 import {
-  S_Expanded,
-  S_SizedBox,
-  S_IconButton,
-  S_Button,
+  SExpanded,
+  SSizedBox,
+  SIconButton,
+  SButton,
 } from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
@@ -41,9 +41,9 @@ export const Nav = () => {
         setClose={onClickHamberger}
       />
       <HambergerBtn onClick={onClickHamberger} />
-      <S_TitleText>{getName()}</S_TitleText>
+      <STitleText>{getName()}</STitleText>
       <CryptoSearchBox />
-      <S_SizedBox width="16px" />
+      <SSizedBox width="16px" />
 
       {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
     </Container>
@@ -60,7 +60,7 @@ const Container = styled.div`
   font-size: 2.6rem;
 `;
 
-const S_TitleText = styled.div`
+const STitleText = styled.div`
   display: flex;
   flex: auto;
   align-items: center;

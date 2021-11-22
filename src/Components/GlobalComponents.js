@@ -3,44 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
 // ====================================================================================
-export const S_TitleText = styled.p`
+export const STitleText = styled.p`
   font-size: 2.6rem;
 `;
 
-export const S_BoldTitleText = styled.p`
+export const SBoldTitleText = styled.p`
   font-size: 2.6rem;
   font-weight: bold;
 `;
 
-export const S_SubTitleText = styled.p`
+export const SSubTitleText = styled.p`
   font-size: 1.8rem;
 `;
 
-export const S_GrayText = styled.div`
+export const SGrayText = styled.div`
   font-size: 1.6rem;
   transition: color 300ms ease-out 100ms;
   color: ${(props) => props.theme.colors.gray};
 `;
 
-export const S_PercentText = styled.div`
+export const SPercentText = styled.div`
   font-size: 1.6rem;
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
 `;
 
-export const S_Text = styled.p`
+export const SText = styled.p`
   font-size: 1.6rem;
 `;
 // ====================================================================================
 
-export const S_AnimatedDiv = styled.div`
+export const SAnimatedDiv = styled.div`
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
 `;
 
-export const S_StyledBox = styled(S_AnimatedDiv)`
+export const SStyledBox = styled(SAnimatedDiv)`
   display: flex;
   flex-direction: column;
   padding: 32px;
@@ -50,7 +50,7 @@ export const S_StyledBox = styled(S_AnimatedDiv)`
   transition: background-color 300ms ease-out 100ms;
 `;
 
-export const S_YellowTitleCircle = styled.div`
+export const SYellowTitleCircle = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
@@ -61,19 +61,19 @@ export const S_YellowTitleCircle = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-export const S_Bookmark = ({ isSelected, onClick, size }) => {
+export const SBookmark = ({ isSelected, onClick, size }) => {
   return (
-    <S_StyledBookmark isSelected={isSelected}>
+    <SStyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
         onClick={(m) => m.stopPropagation(onClick())}
         size={size}
       />
-    </S_StyledBookmark>
+    </SStyledBookmark>
   );
 };
 
-const S_StyledBookmark = styled.div`
+const SStyledBookmark = styled.div`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
   cursor: auto;
@@ -85,27 +85,27 @@ const S_StyledBookmark = styled.div`
 
 // ====================================================================================
 
-export const S_Divider = styled.div`
+export const SDivider = styled.div`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
   background-color: ${(props) => props.theme.colors.gray3};
 `;
 
-export const S_SizedBox = styled.div`
+export const SSizedBox = styled.div`
   align-self: center;
 
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
 
-export const S_Expanded = styled.div`
+export const SExpanded = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify_content ?? "left"};
   align-items: center;
   flex: ${(props) => props.flex};
 `;
 
-export const S_Row = styled.div`
+export const SRow = styled.div`
   display: flex;
   justify-content: ${({ justify_content }) =>
     justify_content ? justify_content : css`center`};
@@ -115,7 +115,7 @@ export const S_Row = styled.div`
   height: ${({ height }) => (height ? height : css`auto`)};
 `;
 
-export const S_Column = styled.div`
+export const SColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: ${({ justify_content }) =>
@@ -124,7 +124,7 @@ export const S_Column = styled.div`
   height: ${({ height }) => (height ? height : css`100%`)};
 `;
 
-export const S_StyledDimmer = styled.div`
+export const SStyledDimmer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +144,7 @@ export const S_StyledDimmer = styled.div`
 
 // =========================================================================
 
-export const S_Button = styled.button`
+export const SButton = styled.button`
   vertical-align: middle;
   width: ${(props) => (props.width ? props.width : null)};
   height: ${(props) => (props.height ? props.height : css`38px`)};
@@ -161,14 +161,14 @@ export const S_Button = styled.button`
   }
 `;
 
-export const S_IconButton = styled(S_Button)`
+export const SIconButton = styled(SButton)`
   vertical-align: middle;
   width: 38px;
   padding: 0px 0px;
   border-radius: 12px;
 `;
 
-export const S_ATag = styled(S_Button)`
+export const SATag = styled(SButton)`
   vertical-align: middle;
   height: 38px;
   padding: ${(props) => (props.width ? "0px" : "0px 16px")};
@@ -188,7 +188,7 @@ export const S_ATag = styled(S_Button)`
   }
 `;
 
-export const S_Input = styled.input`
+export const SInput = styled.input`
   background: #fdfcff;
   border: 1px solid #8e8e8e;
   box-sizing: border-box;

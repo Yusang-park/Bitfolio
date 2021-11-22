@@ -92,7 +92,7 @@
     "bitcointalk_thread_identifier": null,
     "telegram_channel_identifier": "",
     "subreddit_url": "https://www.reddit.com/r/Bitcoin/",
-    "repos_url": {
+    "repoSurl": {
       "github": [
         "https://github.com/bitcoin/bitcoin",
         "https://github.com/bitcoin/bips"
@@ -106,9 +106,9 @@
     "large": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
   },
   "country_origin": "",
-  "genesis_date": "2009-01-03",
-  "sentiment_votes_up_percentage": 91.05,
-  "sentiment_votes_down_percentage": 8.95,
+  "genesiSdate": "2009-01-03",
+  "sentiment_voteSup_percentage": 91.05,
+  "sentiment_voteSdown_percentage": 8.95,
   "market_cap_rank": 1,
   "coingecko_rank": 2,
   "coingecko_score": 80.616,
@@ -1589,10 +1589,10 @@
   "community_data": {
     "facebook_likes": null,
     "twitter_followers": 3447493,
-    "reddit_average_posts_48h": 8.167,
-    "reddit_average_comments_48h": 1723,
+    "reddit_average_postS48h": 8.167,
+    "reddit_average_commentS48h": 1723,
     "reddit_subscribers": 3453979,
-    "reddit_accounts_active_48h": 5958,
+    "reddit_accountSactive_48h": 5958,
     "telegram_channel_user_count": null
   },
   "developer_data": {
@@ -1601,14 +1601,14 @@
     "subscribers": 3853,
     "total_issues": 6530,
     "closed_issues": 5911,
-    "pull_requests_merged": 9066,
+    "pull_requestSmerged": 9066,
     "pull_request_contributors": 750,
-    "code_additions_deletions_4_weeks": {
+    "code_additionSdeletionS4_weeks": {
       "additions": 3905,
       "deletions": -1333
     },
     "commit_count_4_weeks": 347,
-    "last_4_weeks_commit_activity_series": [
+    "last_4_weekScommit_activity_series": [
       7,
       8,
       16,
@@ -1643,7 +1643,7 @@
     "alexa_rank": 9440,
     "bing_matches": null
   },
-  "status_updates": [],
+  "statuSupdates": [],
   "last_updated": "2021-10-21T08:12:13.429Z",
   "tickers": [
     {
@@ -1652,7 +1652,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65193.39,
       "volume": 62391.47236156935,
@@ -1671,8 +1671,8 @@
       "timestamp": "2021-10-21T07:59:13+00:00",
       "last_traded_at": "2021-10-21T07:59:13+00:00",
       "last_fetch_at": "2021-10-21T07:59:13+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/BTC_USDT?ref=37754157",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -1684,7 +1684,7 @@
       "market": {
         "name": "FTX",
         "identifier": "ftx_spot",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 1.001,
       "volume": 234.52512474525474,
@@ -1703,8 +1703,8 @@
       "timestamp": "2021-10-21T08:07:39+00:00",
       "last_traded_at": "2021-10-21T08:07:39+00:00",
       "last_fetch_at": "2021-10-21T08:07:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.com/trade/WBTC/BTC",
       "token_info_url": null,
       "coin_id": "wrapped-bitcoin",
@@ -1716,7 +1716,7 @@
       "market": {
         "name": "FTX.US",
         "identifier": "ftx_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65178,
       "volume": 934.3245839945994,
@@ -1735,8 +1735,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.us/trade/BTC/USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -1748,7 +1748,7 @@
       "market": {
         "name": "FTX.US",
         "identifier": "ftx_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65172,
       "volume": 1876.1157945421346,
@@ -1767,8 +1767,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.us/trade/BTC/USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1779,7 +1779,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 47253,
       "volume": 718.4352351699999,
@@ -1798,8 +1798,8 @@
       "timestamp": "2021-10-21T08:08:31+00:00",
       "last_traded_at": "2021-10-21T08:08:31+00:00",
       "last_fetch_at": "2021-10-21T08:08:31+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/BTCGBP",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1810,7 +1810,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65259,
       "volume": 14040.1218157,
@@ -1829,8 +1829,8 @@
       "timestamp": "2021-10-21T08:08:28+00:00",
       "last_traded_at": "2021-10-21T08:08:28+00:00",
       "last_fetch_at": "2021-10-21T08:08:28+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/BTCUSD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1841,7 +1841,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 56098,
       "volume": 1306.03290347,
@@ -1860,8 +1860,8 @@
       "timestamp": "2021-10-21T08:08:28+00:00",
       "last_traded_at": "2021-10-21T08:08:28+00:00",
       "last_fetch_at": "2021-10-21T08:08:28+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/BTCEUR",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1872,7 +1872,7 @@
       "market": {
         "name": "VCC Exchange",
         "identifier": "vcc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65287.52,
       "volume": 300.076204,
@@ -1891,8 +1891,8 @@
       "timestamp": "2021-10-21T08:06:59+00:00",
       "last_traded_at": "2021-10-21T08:06:59+00:00",
       "last_fetch_at": "2021-10-21T08:06:59+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://vcc.exchange/exchange/basic?currency=usdt&coin=btc",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -1904,7 +1904,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 7447199.99999961,
       "volume": 445.22018745,
@@ -1923,8 +1923,8 @@
       "timestamp": "2021-10-21T08:08:16+00:00",
       "last_traded_at": "2021-10-21T08:08:16+00:00",
       "last_fetch_at": "2021-10-21T08:08:16+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/BTCJPY",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1935,7 +1935,7 @@
       "market": {
         "name": "Coinbase Exchange",
         "identifier": "gdax",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65254.19,
       "volume": 23555.17681863,
@@ -1954,8 +1954,8 @@
       "timestamp": "2021-10-21T08:09:43+00:00",
       "last_traded_at": "2021-10-21T08:09:43+00:00",
       "last_fetch_at": "2021-10-21T08:09:43+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.coinbase.com/trade/BTC-USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -1966,7 +1966,7 @@
       "market": {
         "name": "Crypto.com Exchange",
         "identifier": "crypto_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65305.55,
       "volume": 38614.532646,
@@ -1985,8 +1985,8 @@
       "timestamp": "2021-10-21T08:06:51+00:00",
       "last_traded_at": "2021-10-21T08:06:51+00:00",
       "last_fetch_at": "2021-10-21T08:06:51+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://crypto.com/exchange/trade/spot/BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -1998,7 +1998,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65289.61,
       "volume": 15186.738988670451,
@@ -2017,8 +2017,8 @@
       "timestamp": "2021-10-21T08:05:46+00:00",
       "last_traded_at": "2021-10-21T08:05:46+00:00",
       "last_fetch_at": "2021-10-21T08:05:46+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/BTC_BUSD?ref=37754157",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2030,7 +2030,7 @@
       "market": {
         "name": "WOO Network",
         "identifier": "wootrade",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65252.03,
       "volume": 5527.80237389,
@@ -2049,8 +2049,8 @@
       "timestamp": "2021-10-21T08:07:43+00:00",
       "last_traded_at": "2021-10-21T08:07:43+00:00",
       "last_fetch_at": "2021-10-21T08:07:43+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://x.woo.network/spot",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2062,7 +2062,7 @@
       "market": {
         "name": "Digifinex",
         "identifier": "digifinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65289.15,
       "volume": 6226.745001,
@@ -2081,8 +2081,8 @@
       "timestamp": "2021-10-21T08:10:57+00:00",
       "last_traded_at": "2021-10-21T08:10:57+00:00",
       "last_fetch_at": "2021-10-21T08:10:57+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.digifinex.com/en-ww/trade/USDT/BTC",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2094,7 +2094,7 @@
       "market": {
         "name": "FTX",
         "identifier": "ftx_spot",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65276,
       "volume": 15348.676075370733,
@@ -2113,8 +2113,8 @@
       "timestamp": "2021-10-21T08:07:39+00:00",
       "last_traded_at": "2021-10-21T08:07:39+00:00",
       "last_fetch_at": "2021-10-21T08:07:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.com/trade/BTC/USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2125,7 +2125,7 @@
       "market": {
         "name": "LBank",
         "identifier": "lbank",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65296.48,
       "volume": 6659.1351,
@@ -2144,8 +2144,8 @@
       "timestamp": "2021-10-21T08:10:47+00:00",
       "last_traded_at": "2021-10-21T08:10:47+00:00",
       "last_fetch_at": "2021-10-21T08:10:47+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.lbank.info/exchange/btc/usdt",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2157,7 +2157,7 @@
       "market": {
         "name": "WhiteBIT",
         "identifier": "whitebit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65277.14,
       "volume": 8321.176873,
@@ -2176,8 +2176,8 @@
       "timestamp": "2021-10-21T08:10:55+00:00",
       "last_traded_at": "2021-10-21T08:10:55+00:00",
       "last_fetch_at": "2021-10-21T08:10:55+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://whitebit.com/trade/BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2189,7 +2189,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 1.0011,
       "volume": 585.5894063829787,
@@ -2208,8 +2208,8 @@
       "timestamp": "2021-10-21T08:08:43+00:00",
       "last_traded_at": "2021-10-21T08:08:43+00:00",
       "last_fetch_at": "2021-10-21T08:08:43+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/WBTC_BTC?ref=37754157",
       "token_info_url": null,
       "coin_id": "wrapped-bitcoin",
@@ -2221,7 +2221,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063935,
       "volume": 186763.79681535935,
@@ -2240,8 +2240,8 @@
       "timestamp": "2021-10-21T07:56:59+00:00",
       "last_traded_at": "2021-10-21T07:56:59+00:00",
       "last_fetch_at": "2021-10-21T07:56:59+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/ETH_BTC?ref=37754157",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2253,7 +2253,7 @@
       "market": {
         "name": "Kraken",
         "identifier": "kraken",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65289.4,
       "volume": 4292.56571711,
@@ -2272,8 +2272,8 @@
       "timestamp": "2021-10-21T08:07:39+00:00",
       "last_traded_at": "2021-10-21T08:07:39+00:00",
       "last_fetch_at": "2021-10-21T08:07:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://trade.kraken.com/markets/kraken/btc/usd",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2284,7 +2284,7 @@
       "market": {
         "name": "Kraken",
         "identifier": "kraken",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 56109.1,
       "volume": 4310.93127542,
@@ -2303,8 +2303,8 @@
       "timestamp": "2021-10-21T08:07:39+00:00",
       "last_traded_at": "2021-10-21T08:07:39+00:00",
       "last_fetch_at": "2021-10-21T08:07:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://trade.kraken.com/markets/kraken/btc/eur",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2315,7 +2315,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65250,
       "volume": 2975.14402384,
@@ -2334,8 +2334,8 @@
       "timestamp": "2021-10-21T08:08:15+00:00",
       "last_traded_at": "2021-10-21T08:08:15+00:00",
       "last_fetch_at": "2021-10-21T08:08:15+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/BTCUST",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2347,7 +2347,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65149.44,
       "volume": 19863.00974,
@@ -2366,8 +2366,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2379,7 +2379,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65249.56,
       "volume": 20062.85338,
@@ -2398,8 +2398,8 @@
       "timestamp": "2021-10-21T08:09:36+00:00",
       "last_traded_at": "2021-10-21T08:09:36+00:00",
       "last_fetch_at": "2021-10-21T08:09:36+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/BTC-to-USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2411,7 +2411,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65270.36,
       "volume": 20062.67514,
@@ -2430,8 +2430,8 @@
       "timestamp": "2021-10-21T08:09:08+00:00",
       "last_traded_at": "2021-10-21T08:09:08+00:00",
       "last_fetch_at": "2021-10-21T08:09:08+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/BTC-to-USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2443,7 +2443,7 @@
       "market": {
         "name": "Bitstamp",
         "identifier": "bitstamp",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65288.64,
       "volume": 4102.58407566,
@@ -2462,8 +2462,8 @@
       "timestamp": "2021-10-21T08:08:49+00:00",
       "last_traded_at": "2021-10-21T08:08:49+00:00",
       "last_fetch_at": "2021-10-21T08:08:49+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2474,7 +2474,7 @@
       "market": {
         "name": "OKEx",
         "identifier": "okex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65262.4,
       "volume": 18682.71619221,
@@ -2493,8 +2493,8 @@
       "timestamp": "2021-10-21T08:08:42+00:00",
       "last_traded_at": "2021-10-21T08:08:42+00:00",
       "last_fetch_at": "2021-10-21T08:08:42+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.okex.com/markets/spot-info/btc-usdt",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2506,7 +2506,7 @@
       "market": {
         "name": "bitFlyer",
         "identifier": "bitflyer",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 7447817,
       "volume": 3787.18030099,
@@ -2525,8 +2525,8 @@
       "timestamp": "2021-10-21T08:07:50+00:00",
       "last_traded_at": "2021-10-21T08:07:50+00:00",
       "last_fetch_at": "2021-10-21T08:07:50+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://bitflyer.com/en-jp/ex/simpleex",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2537,7 +2537,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063913,
       "volume": 10802.3866624,
@@ -2556,8 +2556,8 @@
       "timestamp": "2021-10-21T08:08:19+00:00",
       "last_traded_at": "2021-10-21T08:08:19+00:00",
       "last_fetch_at": "2021-10-21T08:08:19+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/ETHBTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2569,7 +2569,7 @@
       "market": {
         "name": "Huobi Global",
         "identifier": "huobi",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65269.71,
       "volume": 20204.927389027634,
@@ -2588,8 +2588,8 @@
       "timestamp": "2021-10-21T08:09:27+00:00",
       "last_traded_at": "2021-10-21T08:09:27+00:00",
       "last_fetch_at": "2021-10-21T08:09:27+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.huobi.com/en-us/exchange/btc_usdt",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2601,7 +2601,7 @@
       "market": {
         "name": "ZB",
         "identifier": "zb",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65265.58,
       "volume": 21734.6233,
@@ -2620,8 +2620,8 @@
       "timestamp": "2021-10-21T08:10:15+00:00",
       "last_traded_at": "2021-10-21T08:10:15+00:00",
       "last_fetch_at": "2021-10-21T08:10:15+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://trans.zb.com/btcusdt",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2633,7 +2633,7 @@
       "market": {
         "name": "LBank",
         "identifier": "lbank",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.06428711,
       "volume": 34157.2515,
@@ -2652,8 +2652,8 @@
       "timestamp": "2021-10-21T08:10:45+00:00",
       "last_traded_at": "2021-10-21T08:10:45+00:00",
       "last_fetch_at": "2021-10-21T08:10:45+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.lbank.info/exchange/eth/btc",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2665,7 +2665,7 @@
       "market": {
         "name": "FTX",
         "identifier": "ftx_spot",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65260,
       "volume": 3452.2923896690163,
@@ -2684,8 +2684,8 @@
       "timestamp": "2021-10-21T08:07:40+00:00",
       "last_traded_at": "2021-10-21T08:07:40+00:00",
       "last_fetch_at": "2021-10-21T08:07:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.com/trade/BTC/USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2697,7 +2697,7 @@
       "market": {
         "name": "KuCoin",
         "identifier": "kucoin",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65268.5,
       "volume": 11727.74796703,
@@ -2716,8 +2716,8 @@
       "timestamp": "2021-10-21T08:08:51+00:00",
       "last_traded_at": "2021-10-21T08:08:51+00:00",
       "last_fetch_at": "2021-10-21T08:08:51+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.kucoin.com/trade/BTC-USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -2729,7 +2729,7 @@
       "market": {
         "name": "Upbit",
         "identifier": "upbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 79820000,
       "volume": 15231.09449953,
@@ -2748,8 +2748,8 @@
       "timestamp": "2021-10-21T08:06:51+00:00",
       "last_traded_at": "2021-10-21T08:06:51+00:00",
       "last_fetch_at": "2021-10-21T08:06:51+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2760,7 +2760,7 @@
       "market": {
         "name": "VCC Exchange",
         "identifier": "vcc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063806,
       "volume": 3661.9143,
@@ -2779,8 +2779,8 @@
       "timestamp": "2021-10-21T08:06:59+00:00",
       "last_traded_at": "2021-10-21T08:06:59+00:00",
       "last_fetch_at": "2021-10-21T08:06:59+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://vcc.exchange/exchange/basic?currency=btc&coin=eth",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2792,7 +2792,7 @@
       "market": {
         "name": "FTX.US",
         "identifier": "ftx_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0639375,
       "volume": 3245.882662639296,
@@ -2811,8 +2811,8 @@
       "timestamp": "2021-10-21T08:01:41+00:00",
       "last_traded_at": "2021-10-21T08:01:41+00:00",
       "last_fetch_at": "2021-10-21T08:01:41+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.us/trade/ETH/BTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2824,7 +2824,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.007544,
       "volume": 1582.01,
@@ -2843,8 +2843,8 @@
       "timestamp": "2021-10-21T08:08:55+00:00",
       "last_traded_at": "2021-10-21T08:08:55+00:00",
       "last_fetch_at": "2021-10-21T08:08:55+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/BNB-to-BTC",
       "token_info_url": null,
       "coin_id": "binancecoin",
@@ -2856,7 +2856,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.007544,
       "volume": 1582.01,
@@ -2875,8 +2875,8 @@
       "timestamp": "2021-10-21T08:09:03+00:00",
       "last_traded_at": "2021-10-21T08:09:03+00:00",
       "last_fetch_at": "2021-10-21T08:09:03+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/BNB-to-BTC",
       "token_info_url": null,
       "coin_id": "binancecoin",
@@ -2888,7 +2888,7 @@
       "market": {
         "name": "AlterDice",
         "identifier": "alterdice",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.064101,
       "volume": 1542.0344931,
@@ -2907,8 +2907,8 @@
       "timestamp": "2021-10-21T08:00:10+00:00",
       "last_traded_at": "2021-10-21T08:00:10+00:00",
       "last_fetch_at": "2021-10-21T08:00:10+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -2920,7 +2920,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000017475,
       "volume": 26274719.5,
@@ -2939,8 +2939,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "ripple",
@@ -2952,7 +2952,7 @@
       "market": {
         "name": "BTSE",
         "identifier": "btse",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65328,
       "volume": 2616.134539923999,
@@ -2971,8 +2971,8 @@
       "timestamp": "2021-10-21T08:06:39+00:00",
       "last_traded_at": "2021-10-21T08:06:39+00:00",
       "last_fetch_at": "2021-10-21T08:06:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.btse.com/en/trading/BTC-USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -2983,7 +2983,7 @@
       "market": {
         "name": "Bitvavo",
         "identifier": "bitvavo",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 56102,
       "volume": 1607.9440367,
@@ -3002,8 +3002,8 @@
       "timestamp": "2021-10-21T08:10:07+00:00",
       "last_traded_at": "2021-10-21T08:10:07+00:00",
       "last_fetch_at": "2021-10-21T08:10:07+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://account.bitvavo.com/markets/BTC-EUR",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3014,7 +3014,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000017481,
       "volume": 26271340.6,
@@ -3033,8 +3033,8 @@
       "timestamp": "2021-10-21T08:09:05+00:00",
       "last_traded_at": "2021-10-21T08:09:05+00:00",
       "last_fetch_at": "2021-10-21T08:09:05+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/XRP-to-BTC",
       "token_info_url": null,
       "coin_id": "ripple",
@@ -3046,7 +3046,7 @@
       "market": {
         "name": "FTX.US",
         "identifier": "ftx_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.009846,
       "volume": 2185.0397363396305,
@@ -3065,8 +3065,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.us/trade/BCH/BTC",
       "token_info_url": null,
       "coin_id": "bitcoin-cash",
@@ -3078,7 +3078,7 @@
       "market": {
         "name": "Coinbase Exchange",
         "identifier": "gdax",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.06395,
       "volume": 27282.67887068,
@@ -3097,8 +3097,8 @@
       "timestamp": "2021-10-21T08:08:51+00:00",
       "last_traded_at": "2021-10-21T08:08:51+00:00",
       "last_fetch_at": "2021-10-21T08:09:42+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.coinbase.com/trade/ETH-BTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -3110,7 +3110,7 @@
       "market": {
         "name": "Coinbase Exchange",
         "identifier": "gdax",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 56103.84,
       "volume": 2161.27547071,
@@ -3129,8 +3129,8 @@
       "timestamp": "2021-10-21T08:08:40+00:00",
       "last_traded_at": "2021-10-21T08:08:40+00:00",
       "last_fetch_at": "2021-10-21T08:09:17+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.coinbase.com/trade/BTC-EUR",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3141,7 +3141,7 @@
       "market": {
         "name": "Coinbase Exchange",
         "identifier": "gdax",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 1.0013,
       "volume": 187.31667151,
@@ -3160,8 +3160,8 @@
       "timestamp": "2021-10-21T08:07:36+00:00",
       "last_traded_at": "2021-10-21T08:07:36+00:00",
       "last_fetch_at": "2021-10-21T08:09:47+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.coinbase.com/trade/WBTC-BTC",
       "token_info_url": null,
       "coin_id": "wrapped-bitcoin",
@@ -3173,7 +3173,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000017481,
       "volume": 26271880.4,
@@ -3192,8 +3192,8 @@
       "timestamp": "2021-10-21T08:09:02+00:00",
       "last_traded_at": "2021-10-21T08:09:02+00:00",
       "last_fetch_at": "2021-10-21T08:09:02+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/XRP-to-BTC",
       "token_info_url": null,
       "coin_id": "ripple",
@@ -3205,7 +3205,7 @@
       "market": {
         "name": "Crypto.com Exchange",
         "identifier": "crypto_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063832,
       "volume": 15835.90578,
@@ -3224,8 +3224,8 @@
       "timestamp": "2021-10-21T08:06:51+00:00",
       "last_traded_at": "2021-10-21T08:06:51+00:00",
       "last_fetch_at": "2021-10-21T08:06:51+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://crypto.com/exchange/trade/spot/ETH_BTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -3237,7 +3237,7 @@
       "market": {
         "name": "Coinsbit",
         "identifier": "coinsbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65187.8943145,
       "volume": 8892.78751285,
@@ -3256,8 +3256,8 @@
       "timestamp": "2021-10-21T08:04:19+00:00",
       "last_traded_at": "2021-10-21T08:04:19+00:00",
       "last_fetch_at": "2021-10-21T08:04:19+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://coinsbit.io/trade/BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3269,7 +3269,7 @@
       "market": {
         "name": "Gemini",
         "identifier": "gemini",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65286.91,
       "volume": 2910.2707720052,
@@ -3288,8 +3288,8 @@
       "timestamp": "2021-10-21T08:11:09+00:00",
       "last_traded_at": "2021-10-21T08:11:09+00:00",
       "last_fetch_at": "2021-10-21T08:11:09+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3300,7 +3300,7 @@
       "market": {
         "name": "B2BX",
         "identifier": "b2bx",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65129.952573,
       "volume": 49.38944881,
@@ -3319,8 +3319,8 @@
       "timestamp": "2021-10-21T07:57:12+00:00",
       "last_traded_at": "2021-10-21T07:57:12+00:00",
       "last_fetch_at": "2021-10-21T07:57:12+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCUSD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3331,7 +3331,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0031991,
       "volume": 36587.82021892,
@@ -3350,8 +3350,8 @@
       "timestamp": "2021-10-21T08:08:27+00:00",
       "last_traded_at": "2021-10-21T08:08:27+00:00",
       "last_fetch_at": "2021-10-21T08:08:27+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/LTCBTC",
       "token_info_url": null,
       "coin_id": "litecoin",
@@ -3363,7 +3363,7 @@
       "market": {
         "name": "GMO Japan",
         "identifier": "gmo_japan",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 7450000,
       "volume": 622.8124,
@@ -3382,8 +3382,8 @@
       "timestamp": "2021-10-21T08:04:55+00:00",
       "last_traded_at": "2021-10-21T08:04:55+00:00",
       "last_fetch_at": "2021-10-21T08:04:55+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://coin.z.com/jp/corp/information/btc-market/",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3394,7 +3394,7 @@
       "market": {
         "name": "FTX",
         "identifier": "ftx_spot",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00001746,
       "volume": 2214374.9077892327,
@@ -3413,8 +3413,8 @@
       "timestamp": "2021-10-21T08:07:40+00:00",
       "last_traded_at": "2021-10-21T08:07:40+00:00",
       "last_fetch_at": "2021-10-21T08:07:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.com/trade/XRP/BTC",
       "token_info_url": null,
       "coin_id": "ripple",
@@ -3426,7 +3426,7 @@
       "market": {
         "name": "Phemex",
         "identifier": "phemex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65344.5,
       "volume": 5141.50768068,
@@ -3445,8 +3445,8 @@
       "timestamp": "2021-10-21T08:06:39+00:00",
       "last_traded_at": "2021-10-21T08:06:39+00:00",
       "last_fetch_at": "2021-10-21T08:06:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://phemex.com/spot/trade/BTCUSDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3458,7 +3458,7 @@
       "market": {
         "name": "Currency.com",
         "identifier": "currency",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65280.75,
       "volume": 2252.39281394,
@@ -3477,8 +3477,8 @@
       "timestamp": "2021-10-21T08:08:43+00:00",
       "last_traded_at": "2021-10-21T08:08:43+00:00",
       "last_fetch_at": "2021-10-21T08:08:43+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://exchange.currency.com/btc-to-usd",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3489,7 +3489,7 @@
       "market": {
         "name": "Coinsbit",
         "identifier": "coinsbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000415,
       "volume": 17231.50062267,
@@ -3508,8 +3508,8 @@
       "timestamp": "2021-10-21T08:04:22+00:00",
       "last_traded_at": "2021-10-21T08:04:22+00:00",
       "last_fetch_at": "2021-10-21T08:04:22+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://coinsbit.io/trade/UNI_BTC",
       "token_info_url": null,
       "coin_id": "uniswap",
@@ -3521,7 +3521,7 @@
       "market": {
         "name": "Binance US",
         "identifier": "binance_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65318.49,
       "volume": 2198.0112146591264,
@@ -3540,8 +3540,8 @@
       "timestamp": "2021-10-21T08:11:15+00:00",
       "last_traded_at": "2021-10-21T08:11:15+00:00",
       "last_fetch_at": "2021-10-21T08:11:15+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.us/en/trade/BTC_USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3552,7 +3552,7 @@
       "market": {
         "name": "Waves.Exchange",
         "identifier": "waves",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00044829,
       "volume": 24259.89521891,
@@ -3571,8 +3571,8 @@
       "timestamp": "2021-10-21T08:06:27+00:00",
       "last_traded_at": "2021-10-21T08:06:27+00:00",
       "last_fetch_at": "2021-10-21T08:06:27+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "waves",
@@ -3584,7 +3584,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063946,
       "volume": 4348.1541,
@@ -3603,8 +3603,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -3616,7 +3616,7 @@
       "market": {
         "name": "B2BX",
         "identifier": "b2bx",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65132.0426148,
       "volume": 37.0045,
@@ -3635,8 +3635,8 @@
       "timestamp": "2021-10-21T07:57:12+00:00",
       "last_traded_at": "2021-10-21T07:57:12+00:00",
       "last_fetch_at": "2021-10-21T07:57:12+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCUSDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3648,7 +3648,7 @@
       "market": {
         "name": "B2BX",
         "identifier": "b2bx",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 55955.2390824,
       "volume": 33.1459,
@@ -3667,8 +3667,8 @@
       "timestamp": "2021-10-21T08:10:33+00:00",
       "last_traded_at": "2021-10-21T08:10:33+00:00",
       "last_fetch_at": "2021-10-21T08:10:33+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://advanced.b2bx.exchange/?symbol=BTCEUR",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3679,7 +3679,7 @@
       "market": {
         "name": "BigONE",
         "identifier": "bigone",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65258.58,
       "volume": 5936.288258,
@@ -3698,8 +3698,8 @@
       "timestamp": "2021-10-21T08:07:47+00:00",
       "last_traded_at": "2021-10-21T08:07:47+00:00",
       "last_fetch_at": "2021-10-21T08:07:47+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://big.one/trade/BTC-USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3711,7 +3711,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0031991,
       "volume": 19074.66,
@@ -3730,8 +3730,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "litecoin",
@@ -3743,7 +3743,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 55960.24,
       "volume": 2621.4801038728942,
@@ -3762,8 +3762,8 @@
       "timestamp": "2021-10-21T08:09:41+00:00",
       "last_traded_at": "2021-10-21T08:09:41+00:00",
       "last_fetch_at": "2021-10-21T08:09:41+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/BTC_EUR?ref=37754157",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3774,7 +3774,7 @@
       "market": {
         "name": "WhiteBIT",
         "identifier": "whitebit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 55931.56,
       "volume": 60.35204358,
@@ -3793,8 +3793,8 @@
       "timestamp": "2021-10-21T08:10:54+00:00",
       "last_traded_at": "2021-10-21T08:10:54+00:00",
       "last_fetch_at": "2021-10-21T08:10:54+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://whitebit.com/trade/BTC_EUR",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3805,7 +3805,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063933,
       "volume": 4343.341,
@@ -3824,8 +3824,8 @@
       "timestamp": "2021-10-21T08:09:19+00:00",
       "last_traded_at": "2021-10-21T08:09:19+00:00",
       "last_fetch_at": "2021-10-21T08:09:19+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/ETH-to-BTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -3837,7 +3837,7 @@
       "market": {
         "name": "AAX",
         "identifier": "aax",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65157.95,
       "volume": 2377.829107209047,
@@ -3856,8 +3856,8 @@
       "timestamp": "2021-10-21T08:01:00+00:00",
       "last_traded_at": "2021-10-21T08:01:00+00:00",
       "last_fetch_at": "2021-10-21T08:01:00+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.aax.com/spot/trade/BTC:USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3869,7 +3869,7 @@
       "market": {
         "name": "Coincheck",
         "identifier": "coincheck",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 7436678,
       "volume": 3330.66688808,
@@ -3888,8 +3888,8 @@
       "timestamp": "2021-10-21T08:00:41+00:00",
       "last_traded_at": "2021-10-21T08:00:41+00:00",
       "last_fetch_at": "2021-10-21T08:00:41+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -3900,7 +3900,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0032006,
       "volume": 18949.603,
@@ -3919,8 +3919,8 @@
       "timestamp": "2021-10-21T08:09:02+00:00",
       "last_traded_at": "2021-10-21T08:09:02+00:00",
       "last_fetch_at": "2021-10-21T08:09:02+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/LTC-to-BTC",
       "token_info_url": null,
       "coin_id": "litecoin",
@@ -3932,7 +3932,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0032006,
       "volume": 18949.603,
@@ -3951,8 +3951,8 @@
       "timestamp": "2021-10-21T08:08:53+00:00",
       "last_traded_at": "2021-10-21T08:08:53+00:00",
       "last_fetch_at": "2021-10-21T08:08:53+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/LTC-to-BTC",
       "token_info_url": null,
       "coin_id": "litecoin",
@@ -3964,7 +3964,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65281.32185,
       "volume": 127.85501,
@@ -3983,8 +3983,8 @@
       "timestamp": "2021-10-21T08:09:33+00:00",
       "last_traded_at": "2021-10-21T08:09:33+00:00",
       "last_fetch_at": "2021-10-21T08:09:33+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/BTC-to-USDC",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -3996,7 +3996,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063933,
       "volume": 4343.341,
@@ -4015,8 +4015,8 @@
       "timestamp": "2021-10-21T08:09:07+00:00",
       "last_traded_at": "2021-10-21T08:09:07+00:00",
       "last_fetch_at": "2021-10-21T08:09:07+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/ETH-to-BTC",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -4028,7 +4028,7 @@
       "market": {
         "name": "Coinlist",
         "identifier": "coinlist",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65267.67,
       "volume": 37.9723,
@@ -4047,8 +4047,8 @@
       "timestamp": "2021-10-21T08:07:53+00:00",
       "last_traded_at": "2021-10-21T08:07:53+00:00",
       "last_fetch_at": "2021-10-21T08:07:53+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.coinlist.co/trader/BTC-USD",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -4059,7 +4059,7 @@
       "market": {
         "name": "FTX.US",
         "identifier": "ftx_us",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00319925,
       "volume": 1960.1134680003127,
@@ -4078,8 +4078,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.us/trade/LTC/BTC",
       "token_info_url": null,
       "coin_id": "litecoin",
@@ -4091,7 +4091,7 @@
       "market": {
         "name": "Bitrue",
         "identifier": "bitrue",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65277.01,
       "volume": 8627.6578,
@@ -4110,8 +4110,8 @@
       "timestamp": "2021-10-21T08:04:40+00:00",
       "last_traded_at": "2021-10-21T08:04:40+00:00",
       "last_fetch_at": "2021-10-21T08:04:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitrue.com/trading?market=usdt&symbol=btcusdt",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4123,7 +4123,7 @@
       "market": {
         "name": "Coinsbit",
         "identifier": "coinsbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 4615500,
       "volume": 13.93666027,
@@ -4142,8 +4142,8 @@
       "timestamp": "2021-10-21T08:04:17+00:00",
       "last_traded_at": "2021-10-21T08:04:17+00:00",
       "last_fetch_at": "2021-10-21T08:04:17+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://coinsbit.io/trade/BTC_RUB",
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -4154,7 +4154,7 @@
       "market": {
         "name": "Bitso",
         "identifier": "bitso",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65258.13,
       "volume": 63.26595365,
@@ -4173,8 +4173,8 @@
       "timestamp": "2021-10-21T08:08:08+00:00",
       "last_traded_at": "2021-10-21T08:08:08+00:00",
       "last_fetch_at": "2021-10-21T08:08:08+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -4185,7 +4185,7 @@
       "market": {
         "name": "Binance",
         "identifier": "binance",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65168.17,
       "volume": 2494.3411465040995,
@@ -4204,8 +4204,8 @@
       "timestamp": "2021-10-21T07:42:28+00:00",
       "last_traded_at": "2021-10-21T07:42:28+00:00",
       "last_fetch_at": "2021-10-21T07:42:28+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.binance.com/en/trade/BTC_USDC?ref=37754157",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4217,7 +4217,7 @@
       "market": {
         "name": "Bitfinex",
         "identifier": "bitfinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00007368,
       "volume": 515673.86652726,
@@ -4236,8 +4236,8 @@
       "timestamp": "2021-10-21T08:08:32+00:00",
       "last_traded_at": "2021-10-21T08:08:32+00:00",
       "last_fetch_at": "2021-10-21T08:08:32+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitfinex.com/t/EOSBTC",
       "token_info_url": null,
       "coin_id": "eos",
@@ -4249,7 +4249,7 @@
       "market": {
         "name": "Coinsbit",
         "identifier": "coinsbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65186.44,
       "volume": 51.05757485,
@@ -4268,8 +4268,8 @@
       "timestamp": "2021-10-21T08:04:22+00:00",
       "last_traded_at": "2021-10-21T08:04:22+00:00",
       "last_fetch_at": "2021-10-21T08:04:22+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://coinsbit.io/trade/BTC_USDC",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4281,7 +4281,7 @@
       "market": {
         "name": "Gate.io",
         "identifier": "gate",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65276,
       "volume": 4701.6142729406,
@@ -4300,8 +4300,8 @@
       "timestamp": "2021-10-21T08:05:33+00:00",
       "last_traded_at": "2021-10-21T08:05:33+00:00",
       "last_fetch_at": "2021-10-21T08:05:33+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://gate.io/trade/BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4313,7 +4313,7 @@
       "market": {
         "name": "Exrates",
         "identifier": "exrates",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65289.93,
       "volume": 253.6067596,
@@ -4332,8 +4332,8 @@
       "timestamp": "2021-10-21T08:06:50+00:00",
       "last_traded_at": "2021-10-21T08:06:50+00:00",
       "last_fetch_at": "2021-10-21T08:06:50+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://exrates.me/trading/BTCUSDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4345,7 +4345,7 @@
       "market": {
         "name": "Bitstamp",
         "identifier": "bitstamp",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 56067.34,
       "volume": 1239.59521038,
@@ -4364,8 +4364,8 @@
       "timestamp": "2021-10-21T08:08:48+00:00",
       "last_traded_at": "2021-10-21T08:08:48+00:00",
       "last_fetch_at": "2021-10-21T08:08:48+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": null,
       "token_info_url": null,
       "coin_id": "bitcoin"
@@ -4376,7 +4376,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65272.06658,
       "volume": 127.83683,
@@ -4395,8 +4395,8 @@
       "timestamp": "2021-10-21T08:09:05+00:00",
       "last_traded_at": "2021-10-21T08:09:05+00:00",
       "last_fetch_at": "2021-10-21T08:09:05+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/BTC-to-USDC",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4408,7 +4408,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000005932,
       "volume": 2164009.9,
@@ -4427,8 +4427,8 @@
       "timestamp": "2021-10-21T08:08:39+00:00",
       "last_traded_at": "2021-10-21T08:08:39+00:00",
       "last_fetch_at": "2021-10-21T08:08:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/HIT-to-BTC",
       "token_info_url": null,
       "coin_id": "hitbtc-token",
@@ -4440,7 +4440,7 @@
       "market": {
         "name": "BitMart",
         "identifier": "bitmart",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65294.47,
       "volume": 4359.7786,
@@ -4459,8 +4459,8 @@
       "timestamp": "2021-10-21T08:07:19+00:00",
       "last_traded_at": "2021-10-21T08:07:19+00:00",
       "last_fetch_at": "2021-10-21T08:07:19+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.bitmart.com/trade/en?symbol=BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4472,7 +4472,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000034738,
       "volume": 9302888,
@@ -4491,8 +4491,8 @@
       "timestamp": "2021-10-21T08:09:02+00:00",
       "last_traded_at": "2021-10-21T08:09:02+00:00",
       "last_fetch_at": "2021-10-21T08:09:02+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/ADA-to-BTC",
       "token_info_url": null,
       "coin_id": "cardano",
@@ -4504,7 +4504,7 @@
       "market": {
         "name": "Digifinex",
         "identifier": "digifinex",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.063857,
       "volume": 9526.134,
@@ -4523,8 +4523,8 @@
       "timestamp": "2021-10-21T08:10:57+00:00",
       "last_traded_at": "2021-10-21T08:10:57+00:00",
       "last_fetch_at": "2021-10-21T08:10:57+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://www.digifinex.com/en-ww/trade/BTC/ETH",
       "token_info_url": null,
       "coin_id": "ethereum",
@@ -4536,7 +4536,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000034738,
       "volume": 9302888,
@@ -4555,8 +4555,8 @@
       "timestamp": "2021-10-21T08:09:00+00:00",
       "last_traded_at": "2021-10-21T08:09:00+00:00",
       "last_fetch_at": "2021-10-21T08:09:00+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/ADA-to-BTC",
       "token_info_url": null,
       "coin_id": "cardano",
@@ -4568,7 +4568,7 @@
       "market": {
         "name": "FTX",
         "identifier": "ftx_spot",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 599977.1,
       "volume": 18.498420450063843,
@@ -4587,8 +4587,8 @@
       "timestamp": "2021-10-21T07:56:59+00:00",
       "last_traded_at": "2021-10-21T07:56:59+00:00",
       "last_fetch_at": "2021-10-21T08:07:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://ftx.com/trade/BTC/TRYB",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4600,7 +4600,7 @@
       "market": {
         "name": "HitBTC",
         "identifier": "hitbtc",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0000015959,
       "volume": 122888627,
@@ -4619,8 +4619,8 @@
       "timestamp": "2021-10-21T08:09:29+00:00",
       "last_traded_at": "2021-10-21T08:09:29+00:00",
       "last_fetch_at": "2021-10-21T08:09:29+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://hitbtc.com/TRX-to-BTC",
       "token_info_url": null,
       "coin_id": "tron",
@@ -4632,7 +4632,7 @@
       "market": {
         "name": "Upbit",
         "identifier": "upbit",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00000711,
       "volume": 1193766332.6308596,
@@ -4651,8 +4651,8 @@
       "timestamp": "2021-10-21T08:07:52+00:00",
       "last_traded_at": "2021-10-21T08:07:52+00:00",
       "last_fetch_at": "2021-10-21T08:07:52+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://upbit.com/exchange?code=CRIX.UPBIT.BTC-SOLVE",
       "token_info_url": null,
       "coin_id": "solve-care",
@@ -4664,7 +4664,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0000015953,
       "volume": 122998487,
@@ -4683,8 +4683,8 @@
       "timestamp": "2021-10-21T08:01:40+00:00",
       "last_traded_at": "2021-10-21T08:01:40+00:00",
       "last_fetch_at": "2021-10-21T08:01:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "tron",
@@ -4696,7 +4696,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.0000015959,
       "volume": 122841947,
@@ -4715,8 +4715,8 @@
       "timestamp": "2021-10-21T08:09:05+00:00",
       "last_traded_at": "2021-10-21T08:09:05+00:00",
       "last_fetch_at": "2021-10-21T08:09:05+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/TRX-to-BTC",
       "token_info_url": null,
       "coin_id": "tron",
@@ -4728,7 +4728,7 @@
       "market": {
         "name": "FMFW.io",
         "identifier": "bitcoin_com",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.00042577,
       "volume": 63003.56,
@@ -4747,8 +4747,8 @@
       "timestamp": "2021-10-21T08:09:07+00:00",
       "last_traded_at": "2021-10-21T08:09:07+00:00",
       "last_fetch_at": "2021-10-21T08:09:07+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://fmfw.io/LINK-to-BTC",
       "token_info_url": null,
       "coin_id": "chainlink",
@@ -4760,7 +4760,7 @@
       "market": {
         "name": "Cryptology",
         "identifier": "cryptology",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 65304.52,
       "volume": 39.24125984,
@@ -4779,8 +4779,8 @@
       "timestamp": "2021-10-21T08:08:40+00:00",
       "last_traded_at": "2021-10-21T08:08:40+00:00",
       "last_fetch_at": "2021-10-21T08:08:40+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://cryptology.com/app/next/trading/BTC_USDT",
       "token_info_url": null,
       "coin_id": "bitcoin",
@@ -4792,7 +4792,7 @@
       "market": {
         "name": "Changelly PRO",
         "identifier": "changelly",
-        "has_trading_incentive": false
+        "haStrading_incentive": false
       },
       "last": 0.000034669,
       "volume": 9305783,
@@ -4811,8 +4811,8 @@
       "timestamp": "2021-10-21T08:01:39+00:00",
       "last_traded_at": "2021-10-21T08:01:39+00:00",
       "last_fetch_at": "2021-10-21T08:01:39+00:00",
-      "is_anomaly": false,
-      "is_stale": false,
+      "iSanomaly": false,
+      "iSstale": false,
       "trade_url": "https://pro.changelly.com",
       "token_info_url": null,
       "coin_id": "cardano",

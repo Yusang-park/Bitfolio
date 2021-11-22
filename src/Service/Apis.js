@@ -9,7 +9,7 @@ export async function getCryptoSummaryDataList(pageIndex) {
   let res = [];
   try {
     const response = await axios.get(
-      `${providerUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
+      `${providerUrl}/coins/markets?vScurrency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
     );
     response.data.forEach((e) => res.push(new CryptoSummaryData(e)));
   } catch (e) {}
@@ -56,7 +56,7 @@ export async function getCryptoPricesList(idList) {
   let s = idList.join(",");
   try {
     const response = await axios.get(
-      `${providerUrl}/simple/price?ids=${s}&vs_currencies=usd`
+      `${providerUrl}/simple/price?ids=${s}&vScurrencies=usd`
     );
     // console.log(response.data);
     return response.data;

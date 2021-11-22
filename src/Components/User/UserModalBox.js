@@ -5,14 +5,14 @@ import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { loginWithSocial, logout } from "../../Service/Auth";
 import {
-  S_Button,
-  S_Column,
-  S_Divider,
-  S_Input,
-  S_Row,
-  S_SizedBox,
-  S_SubTitleText,
-  S_Text,
+  SButton,
+  SColumn,
+  SDivider,
+  SInput,
+  SRow,
+  SSizedBox,
+  SSubTitleText,
+  SText,
 } from "../GlobalComponents";
 
 export const UserModalBox = ({ setShowModal }) => {
@@ -30,22 +30,22 @@ export const UserModalBox = ({ setShowModal }) => {
 
   return (
     <Container>
-      <S_SubTitleText>Change Nickname</S_SubTitleText>
-      <S_SizedBox height="32px" />
+      <SSubTitleText>Change Nickname</SSubTitleText>
+      <SSizedBox height="32px" />
       <Input
         value={input}
         onChange={changeInput}
         placeholder="Nickname"
       ></Input>
-      <S_SizedBox height="16px" />
-      <S_Button onClick={changeDisplayName}>Submit</S_Button>
-      <S_SizedBox height="16px" />
-      <S_Button onClick={logout}>Logout</S_Button>
+      <SSizedBox height="16px" />
+      <SButton onClick={changeDisplayName}>Submit</SButton>
+      <SSizedBox height="16px" />
+      <SButton onClick={logout}>Logout</SButton>
     </Container>
   );
 };
 
-const Container = styled(S_Column)`
+const Container = styled(SColumn)`
   margin: 32px;
 `;
 
@@ -55,7 +55,7 @@ const Logo = styled.img`
   margin-right: 8px;
 `;
 
-const WhiteButton = styled(S_Button)`
+const WhiteButton = styled(SButton)`
   background: linear-gradient(#f4f4f4 0%, #cdcdcd 100%);
   &:hover {
     background: linear-gradient(#bdbdbd 0%, #b0b0b0 100%);
@@ -67,6 +67,6 @@ const BtnText = styled.p`
   color: black;
 `;
 
-const Input = styled(S_Input)`
+const Input = styled(SInput)`
   height: 36px;
 `;

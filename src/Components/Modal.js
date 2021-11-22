@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { fadeIn } from "../Styles/Animation";
-import { S_StyledDimmer } from "./GlobalComponents";
+import { SStyledDimmer } from "./GlobalComponents";
 
 export const Dialog = ({ setShowModal, children }) => {
   return (
@@ -11,7 +11,7 @@ export const Dialog = ({ setShowModal, children }) => {
   );
 };
 
-const Dimmer = styled(S_StyledDimmer)``;
+const Dimmer = styled(SStyledDimmer)``;
 
 const Inner = styled.div`
   display: flex;

@@ -3,10 +3,10 @@ import React from "react";
 import { Timestamp } from "@firebase/firestore";
 import {
   Button,
-  S_Divider,
-  S_Row,
-  S_SizedBox,
-  S_Text,
+  SDivider,
+  SRow,
+  SSizedBox,
+  SText,
 } from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
@@ -17,7 +17,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
     <Container>
       <RowCustom justify_content="space-between">
         <span>
-          <S_Text> {name}</S_Text>
+          <SText> {name}</SText>
           {/* {isMine && <Button height="20px">Delete</Button>} */}
         </span>
         <Time>
@@ -25,15 +25,15 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
           {date.getMinutes()}
         </Time>
       </RowCustom>
-      <S_SizedBox height="12px" />
-      <S_Divider />
-      <S_SizedBox height="12px" />
+      <SSizedBox height="12px" />
+      <SDivider />
+      <SSizedBox height="12px" />
       <Message> {message}</Message>
     </Container>
   );
 });
 
-const RowCustom = styled(S_Row)`
+const RowCustom = styled(SRow)`
   flex-wrap: wrap;
 `;
 
