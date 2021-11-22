@@ -11,10 +11,10 @@ import {
 import { TalkBox } from "./TalkBalloon";
 import $ from "jquery";
 import {
-  _StyledBox,
-  _Row,
-  _SizedBox,
-  _TitleText,
+  S_StyledBox,
+  S_Row,
+  S_SizedBox,
+  S_TitleText,
 } from "../../Components/GlobalComponents";
 
 export const ChatContainer = React.memo(() => {
@@ -52,8 +52,8 @@ export const ChatContainer = React.memo(() => {
 
   return (
     <Wrapper>
-      <_TitleText>{data.fullName} Chat </_TitleText>
-      <_SizedBox height="32px" />
+      <S_TitleText>{data.fullName} Chat </S_TitleText>
+      <S_SizedBox height="32px" />
 
       <ChatSpace>
         {chatData.length !== 0 && (
@@ -98,7 +98,7 @@ const ChatSpace = styled.div`
   }
 `;
 
-const Wrapper = styled(_StyledBox)`
+const Wrapper = styled(S_StyledBox)`
   flex: 1;
   padding-right: 28px;
 `;
@@ -125,7 +125,7 @@ const ChatScrollBox = styled.div`
   }
 `;
 
-const InputContainer = styled(_Row)`
+const InputContainer = styled(S_Row)`
   height: 15%;
   max-height: 96px;
   padding: 12px 0px;

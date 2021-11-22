@@ -3,12 +3,12 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { loginWithSocial } from "../../Service/Auth";
 import {
-  _Button,
-  _Column,
-  _Row,
-  _SizedBox,
-  _SubTitleText,
-  _Text,
+  S_Button,
+  S_Column,
+  S_Row,
+  S_SizedBox,
+  S_SubTitleText,
+  S_Text,
 } from "../GlobalComponents";
 
 export const LoginModalBox = () => {
@@ -16,19 +16,19 @@ export const LoginModalBox = () => {
 
   return (
     <Container>
-      <_SubTitleText>Free Sign In</_SubTitleText>
-      <_SizedBox height="32px" />
+      <S_SubTitleText>Free Sign In</S_SubTitleText>
+      <S_SizedBox height="32px" />
       <WhiteButton onClick={() => loginWithSocial("google")}>
-        <_Row>
+        <S_Row>
           <Logo src="https://freesvg.org/img/1534129544.png" />{" "}
           <BtnText> Google Sign In</BtnText>
-        </_Row>
+        </S_Row>
       </WhiteButton>
     </Container>
   );
 };
 
-const Container = styled(_Column)`
+const Container = styled(S_Column)`
   margin: 32px;
 `;
 
@@ -38,7 +38,7 @@ const Logo = styled.img`
   margin-right: 8px;
 `;
 
-const WhiteButton = styled(_Button)`
+const WhiteButton = styled(S_Button)`
   background: linear-gradient(#f4f4f4 0%, #cdcdcd 100%);
   &:hover {
     background: linear-gradient(#bdbdbd 0%, #b0b0b0 100%);

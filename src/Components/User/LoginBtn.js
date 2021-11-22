@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { _Button } from "../GlobalComponents";
+import { S_Button } from "../GlobalComponents";
 import { Dialog } from "../Modal";
 import { LoginModalBox } from "./LoginModalBox";
 
@@ -18,7 +18,7 @@ export const LoginBtn = () => {
           <LoginModalBox />
         </Dialog>
       )}
-      <_Button onClick={onClickHandler}>Login</_Button>
+      <S_Button onClick={onClickHandler}>Login</S_Button>
     </Container>
   );
 };

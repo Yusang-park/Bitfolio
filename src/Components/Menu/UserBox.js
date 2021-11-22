@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import {
-  _Expanded,
-  _SizedBox,
-  _IconButton,
-  _Button,
+  S_Expanded,
+  S_SizedBox,
+  S_IconButton,
+  S_Button,
 } from "../GlobalComponents";
 import { LogoutBtn } from "../User/LogoutBtn";
 import styled from "styled-components";
@@ -29,7 +29,7 @@ export const UserBox = () => {
       <UserBtn setShowModal={setShowModal} />
       <UserContainer onClick={onClickHandler}>
         {authService.currentUser.displayName}
-        <_SizedBox width="16px" />
+        <S_SizedBox width="16px" />
         <LogoutBtn />
       </UserContainer>
     </>
