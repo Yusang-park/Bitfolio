@@ -1,11 +1,6 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import {
-  SColumn,
-  SRow,
-  SStyledBox as SStyledBox,
-  SSizedBox,
-} from "../Components/GlobalComponents";
+import { SRow } from "../Components/GlobalComponents";
 import { FavoriteContainer } from "./DashBoard/Favorites";
 
 export const DashBoard = () => {
@@ -41,8 +36,4 @@ const LeftContent = styled.div`
     width: 100%;
     margin-right: 0px;
   }
-`;
-
-const RightContent = styled(SStyledBox)`
-  flex: 1;
 `;

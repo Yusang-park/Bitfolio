@@ -1,16 +1,12 @@
-import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { apiKey, providerUrl } from "../api_config";
+import styled, { css } from "styled-components";
 import {
-  SIconButton,
   SDivider,
   SExpanded,
   SSizedBox,
   SATag,
   SPercentText,
   SRow,
-  SAnimatedDiv,
   SStyledBox,
   SColumn,
   SGrayText,
@@ -65,7 +61,7 @@ export const CryptoRank = () => {
   return (
     <Wrapper>
       <Row>
-        {cryptoList.length == 0 ? (
+        {cryptoList.length === 0 ? (
           <ProgressIndicator />
         ) : (
           <>

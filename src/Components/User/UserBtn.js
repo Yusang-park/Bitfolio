@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { SIconButton } from "../GlobalComponents";
-import { Dialog } from "../Modal";
-import { UserModalBox } from "./UserModalBox";
 export const UserBtn = ({ setShowModal }) => {
   return (
     <IconButton

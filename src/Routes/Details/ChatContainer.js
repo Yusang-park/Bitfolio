@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useRef } from "react";
+
 import styled from "styled-components";
-import { fadeIn } from "../../Styles/Animation";
 import { CryptoDataContext } from "../Details";
 import { authService } from "../../firebase_config";
 import {
@@ -18,7 +17,6 @@ import {
 } from "../../Components/GlobalComponents";
 
 export const ChatContainer = React.memo(() => {
-  const useRefScroll = useRef();
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
   const [chatData, setChatData] = useState({});
@@ -29,7 +27,7 @@ export const ChatContainer = React.memo(() => {
         setChatData(Object.entries(value));
       }
     });
-  }, [data.id, getChatMessages, setChatData]);
+  }, [data.id, setChatData]);
 
   useEffect(() => {
     try {

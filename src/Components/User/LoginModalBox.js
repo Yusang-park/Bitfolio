@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router";
 import styled from "styled-components";
 import { loginWithSocial } from "../../Service/Auth";
 import {
@@ -8,12 +7,9 @@ import {
   SRow,
   SSizedBox,
   SSubTitleText,
-  SText,
 } from "../GlobalComponents";
 
 export const LoginModalBox = () => {
-  const history = useHistory();
-
   return (
     <Container>
       <SSubTitleText>Free Sign In</SSubTitleText>

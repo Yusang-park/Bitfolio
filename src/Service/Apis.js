@@ -1,6 +1,4 @@
-import { faChalkboardTeacher } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { apiKey } from "../api_config";
 import { CryptoSummaryData, CryptoDetailData } from "./Models";
 
 const providerUrl = "https://api.coingecko.com/api/v3";

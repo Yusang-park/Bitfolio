@@ -1,14 +1,8 @@
-import React, { useState, createContext, useRef, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
-import {
-  SButton,
-  SRow,
-  SSizedBox,
-  SATag,
-  SStyledBox,
-} from "../Components/GlobalComponents";
+import { SSizedBox, SATag, SStyledBox } from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
@@ -29,9 +23,10 @@ export const Details = (props) => {
 
   useEffect(() => {
     getCryptoDetails(id).then((response) => {
+      console.log(response);
       setData(response);
     });
-  }, [id, setData, getCryptoDetails]);
+  }, [id, setData]);
 
   const menu = [
     { key: "Information", component: <DetailsInfoTabContainer /> },

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { fadeIn } from "../Styles/Animation";
 import { SStyledDimmer } from "./GlobalComponents";
 
 export const Dialog = ({ setShowModal, children }) => {

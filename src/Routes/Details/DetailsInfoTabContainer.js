@@ -1,10 +1,8 @@
-import React, { useRef, useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { CryptoDataContext } from "../Details";
-import { fadeIn } from "../../Styles/Animation";
 import {
   SAnimatedDiv,
-  SExpanded,
   SGrayText,
   SSizedBox,
   SYellowTitleCircle,
@@ -12,7 +10,6 @@ import {
   SColumn,
   SText,
 } from "../../Components/GlobalComponents";
-import useWindowDimensions from "../../useWindowDimensions";
 import { Chart } from "../../Components/TradingViewChart";
 
 export const DetailsInfoTabContainer = () => {
@@ -86,11 +83,4 @@ const Container = styled(SAnimatedDiv)`
   flex-direction: column;
   flex: 1;
   height: 100px;
-`;
-
-const ChartContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
 `;

@@ -1,14 +1,8 @@
-import React, { useState, useContext } from "react";
-import {
-  SExpanded,
-  SSizedBox,
-  SIconButton,
-  SButton,
-} from "../GlobalComponents";
+import React, { useState } from "react";
+import { SSizedBox } from "../GlobalComponents";
 import { LogoutBtn } from "../User/LogoutBtn";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserBtn } from "../User/UserBtn";
 import { Dialog } from "../Modal";
 import { UserModalBox } from "../User/UserModalBox";

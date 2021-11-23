@@ -83,7 +83,7 @@ export class CryptoDetailData extends CryptoSimpleData {
 
     this.imageUrl = data.image.small;
     this.imageUrl = data.image.large;
-    this.genesisDate = data.genesiSdate;
+    this.genesisDate = data.genesis_date;
     this.homepage = data.links.homepage;
     this.blockchain_site = data.links.blockchain_site;
     this.official_forrum_url = data.links.official_forrum_url;
@@ -95,7 +95,7 @@ export class CryptoDetailData extends CryptoSimpleData {
       data.links.bitcointalk_thread_identifier;
     this.telegram_channel_identifier = data.links.telegram_channel_identifier;
     this.subreddit_url = data.links.subreddit_url;
-    this.github_url = data.links.repoSurl.github;
+    this.github_url = data.links.repos_url.github;
 
     let i = 0;
 

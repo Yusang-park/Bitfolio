@@ -5,18 +5,15 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithRedirect,
-  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { authService } from "../firebase_config";
 
 export async function registerWithEamil(email, password) {
   try {
-    let data = await createUserWithEmailAndPassword(
-      authService,
-      email,
-      password
-    ).then((e) => {});
+    await createUserWithEmailAndPassword(authService, email, password).then(
+      (e) => {}
+    );
   } catch (e) {
     return e.message.replace("Firebase: Error ", "");
   }
@@ -24,7 +21,7 @@ export async function registerWithEamil(email, password) {
 
 export async function loginWithEamil(email, password) {
   try {
-    let data = await signInWithEmailAndPassword(authService, email, password);
+    await signInWithEmailAndPassword(authService, email, password);
   } catch (e) {
     return e.message.replace("Firebase: Error ", "");
   }

@@ -1,9 +1,6 @@
 import {
   push,
   ref,
-  set,
-  child,
-  get,
   limitToLast,
   onValue,
   orderByChild,
@@ -11,9 +8,6 @@ import {
   remove,
 } from "@firebase/database";
 import {
-  addDoc,
-  collection,
-  deleteDoc,
   deleteField,
   doc,
   getDoc,

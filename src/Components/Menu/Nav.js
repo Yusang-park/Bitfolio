@@ -2,17 +2,11 @@ import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 import styled from "styled-components";
-import {
-  SExpanded,
-  SSizedBox,
-  SIconButton,
-  SButton,
-} from "../GlobalComponents";
+import { SSizedBox } from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
 import { UserContext } from "../../Provider/UserProvider";
 import { LoginBtn } from "../User/LoginBtn";
-import { updateProfile } from "@firebase/auth";
 import { Sidebar } from "./Sidebar";
 import { UserBox } from "./UserBox";
 

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { authService } from "./firebase_config";
-import { darkTheme, lightTheme } from "./Styles/Theme";
+import React, { useState } from "react";
+import { lightTheme } from "./Styles/Theme";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 // import GlobalStyle from "../styles/global-style";
@@ -17,20 +16,20 @@ import { UserProvider } from "./Provider/UserProvider";
 import { SColumn } from "./Components/GlobalComponents";
 
 function App() {
-  const auth = authService;
-  const [theme, setTheme] = useState(lightTheme);
-  const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
+  // const auth = authService;
+  const [theme] = useState(lightTheme);
+  // const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
 
-  const [initFirebase, setInitFirebase] = useState(false);
+  // const [initFirebase, setInitFirebase] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // 각 theme은 state로 관리되며 버튼 클릭 이벤트 시 변경됩니다.
-  const switchTheme = () => {
-    const nextTheme = theme === lightTheme ? darkTheme : lightTheme;
-    setTheme(nextTheme);
-    const nextThemeText = theme === lightTheme ? "Dark Theme" : "Light Theme";
-    setCurrentThemeText(nextThemeText);
-  };
+  // const switchTheme = () => {
+  //   const nextTheme = theme === lightTheme ? darkTheme : lightTheme;
+  //   setTheme(nextTheme);
+  //   const nextThemeText = theme === lightTheme ? "Dark Theme" : "Light Theme";
+  //   setCurrentThemeText(nextThemeText);
+  // };
 
   return (
     <ThemeProvider theme={theme}>
