@@ -77,6 +77,7 @@ function UserProvider(props, children) {
   }
 
   function setFavoriteCrypto(cryptoId, fullName, imageUrl) {
+    if (!state.isLoggedIn) return;
     let existed = !state.favorites[cryptoId] === true;
     updateFavorites(cryptoId, fullName, imageUrl, existed);
     if (existed) {

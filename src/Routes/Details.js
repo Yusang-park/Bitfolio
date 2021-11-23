@@ -23,7 +23,6 @@ export const Details = (props) => {
 
   useEffect(() => {
     getCryptoDetails(id).then((response) => {
-      console.log(response);
       setData(response);
     });
   }, [id, setData]);

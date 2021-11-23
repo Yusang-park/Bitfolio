@@ -43,14 +43,16 @@ export async function delChatMessage(cryptoId, docKey) {
 }
 
 export async function updateFavorites(cryptoId, fullName, imageUrl, existed) {
-  const ref = doc(dbService, "User", authService.currentUser.uid);
-  if (existed)
-    setDoc(
-      ref,
-      { [cryptoId]: { imageUrl: imageUrl, fullName: fullName } },
-      { merge: true }
-    );
-  else updateDoc(ref, { [cryptoId]: deleteField() });
+  if (authService.currentUser.uid != null) {
+    const ref = doc(dbService, "User", authService.currentUser.uid);
+    if (existed)
+      setDoc(
+        ref,
+        { [cryptoId]: { imageUrl: imageUrl, fullName: fullName } },
+        { merge: true }
+      );
+    else updateDoc(ref, { [cryptoId]: deleteField() });
+  }
 }
 
 export async function getFavorites() {
