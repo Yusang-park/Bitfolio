@@ -31,3 +31,6 @@
 
 2021.11.14
 * Apply reactive design to mobile, tablet
+
+2021.11.28
+* Add exchanges in crypto detail page
