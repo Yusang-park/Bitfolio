@@ -12,7 +12,7 @@ import {
 } from "../../Components/GlobalComponents";
 import { Chart } from "../../Components/TradingViewChart";
 
-export const DetailsInfoTabContainer = () => {
+export const DetailsInfo = () => {
   const { data } = useContext(CryptoDataContext);
 
   const MarketCapBox = () => (

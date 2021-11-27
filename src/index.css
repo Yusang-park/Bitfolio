@@ -123,7 +123,12 @@ body {
 @media screen and (max-width: 768px) {
   html,
   body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     overflow-y: scroll;
+  }
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
   }
 }
 @media screen and (max-width: 425px) {

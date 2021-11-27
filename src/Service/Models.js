@@ -39,7 +39,6 @@ export class CryptoSummaryData extends CryptoSimpleData {
 
 export class CryptoDetailData extends CryptoSimpleData {
   marketCap;
-
   imageUrl;
   genesisDate;
   price;
@@ -63,6 +62,7 @@ export class CryptoDetailData extends CryptoSimpleData {
   currentSupply;
   maxSupply;
   tradingViewCoinId;
+  exchanges = [];
   constructor(data) {
     super(data);
     this.price = data.market_data.current_price.usd;
@@ -97,6 +97,17 @@ export class CryptoDetailData extends CryptoSimpleData {
     this.subreddit_url = data.links.subreddit_url;
     this.github_url = data.links.repos_url.github;
 
+    // ================================================================================================================
+
+    data.tickers.forEach((e) => {
+      this.exchanges.push({
+        name: e.market.name,
+        trade_url: e.trade_url,
+        target: e.target,
+      });
+    });
+
+    // ================================================================================================================
     let i = 0;
 
     const exceptedCurrncyUnit = ["GBP", "JPY", "EUR", "BTC"];

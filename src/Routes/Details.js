@@ -7,8 +7,9 @@ import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
 import { DetailsHeader } from "./Details/DetailsHeader";
-import { DetailsInfoTabContainer } from "./Details/DetailsInfoTabContainer";
+import { DetailsInfo } from "./Details/DetailsInfo.js";
 import { ChatContainer } from "./Details/ChatContainer";
+import { DetailsMarket } from "./Details/DetailsMarket";
 
 export const CryptoDataContext = createContext({
   data: null,
@@ -28,8 +29,8 @@ export const Details = (props) => {
   }, [id, setData]);
 
   const menu = [
-    { key: "Information", component: <DetailsInfoTabContainer /> },
-    { key: "Market", component: <div /> },
+    { key: "Information", component: <DetailsInfo /> },
+    { key: "Market", component: <DetailsMarket /> },
   ];
 
   function changeMenu(e) {
