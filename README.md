@@ -34,3 +34,6 @@
 
 2021.11.28
 * Add exchanges in crypto detail page
+
+2021.12.7
+* Allow chat feature to anonymous user
