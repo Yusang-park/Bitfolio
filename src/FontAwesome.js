@@ -9,6 +9,7 @@ import {
   faBars,
   faUser,
   faDirections,
+  faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
@@ -20,3 +21,4 @@ library.add(faSignOutAlt);
 library.add(faBars);
 library.add(faUser);
 library.add(faDirections);
+library.add(faSignInAlt);

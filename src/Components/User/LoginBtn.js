@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SButton } from "../GlobalComponents";
@@ -18,7 +19,10 @@ export const LoginBtn = () => {
           <LoginModalBox />
         </Dialog>
       )}
-      <SButton onClick={onClickHandler}>Login</SButton>
+      <SButton onClick={onClickHandler}>
+        {" "}
+        <FontAwesomeIcon icon="sign-in-alt"></FontAwesomeIcon>
+      </SButton>
     </Container>
   );
 };

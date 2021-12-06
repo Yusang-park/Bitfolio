@@ -135,7 +135,6 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   width: auto;
-
   font-size: 2rem;
   margin-left: 16px;
   border: transparent;
