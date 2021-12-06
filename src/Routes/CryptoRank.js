@@ -4,7 +4,7 @@ import {
   SDivider,
   SExpanded,
   SSizedBox,
-  SATag,
+  SLink,
   SPercentText,
   SRow,
   SStyledBox,
@@ -89,7 +89,7 @@ export const CryptoRank = () => {
         </span>
         <SSizedBox width="16px" />
         {[...Array(5)].map((n, index) => (
-          <SATag
+          <SLink
             key={index}
             selected={index + 1 + pageSectionIndex * 5 === parseInt(pageIndex)}
             id={index + 1 + pageSectionIndex * 5}
@@ -97,7 +97,7 @@ export const CryptoRank = () => {
             width={"38px"}
           >
             {index + 1 + pageSectionIndex * 5}
-          </SATag>
+          </SLink>
         ))}
         <SSizedBox width="16px" />
         <span onClick={nextPagePagination}>

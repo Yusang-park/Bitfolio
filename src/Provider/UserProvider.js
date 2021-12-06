@@ -6,6 +6,7 @@ import { getFavorites, updateFavorites } from "../Service/FirebaseFunctions";
 const initialState = {
   initialize: false,
   isLoggedIn: false,
+  tempNickname: "",
   favorites: {},
 };
 
@@ -20,6 +21,7 @@ function reducer(state, action) {
         ...state,
         ...initialState,
         initialize: true,
+        tempNickname: "Anonymous" + Math.floor(Math.random() * 1001),
       };
     case "setFavoriteCrypto":
       return {

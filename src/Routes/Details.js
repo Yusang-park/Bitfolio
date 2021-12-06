@@ -2,13 +2,13 @@ import React, { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
-import { SSizedBox, SATag, SStyledBox } from "../Components/GlobalComponents";
+import { SSizedBox, SLink, SStyledBox } from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
 import { DetailsHeader } from "./Details/DetailsHeader";
 import { DetailsInfo } from "./Details/DetailsInfo.js";
-import { ChatContainer } from "./Details/ChatContainer";
+import { Chat } from "./Details/Chat";
 import { DetailsMarket } from "./Details/DetailsMarket";
 
 export const CryptoDataContext = createContext({
@@ -47,20 +47,20 @@ export const Details = (props) => {
         <DetailsHeader />
         <TabBar>
           {menu.map((e, i) => (
-            <SATag
+            <SLink
               id={i}
               key={i}
               selected={i === parseInt(selectedMenuIndex) ? true : false}
               onClick={changeMenu}
             >
               {e.key}
-            </SATag>
+            </SLink>
           ))}
         </TabBar>
         {menu[selectedMenuIndex].component}
       </DetailContainer>
       <SSizedBox width="32px" />
-      <ChatContainer />
+      <Chat />
     </CryptoDataContext.Provider>
   );
 };

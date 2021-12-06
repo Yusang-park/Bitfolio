@@ -17,7 +17,7 @@ export const DetailsInfo = () => {
 
   const MarketCapBox = () => (
     <InfoElementContainer>
-      <SYellowTitleCircle>Market Cap</SYellowTitleCircle>
+      <YellowTitleCircle>Market Cap</YellowTitleCircle>
       <SText>{"$" + data.marketCap.toLocaleString()}</SText>
       <SSizedBox height="4px" />
       <SGrayText>{"Rank. #" + data.marketCapRank}</SGrayText>
@@ -26,7 +26,7 @@ export const DetailsInfo = () => {
 
   const SupplyAmountBox = () => (
     <InfoElementContainer>
-      <SYellowTitleCircle>Supply Amount</SYellowTitleCircle>
+      <YellowTitleCircle>Supply Amount</YellowTitleCircle>
 
       <SRow justify_content="space-between">
         <SText>Current</SText>
@@ -47,26 +47,25 @@ export const DetailsInfo = () => {
 
   const VolumeBox = () => (
     <InfoElementContainer>
-      <SYellowTitleCircle>Volume(24h)</SYellowTitleCircle>
+      <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
       <SText> {"$" + data.volume.toLocaleString()}</SText>
     </InfoElementContainer>
   );
 
   return (
-    <Container>
-      <RowCustom justify_content="flex-start" align_items="flex-start">
+    <Wrapper>
+      <InfoContainer justify_content="flex-start" align_items="flex-start">
         <MarketCapBox />
-
         <VolumeBox />
         <SupplyAmountBox />
-      </RowCustom>
+      </InfoContainer>
       <SSizedBox height="16px" />
       <Chart coin={data.tradingViewCoinId} />
-    </Container>
+    </Wrapper>
   );
 };
 
-const RowCustom = styled(SRow)`
+const InfoContainer = styled(SRow)`
   flex-wrap: wrap;
 `;
 
@@ -78,9 +77,12 @@ const InfoElementContainer = styled(SColumn)`
   margin-bottom: 16px;
 `;
 
-const Container = styled(SAnimatedDiv)`
+const Wrapper = styled(SAnimatedDiv)`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  height: 100px;
+  height: 100%;
+`;
+
+const YellowTitleCircle = styled(SYellowTitleCircle)`
+  margin-bottom: 16px;
 `;

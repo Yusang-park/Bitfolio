@@ -17,11 +17,13 @@ import {
 } from "@firebase/firestore";
 import { authService, dbService, realtimeDbService } from "../firebase_config";
 
-export async function sendChatMessage(cryptoId, message) {
+export async function sendChatMessage(cryptoId, message, tempNickname) {
   const locate = ref(realtimeDbService, `chat/${cryptoId}/`);
   push(locate, {
-    uid: authService.currentUser.uid,
-    name: authService.currentUser.displayName,
+    uid: authService.currentUser ? authService.currentUser.uid : -1,
+    name: authService.currentUser
+      ? authService.currentUser.displayName
+      : tempNickname,
     message,
     createdAt: Timestamp.fromDate(new Date()),
   });

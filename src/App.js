@@ -34,10 +34,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <Wrapper>
+        <Container>
           <BrowserRouter>
             <Sidebar />
-            <Container>
+            <Wrapper>
               <Nav />
               <Content>
                 <Switch>
@@ -61,9 +61,9 @@ function App() {
                   </Route>
                 </Switch>
               </Content>
-            </Container>
+            </Wrapper>
           </BrowserRouter>
-        </Wrapper>
+        </Container>
       </UserProvider>
     </ThemeProvider>
   );
@@ -71,17 +71,15 @@ function App() {
 
 export default App;
 
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
   height: 100%;
   background-color: ${(props) => props.theme.colors.background};
   color: white;
 `;
 
-const Container = styled(SColumn)`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+const Wrapper = styled(SColumn)`
+  width: 100%;
   height: auto;
   margin: 32px;
   justify-content: flex-start;

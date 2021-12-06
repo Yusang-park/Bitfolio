@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../Service/Apis";
 import { SIconButton, SRow } from "../GlobalComponents";
@@ -42,6 +42,10 @@ export const CryptoSearchBox = () => {
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
 
+  useEffect(() => {
+    requestCryptoList();
+  });
+
   async function requestCryptoList() {
     if (_cryptoList.current == null) {
       getCryptoObject().then((response) => {
@@ -83,12 +87,7 @@ export const CryptoSearchBox = () => {
     <Container>
       <SearchContainer>
         <FontAwesomeIcon icon="search" size="1x" color="grey" />
-        <Input
-          placeholder="Search"
-          onFocus={requestCryptoList}
-          value={inputText}
-          onChange={onChange}
-        />
+        <Input placeholder="Search" value={inputText} onChange={onChange} />
       </SearchContainer>
       {loaded && (
         <RecommendedContainer>

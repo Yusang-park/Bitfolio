@@ -1,12 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import React from "react";
 import { Timestamp } from "@firebase/firestore";
-import {
-  SDivider,
-  SRow,
-  SSizedBox,
-  SText,
-} from "../../Components/GlobalComponents";
+import { SDivider, SRow, SSizedBox } from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(({ docKey, data, isMine }) => {
   const { createdAt, message, name } = data[1];
@@ -16,8 +11,7 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
     <Container>
       <RowCustom justify_content="space-between">
         <span>
-          <SText> {name}</SText>
-          {/* {isMine && <Button height="20px">Delete</Button>} */}
+          <NameText isMine={isMine}> {name}</NameText>
         </span>
         <Time>
           {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
@@ -31,6 +25,11 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
     </Container>
   );
 });
+
+const NameText = styled.p`
+  color: ${({ theme, isMine }) => (isMine ? theme.colors.blue : css`white`)};
+  font-size: 1.6rem;
+`;
 
 const RowCustom = styled(SRow)`
   flex-wrap: wrap;

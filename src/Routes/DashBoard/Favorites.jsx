@@ -12,7 +12,7 @@ import { getCryptoPricesList } from '../../Service/Apis';
 export const FavoriteContainer = () => {
   const history = useHistory();
   const [prices, setPrices] = useState({});
-  const { favorites } = useContext(UserContext);
+  const { favorites , isLoggedIn} = useContext(UserContext);
 
   useEffect(() => {
     if (Object.keys(favorites).length !== 0) {
@@ -52,7 +52,7 @@ export const FavoriteContainer = () => {
                 </ElementContainer></span>
               ))
              : 
-           <EmptyWapper>Add to favorites!</EmptyWapper>
+              <EmptyWapper>{ isLoggedIn ? "Add to favorites!" : "Login and Add to favorites!"}</EmptyWapper>
             }
           </ScrollRow>
           </Relative></Wrapper>)

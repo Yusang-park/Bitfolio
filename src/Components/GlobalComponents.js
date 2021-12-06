@@ -51,9 +51,6 @@ export const SStyledBox = styled(SAnimatedDiv)`
 `;
 
 export const SYellowTitleCircle = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 16px;
   padding: 6px 16px;
   border-radius: 35px;
   color: black;
@@ -102,7 +99,7 @@ export const SExpanded = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify_content ?? "left"};
   align-items: center;
-  flex: ${(props) => props.flex};
+  flex: ${(props) => props.flex ?? 1};
 `;
 
 export const SRow = styled.div`
@@ -168,7 +165,7 @@ export const SIconButton = styled(SButton)`
   border-radius: 12px;
 `;
 
-export const SATag = styled(SButton)`
+export const SLink = styled(SButton)`
   vertical-align: middle;
   height: 38px;
   padding: ${(props) => (props.width ? "0px" : "0px 16px")};

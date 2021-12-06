@@ -15,10 +15,12 @@ import {
   SSizedBox,
   STitleText,
 } from "../../Components/GlobalComponents";
+import { UserContext } from "../../Provider/UserProvider";
 
-export const ChatContainer = React.memo(() => {
+export const Chat = React.memo(() => {
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
+  const { tempNickname } = useContext(UserContext);
   const [chatData, setChatData] = useState({});
 
   useEffect(() => {
@@ -43,39 +45,44 @@ export const ChatContainer = React.memo(() => {
 
   function onSubmit(message) {
     if (message.replace(" ", "").length > 0) {
-      sendChatMessage(data.id, message);
+      sendChatMessage(data.id, message, tempNickname);
       setInputText("");
     }
   }
 
+  console.log(chatData);
   return (
     <Wrapper>
       <STitleText>{data.fullName} Chat </STitleText>
       <SSizedBox height="32px" />
 
-      <ChatSpace>
+      <ChatContainer>
         {chatData.length !== 0 && (
-          <ChatScrollBox id="chatContent" ChatHistory>
-            {Object.values(chatData).map(
-              (e, i) =>
-                authService.currentUser != null && (
-                  <TalkBox
-                    key={i}
-                    docKey={Object.keys(chatData)[i]}
-                    data={e}
-                    isMine={e[1].uid === authService.currentUser.uid}
-                  />
-                )
-            )}
-          </ChatScrollBox>
+          <ChatScrollItem id="chatContent" ChatHistory>
+            {Object.values(chatData).map((e, i) => (
+              <TalkBox
+                key={i}
+                docKey={Object.keys(chatData)[i]}
+                data={e}
+                isMine={
+                  (authService.currentUser != null &&
+                    e[1].uid === authService.currentUser.uid) ||
+                  (authService.currentUser == null &&
+                    e[1].name === tempNickname)
+                }
+              />
+            ))}
+          </ChatScrollItem>
         )}
-      </ChatSpace>
+      </ChatContainer>
 
       <InputContainer>
         <Input
-          disabled={authService.currentUser === null}
+          // disabled={authService.currentUser === null}
           placeholder={
-            authService.currentUser === null ? "Login first to chat" : ""
+            authService.currentUser === null
+              ? `Your Anonymous Nickname : ${tempNickname}`
+              : ""
           }
           value={inputText}
           onChange={onChange}
@@ -86,7 +93,7 @@ export const ChatContainer = React.memo(() => {
   );
 });
 
-const ChatSpace = styled.div`
+const ChatContainer = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
@@ -97,11 +104,11 @@ const ChatSpace = styled.div`
 `;
 
 const Wrapper = styled(SStyledBox)`
-  flex: 1;
+  /* flex: 1; */
   padding-right: 28px;
 `;
 
-const ChatScrollBox = styled.div`
+const ChatScrollItem = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
