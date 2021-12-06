@@ -36,6 +36,14 @@ export const DetailsMarket = () => {
 
 const ExchangeName = styled.a`
   font-size: 1.6rem;
+  &:link {
+    color: white;
+    text-decoration: none;
+  }
+  &:visited {
+    color: white;
+    text-decoration: none;
+  }
   &:hover {
     color: ${({ existUrl, theme }) =>
       existUrl ? theme.colors.blue : css`white`};

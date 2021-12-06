@@ -38,7 +38,7 @@ export const Sidebar = React.memo(
               <CategoryRow
                 to={e.path}
                 key={e.name}
-                selected={e.path === pathName}
+                selected={e.path.toLowerCase() === pathName.toLowerCase()}
               >
                 {e.name}
               </CategoryRow>
