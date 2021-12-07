@@ -69,9 +69,9 @@ export const LoginModalBox = () => {
       {isSignUpMode ? (
         <SignUpModalBox />
       ) : (
-        <form onSubmit={onSubmit}>
-          <SColumn>
-            <SSizedBox height="32px" />
+        <SColumn>
+          <SSizedBox height="32px" />
+          <form onSubmit={onSubmit}>
             <SInput
               id="email"
               value={email}
@@ -94,14 +94,14 @@ export const LoginModalBox = () => {
             <SSizedBox height="16px" />
             <SButton>Login</SButton>
             <SSizedBox height="16px" />
-            <WhiteButton onClick={() => loginWithSocial("google")}>
-              <SRow>
-                <Logo src="https://freesvg.org/img/1534129544.png" />{" "}
-                <InnerBtnText> Google Sign In</InnerBtnText>
-              </SRow>
-            </WhiteButton>
-          </SColumn>
-        </form>
+          </form>
+          <WhiteButton onClick={() => loginWithSocial("google")}>
+            <SRow>
+              <Logo src="https://freesvg.org/img/1534129544.png" />{" "}
+              <InnerBtnText> Google Sign In</InnerBtnText>
+            </SRow>
+          </WhiteButton>
+        </SColumn>
       )}
     </Wrapper>
   );

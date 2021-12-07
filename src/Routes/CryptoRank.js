@@ -170,9 +170,9 @@ const DetailInfoSection = React.memo(
         <StyledDetailInfoSection>
           <SRow id="1" justify_content="flex-start" align="flex-start">
             <Element flex="2">Price</Element>
-            <Element flex="5">MarketCap</Element>
-            <Element flex="5">CirculatingSupply</Element>
-            <Element flex="4">Volume</Element>
+            <Element flex="3">MarketCap</Element>
+            <Element flex="3">CirculatingSupply</Element>
+            <Element flex="3">Volume</Element>
             <Element flex="2">24Hours</Element>
           </SRow>
 
@@ -189,9 +189,9 @@ const DetailInfoSection = React.memo(
               onClick={() => routeDetails(e.id)}
             >
               <Element flex="2">${e.price}</Element>
-              <Element flex="5">${e.marketCap.toLocaleString()}</Element>
-              <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
-              <Element flex="4">${e.volume.toLocaleString()}</Element>
+              <Element flex="3">${e.marketCap.toLocaleString()}</Element>
+              <Element flex="3">{e.currentSupply.toLocaleString()}</Element>
+              <Element flex="3">${e.volume.toLocaleString()}</Element>
               <Element flex="2">
                 <SPercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
