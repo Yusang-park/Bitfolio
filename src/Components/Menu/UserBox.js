@@ -41,8 +41,13 @@ const UserContainer = styled.div`
   border-radius: 21px;
   background: #2b2a37;
   font-size: 2rem;
+  cursor: pointer;
 
   ${({ theme }) => theme.device.tablet} {
     display: none;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.gray3};
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import styled from "styled-components";
 import { CryptoDataContext } from "../Details";
@@ -50,30 +50,31 @@ export const Chat = React.memo(() => {
     }
   }
 
-  console.log(chatData);
   return (
     <Wrapper>
       <STitleText>{data.fullName} Chat </STitleText>
-      <SSizedBox height="32px" />
+      <SSizedBox height="16px" />
 
       <ChatContainer>
-        {chatData.length !== 0 && (
-          <ChatScrollItem id="chatContent" ChatHistory>
-            {Object.values(chatData).map((e, i) => (
-              <TalkBox
-                key={i}
-                docKey={Object.keys(chatData)[i]}
-                data={e}
-                isMine={
-                  (authService.currentUser != null &&
-                    e[1].uid === authService.currentUser.uid) ||
-                  (authService.currentUser == null &&
-                    e[1].name === tempNickname)
-                }
-              />
-            ))}
-          </ChatScrollItem>
-        )}
+        {useMemo(() => {
+          return (
+            <ChatScrollItem id="chatContent" ChatHistory>
+              {Object.values(chatData).map((e, i) => (
+                <TalkBox
+                  key={i}
+                  docKey={Object.keys(chatData)[i]}
+                  data={e}
+                  isMine={
+                    (authService.currentUser != null &&
+                      e[1].uid === authService.currentUser.uid) ||
+                    (authService.currentUser == null &&
+                      e[1].name === tempNickname)
+                  }
+                />
+              ))}
+            </ChatScrollItem>
+          );
+        }, [chatData, tempNickname])}
       </ChatContainer>
 
       <InputContainer>
@@ -86,6 +87,7 @@ export const Chat = React.memo(() => {
           }
           value={inputText}
           onChange={onChange}
+          maxLength={70}
         ></Input>
         <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
       </InputContainer>
@@ -104,8 +106,11 @@ const ChatContainer = styled.div`
 `;
 
 const Wrapper = styled(SStyledBox)`
-  /* flex: 1; */
   padding-right: 28px;
+
+  ${({ theme }) => theme.device.mobile} {
+    padding: 24px;
+  }
 `;
 
 const ChatScrollItem = styled.div`

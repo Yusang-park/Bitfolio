@@ -11,13 +11,12 @@ import { CryptoDataContext } from "../Details";
 
 export const DetailsMarket = () => {
   const { data } = useContext(CryptoDataContext);
-  console.log(data);
 
   return (
     <Wrapper>
       <Column>
         {data.exchanges.map((e, i) => (
-          <ItemRow key={e}>
+          <ItemRow key={i}>
             <YellowTitleCircle>{i + 1}</YellowTitleCircle>
             <ExchangeName href={e.trade_url} existUrl={e.trade_url}>
               {e.name}

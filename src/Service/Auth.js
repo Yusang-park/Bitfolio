@@ -6,16 +6,20 @@ import {
   signInWithEmailAndPassword,
   signInWithRedirect,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { authService } from "../firebase_config";
 
-export async function registerWithEamil(email, password) {
+export async function registerWithEamil(email, password, nickname) {
   try {
     await createUserWithEmailAndPassword(authService, email, password).then(
-      (e) => {}
+      (e) => {
+        alert("Complete create an account! Login now!");
+        updateProfile(authService.currentUser, { displayName: nickname });
+      }
     );
   } catch (e) {
-    return e.message.replace("Firebase: Error ", "");
+    return e.message.replace("Firebase: ", "");
   }
 }
 
@@ -23,7 +27,7 @@ export async function loginWithEamil(email, password) {
   try {
     await signInWithEmailAndPassword(authService, email, password);
   } catch (e) {
-    return e.message.replace("Firebase: Error ", "");
+    return e.message.replace("Firebase: ", "");
   }
 }
 

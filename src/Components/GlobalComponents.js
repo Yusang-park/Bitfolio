@@ -165,7 +165,7 @@ export const SIconButton = styled(SButton)`
   border-radius: 12px;
 `;
 
-export const SLink = styled(SButton)`
+export const SPressButton = styled(SButton)`
   vertical-align: middle;
   height: 38px;
   padding: ${(props) => (props.width ? "0px" : "0px 16px")};
@@ -186,14 +186,42 @@ export const SLink = styled(SButton)`
 `;
 
 export const SInput = styled.input`
-  background: #fdfcff;
-  border: 1px solid #8e8e8e;
+  height: 48px;
+  padding: 0px 16px;
+  border: 1px solid white;
+  border-radius: 25px;
+  background-color: ${({ theme }) => theme.colors.gray2};
+  font-size: 1.8rem;
+  color: white;
   box-sizing: border-box;
-  border-radius: 30px;
+  resize: none;
+  &:focus {
+    outline: transparent;
+    border: 3px solid ${({ theme }) => theme.colors.blue};
+    box-shadow: 0 0 10px transparent;
+  }
+`;
+
+export const STextButton = styled.p`
+  font-size: 1.6rem;
+  text-decoration: inherit;
+  color: ${({ theme }) => theme.colors.blue};
+  cursor: pointer;
+`;
+
+export const SInnerInput = styled.input`
+  flex: 1;
+  width: auto;
+
+  font-size: 2rem;
+  margin-left: 16px;
+  border: transparent;
+  background: transparent;
+  color: white;
 
   &:focus {
     outline: transparent;
-    border: 1px solid $main-color;
+    border: 0px solid transparent;
     box-shadow: 0 0 10px transparent;
   }
 `;

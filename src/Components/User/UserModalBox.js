@@ -8,7 +8,7 @@ import {
   SColumn,
   SInput,
   SSizedBox,
-  SSubTitleText,
+  STitleText,
 } from "../GlobalComponents";
 
 export const UserModalBox = ({ setShowModal }) => {
@@ -25,25 +25,19 @@ export const UserModalBox = ({ setShowModal }) => {
 
   return (
     <Container>
-      <SSubTitleText>Change Nickname</SSubTitleText>
+      <STitleText>My Account</STitleText>
       <SSizedBox height="32px" />
-      <Input
+      <SInput
         value={input}
         onChange={changeInput}
         placeholder="Nickname"
-      ></Input>
-      <SSizedBox height="16px" />
-      <SButton onClick={changeDisplayName}>Submit</SButton>
-      <SSizedBox height="16px" />
+      ></SInput>
+      <SSizedBox height="24px" />
+      <SButton onClick={changeDisplayName}>Change Nickname</SButton>
+      <SSizedBox height="32px" />
       <SButton onClick={logout}>Logout</SButton>
     </Container>
   );
 };
 
-const Container = styled(SColumn)`
-  margin: 32px;
-`;
-
-const Input = styled(SInput)`
-  height: 36px;
-`;
+const Container = styled(SColumn)``;

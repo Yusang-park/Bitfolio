@@ -37,10 +37,9 @@ export const FavoriteContainer = () => {
        <Wrapper>
         <STitleText>Favorites</STitleText>
         <SSizedBox height="16px" />
-        <Relative>
+        <Container>
         <ScrollRow>
           {Object.keys(favorites).length !== 0 ?
-          
               Object.keys(favorites).map((e, i) => (
                 <span key={i} onClick={()=>routeDetails(e)}><ElementContainer>
                   <Logo src={favorites[e].imageUrl} />
@@ -52,10 +51,10 @@ export const FavoriteContainer = () => {
                 </ElementContainer></span>
               ))
              : 
-              <EmptyWapper>{ isLoggedIn ? "Add to favorites!" : "Login and Add to favorites!"}</EmptyWapper>
+              <EmptyWapper>{ isLoggedIn ? "Add to favorites!" : "Login to use this feature!"}</EmptyWapper>
             }
           </ScrollRow>
-          </Relative></Wrapper>)
+          </Container></Wrapper>)
 }
 const Wrapper = styled.div`
  
@@ -65,7 +64,7 @@ const CryptoName = styled(SSubTitleText)`
 
 `;
 
-const Relative = styled.div`
+const Container = styled.div`
 position: relative;
 width:100%;
 `;

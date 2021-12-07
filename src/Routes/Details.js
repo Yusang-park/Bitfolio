@@ -2,7 +2,11 @@ import React, { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
-import { SSizedBox, SLink, SStyledBox } from "../Components/GlobalComponents";
+import {
+  SSizedBox,
+  SPressButton,
+  SStyledBox,
+} from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
@@ -47,14 +51,14 @@ export const Details = (props) => {
         <DetailsHeader />
         <TabBar>
           {menu.map((e, i) => (
-            <SLink
+            <SPressButton
               id={i}
               key={i}
               selected={i === parseInt(selectedMenuIndex) ? true : false}
               onClick={changeMenu}
             >
               {e.key}
-            </SLink>
+            </SPressButton>
           ))}
         </TabBar>
         {menu[selectedMenuIndex].component}
@@ -77,6 +81,10 @@ const DetailContainer = styled(SStyledBox)`
     height: 80vh;
     padding: 24px;
     margin-bottom: 32px;
+  }
+  ${({ theme }) => theme.device.mobile} {
+    padding: 16px;
+    margin-bottom: 24px;
   }
 `;
 

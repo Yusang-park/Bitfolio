@@ -2,7 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoObject } from "../../Service/Apis";
-import { SIconButton, SRow } from "../GlobalComponents";
+import {
+  SIconButton,
+  SRow,
+  SInnerInput,
+  SStyledDimmer,
+  SButton,
+} from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
 
 function searchObject(object, key) {
@@ -39,7 +45,8 @@ export const CryptoSearchBox = () => {
   const _cryptoList = useRef(null);
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+
+  const [isPopUp, setPopUp] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -50,8 +57,6 @@ export const CryptoSearchBox = () => {
     if (_cryptoList.current == null) {
       getCryptoObject().then((response) => {
         _cryptoList.current = response;
-        // console.log("getting API done");
-        setLoaded(true);
       });
     }
   }
@@ -73,8 +78,9 @@ export const CryptoSearchBox = () => {
     setInputText("");
   }
 
-  function routeDetails(id) {
+  function onClickRedirectionDetails(id) {
     reset();
+    if (isPopUp) onClickPopUp();
     history.replace({
       pathname: `/details/${id}`,
       state: {
@@ -83,25 +89,55 @@ export const CryptoSearchBox = () => {
     });
   }
 
+  function onClickPopUp() {
+    setPopUp(!isPopUp);
+  }
+
+  function renderRecommendedContainer() {
+    return (
+      <RecommendedContainer>
+        {" "}
+        {recommandedKeyword.map((e, i) => (
+          <ElementRow key={i} onClick={() => onClickRedirectionDetails(e.id)}>
+            {e.name} ({e.symbol.toUpperCase()})
+          </ElementRow>
+        ))}
+      </RecommendedContainer>
+    );
+  }
+
   return (
-    <Container>
+    <Wrapper>
       <SearchContainer>
         <FontAwesomeIcon icon="search" size="1x" color="grey" />
-        <Input placeholder="Search" value={inputText} onChange={onChange} />
+        <SInnerInput
+          placeholder="Search"
+          value={inputText}
+          onChange={onChange}
+        />
       </SearchContainer>
-      {loaded && (
-        <RecommendedContainer>
-          {recommandedKeyword.map((e, i) => (
-            <ElementRow key={i} onClick={() => routeDetails(e.id)}>
-              {e.name} ({e.symbol.toUpperCase()})
-            </ElementRow>
-          ))}
-        </RecommendedContainer>
-      )}
-      <SearchButton>
+      {renderRecommendedContainer()}
+      {/* For mobile ============================================================ */}
+      <SearchButton onClick={onClickPopUp}>
         <FontAwesomeIcon icon="search" size="1x" color="white" />
       </SearchButton>
-    </Container>
+      {isPopUp && (
+        <PopUpDimmer>
+          <PopUpWrapper>
+            <PopUpInputContainer>
+              <FontAwesomeIcon icon="search" size="1x" color="grey" />
+              <SInnerInput
+                placeholder="Search"
+                value={inputText}
+                onChange={onChange}
+              />
+              <SButton onClick={onClickPopUp}>EXIT</SButton>
+            </PopUpInputContainer>
+            {renderRecommendedContainer()}
+          </PopUpWrapper>
+        </PopUpDimmer>
+      )}
+    </Wrapper>
   );
 };
 
@@ -112,7 +148,7 @@ const SearchButton = styled(SIconButton)`
   }
 `;
 
-const Container = styled(SRow)`
+const Wrapper = styled(SRow)`
   position: relative;
   width: fit-content;
   height: 48px;
@@ -124,27 +160,12 @@ const SearchContainer = styled.div`
   justify-content: left;
   align-items: center;
   height: 100%;
-  border-radius: 21px;
+  border-radius: 20px;
   padding-left: 16px;
   padding-right: 16px;
   background: ${(props) => props.theme.colors.gray2};
   ${({ theme }) => theme.device.tablet} {
     display: none;
-  }
-`;
-
-const Input = styled.input`
-  width: auto;
-  font-size: 2rem;
-  margin-left: 16px;
-  border: transparent;
-  background: transparent;
-  color: white;
-
-  &:focus {
-    outline: transparent;
-    border: 0px solid transparent;
-    box-shadow: 0 0 10px transparent;
   }
 `;
 
@@ -157,8 +178,6 @@ const RecommendedContainer = styled.div`
   top: 48px;
 
   overflow-y: scroll;
-  /* margin-left: 8%;
-  margin-right: 8%; */
   max-height: 40vh;
   background-color: ${(props) => props.theme.colors.gray};
 `;
@@ -172,4 +191,22 @@ const ElementRow = styled.div`
   &:hover {
     background-color: ${(props) => props.theme.colors.gray3};
   }
+`;
+
+// ============================================================
+const PopUpDimmer = styled(SStyledDimmer)`
+  padding: 0px;
+  background-color: #000000e7;
+`;
+
+const PopUpWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+const PopUpInputContainer = styled(SRow)`
+  justify-content: space-between;
+  width: auto;
+  padding: 8px 16px;
+  background-color: ${({ theme }) => theme.colors.gray2};
 `;

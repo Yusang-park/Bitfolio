@@ -16,9 +16,10 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  max-width: 640px;
+  max-width: 560px;
   min-width: 260px;
+  padding: 32px;
 
-  background-color: ${({ theme }) => theme.colors.gray3};
+  background-color: ${({ theme }) => theme.colors.boxBackground};
   border-radius: 20px;
 `;
