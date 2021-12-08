@@ -10,6 +10,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 import { useHistory } from "react-router-dom";
+import logoImg from "../../Assets/ico_logo.png";
 
 export const Sidebar = React.memo(
   ({ forPopup = false, isOpened = false, setClose }) => {
@@ -26,7 +27,7 @@ export const Sidebar = React.memo(
         <Dimmer isOpened={isOpened} onClick={setClose}></Dimmer>
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
-            <Logo src="img/ico_logo.png" alt="Logo" />
+            <Logo src={logoImg} alt="Logo" />
             <STitleText>CryptoFolio</STitleText>
             <SSizedBox width="24px"></SSizedBox>
           </LogoRow>
@@ -76,16 +77,16 @@ const LogoRow = styled(SRow)`
   ${STitleText} {
     transition: font-size 200ms ease-out 100ms;
   }
-  ${Logo} {
+  /* ${Logo} {
     transition: width 200ms ease-out 100ms;
-  }
+  } */
 
   &:hover ${STitleText} {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
-  &:hover ${Logo} {
+  /* &:hover ${Logo} {
     width: 89px;
-  }
+  } */
 `;
 
 const SidebarContainer = styled.div`
