@@ -14,6 +14,7 @@ import { Nav } from "./Components/Menu/Nav";
 import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
 import { SColumn } from "./Components/GlobalComponents";
+import { Indexes } from "./Routes/Indexes";
 
 function App() {
   // const auth = authService;
@@ -54,7 +55,7 @@ function App() {
                     <Portfolio />
                   </Route>
                   <Route exact path="/indexes">
-                    <DashBoard />
+                    <Indexes />
                   </Route>
                   <Route exact path="/details/:id">
                     <Details />

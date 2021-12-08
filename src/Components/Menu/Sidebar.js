@@ -92,7 +92,7 @@ const SidebarContainer = styled.div`
   display: ${({ forPopup }) => (!forPopup ? css`block` : css`none`)};
   width: 16.66vw;
   max-width: 320px;
-  background-color: ${(props) => props.theme.colors.container};
+  background-color: ${(props) => props.theme.colors.boxBackground};
   color: white;
   animation: fadeIn 0.5s;
 

@@ -48,6 +48,8 @@ export const SStyledBox = styled(SAnimatedDiv)`
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   transition: background-color 300ms ease-out 100ms;
+
+  
 `;
 
 export const SYellowTitleCircle = styled.div`
