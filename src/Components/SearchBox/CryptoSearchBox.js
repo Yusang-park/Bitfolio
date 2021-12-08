@@ -122,7 +122,7 @@ export const CryptoSearchBox = () => {
         <FontAwesomeIcon icon="search" size="1x" color="white" />
       </SearchButton>
       {isPopUp && (
-        <PopUpDimmer onClick={onClickPopUp}>
+        <PopUpDimmer>
           <PopUpWrapper>
             <PopUpInputContainer>
               <FontAwesomeIcon icon="search" size="1x" color="grey" />
