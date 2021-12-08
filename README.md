@@ -12,6 +12,7 @@
 * React.JS with StyledComponents
 * Firebase
 * TradingView Chart API
+* Crypto currency APIs
 
 
 # Release Note
@@ -37,3 +38,14 @@
 
 2021.12.7
 * Allow chat feature to anonymous user
+
+2021.12.9
+* Add fear and greed index
+
+
+# Todo list
+* Integration Chat room
+* Board for each crypto
+* CryptoRank Filter
+* Hot crypto
+* Translation to Korean
