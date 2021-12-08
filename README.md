@@ -43,7 +43,7 @@
 * Add fear and greed index
 
 
-#Todo list
+# Todo list
 * Integration Chat room
 * Board for each crypto
 * CryptoRank Filter
