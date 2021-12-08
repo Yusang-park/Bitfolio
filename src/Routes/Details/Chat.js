@@ -138,7 +138,7 @@ const InputContainer = styled(SRow)`
 
   background-color: ${({ theme }) => theme.colors.gray2};
 
-  ${({ theme }) => theme.device.mobile} {
+  ${({ theme }) => theme.device.tablet} {
     height: 6%;
   }
 `;
