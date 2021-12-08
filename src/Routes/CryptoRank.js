@@ -82,7 +82,8 @@ export const CryptoRank = () => {
           </>
         )}
       </Row>
-      <SDivider vertical="16px" horizontal="32px" />
+      <SDivider horizontal="32px" />
+      <SSizedBox height="16px" />
       <SRow justify_content="center">
         <span onClick={prevPagePagination}>
           <FontAwesomeIcon icon="chevron-left" size="1x" color="white" />
@@ -113,10 +114,11 @@ const BasicInfoSection = React.memo(
     const { favorites, setFavoriteCrypto } = useContext(UserContext);
     return (
       <StyledBasicInfoSection>
-        <SRow justify_content="flex-start" align="flex-start">
-          <SSizedBox width="8vw" />
+        <TitleRow>
+          <NumberingSizedBox />
           <SExpanded flex="1">Name</SExpanded>
-        </SRow>
+        </TitleRow>
+        <SSizedBox height="16px" />
 
         {cryptoList.map((e, i) => (
           <ElementRow
@@ -137,7 +139,7 @@ const BasicInfoSection = React.memo(
               align="flex-start"
               onClick={() => routeDetails(e.id)}
             >
-              <SRow width="8vw" justify_content="space-evenly">
+              <NumberingContainer>
                 <SGrayText> {i + (pageIndex - 1) * 10 + 1}</SGrayText>
                 <SBookmark
                   isSelected={favorites[e.id]}
@@ -146,7 +148,7 @@ const BasicInfoSection = React.memo(
                   }
                   size="1x"
                 />
-              </SRow>
+              </NumberingContainer>
               <SExpanded flex="1">
                 <Icon src={e.imageUrl} />
                 <SColumn>
@@ -168,14 +170,14 @@ const DetailInfoSection = React.memo(
     return (
       <Relative>
         <StyledDetailInfoSection>
-          <SRow id="1" justify_content="flex-start" align="flex-start">
-            <Element flex="2">Price</Element>
-            <Element flex="3">MarketCap</Element>
-            <Element flex="3">CirculatingSupply</Element>
-            <Element flex="3">Volume</Element>
-            <Element flex="2">24Hours</Element>
-          </SRow>
-
+          <TitleRow id="1">
+            <Element flex="3">Price</Element>
+            <Element flex="5">MarketCap</Element>
+            <Element flex="5">CirculatingSupply</Element>
+            <Element flex="5">Volume</Element>
+            <Element flex="3">24Hours</Element>
+          </TitleRow>
+          <SSizedBox height="16px" />
           {cryptoList.map((e, i) => (
             <ElementRow
               onMouseOver={() => {
@@ -188,11 +190,11 @@ const DetailInfoSection = React.memo(
               key={i}
               onClick={() => routeDetails(e.id)}
             >
-              <Element flex="2">${e.price}</Element>
-              <Element flex="3">${e.marketCap.toLocaleString()}</Element>
-              <Element flex="3">{e.currentSupply.toLocaleString()}</Element>
-              <Element flex="3">${e.volume.toLocaleString()}</Element>
-              <Element flex="2">
+              <Element flex="3">${e.price}</Element>
+              <Element flex="5">${e.marketCap.toLocaleString()}</Element>
+              <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
+              <Element flex="5">${e.volume.toLocaleString()}</Element>
+              <Element flex="3">
                 <SPercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
                 </SPercentText>
@@ -204,6 +206,17 @@ const DetailInfoSection = React.memo(
     );
   }
 );
+
+const TitleRow = styled(SRow)`
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 12px;
+  color: ${(props) => props.theme.colors.gray};
+
+  ${({ theme }) => theme.device.tablet} {
+    padding-bottom: 0px;
+  }
+`;
 
 const ElementRow = styled(SRow)`
   height: 100%;
@@ -286,5 +299,23 @@ const Wrapper = styled(SStyledBox)`
 
   ${({ theme }) => theme.device.tablet} {
     height: 90vh;
+  }
+  ${({ theme }) => theme.device.mobile} {
+    padding: 16px 0px 16px 0px;
+  }
+`;
+
+const NumberingSizedBox = styled(SSizedBox)`
+  width: 8vw;
+  ${({ theme }) => theme.device.tablet} {
+    width: 12vw;
+  }
+`;
+
+const NumberingContainer = styled(SRow)`
+  width: 8vw;
+  justify-content: space-evenly;
+  ${({ theme }) => theme.device.tablet} {
+    width: 12vw;
   }
 `;

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
-import { logout } from "../../Service/Auth";
+import { logout } from "../../Service/FirebaseAuth";
 
 export const LogoutBtn = () => {
   return (

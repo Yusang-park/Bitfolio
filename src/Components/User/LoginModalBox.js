@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
-import { loginWithEamil, loginWithSocial } from "../../Service/Auth";
+import { loginWithEamil, loginWithSocial } from "../../Service/FirebaseAuth";
 import {
   SButton,
   SColumn,
@@ -69,31 +69,33 @@ export const LoginModalBox = () => {
       {isSignUpMode ? (
         <SignUpModalBox />
       ) : (
-        <SColumn>
-          <SSizedBox height="32px" />
+        <Container>
           <form onSubmit={onSubmit}>
-            <SInput
-              id="email"
-              value={email}
-              onChange={onChange}
-              type="email"
-              placeholder="Email"
-              required
-            />
-            <SSizedBox height="24px" />
-            <SInput
-              id="password"
-              value={password}
-              onChange={onChange}
-              type="password"
-              placeholder="Password"
-              required
-            />
-            <SSizedBox height="16px" />
-            <SText>{errorText}</SText>
-            <SSizedBox height="16px" />
-            <SButton>Login</SButton>
-            <SSizedBox height="16px" />
+            <SColumn>
+              <SSizedBox height="32px" />
+              <SInput
+                id="email"
+                value={email}
+                onChange={onChange}
+                type="email"
+                placeholder="Email"
+                required
+              />
+              <SSizedBox height="24px" />
+              <SInput
+                id="password"
+                value={password}
+                onChange={onChange}
+                type="password"
+                placeholder="Password"
+                required
+              />
+              <SSizedBox height="16px" />
+              <SText>{errorText}</SText>
+              <SSizedBox height="16px" />
+              <SButton>Login</SButton>
+              <SSizedBox height="16px" />
+            </SColumn>
           </form>
           <WhiteButton onClick={() => loginWithSocial("google")}>
             <SRow>
@@ -101,11 +103,15 @@ export const LoginModalBox = () => {
               <InnerBtnText> Google Sign In</InnerBtnText>
             </SRow>
           </WhiteButton>
-        </SColumn>
+        </Container>
       )}
     </Wrapper>
   );
 };
+
+const Container = styled.div`
+  width: 100%;
+`;
 
 const Wrapper = styled(SColumn)``;
 
@@ -116,6 +122,7 @@ const Logo = styled.img`
 `;
 
 const WhiteButton = styled(SButton)`
+  width: 100%;
   background: linear-gradient(#f4f4f4 0%, #cdcdcd 100%);
   &:hover {
     background: linear-gradient(#bdbdbd 0%, #b0b0b0 100%);

@@ -1,13 +1,14 @@
 import axios from "axios";
 import { CryptoSummaryData, CryptoDetailData } from "./Models";
 
-const providerUrl = "https://api.coingecko.com/api/v3";
+const cryptoProviderURL = "https://api.coingecko.com/api/v3";
+const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
 export async function getCryptoSummaryDataList(pageIndex) {
   let res = [];
   try {
     const response = await axios.get(
-      `${providerUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
+      `${cryptoProviderURL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
     );
     response.data.forEach((e) => res.push(new CryptoSummaryData(e)));
   } catch (e) {}
@@ -17,7 +18,7 @@ export async function getCryptoSummaryDataList(pageIndex) {
 export async function getCryptoObject() {
   let res = {};
   try {
-    const response = await axios.get(`${providerUrl}/coins/list`);
+    const response = await axios.get(`${cryptoProviderURL}/coins/list`);
     response.data.forEach((e, index) => {
       let str = [
         e.name.replaceAll(" ", "").toLowerCase(),
@@ -42,7 +43,7 @@ export async function getCryptoObject() {
 
 export async function getCryptoDetails(id) {
   try {
-    const response = await axios.get(`${providerUrl}/coins/${id}`);
+    const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
 
     return new CryptoDetailData(response.data);
   } catch (e) {
@@ -54,10 +55,20 @@ export async function getCryptoPricesList(idList) {
   let s = idList.join(",");
   try {
     const response = await axios.get(
-      `${providerUrl}/simple/price?ids=${s}&vs_currencies=usd`
+      `${cryptoProviderURL}/simple/price?ids=${s}&vs_currencies=usd`
     );
     // console.log(response.data);
     return response.data;
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function getFearAndGreedIndex() {
+  try {
+    const response = await axios.get(`${fearAndGreedIndexProviderURL}1`);
+
+    return parseInt(response.data["data"][0]["value"]);
   } catch (e) {
     return null;
   }

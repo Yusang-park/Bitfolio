@@ -2,7 +2,7 @@ import { updateProfile } from "@firebase/auth";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
-import { logout } from "../../Service/Auth";
+import { logout } from "../../Service/FirebaseAuth";
 import {
   SButton,
   SColumn,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { registerWithEamil } from "../../Service/Auth";
+import { registerWithEamil } from "../../Service/FirebaseAuth";
 import {
   SButton,
   SColumn,

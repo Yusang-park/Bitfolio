@@ -13,10 +13,10 @@ export const TalkBox = React.memo(({ docKey, data, isMine }) => {
         <span>
           <NameText isMine={isMine}> {name}</NameText>
         </span>
-        <Time>
+        <TimeText>
           {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
           {date.getMinutes()}
-        </Time>
+        </TimeText>
       </RowCustom>
       <SSizedBox height="12px" />
       <SDivider />
@@ -45,9 +45,13 @@ const Container = styled.div`
   border: 1px solid gray;
   background: #2b2a37;
   color: white;
+
+  ${({ theme }) => theme.device.mobile} {
+    margin: 12px 0px;
+  }
 `;
 
-const Time = styled.div`
+const TimeText = styled.div`
   font-size: 1.4rem;
   color: gray;
 `;

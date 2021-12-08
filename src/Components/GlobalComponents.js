@@ -4,11 +4,11 @@ import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
 // ====================================================================================
 export const STitleText = styled.p`
-  font-size: 2.6rem;
+  font-size: 2.5rem;
 `;
 
 export const SBoldTitleText = styled.p`
-  font-size: 2.6rem;
+  font-size: 2.5rem;
   font-weight: bold;
 `;
 
@@ -48,8 +48,6 @@ export const SStyledBox = styled(SAnimatedDiv)`
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   transition: background-color 300ms ease-out 100ms;
-
-  
 `;
 
 export const SYellowTitleCircle = styled.div`

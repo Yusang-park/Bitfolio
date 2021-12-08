@@ -14,7 +14,7 @@ import { Nav } from "./Components/Menu/Nav";
 import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
 import { SColumn } from "./Components/GlobalComponents";
-import { Indexes } from "./Routes/Indexes";
+import { Indexes } from "./Routes/Indexes/Indexes";
 
 function App() {
   // const auth = authService;

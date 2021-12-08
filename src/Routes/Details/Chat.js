@@ -8,7 +8,7 @@ import {
   sendChatMessage,
 } from "../../Service/FirebaseFunctions";
 import { TalkBox } from "./TalkBalloon";
-import $ from "jquery";
+// import $ from "jquery";
 import {
   SStyledBox,
   SRow,
@@ -26,16 +26,11 @@ export const Chat = React.memo(() => {
   useEffect(() => {
     getChatMessages(data.id, (value) => {
       if (value) {
-        setChatData(Object.entries(value));
+        let res = Object.entries(value).reverse();
+        setChatData(res);
       }
     });
   }, [data.id, setChatData]);
-
-  useEffect(() => {
-    try {
-      $("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-    } catch (e) {}
-  }, [chatData]);
 
   function onChange(e) {
     if (e.target.value.endsWith("\n")) {
@@ -81,9 +76,7 @@ export const Chat = React.memo(() => {
         <Input
           // disabled={authService.currentUser === null}
           placeholder={
-            authService.currentUser === null
-              ? `Your Anonymous Nickname : ${tempNickname}`
-              : ""
+            authService.currentUser === null ? `${tempNickname}` : ""
           }
           value={inputText}
           onChange={onChange}
@@ -101,7 +94,7 @@ const ChatContainer = styled.div`
   position: relative;
 
   ${({ theme }) => theme.device.tablet} {
-    height: 65vh;
+    height: 82vh;
   }
 `;
 
@@ -116,7 +109,8 @@ const Wrapper = styled(SStyledBox)`
 const ChatScrollItem = styled.div`
   position: absolute;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+
   width: 100%;
   height: 100%;
   padding-right: 4px;
@@ -143,6 +137,10 @@ const InputContainer = styled(SRow)`
   border: 1px solid white;
 
   background-color: ${({ theme }) => theme.colors.gray2};
+
+  ${({ theme }) => theme.device.mobile} {
+    height: 6%;
+  }
 `;
 
 const SendButton = styled.div`
