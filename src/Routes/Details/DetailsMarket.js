@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import {
+  SAnimatedDiv,
   SColumn,
   SGrayText,
   SRow,
@@ -50,7 +51,7 @@ const ExchangeName = styled.a`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(SAnimatedDiv)`
   position: relative;
   width: 100%;
   height: 100%;

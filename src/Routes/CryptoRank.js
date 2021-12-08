@@ -171,10 +171,10 @@ const DetailInfoSection = React.memo(
       <Relative>
         <StyledDetailInfoSection>
           <TitleRow id="1">
-            <Element flex="3">Price</Element>
-            <Element flex="5">MarketCap</Element>
-            <Element flex="5">CirculatingSupply</Element>
-            <Element flex="5">Volume</Element>
+            <Element flex="4">Price</Element>
+            <Element flex="6">MarketCap</Element>
+            <Element flex="6">CirculatingSupply</Element>
+            <Element flex="6">Volume</Element>
             <Element flex="3">24Hours</Element>
           </TitleRow>
           <SSizedBox height="16px" />
@@ -190,10 +190,10 @@ const DetailInfoSection = React.memo(
               key={i}
               onClick={() => routeDetails(e.id)}
             >
-              <Element flex="3">${e.price}</Element>
-              <Element flex="5">${e.marketCap.toLocaleString()}</Element>
-              <Element flex="5">{e.currentSupply.toLocaleString()}</Element>
-              <Element flex="5">${e.volume.toLocaleString()}</Element>
+              <Element flex="4">${e.price}</Element>
+              <Element flex="6">${e.marketCap.toLocaleString()}</Element>
+              <Element flex="6">{e.currentSupply.toLocaleString()}</Element>
+              <Element flex="6">${e.volume.toLocaleString()}</Element>
               <Element flex="3">
                 <SPercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
@@ -234,7 +234,7 @@ const ElementRow = styled(SRow)`
 const Element = styled(SExpanded)`
   ${({ theme }) => theme.device.tablet} {
     flex: none;
-    width: ${({ flex }) => css`calc( 28px * ${flex})`};
+    width: ${({ flex }) => css`calc( 20px * ${flex})`};
     margin-left: 16px;
     margin-right: 16px;
     padding: 0px 0px;
