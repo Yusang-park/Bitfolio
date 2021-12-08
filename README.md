@@ -37,3 +37,6 @@
 
 2021.12.7
 * Allow chat feature to anonymous user
+
+2021.12.9
+* Add fear and greed index
