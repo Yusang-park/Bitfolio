@@ -31,6 +31,7 @@ export const UserModalBox = ({ setShowModal }) => {
         value={input}
         onChange={changeInput}
         placeholder="Nickname"
+        required
       ></SInput>
       <SSizedBox height="24px" />
       <SButton onClick={changeDisplayName}>Change Nickname</SButton>
