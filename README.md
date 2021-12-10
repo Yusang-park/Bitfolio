@@ -51,4 +51,3 @@
 * Board for each crypto
 * CryptoRank Filter
 * Hot crypto
-* Translation to Korean
