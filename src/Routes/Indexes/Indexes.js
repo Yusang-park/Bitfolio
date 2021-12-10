@@ -6,14 +6,14 @@ import { getFearAndGreedIndex } from "../../Service/Apis";
 import { Text, TitleText } from "../../Components/TransComponants";
 
 const fearIndexDescriptions = [
-  "#Very Fear",
+  "#Extreme Fear",
   "#Fear",
   "#Neutrality",
   "#Greed",
   "#Very Greed",
 ];
 const fearIndexTitle = [
-  "Very Fear",
+  "Extreme Fear",
   "Fear",
   "Neutrality",
   "Greed",
@@ -30,25 +30,25 @@ export const Indexes = () => {
   }, []);
 
   function getTitle() {
-    let level = Math.ceil(fearIndex / 5);
-    console.log(level);
-    return fearIndexTitle[level - 1];
+    let level = Math.floor(fearIndex / 20);
+    return fearIndexTitle[level];
   }
 
   function getDescription() {
-    let level = Math.ceil(fearIndex / 5);
-    console.log(level);
-    return fearIndexDescriptions[level - 1];
+    let level = Math.floor(fearIndex / 20);
+    return fearIndexDescriptions[level];
   }
 
   return (
-    <FeatIndexContainer>
+    <Wrapper>
       <TitleText>Fear and Greed Index</TitleText>
       <Container>
         <ReactSpeedometer
-          value={fearIndex * 10}
+          maxValue={100}
+          minValue={0}
+          value={fearIndex}
           fluidWidth={true}
-          currentValueText={`Index : ${(fearIndex * 10) / 10}`}
+          currentValueText={`Index : ${fearIndex}`}
           needleTransitionDuration={2000}
           needleColor="grey"
           startColor="skyblue"
@@ -90,11 +90,11 @@ export const Indexes = () => {
       <TitleText>{getTitle()}</TitleText>
       <br />
       <Text>{getDescription()}</Text>
-    </FeatIndexContainer>
+    </Wrapper>
   );
 };
 
-const FeatIndexContainer = styled(SStyledBox)`
+const Wrapper = styled(SStyledBox)`
   width: 50%;
   ${({ theme }) => theme.device.tablet} {
     width: auto;
@@ -109,4 +109,5 @@ const FeatIndexContainer = styled(SStyledBox)`
 `;
 const Container = styled.div`
   height: 30%;
+  max-width: 600px;
 `;

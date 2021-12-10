@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { logout } from "../../Service/FirebaseAuth";
-import { SColumn, SInput, SSizedBox } from "../GlobalComponents";
+import { SColumn, SInput, SRow, SSizedBox } from "../GlobalComponents";
 import { TitleText, Button } from "../TransComponants";
 
 export const UserModalBox = ({ setShowModal }) => {
@@ -15,23 +15,28 @@ export const UserModalBox = ({ setShowModal }) => {
     setInput(e.target.value);
   }
 
-  function changeDisplayName() {
-    updateProfile(authService.currentUser, { displayName: input });
-    setShowModal(false);
+  function changeDisplayName(e) {
+    updateProfile(authService.currentUser, { displayName: input }).then(() => {
+      setShowModal(false);
+    });
   }
 
   return (
     <Container>
       <TitleText>My Account</TitleText>
       <SSizedBox height="32px" />
-      <SInput
-        value={input}
-        onChange={changeInput}
-        placeholder={t("Nickname")}
-        required
-      ></SInput>
-      <SSizedBox height="24px" />
-      <Button onClick={changeDisplayName}>Change Nickname</Button>
+      <form onSubmit={changeDisplayName}>
+        <SRow justify_content="space-around">
+          <SInput
+            value={input}
+            onChange={changeInput}
+            placeholder={t("Nickname")}
+            minLength={3}
+            required
+          ></SInput>
+          <Button>Change Nickname</Button>
+        </SRow>
+      </form>
       <SSizedBox height="32px" />
       <Button onClick={logout}>Logout</Button>
     </Container>
