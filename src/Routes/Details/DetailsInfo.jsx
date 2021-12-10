@@ -77,7 +77,7 @@ const InfoContainer = styled(SRow)`
 
 const InfoElementContainer = styled(SColumn)`
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
   height: fit-content;
   margin-right: 32px;
   margin-bottom: 16px;

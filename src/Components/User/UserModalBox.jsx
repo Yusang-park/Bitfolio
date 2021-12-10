@@ -1,18 +1,15 @@
 import { updateProfile } from "@firebase/auth";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { logout } from "../../Service/FirebaseAuth";
-import {
-  SButton,
-  SColumn,
-  SInput,
-  SSizedBox,
-  STitleText,
-} from "../GlobalComponents";
+import { SColumn, SInput, SSizedBox } from "../GlobalComponents";
+import { TitleText, Button } from "../TransComponants";
 
 export const UserModalBox = ({ setShowModal }) => {
   const [input, setInput] = useState("");
+  const { t } = useTranslation();
 
   function changeInput(e) {
     setInput(e.target.value);
@@ -25,18 +22,18 @@ export const UserModalBox = ({ setShowModal }) => {
 
   return (
     <Container>
-      <STitleText>My Account</STitleText>
+      <TitleText>My Account</TitleText>
       <SSizedBox height="32px" />
       <SInput
         value={input}
         onChange={changeInput}
-        placeholder="Nickname"
+        placeholder={t("Nickname")}
         required
       ></SInput>
       <SSizedBox height="24px" />
-      <SButton onClick={changeDisplayName}>Change Nickname</SButton>
+      <Button onClick={changeDisplayName}>Change Nickname</Button>
       <SSizedBox height="32px" />
-      <SButton onClick={logout}>Logout</SButton>
+      <Button onClick={logout}>Logout</Button>
     </Container>
   );
 };

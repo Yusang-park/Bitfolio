@@ -22,6 +22,9 @@
   "Re-enter Password": "비밀번호 확인",
   "Nickname": "닉네임",
   "Google Sign In": "구글 계정으로 로그인",
+  "My Account": "내 계정",
+  "Change Nickname": "닉네임 변경",
+  "Logout": "로그아웃",
   "Fear and Greed Index": "공포 탐욕 지수",
   "Current": "현재",
   "Max": "최대",
@@ -29,5 +32,16 @@
   "SupplyAmount": "발행량",
   "Information": "정보",
   "Exchanges": "거래소",
-  "Chat": "실시간 채팅"
+  "Chat": "실시간 채팅",
+  "EXIT": "닫기",
+  "Very Fear": "극단적 공포",
+  "Fear": "공포",
+  "Neutrality": "중립",
+  "Greed": "탐욕",
+  "Very Greed": "극도의 탐욕",
+  "#Very Fear": "설명",
+  "#Fear": "설명",
+  "#Neutrality": "설명",
+  "#Greed": "설명",
+  "#Very Greed": "설명"
 }

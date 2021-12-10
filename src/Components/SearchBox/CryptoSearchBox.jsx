@@ -7,10 +7,10 @@ import {
   SRow,
   SInnerInput,
   SStyledDimmer,
-  SButton,
 } from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Button } from "../TransComponants";
 
 function searchObject(object, key) {
   let res = [];
@@ -128,11 +128,11 @@ export const CryptoSearchBox = () => {
             <PopUpInputContainer>
               <FontAwesomeIcon icon="search" size="1x" color="grey" />
               <SInnerInput
-                placeholder="Search"
+                placeholder={t("Search")}
                 value={inputText}
                 onChange={onChange}
               />
-              <SButton onClick={onClickPopUp}>EXIT</SButton>
+              <Button onClick={onClickPopUp}>EXIT</Button>
             </PopUpInputContainer>
             {renderRecommendedContainer()}
           </PopUpWrapper>

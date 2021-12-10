@@ -13,7 +13,7 @@ import {
   SStyledBox,
   SRow,
   SSizedBox,
-  STitleText,
+  SGrayText,
 } from "../../Components/GlobalComponents";
 import { UserContext } from "../../Provider/UserProvider";
 import { TitleText } from "../../Components/TransComponants";
@@ -48,9 +48,9 @@ export const Chat = React.memo(() => {
 
   return (
     <Wrapper>
-      <SRow justify_content="flex-start">
+      <SRow justify_content="flex-start" align_items="flex-end">
         <TitleText>Chat</TitleText>
-        <STitleText> ({data.fullName})</STitleText>
+        <SGrayText> ({data.fullName})</SGrayText>
       </SRow>
 
       <SSizedBox height="16px" />
