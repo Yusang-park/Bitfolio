@@ -10,6 +10,7 @@ import {
   SButton,
 } from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function searchObject(object, key) {
   let res = [];
@@ -45,9 +46,9 @@ export const CryptoSearchBox = () => {
   const _cryptoList = useRef(null);
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
-
   const [isPopUp, setPopUp] = useState(false);
   const history = useHistory();
+  const { t } = useTranslation();
 
   useEffect(() => {
     requestCryptoList();
@@ -111,7 +112,7 @@ export const CryptoSearchBox = () => {
       <SearchContainer>
         <FontAwesomeIcon icon="search" size="1x" color="grey" />
         <SInnerInput
-          placeholder="Search"
+          placeholder={t("Search")}
           value={inputText}
           onChange={onChange}
         />

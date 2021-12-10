@@ -19,6 +19,7 @@ import { useHistory } from "react-router-dom";
 
 import { UserContext } from "../Provider/UserProvider";
 import { fadeIn } from "../Styles/Animation";
+import { GrayText } from "../Components/TransComponants";
 
 const maxPage = 179;
 
@@ -65,20 +66,20 @@ export const CryptoRank = () => {
           <ProgressIndicator />
         ) : (
           <>
-            <BasicInfoSection
+            <BasicInfoSectionContainer
               pageIndex={pageIndex}
               cryptoList={cryptoList}
               routeDetails={routeDetails}
               hoverIndex={hoverIndex}
               setHoverIndex={setHoverIndex}
-            ></BasicInfoSection>
-            <DetailInfoSection
+            ></BasicInfoSectionContainer>
+            <DetailInfoSectionContainer
               pageIndex={pageIndex}
               cryptoList={cryptoList}
               routeDetails={routeDetails}
               hoverIndex={hoverIndex}
               setHoverIndex={setHoverIndex}
-            ></DetailInfoSection>
+            ></DetailInfoSectionContainer>
           </>
         )}
       </Row>
@@ -109,15 +110,15 @@ export const CryptoRank = () => {
   );
 };
 
-const BasicInfoSection = React.memo(
+const BasicInfoSectionContainer = React.memo(
   ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
     const { favorites, setFavoriteCrypto } = useContext(UserContext);
     return (
-      <StyledBasicInfoSection>
-        <TitleRow>
+      <BasicInfoWrapper>
+        <CategoryTitleContainer>
           <NumberingSizedBox />
-          <SExpanded flex="1">Name</SExpanded>
-        </TitleRow>
+          <CategoryText flex="2">Name</CategoryText>
+        </CategoryTitleContainer>
         <SSizedBox height="16px" />
 
         {cryptoList.map((e, i) => (
@@ -149,7 +150,7 @@ const BasicInfoSection = React.memo(
                   size="1x"
                 />
               </NumberingContainer>
-              <SExpanded flex="1">
+              <SExpanded flex="2">
                 <Icon src={e.imageUrl} />
                 <SColumn>
                   {e.fullName}
@@ -160,23 +161,23 @@ const BasicInfoSection = React.memo(
             </SRow>
           </ElementRow>
         ))}
-      </StyledBasicInfoSection>
+      </BasicInfoWrapper>
     );
   }
 );
 
-const DetailInfoSection = React.memo(
+const DetailInfoSectionContainer = React.memo(
   ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
     return (
       <Relative>
-        <StyledDetailInfoSection>
-          <TitleRow id="1">
-            <Element flex="4">Price</Element>
-            <Element flex="6">MarketCap</Element>
-            <Element flex="6">CirculatingSupply</Element>
-            <Element flex="6">Volume</Element>
-            <Element flex="3">24Hours</Element>
-          </TitleRow>
+        <DetailInfoWrapper>
+          <CategoryTitleContainer id="1">
+            <CategoryText flex="4">Price</CategoryText>
+            <CategoryText flex="6">MarketCap</CategoryText>
+            <CategoryText flex="6">CirculatingSupply</CategoryText>
+            <CategoryText flex="6">Volume</CategoryText>
+            <CategoryText flex="4">24Hours</CategoryText>
+          </CategoryTitleContainer>
           <SSizedBox height="16px" />
           {cryptoList.map((e, i) => (
             <ElementRow
@@ -194,24 +195,23 @@ const DetailInfoSection = React.memo(
               <Element flex="6">${e.marketCap.toLocaleString()}</Element>
               <Element flex="6">{e.currentSupply.toLocaleString()}</Element>
               <Element flex="6">${e.volume.toLocaleString()}</Element>
-              <Element flex="3">
+              <Element flex="4">
                 <SPercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
                 </SPercentText>
               </Element>
             </ElementRow>
           ))}
-        </StyledDetailInfoSection>
+        </DetailInfoWrapper>
       </Relative>
     );
   }
 );
 
-const TitleRow = styled(SRow)`
+const CategoryTitleContainer = styled(SRow)`
   justify-content: flex-start;
   align-items: flex-start;
   padding-bottom: 12px;
-  color: ${(props) => props.theme.colors.gray};
 
   ${({ theme }) => theme.device.tablet} {
     padding-bottom: 0px;
@@ -261,7 +261,7 @@ const Row = styled(SRow)`
   flex: 1;
 `;
 
-const StyledBasicInfoSection = styled(SColumn)`
+const BasicInfoWrapper = styled(SColumn)`
   flex: 3;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -269,7 +269,7 @@ const StyledBasicInfoSection = styled(SColumn)`
   animation-fill-mode: forwards;
 `;
 
-const StyledDetailInfoSection = styled(SColumn)`
+const DetailInfoWrapper = styled(SColumn)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -319,3 +319,11 @@ const NumberingContainer = styled(SRow)`
     width: 12vw;
   }
 `;
+
+const CategoryText = ({ children, flex }) => {
+  return (
+    <Element flex={flex}>
+      <GrayText>{children}</GrayText>
+    </Element>
+  );
+};

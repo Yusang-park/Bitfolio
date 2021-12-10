@@ -5,19 +5,24 @@ import {
   SAnimatedDiv,
   SGrayText,
   SSizedBox,
-  SYellowTitleCircle,
   SRow,
   SColumn,
   SText,
 } from "../../Components/GlobalComponents";
 import { Chart } from "../../Components/TradingViewChart";
+import {
+  GrayText,
+  Text,
+  YellowTitleCircle,
+} from "../../Components/TransComponants";
 
 export const DetailsInfo = () => {
   const { data } = useContext(CryptoDataContext);
 
   const MarketCapBox = () => (
     <InfoElementContainer>
-      <YellowTitleCircle>Market Cap</YellowTitleCircle>
+      <YellowTitleCircle>MarketCap</YellowTitleCircle>
+      <SSizedBox height="8px" />
       <SText>{"$" + data.marketCap.toLocaleString()}</SText>
       <SSizedBox height="4px" />
       <SGrayText>{"Rank. #" + data.marketCapRank}</SGrayText>
@@ -26,17 +31,17 @@ export const DetailsInfo = () => {
 
   const SupplyAmountBox = () => (
     <InfoElementContainer>
-      <YellowTitleCircle>Supply Amount</YellowTitleCircle>
-
+      <YellowTitleCircle>SupplyAmount</YellowTitleCircle>
+      <SSizedBox height="8px" />
       <SRow justify_content="space-between">
-        <SText>Current</SText>
+        <Text>Current</Text>
         <SSizedBox width="12px" />
         <SText>{data.currentSupply.toLocaleString()}</SText>
       </SRow>
 
       <SSizedBox height="4px" />
       <SRow justify_content="space-between">
-        <SGrayText>Max</SGrayText>
+        <GrayText>Max</GrayText>
         <SSizedBox width="12px" />
         <SGrayText>
           {data.maxSupply ? data.maxSupply.toLocaleString() : "♾️"}
@@ -48,6 +53,7 @@ export const DetailsInfo = () => {
   const VolumeBox = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
+      <SSizedBox height="8px" />
       <SText> {"$" + data.volume.toLocaleString()}</SText>
     </InfoElementContainer>
   );
@@ -81,8 +87,4 @@ const Wrapper = styled(SAnimatedDiv)`
   display: flex;
   flex-direction: column;
   height: 100%;
-`;
-
-const YellowTitleCircle = styled(SYellowTitleCircle)`
-  margin-bottom: 16px;
 `;

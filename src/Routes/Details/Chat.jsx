@@ -16,6 +16,7 @@ import {
   STitleText,
 } from "../../Components/GlobalComponents";
 import { UserContext } from "../../Provider/UserProvider";
+import { TitleText } from "../../Components/TransComponants";
 
 export const Chat = React.memo(() => {
   const [inputText, setInputText] = useState("");
@@ -47,7 +48,11 @@ export const Chat = React.memo(() => {
 
   return (
     <Wrapper>
-      <STitleText>{data.fullName} Chat </STitleText>
+      <SRow justify_content="flex-start">
+        <TitleText>Chat</TitleText>
+        <STitleText> ({data.fullName})</STitleText>
+      </SRow>
+
       <SSizedBox height="16px" />
 
       <ChatContainer>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import styled from "styled-components";
 import { loginWithEamil, loginWithSocial } from "../../Service/FirebaseAuth";
@@ -9,9 +10,14 @@ import {
   SRow,
   SText,
   SSizedBox,
-  STitleText,
-  STextButton,
 } from "../GlobalComponents";
+import {
+  Button,
+  Text,
+  TextBlack,
+  TextButton,
+  TitleText,
+} from "../TransComponants";
 import { SignUpModalBox } from "./SignUpModalBox";
 
 export const LoginModalBox = () => {
@@ -19,6 +25,7 @@ export const LoginModalBox = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+  const { t } = useTranslation();
 
   function onClickChangeMode() {
     setIsSignUpMode(!isSignUpMode);
@@ -47,22 +54,22 @@ export const LoginModalBox = () => {
   return (
     <Wrapper>
       <SColumn>
-        <STitleText>{isSignUpMode ? "Create an account" : "Login"}</STitleText>
+        <TitleText>{isSignUpMode ? "Create an account" : "Login"}</TitleText>
         <SSizedBox height="24px" />
 
         {isSignUpMode ? (
           <SRow justify_content="flex-start">
-            <SText>Already have account?</SText>
+            <Text>Already have account?</Text>
             <SSizedBox width="8px" />
-            <STextButton onClick={onClickChangeMode}>Login</STextButton>
+            <TextButton onClick={onClickChangeMode}>Login</TextButton>
           </SRow>
         ) : (
           <SRow justify_content="flex-start">
-            <SText>New to CryptoFolio?</SText>
+            <Text>New to CryptoFolio?</Text>
             <SSizedBox width="8px" />
-            <STextButton onClick={onClickChangeMode}>
+            <TextButton onClick={onClickChangeMode}>
               Create an account
-            </STextButton>
+            </TextButton>
           </SRow>
         )}
       </SColumn>
@@ -78,7 +85,7 @@ export const LoginModalBox = () => {
                 value={email}
                 onChange={onChange}
                 type="email"
-                placeholder="Email"
+                placeholder={t("Email")}
                 required
               />
               <SSizedBox height="24px" />
@@ -87,20 +94,20 @@ export const LoginModalBox = () => {
                 value={password}
                 onChange={onChange}
                 type="password"
-                placeholder="Password"
+                placeholder={t("Password")}
                 required
               />
               <SSizedBox height="16px" />
               <SText>{errorText}</SText>
               <SSizedBox height="16px" />
-              <SButton>Login</SButton>
+              <Button>Login</Button>
               <SSizedBox height="16px" />
             </SColumn>
           </form>
           <WhiteButton onClick={() => loginWithSocial("google")}>
             <SRow>
               <Logo src="https://freesvg.org/img/1534129544.png" />{" "}
-              <InnerBtnText> Google Sign In</InnerBtnText>
+              <TextBlack>Google Sign In</TextBlack>
             </SRow>
           </WhiteButton>
         </Container>
@@ -127,9 +134,4 @@ const WhiteButton = styled(SButton)`
   &:hover {
     background: linear-gradient(#bdbdbd 0%, #b0b0b0 100%);
   }
-`;
-
-const InnerBtnText = styled.p`
-  font-size: 1.6rem;
-  color: black;
 `;

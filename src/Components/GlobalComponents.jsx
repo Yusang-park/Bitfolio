@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
+
 // ====================================================================================
 export const STitleText = styled.p`
   font-size: 2.5rem;
@@ -16,19 +17,28 @@ export const SSubTitleText = styled.p`
   font-size: 1.8rem;
 `;
 
-export const SGrayText = styled.div`
+export const SGrayText = styled.p`
   font-size: 1.6rem;
   transition: color 300ms ease-out 100ms;
   color: ${(props) => props.theme.colors.gray};
 `;
 
-export const SPercentText = styled.div`
+export const SPercentText = styled.p`
   font-size: 1.6rem;
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
 `;
 
 export const SText = styled.p`
+  font-size: 1.6rem;
+`;
+
+export const STextBlack = styled.p`
+  font-size: 1.6rem;
+  color: black;
+`;
+
+export const SBoldText = styled.p`
   font-size: 1.6rem;
 `;
 // ====================================================================================

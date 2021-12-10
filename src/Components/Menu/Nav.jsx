@@ -9,6 +9,7 @@ import { UserContext } from "../../Provider/UserProvider";
 import { LoginBtn } from "../User/LoginBtn";
 import { Sidebar } from "./Sidebar";
 import { UserBox } from "./UserBox";
+import { TitleText } from "../TransComponants";
 
 export const Nav = () => {
   const { isLoggedIn, initialize } = useContext(UserContext);
@@ -16,11 +17,7 @@ export const Nav = () => {
   const pathName = useLocation().pathname;
 
   function getName() {
-    try {
-      return categories.find((c) => c.path === pathName).name;
-    } catch (e) {
-      return "Details";
-    }
+    return categories.find((c) => c.path.includes(pathName.split("/")[1])).name;
   }
 
   function onClickHamberger() {
@@ -28,23 +25,26 @@ export const Nav = () => {
   }
 
   return (
-    <Container>
+    <Wrapper>
       <Sidebar
         forPopup={true}
         isOpened={openedSideBar}
         setClose={onClickHamberger}
       />
+
       <HambergerBtn onClick={onClickHamberger} />
-      <STitleText>{getName()}</STitleText>
+      <TitleContainer>
+        <TitleText>{getName()}</TitleText>
+      </TitleContainer>
       <CryptoSearchBox />
       <SSizedBox width="16px" />
 
       {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
-    </Container>
+    </Wrapper>
   );
 };
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,7 +54,7 @@ const Container = styled.div`
   font-size: 2.6rem;
 `;
 
-const STitleText = styled.div`
+const TitleContainer = styled.div`
   display: flex;
   flex: auto;
   align-items: center;

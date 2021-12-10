@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { SStyledBox, STitleText } from "../../Components/GlobalComponents";
 import ReactSpeedometer from "react-d3-speedometer";
 import { getFearAndGreedIndex } from "../../Service/Apis";
+import { TitleText } from "../../Components/TransComponants";
 export const Indexes = () => {
   const [fearIndex, setFearIndex] = useState(0);
   useEffect(() => {
@@ -13,7 +14,7 @@ export const Indexes = () => {
 
   return (
     <FeatIndexContainer>
-      <STitleText>Fear and Greed Index</STitleText>
+      <TitleText>Fear and Greed Index</TitleText>
       <Container>
         <ReactSpeedometer
           value={fearIndex}

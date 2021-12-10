@@ -1,19 +1,16 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { registerWithEamil } from "../../Service/FirebaseAuth";
-import {
-  SButton,
-  SColumn,
-  SInput,
-  SSizedBox,
-  SText,
-} from "../GlobalComponents";
+import { SColumn, SInput, SSizedBox, SText } from "../GlobalComponents";
+import { Button } from "../TransComponants";
 export const SignUpModalBox = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [reEnterPassword, setReEnterPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const [errorText, setErrorText] = useState("");
+  const { t } = useTranslation();
 
   function onChange(e) {
     switch (e.target.id) {
@@ -55,7 +52,7 @@ export const SignUpModalBox = () => {
           value={email}
           onChange={onChange}
           type="email"
-          placeholder="Email"
+          placeholder={t("Email")}
           required
         />
         <SSizedBox height="24px" />
@@ -64,7 +61,7 @@ export const SignUpModalBox = () => {
           value={password}
           onChange={onChange}
           type="password"
-          placeholder="Password"
+          placeholder={t("Password")}
           required
         />
         <SSizedBox height="24px" />
@@ -73,7 +70,7 @@ export const SignUpModalBox = () => {
           value={reEnterPassword}
           onChange={onChange}
           type="password"
-          placeholder="Re-enter Password"
+          placeholder={t("Re-enter Password")}
           required
         />
         <SSizedBox height="24px" />
@@ -82,14 +79,14 @@ export const SignUpModalBox = () => {
           value={nickname}
           onChange={onChange}
           type="text"
-          placeholder="Nickname"
+          placeholder={t("Nickname")}
           maxLength={10}
           required
         />
         <SSizedBox height="16px" />
         <SText>{errorText}</SText>
         <SSizedBox height="16px" />
-        <SButton>Create an account</SButton>
+        <Button>Create an account</Button>
       </SColumn>
     </form>
   );

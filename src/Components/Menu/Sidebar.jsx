@@ -5,21 +5,28 @@ import {
   SRow,
   SSizedBox,
   SStyledDimmer,
+  STextButton,
   STitleText,
 } from "../GlobalComponents";
 import { Link, useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 import { useHistory } from "react-router-dom";
 import logoImg from "../../Assets/ico_logo.png";
+import { useTranslation } from "react-i18next";
 
 export const Sidebar = React.memo(
   ({ forPopup = false, isOpened = false, setClose }) => {
     const pathName = useLocation().pathname;
     const history = useHistory();
+    const { t, i18n } = useTranslation();
 
     function onClickLogo(e) {
       history.push("/");
       if (setClose !== undefined) setClose();
+    }
+
+    function changeLanguage() {
+      i18n.changeLanguage(i18n.language === "kr" ? "en" : "kr");
     }
 
     return (
@@ -34,22 +41,36 @@ export const Sidebar = React.memo(
 
           <SDivider vertical="0px" horizontal="5%" />
           <SSizedBox height="16px" />
-          {categories.map((e, i) => (
-            <div key={i} onClick={setClose}>
-              <CategoryRow
-                to={e.path}
-                key={e.name}
-                selected={e.path.toLowerCase() === pathName.toLowerCase()}
-              >
-                {e.name}
-              </CategoryRow>
-            </div>
-          ))}
+          {categories.map(
+            (e, i) =>
+              e.isNotMenu !== false && (
+                <div key={i} onClick={setClose}>
+                  <CategoryRow
+                    to={e.path}
+                    key={e.name}
+                    selected={e.path.toLowerCase() === pathName.toLowerCase()}
+                  >
+                    {t(e.name)}
+                  </CategoryRow>
+                </div>
+              )
+          )}
+          <ChangeLanguageContainer>
+            <STextButton onClick={changeLanguage}>
+              {i18n.language === "kr" ? "Change to en" : "한국어로"}
+            </STextButton>
+          </ChangeLanguageContainer>
         </SidebarContainer>
       </>
     );
   }
 );
+
+const ChangeLanguageContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 32px;
+`;
 
 const Dimmer = styled(SStyledDimmer)`
   display: none;

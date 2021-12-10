@@ -14,6 +14,7 @@ import { DetailsHeader } from "./Details/DetailsHeader";
 import { DetailsInfo } from "./Details/DetailsInfo";
 import { Chat } from "./Details/Chat";
 import { DetailsMarket } from "./Details/DetailsMarket";
+import { PressButton } from "../Components/TransComponants";
 
 export const CryptoDataContext = createContext({
   data: null,
@@ -34,7 +35,7 @@ export const Details = (props) => {
 
   const menu = [
     { key: "Information", component: <DetailsInfo /> },
-    { key: "Market", component: <DetailsMarket /> },
+    { key: "Exchanges", component: <DetailsMarket /> },
   ];
 
   function changeMenu(e) {
@@ -51,14 +52,14 @@ export const Details = (props) => {
         <DetailsHeader />
         <TabBar>
           {menu.map((e, i) => (
-            <SPressButton
+            <PressButton
               id={i}
               key={i}
               selected={i === parseInt(selectedMenuIndex) ? true : false}
               onClick={changeMenu}
             >
               {e.key}
-            </SPressButton>
+            </PressButton>
           ))}
         </TabBar>
         {menu[selectedMenuIndex].component}

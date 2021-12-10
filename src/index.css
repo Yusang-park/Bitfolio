@@ -138,6 +138,10 @@ body {
   }
 }
 
+p {
+  word-break: keep-all;
+}
+
 div#root {
   height: 100%;
   margin: auto;

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { lightTheme } from "./Styles/Theme";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
-// import GlobalStyle from "../styles/global-style";
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Sidebar } from "./Components/Menu/Sidebar";
 import { DashBoard } from "./Routes/DashBoard";
@@ -17,8 +15,8 @@ import { SColumn } from "./Components/GlobalComponents";
 import { Indexes } from "./Routes/Indexes/Indexes";
 
 function App() {
-  // const auth = authService;
   const [theme] = useState(lightTheme);
+
   // const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
 
   // const [initFirebase, setInitFirebase] = useState(false);
