@@ -11,7 +11,7 @@ import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
 import { DetailsHeader } from "./Details/DetailsHeader";
-import { DetailsInfo } from "./Details/DetailsInfo.js";
+import { DetailsInfo } from "./Details/DetailsInfo";
 import { Chat } from "./Details/Chat";
 import { DetailsMarket } from "./Details/DetailsMarket";
 
