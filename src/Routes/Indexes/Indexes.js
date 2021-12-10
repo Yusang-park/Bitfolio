@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { SStyledBox, STitleText } from "../../Components/GlobalComponents";
+import { SStyledBox } from "../../Components/GlobalComponents";
 import ReactSpeedometer from "react-d3-speedometer";
 import { getFearAndGreedIndex } from "../../Service/Apis";
 import { TitleText } from "../../Components/TransComponants";

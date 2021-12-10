@@ -2,11 +2,7 @@ import React, { useState, createContext, useEffect } from "react";
 import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
-import {
-  SSizedBox,
-  SPressButton,
-  SStyledBox,
-} from "../Components/GlobalComponents";
+import { SSizedBox, SStyledBox } from "../Components/GlobalComponents";
 import { useLocation } from "react-router";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
