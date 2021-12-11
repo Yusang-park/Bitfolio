@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { getCryptoObject } from "../../Service/Apis";
 import {
   SIconButton,
@@ -47,6 +47,7 @@ export const CryptoSearchBox = () => {
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
   const [isPopUp, setPopUp] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -71,11 +72,13 @@ export const CryptoSearchBox = () => {
       temp = temp.concat(searchObject(_cryptoList.current, value));
       setRecommendedKeyword(temp);
     }
+    setSelectedIndex(0);
   }
 
   function reset() {
     let temp = recommandedKeyword.filter((e) => false);
     setRecommendedKeyword(temp);
+    setSelectedIndex(0);
     setInputText("");
   }
 
@@ -94,18 +97,36 @@ export const CryptoSearchBox = () => {
     setPopUp(!isPopUp);
   }
 
-  function renderRecommendedContainer() {
-    return (
-      <RecommendedContainer>
-        {" "}
-        {recommandedKeyword.map((e, i) => (
-          <ElementRow key={i} onClick={() => onClickRedirectionDetails(e.id)}>
-            {e.name} ({e.symbol.toUpperCase()})
-          </ElementRow>
-        ))}
-      </RecommendedContainer>
-    );
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      onClickRedirectionDetails(recommandedKeyword[selectedIndex].id);
+    }
   }
+
+  function handleKeyDown(e) {
+    if (e.code === "ArrowUp" && selectedIndex !== 0) {
+      setSelectedIndex(selectedIndex - 1);
+    } else if (
+      e.code === "ArrowDown" &&
+      recommandedKeyword.length > selectedIndex + 1
+    ) {
+      setSelectedIndex(selectedIndex + 1);
+    }
+  }
+
+  const Recommend = () => (
+    <RecommendContainer>
+      {recommandedKeyword.map((e, i) => (
+        <ElementRow
+          key={i}
+          selected={selectedIndex === i}
+          onClick={() => onClickRedirectionDetails(e.id)}
+        >
+          {e.name} ({e.symbol.toUpperCase()})
+        </ElementRow>
+      ))}
+    </RecommendContainer>
+  );
 
   return (
     <Wrapper>
@@ -115,9 +136,11 @@ export const CryptoSearchBox = () => {
           placeholder={t("Search")}
           value={inputText}
           onChange={onChange}
+          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
         />
       </SearchContainer>
-      {renderRecommendedContainer()}
+      <Recommend />
       {/* For mobile ============================================================ */}
       <SearchButton onClick={onClickPopUp}>
         <FontAwesomeIcon icon="search" size="1x" color="white" />
@@ -134,7 +157,8 @@ export const CryptoSearchBox = () => {
               />
               <Button onClick={onClickPopUp}>EXIT</Button>
             </PopUpInputContainer>
-            {renderRecommendedContainer()}
+
+            <Recommend />
           </PopUpWrapper>
         </PopUpDimmer>
       )}
@@ -170,7 +194,7 @@ const SearchContainer = styled.div`
   }
 `;
 
-const RecommendedContainer = styled.div`
+const RecommendContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -189,6 +213,8 @@ const ElementRow = styled.div`
   font-size: 1.6rem;
   color: white;
   cursor: pointer;
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors.gray3 : props.theme.colors.gray};
   &:hover {
     background-color: ${(props) => props.theme.colors.gray3};
   }

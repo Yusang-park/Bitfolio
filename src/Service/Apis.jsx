@@ -5,7 +5,6 @@ const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
 export async function getCryptoSummaryDataList(pageIndex, order) {
-  console.log(order);
   let orderTranslated =
     order === "MarketCap" ? "market_cap_desc" : "volume_desc";
 
