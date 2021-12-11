@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { getCryptoObject } from "../../Service/Apis";
 import {
   SIconButton,
