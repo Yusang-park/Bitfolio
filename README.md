@@ -42,10 +42,12 @@
 2021.12.9
 * Add fear and greed index
 
+2021.12.11
+* Translation
+
 
 # Todo list
 * Integration Chat room
 * Board for each crypto
 * CryptoRank Filter
 * Hot crypto
-* Translation to Korean
