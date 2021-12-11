@@ -4,5 +4,6 @@ export const categories = [
   { name: "Dashboard", path: "/dashboard" },
   // { name: "Exchanges", path: "/exchanges" },
   { name: "Indexes", path: "/indexes" },
+  { name: "OpenChat", path: "/chat" },
   { name: "Details", path: "/details", isNotMenu: false },
 ];

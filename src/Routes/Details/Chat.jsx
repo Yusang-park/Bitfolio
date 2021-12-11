@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 
-import styled from "styled-components";
-import { CryptoDataContext } from "../Details";
+import styled, { css } from "styled-components";
+
 import { authService } from "../../firebase_config";
 import {
   getChatMessages,
@@ -19,81 +19,110 @@ import { UserContext } from "../../Provider/UserProvider";
 import { TitleText } from "../../Components/TransComponants";
 import { useTranslation } from "react-i18next";
 
-export const Chat = React.memo(() => {
-  const [inputText, setInputText] = useState("");
-  const { data } = useContext(CryptoDataContext);
-  const { tempNickname } = useContext(UserContext);
-  const [chatData, setChatData] = useState({});
-  const { i18n } = useTranslation();
+const categories = [
+  "Free",
+  "Hot Crypto",
+  "Margin/Future",
+  "Binance",
+  "Upbit",
+  "Bithumb",
+];
 
-  useEffect(() => {
-    getChatMessages(data.id, (value) => {
-      if (value) {
-        let res = Object.entries(value).reverse();
-        setChatData(res);
-      }
-    });
-  }, [data.id, setChatData]);
+export const Chat = React.memo(
+  ({ cryptoId = categories[0], fullName, expand }) => {
+    const [id, setId] = useState(cryptoId);
+    const [inputText, setInputText] = useState("");
+    const { tempNickname } = useContext(UserContext);
+    const [chatData, setChatData] = useState({});
+    const { t, i18n } = useTranslation();
 
-  function onChange(e) {
-    if (e.target.value.endsWith("\n")) {
-      onSubmit(e.target.value.replace("\n", ""));
-    } else setInputText(e.target.value);
-  }
+    useEffect(() => {
+      getChatMessages(id, (value) => {
+        if (value) {
+          let res = Object.entries(value).reverse();
+          setChatData(res);
+        } else {
+          setChatData([]);
+        }
+      });
+    }, [setChatData, id]);
 
-  function onSubmit(message) {
-    if (message.replace(" ", "").length > 0) {
-      sendChatMessage(data.id, message, tempNickname);
-      setInputText("");
+    function onChange(e) {
+      if (e.target.value.endsWith("\n")) {
+        onSubmit(e.target.value.replace("\n", ""));
+      } else setInputText(e.target.value);
     }
-  }
 
-  return (
-    <Wrapper>
-      <SRow justify_content="flex-start" align_items="flex-end">
-        <TitleText>Chat</TitleText>
-        <SGrayText> ({data.fullName[i18n.language]})</SGrayText>
-      </SRow>
+    function onChangeSelect(e) {
+      setId(e.target.value);
+    }
 
-      <SSizedBox height="16px" />
+    function onSubmit(message) {
+      if (message.replace(" ", "").length > 0) {
+        sendChatMessage(id, message, tempNickname);
+        setInputText("");
+      }
+    }
 
-      <ChatContainer>
-        {useMemo(() => {
-          return (
-            <ChatScrollItem id="chatContent" ChatHistory>
-              {Object.values(chatData).map((e, i) => (
-                <TalkBox
-                  key={i}
-                  docKey={Object.keys(chatData)[i]}
-                  data={e}
-                  isMine={
-                    (authService.currentUser != null &&
-                      e[1].uid === authService.currentUser.uid) ||
-                    (authService.currentUser == null &&
-                      e[1].name === tempNickname)
-                  }
-                />
+    return (
+      <Wrapper expand={expand}>
+        <SRow justify_content="flex-start" align_items="center">
+          <TitleText>Chat</TitleText>
+          <SSizedBox width="8px" />
+
+          {expand ? (
+            <select onChange={onChangeSelect}>
+              {categories.map((e, i) => (
+                <option value={e} key={i}>
+                  {t(e)}
+                </option>
               ))}
-            </ChatScrollItem>
-          );
-        }, [chatData, tempNickname])}
-      </ChatContainer>
+            </select>
+          ) : (
+            <SGrayText> ({fullName[i18n.language]})</SGrayText>
+          )}
+        </SRow>
 
-      <InputContainer>
-        <Input
-          // disabled={authService.currentUser === null}
-          placeholder={
-            authService.currentUser === null ? `${tempNickname}` : ""
-          }
-          value={inputText}
-          onChange={onChange}
-          maxLength={70}
-        ></Input>
-        <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
-      </InputContainer>
-    </Wrapper>
-  );
-});
+        <SSizedBox height="16px" />
+
+        <ChatContainer>
+          {useMemo(() => {
+            return (
+              <ChatScrollItem id="chatContent" ChatHistory>
+                {Object.values(chatData).map((e, i) => (
+                  <TalkBox
+                    key={i}
+                    docKey={Object.keys(chatData)[i]}
+                    data={e}
+                    isMine={
+                      (authService.currentUser != null &&
+                        e[1].uid === authService.currentUser.uid) ||
+                      (authService.currentUser == null &&
+                        e[1].name === tempNickname)
+                    }
+                  />
+                ))}
+              </ChatScrollItem>
+            );
+          }, [chatData, tempNickname])}
+        </ChatContainer>
+
+        <InputContainer>
+          <Input
+            // disabled={authService.currentUser === null}
+            placeholder={
+              authService.currentUser === null ? `${tempNickname}` : ""
+            }
+            value={inputText}
+            onChange={onChange}
+            maxLength={70}
+          ></Input>
+          <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
+        </InputContainer>
+      </Wrapper>
+    );
+  }
+);
 
 const ChatContainer = styled.div`
   height: 100%;
@@ -107,6 +136,11 @@ const ChatContainer = styled.div`
 
 const Wrapper = styled(SStyledBox)`
   padding-right: 28px;
+  ${({ expand }) =>
+    expand &&
+    css`
+      width: 100%;
+    `}
 
   ${({ theme }) => theme.device.mobile} {
     padding: 24px;

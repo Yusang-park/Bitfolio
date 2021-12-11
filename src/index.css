@@ -138,6 +138,13 @@ body {
   }
 }
 
+select {
+  border-radius: 25px;
+  color: white;
+  background-color: #3e3e3e;
+  padding: 8px 16px;
+}
+
 p {
   word-break: keep-all;
 }

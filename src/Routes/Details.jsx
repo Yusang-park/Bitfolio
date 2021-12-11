@@ -63,7 +63,7 @@ export const Details = (props) => {
         {menu[selectedMenuIndex].component}
       </DetailContainer>
       <SSizedBox width="32px" />
-      <Chat />
+      <Chat key={data.id} cryptoId={data.id} fullName={data.fullName} />
     </CryptoDataContext.Provider>
   );
 };

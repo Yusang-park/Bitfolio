@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
-import { categories } from "../../Routes/Categories";
+
 import styled from "styled-components";
 import { SSizedBox } from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,11 +13,11 @@ import { TitleText } from "../TransComponants";
 export const Nav = React.memo(() => {
   const { isLoggedIn, initialize } = useContext(UserContext);
   const [openedSideBar, setOpenedSideBar] = useState(false);
-  const pathName = useLocation().pathname;
+  // const pathName = useLocation().pathname;
 
-  function getName() {
-    return categories.find((c) => c.path.includes(pathName.split("/")[1])).name;
-  }
+  // function getName() {
+  //   return categories.find((c) => c.path.includes(pathName.split("/")[1])).name;
+  // }
 
   function onClickHamberger() {
     setOpenedSideBar(!openedSideBar);
@@ -34,7 +33,7 @@ export const Nav = React.memo(() => {
 
       <HambergerBtn onClick={onClickHamberger} />
       <TitleContainer>
-        <TitleText>{getName()}</TitleText>
+        <TitleText>CryptoFolio</TitleText>
       </TitleContainer>
       <CryptoSearchBox />
       <SSizedBox width="16px" />

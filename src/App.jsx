@@ -13,6 +13,8 @@ import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
 import { SColumn } from "./Components/GlobalComponents";
 import { Indexes } from "./Routes/Indexes/Indexes";
+import { Chat } from "./Routes/Details/Chat";
+import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 
 function App() {
   const [theme] = useState(lightTheme);
@@ -32,38 +34,43 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <UserProvider>
-        <Container>
-          <BrowserRouter>
-            <Sidebar />
-            <Wrapper>
-              <Nav />
-              <Content>
-                <Switch>
-                  <Route exact path="/dashboard">
-                    <DashBoard />
-                  </Route>
-                  <Route exact path="/">
-                    <CryptoRank />
-                  </Route>
-                  <Route exact path="/exchanges">
-                    <Exchanges />
-                  </Route>
-                  <Route exact path="/portfolio">
-                    <Portfolio />
-                  </Route>
-                  <Route exact path="/indexes">
-                    <Indexes />
-                  </Route>
-                  <Route exact path="/details/:id">
-                    <Details />
-                  </Route>
-                </Switch>
-              </Content>
-            </Wrapper>
-          </BrowserRouter>
-        </Container>
-      </UserProvider>
+      <GlobalDataProvider>
+        <UserProvider>
+          <Container>
+            <BrowserRouter>
+              <Sidebar />
+              <Wrapper>
+                <Nav />
+                <Content>
+                  <Switch>
+                    <Route exact path="/dashboard">
+                      <DashBoard />
+                    </Route>
+                    <Route exact path="/">
+                      <CryptoRank />
+                    </Route>
+                    <Route exact path="/exchanges">
+                      <Exchanges />
+                    </Route>
+                    <Route exact path="/portfolio">
+                      <Portfolio />
+                    </Route>
+                    <Route exact path="/indexes">
+                      <Indexes />
+                    </Route>
+                    <Route exact path="/chat">
+                      <Chat expand={true} />
+                    </Route>
+                    <Route exact path="/details/:id">
+                      <Details />
+                    </Route>
+                  </Switch>
+                </Content>
+              </Wrapper>
+            </BrowserRouter>
+          </Container>
+        </UserProvider>
+      </GlobalDataProvider>
     </ThemeProvider>
   );
 }

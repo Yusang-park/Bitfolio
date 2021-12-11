@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { getCryptoObject } from "../../Service/Apis";
 import {
   SIconButton,
   SRow,
@@ -11,6 +10,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "../TransComponants";
+import { GlobalDataContext } from "../../Provider/\bGlobalDataProvider";
 
 function searchObject(object, key) {
   let res = [];
@@ -41,9 +41,9 @@ function findLastElement(object, res) {
   }
 }
 
-//TODO: focus out
-export const CryptoSearchBox = () => {
-  const _cryptoList = useRef(null);
+export const CryptoSearchBox = ({ onSelected }) => {
+  const { cryptoListObject } = useContext(GlobalDataContext);
+
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState([]);
   const [isPopUp, setPopUp] = useState(false);
@@ -51,25 +51,13 @@ export const CryptoSearchBox = () => {
   const history = useHistory();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    requestCryptoList();
-  });
-
-  async function requestCryptoList() {
-    if (_cryptoList.current == null) {
-      getCryptoObject().then((response) => {
-        _cryptoList.current = response;
-      });
-    }
-  }
-
-  function onChange({ target: { value } }) {
+  function onChangeInput({ target: { value } }) {
     setInputText(value);
     let temp = recommandedKeyword.filter((e) => false);
     if (value === "") {
       setRecommendedKeyword(temp);
-    } else if (_cryptoList != null) {
-      temp = temp.concat(searchObject(_cryptoList.current, value));
+    } else if (cryptoListObject != null) {
+      temp = temp.concat(searchObject(cryptoListObject, value));
       setRecommendedKeyword(temp);
     }
     setSelectedIndex(0);
@@ -82,15 +70,19 @@ export const CryptoSearchBox = () => {
     setInputText("");
   }
 
-  function onClickRedirectionDetails(id) {
+  function onSubmit(id) {
     reset();
-    if (isPopUp) onClickPopUp();
-    history.replace({
-      pathname: `/details/${id}`,
-      state: {
-        id: id,
-      },
-    });
+    if (onSelected) {
+      onSelected();
+    } else {
+      if (isPopUp) onClickPopUp();
+      history.replace({
+        pathname: `/details/${id}`,
+        state: {
+          id: id,
+        },
+      });
+    }
   }
 
   function onClickPopUp() {
@@ -99,7 +91,7 @@ export const CryptoSearchBox = () => {
 
   function handleKeyPress(e) {
     if (e.key === "Enter") {
-      onClickRedirectionDetails(recommandedKeyword[selectedIndex].id);
+      onSubmit(recommandedKeyword[selectedIndex].id);
     }
   }
 
@@ -120,7 +112,7 @@ export const CryptoSearchBox = () => {
         <ElementRow
           key={i}
           selected={selectedIndex === i}
-          onClick={() => onClickRedirectionDetails(e.id)}
+          onClick={() => onSubmit(e.id)}
         >
           {e.name} ({e.symbol.toUpperCase()})
         </ElementRow>
@@ -135,7 +127,7 @@ export const CryptoSearchBox = () => {
         <SInnerInput
           placeholder={t("Search")}
           value={inputText}
-          onChange={onChange}
+          onChange={onChangeInput}
           onKeyPress={handleKeyPress}
           onKeyDown={handleKeyDown}
         />
@@ -153,7 +145,7 @@ export const CryptoSearchBox = () => {
               <SInnerInput
                 placeholder={t("Search")}
                 value={inputText}
-                onChange={onChange}
+                onChange={onChangeInput}
               />
               <Button onClick={onClickPopUp}>EXIT</Button>
             </PopUpInputContainer>
