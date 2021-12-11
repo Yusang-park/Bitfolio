@@ -19,7 +19,7 @@ import { useHistory } from "react-router-dom";
 
 import { UserContext } from "../Provider/UserProvider";
 import { fadeIn } from "../Styles/Animation";
-import { GrayText } from "../Components/TransComponants";
+import { GrayText, Text, TextBlue } from "../Components/TransComponants";
 
 const maxPage = 179;
 
@@ -28,13 +28,14 @@ export const CryptoRank = () => {
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(-1);
+  const [order, setOrder] = useState("MarketCap");
   const history = useHistory();
 
   useEffect(() => {
-    getCryptoSummaryDataList(pageIndex).then((e) => {
+    getCryptoSummaryDataList(pageIndex, order).then((e) => {
       setCryptoList(e);
     });
-  }, [pageIndex]); //It is performed when mounted.
+  }, [pageIndex, order]); //It is performed when mounted.
 
   function changePageIndex(e) {
     if (e.target.id !== pageIndex) {
@@ -79,6 +80,8 @@ export const CryptoRank = () => {
               routeDetails={routeDetails}
               hoverIndex={hoverIndex}
               setHoverIndex={setHoverIndex}
+              order={order}
+              setOrder={setOrder}
             ></DetailInfoSectionContainer>
           </>
         )}
@@ -167,15 +170,37 @@ const BasicInfoSectionContainer = React.memo(
 );
 
 const DetailInfoSectionContainer = React.memo(
-  ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
+  ({
+    cryptoList,
+    pageIndex,
+    routeDetails,
+    hoverIndex,
+    setHoverIndex,
+    order,
+    setOrder,
+  }) => {
     return (
-      <Relative>
-        <DetailInfoWrapper>
+      <DetailInfoWrapper>
+        <Scroll>
           <CategoryTitleContainer id="1">
             <CategoryText flex="4">Price</CategoryText>
-            <CategoryText flex="6">MarketCap</CategoryText>
+            <CategoryText
+              flex="6"
+              enableClick={true}
+              selected={order === "MarketCap"}
+              onClick={() => setOrder("MarketCap")}
+            >
+              MarketCap
+            </CategoryText>
             <CategoryText flex="6">CirculatingSupply</CategoryText>
-            <CategoryText flex="6">Volume</CategoryText>
+            <CategoryText
+              flex="6"
+              enableClick={true}
+              selected={order === "Volumn"}
+              onClick={() => setOrder("Volumn")}
+            >
+              Volume
+            </CategoryText>
             <CategoryText flex="4">24Hours</CategoryText>
           </CategoryTitleContainer>
           <SSizedBox height="16px" />
@@ -202,8 +227,8 @@ const DetailInfoSectionContainer = React.memo(
               </Element>
             </ElementRow>
           ))}
-        </DetailInfoWrapper>
-      </Relative>
+        </Scroll>
+      </DetailInfoWrapper>
     );
   }
 );
@@ -241,7 +266,7 @@ const Element = styled(SExpanded)`
   }
 `;
 
-const Relative = styled.div`
+const DetailInfoWrapper = styled.div`
   flex: 8;
   position: relative;
   width: 100%;
@@ -269,7 +294,7 @@ const BasicInfoWrapper = styled(SColumn)`
   animation-fill-mode: forwards;
 `;
 
-const DetailInfoWrapper = styled(SColumn)`
+const Scroll = styled(SColumn)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -320,10 +345,22 @@ const NumberingContainer = styled(SRow)`
   }
 `;
 
-const CategoryText = ({ children, flex }) => {
+const CategoryText = ({ children, flex, enableClick, selected, onClick }) => {
   return (
-    <Element flex={flex}>
-      <GrayText>{children}</GrayText>
+    <Element
+      onClick={onClick}
+      flex={flex}
+      style={enableClick && { cursor: "pointer" }}
+    >
+      {enableClick ? (
+        selected ? (
+          <TextBlue>{children}</TextBlue>
+        ) : (
+          <Text>{children}</Text>
+        )
+      ) : (
+        <GrayText>{children}</GrayText>
+      )}
     </Element>
   );
 };

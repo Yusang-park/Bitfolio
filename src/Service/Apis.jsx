@@ -4,11 +4,15 @@ import { CryptoSummaryData, CryptoDetailData } from "./Models";
 const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
-export async function getCryptoSummaryDataList(pageIndex) {
+export async function getCryptoSummaryDataList(pageIndex, order) {
+  console.log(order);
+  let orderTranslated =
+    order === "MarketCap" ? "market_cap_desc" : "volume_desc";
+
   let res = [];
   try {
     const response = await axios.get(
-      `${cryptoProviderURL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${pageIndex}&sparkline=false`
+      `${cryptoProviderURL}/coins/markets?vs_currency=usd&order=${orderTranslated}&per_page=10&page=${pageIndex}&sparkline=false`
     );
     response.data.forEach((e) => res.push(new CryptoSummaryData(e)));
   } catch (e) {}
@@ -57,7 +61,7 @@ export async function getCryptoPricesList(idList) {
     const response = await axios.get(
       `${cryptoProviderURL}/simple/price?ids=${s}&vs_currencies=usd`
     );
-    // console.log(response.data);
+
     return response.data;
   } catch (e) {
     return null;

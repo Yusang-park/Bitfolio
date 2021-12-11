@@ -21,7 +21,7 @@ const fearIndexTitle = [
 ];
 
 export const Indexes = () => {
-  const [fearIndex, setFearIndex] = useState(0);
+  const [fearIndex, setFearIndex] = useState();
 
   useEffect(() => {
     getFearAndGreedIndex().then((e) => {
@@ -30,13 +30,17 @@ export const Indexes = () => {
   }, []);
 
   function getTitle() {
-    let level = Math.floor(fearIndex / 20);
-    return fearIndexTitle[level];
+    if (fearIndex !== null) {
+      let level = Math.floor(fearIndex / 20);
+      return fearIndexTitle[level];
+    }
   }
 
   function getDescription() {
-    let level = Math.floor(fearIndex / 20);
-    return fearIndexDescriptions[level];
+    if (fearIndex !== null) {
+      let level = Math.floor(fearIndex / 20);
+      return fearIndexDescriptions[level];
+    }
   }
 
   return (
@@ -46,7 +50,7 @@ export const Indexes = () => {
         <ReactSpeedometer
           maxValue={100}
           minValue={0}
-          value={fearIndex}
+          value={fearIndex ?? 0}
           fluidWidth={true}
           currentValueText={`Index : ${fearIndex}`}
           needleTransitionDuration={2000}

@@ -44,13 +44,13 @@ export async function delChatMessage(cryptoId, docKey) {
   remove(ref(realtimeDbService, `chat/${cryptoId}/${docKey}`));
 }
 
-export async function updateFavorites(cryptoId, fullName, imageUrl, existed) {
+export async function updateFavorites(cryptoId, fullNameEn, imageUrl, existed) {
   if (authService.currentUser.uid != null) {
     const ref = doc(dbService, "User", authService.currentUser.uid);
     if (existed)
       setDoc(
         ref,
-        { [cryptoId]: { imageUrl: imageUrl, fullName: fullName } },
+        { [cryptoId]: { imageUrl: imageUrl, fullName: fullNameEn } },
         { merge: true }
       );
     else updateDoc(ref, { [cryptoId]: deleteField() });

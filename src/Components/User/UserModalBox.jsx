@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { logout } from "../../Service/FirebaseAuth";
-import { SColumn, SInput, SRow, SSizedBox } from "../GlobalComponents";
+import { SColumn, SInput, SSizedBox } from "../GlobalComponents";
 import { TitleText, Button } from "../TransComponants";
 
 export const UserModalBox = ({ setShowModal }) => {
@@ -25,18 +25,21 @@ export const UserModalBox = ({ setShowModal }) => {
     <Container>
       <TitleText>My Account</TitleText>
       <SSizedBox height="32px" />
+
       <form onSubmit={changeDisplayName}>
-        <SRow justify_content="space-around">
+        <SColumn align_items="center">
           <SInput
             value={input}
             onChange={changeInput}
             placeholder={t("Nickname")}
             minLength={3}
             required
-          ></SInput>
+          ></SInput>{" "}
+          <SSizedBox height="16px" />
           <Button>Change Nickname</Button>
-        </SRow>
+        </SColumn>
       </form>
+
       <SSizedBox height="32px" />
       <Button onClick={logout}>Logout</Button>
     </Container>

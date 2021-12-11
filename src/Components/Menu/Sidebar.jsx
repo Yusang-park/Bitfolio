@@ -26,7 +26,7 @@ export const Sidebar = React.memo(
     }
 
     function changeLanguage() {
-      i18n.changeLanguage(i18n.language === "kr" ? "en" : "kr");
+      i18n.changeLanguage(i18n.language === "ko" ? "en" : "ko");
     }
 
     return (
@@ -57,7 +57,7 @@ export const Sidebar = React.memo(
           )}
           <ChangeLanguageContainer>
             <STextButton onClick={changeLanguage}>
-              {i18n.language === "kr" ? "Change to en" : "한국어로"}
+              {i18n.language === "ko" ? "Change to en" : "한국어로"}
             </STextButton>
           </ChangeLanguageContainer>
         </SidebarContainer>

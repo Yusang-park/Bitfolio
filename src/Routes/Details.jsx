@@ -8,6 +8,7 @@ import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndic
 
 import { DetailsHeader } from "./Details/DetailsHeader";
 import { DetailsInfo } from "./Details/DetailsInfo";
+import { DetailsCommunity } from "./Details/DetailsCommunity";
 import { Chat } from "./Details/Chat";
 import { DetailsMarket } from "./Details/DetailsMarket";
 import { PressButton } from "../Components/TransComponants";
@@ -32,6 +33,7 @@ export const Details = (props) => {
   const menu = [
     { key: "Information", component: <DetailsInfo /> },
     { key: "Exchanges", component: <DetailsMarket /> },
+    { key: "Community", component: <DetailsCommunity /> },
   ];
 
   function changeMenu(e) {

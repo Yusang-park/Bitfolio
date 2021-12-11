@@ -11,17 +11,19 @@ import {
   SGrayText,
   SBookmark,
 } from "../../Components/GlobalComponents";
+import { useTranslation } from "react-i18next";
 
 export const DetailsHeader = () => {
   const { setFavoriteCrypto, favorites } = useContext(UserContext);
   const { data } = useContext(CryptoDataContext);
+  const { i18n } = useTranslation();
 
   return (
     <Container>
       <Image src={data.imageUrl}></Image>
       <SSizedBox width="5%" />
       <SColumn>
-        <SBoldTitleText>{data.fullName}</SBoldTitleText>
+        <SBoldTitleText>{data.fullName[i18n.language]}</SBoldTitleText>
         <SSizedBox height="4px" />
         <SGrayText>{data.symbol.toUpperCase()}</SGrayText>
       </SColumn>
@@ -37,7 +39,9 @@ export const DetailsHeader = () => {
       <SExpanded flex="1" />
       <SBookmark
         isSelected={favorites[data.id]}
-        onClick={() => setFavoriteCrypto(data.id, data.fullName, data.imageUrl)}
+        onClick={() =>
+          setFavoriteCrypto(data.id, data.fullName["en"], data.imageUrl)
+        }
         size="2x"
       />
     </Container>

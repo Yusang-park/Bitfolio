@@ -32,6 +32,10 @@ export const SPercentText = styled.p`
 export const SText = styled.p`
   font-size: 1.6rem;
 `;
+export const STextBlue = styled.p`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.blue};
+`;
 
 export const STextBlack = styled.p`
   font-size: 1.6rem;
@@ -40,6 +44,23 @@ export const STextBlack = styled.p`
 
 export const SBoldText = styled.p`
   font-size: 1.6rem;
+  font-weight: bold;
+`;
+
+export const SURLText = styled.a`
+  font-size: 1.6rem;
+  &:link {
+    color: white;
+    text-decoration: none;
+  }
+  &:visited {
+    color: white;
+    text-decoration: none;
+  }
+  &:hover {
+    color: ${({ href, theme }) => (href ? theme.colors.blue : css`white`)};
+    cursor: pointer;
+  }
 `;
 // ====================================================================================
 
@@ -61,6 +82,7 @@ export const SStyledBox = styled(SAnimatedDiv)`
 `;
 
 export const SYellowTitleCircle = styled.div`
+  width: fit-content;
   padding: 6px 16px;
   border-radius: 35px;
   color: black;
@@ -129,6 +151,24 @@ export const SColumn = styled.div`
     justify_content ? justify_content : css`center`};
   width: ${({ width }) => (width ? width : css`auto`)};
   height: ${({ height }) => (height ? height : css`100%`)};
+`;
+
+export const SScrollColumn = styled(SColumn)`
+  position: absolute;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 6px;
+    background: ${(props) => props.theme.colors.gray3};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 6px;
+  }
 `;
 
 export const SStyledDimmer = styled.div`

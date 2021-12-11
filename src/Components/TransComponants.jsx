@@ -10,12 +10,19 @@ import {
   STextBlack,
   SYellowTitleCircle,
   SPressButton,
+  STextBlue,
 } from "./GlobalComponents";
 
 export const BoldText = ({ children }) => {
   const { t } = useTranslation();
 
   return <SBoldText>{t(children)}</SBoldText>;
+};
+
+export const TextBlue = ({ children }) => {
+  const { t } = useTranslation();
+
+  return <STextBlue>{t(children)}</STextBlue>;
 };
 
 export const TitleText = ({ children }) => {

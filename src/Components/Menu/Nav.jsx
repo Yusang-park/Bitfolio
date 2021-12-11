@@ -11,7 +11,7 @@ import { Sidebar } from "./Sidebar";
 import { UserBox } from "./UserBox";
 import { TitleText } from "../TransComponants";
 
-export const Nav = () => {
+export const Nav = React.memo(() => {
   const { isLoggedIn, initialize } = useContext(UserContext);
   const [openedSideBar, setOpenedSideBar] = useState(false);
   const pathName = useLocation().pathname;
@@ -42,7 +42,7 @@ export const Nav = () => {
       {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
     </Wrapper>
   );
-};
+});
 
 const Wrapper = styled.div`
   display: flex;

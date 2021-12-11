@@ -19,7 +19,7 @@ import {
 export const DetailsInfo = () => {
   const { data } = useContext(CryptoDataContext);
 
-  const MarketCapBox = () => (
+  const MarketCapItem = () => (
     <InfoElementContainer>
       <YellowTitleCircle>MarketCap</YellowTitleCircle>
       <SSizedBox height="8px" />
@@ -29,7 +29,7 @@ export const DetailsInfo = () => {
     </InfoElementContainer>
   );
 
-  const SupplyAmountBox = () => (
+  const SupplyAmountItem = () => (
     <InfoElementContainer>
       <YellowTitleCircle>SupplyAmount</YellowTitleCircle>
       <SSizedBox height="8px" />
@@ -50,7 +50,7 @@ export const DetailsInfo = () => {
     </InfoElementContainer>
   );
 
-  const VolumeBox = () => (
+  const VolumeItem = () => (
     <InfoElementContainer>
       <YellowTitleCircle>Volume(24h)</YellowTitleCircle>
       <SSizedBox height="8px" />
@@ -61,9 +61,9 @@ export const DetailsInfo = () => {
   return (
     <Wrapper>
       <InfoContainer justify_content="flex-start" align_items="flex-start">
-        <MarketCapBox />
-        <VolumeBox />
-        <SupplyAmountBox />
+        <MarketCapItem />
+        <VolumeItem />
+        <SupplyAmountItem />
       </InfoContainer>
       <SSizedBox height="16px" />
       <Chart coin={data.tradingViewCoinId} />

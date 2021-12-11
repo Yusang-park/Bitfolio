@@ -6,7 +6,7 @@ class CryptoSimpleData {
   constructor(data) {
     this.id = data.id;
     this.symbol = data.symbol;
-    this.fullName = data.name;
+    this.fullName = data.localization ?? data.name; //Object
     this.marketCapRank = data.market_cap_rank;
   }
 }

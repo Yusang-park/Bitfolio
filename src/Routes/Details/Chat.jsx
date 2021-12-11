@@ -17,12 +17,14 @@ import {
 } from "../../Components/GlobalComponents";
 import { UserContext } from "../../Provider/UserProvider";
 import { TitleText } from "../../Components/TransComponants";
+import { useTranslation } from "react-i18next";
 
 export const Chat = React.memo(() => {
   const [inputText, setInputText] = useState("");
   const { data } = useContext(CryptoDataContext);
   const { tempNickname } = useContext(UserContext);
   const [chatData, setChatData] = useState({});
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     getChatMessages(data.id, (value) => {
@@ -50,7 +52,7 @@ export const Chat = React.memo(() => {
     <Wrapper>
       <SRow justify_content="flex-start" align_items="flex-end">
         <TitleText>Chat</TitleText>
-        <SGrayText> ({data.fullName})</SGrayText>
+        <SGrayText> ({data.fullName[i18n.language]})</SGrayText>
       </SRow>
 
       <SSizedBox height="16px" />
