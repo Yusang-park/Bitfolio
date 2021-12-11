@@ -141,7 +141,13 @@ const Wrapper = styled(SStyledBox)`
     css`
       width: 100%;
     `}
-
+  ${({ theme }) => theme.device.tablet} {
+    ${({ expand }) =>
+      expand &&
+      css`
+        width: auto;
+      `}
+  }
   ${({ theme }) => theme.device.mobile} {
     padding: 24px;
   }

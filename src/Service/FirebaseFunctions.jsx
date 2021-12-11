@@ -54,6 +54,8 @@ export async function updateFavorites(cryptoId, fullNameEn, imageUrl, existed) {
         { merge: true }
       );
     else updateDoc(ref, { [cryptoId]: deleteField() });
+  } else {
+    alert("로그인 후 이용 가능한 기능입니다.");
   }
 }
 

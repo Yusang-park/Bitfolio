@@ -46,7 +46,7 @@ function App() {
                     <Route exact path="/dashboard">
                       <DashBoard />
                     </Route>
-                    <Route exact path="/">
+                    <Route exact path="/rank">
                       <CryptoRank />
                     </Route>
                     <Route exact path="/exchanges">
@@ -58,7 +58,7 @@ function App() {
                     <Route exact path="/indexes">
                       <Indexes />
                     </Route>
-                    <Route exact path="/chat">
+                    <Route exact path="/">
                       <Chat expand={true} />
                     </Route>
                     <Route exact path="/details/:id">
