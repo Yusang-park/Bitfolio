@@ -40,10 +40,10 @@ function App() {
               <Nav />
               <Content>
                 <Switch>
-                  <Route exact path="/">
+                  <Route exact path="/dashboard">
                     <DashBoard />
                   </Route>
-                  <Route exact path="/cryptorank">
+                  <Route exact path="/">
                     <CryptoRank />
                   </Route>
                   <Route exact path="/exchanges">
