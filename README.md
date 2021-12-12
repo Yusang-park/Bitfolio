@@ -44,6 +44,7 @@
 
 2021.12.11
 * Translation
+* Expand chat
 
 
 # Todo list
