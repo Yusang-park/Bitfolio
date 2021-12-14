@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import {
+  SAnimatedDiv,
   SScrollColumn,
   SSizedBox,
   SURLText,
@@ -22,7 +23,7 @@ export const DetailsCommunity = () => {
     {
       name: "Twitter",
       key: "twitter_screen_name",
-      prefix: "https:/twitter.com/",
+      prefix: "https://twitter.com/",
     },
   ];
 
@@ -57,7 +58,7 @@ export const DetailsCommunity = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(SAnimatedDiv)`
   position: relative;
   width: 100%;
   height: 100%;
