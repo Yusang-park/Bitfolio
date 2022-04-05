@@ -46,9 +46,11 @@
 * Translation
 * Expand chat
 
+2021.12.15
+* Integration Chat room
+* CryptoRank Filter
 
 # Todo list
-* Integration Chat room
 * Board for each crypto
-* CryptoRank Filter
 * Hot crypto
+* Performance improve
