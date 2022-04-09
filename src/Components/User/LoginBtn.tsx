@@ -8,7 +8,7 @@ import { LoginModalBox } from "./LoginModalBox";
 export const LoginBtn = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  function onClickHandler() {
+  function onClickHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setShowLoginModal(true);
   }
 

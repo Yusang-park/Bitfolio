@@ -31,7 +31,7 @@ export const LoginModalBox = () => {
     setIsSignUpMode(!isSignUpMode);
   }
 
-  function onChange(e) {
+  function onChange(e: any) {
     switch (e.target.id) {
       case "email":
         setEmail(e.target.value);
@@ -43,7 +43,7 @@ export const LoginModalBox = () => {
     }
   }
 
-  async function onSubmit(e) {
+  async function onSubmit(e: any) {
     e.preventDefault();
     let response = await loginWithEamil(email, password);
     if (response !== null) {

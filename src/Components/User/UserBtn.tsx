@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { SIconButton } from "../GlobalComponents";
-export const UserBtn = ({ setShowModal }) => {
+export const UserBtn = ({ setShowModal }: { setShowModal: Function }) => {
   return (
     <IconButton
       onClick={() => {

@@ -20,7 +20,7 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 });
 
-//default language is english, but it will change korean immediately for korean user
-i18n.changeLanguage("ko");
+//default language is english
+i18n.changeLanguage("en");
 
 export default i18n;

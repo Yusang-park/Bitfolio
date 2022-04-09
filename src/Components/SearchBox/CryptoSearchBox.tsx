@@ -12,9 +12,14 @@ import { useTranslation } from "react-i18next";
 import { Button } from "../TransComponants";
 import { GlobalDataContext } from "../../Provider/\bGlobalDataProvider";
 
-function searchObject(object, key) {
-  let res = [];
-  let root = object;
+interface student {
+  name?: string;
+  index?: number;
+}
+
+function searchObject(trieTree: any, key: string): any {
+  let res: string[] = [];
+  let root: any = trieTree;
   try {
     for (let i = 1; i <= key.length; i++) {
       root = root[key.substring(0, i)];
@@ -27,31 +32,32 @@ function searchObject(object, key) {
   return res;
 }
 
-function findLastElement(object, res) {
+function findLastElement(trieTree: any, res: string[]) {
   if (res.length > 10) return;
 
-  if (object.hasOwnProperty("*key")) {
-    res.push(object["*key"]);
-    if (object.length === 1) {
+  if (trieTree.hasOwnProperty("*key")) {
+    res.push(trieTree["*key"] as string);
+    if (Object.keys(trieTree).length === 1) {
       return;
     }
   }
-  for (const [k, v] of Object.entries(object)) {
+  for (const [k, v] of Object.entries(trieTree)) {
     if (k !== "*key") findLastElement(v, res);
   }
 }
 
-export const CryptoSearchBox = ({ onSelected }) => {
-  const { cryptoListObject } = useContext(GlobalDataContext);
+export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
+  const { cryptoListObject }: { cryptoListObject: any } =
+    useContext(GlobalDataContext);
 
   const [inputText, setInputText] = useState("");
-  const [recommandedKeyword, setRecommendedKeyword] = useState([]);
+  const [recommandedKeyword, setRecommendedKeyword] = useState<Array<any>>([]);
   const [isPopUp, setPopUp] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const history = useHistory();
   const { t } = useTranslation();
 
-  function onChangeInput({ target: { value } }) {
+  function onChangeInput({ target: { value } }: { target: { value: string } }) {
     setInputText(value);
     let temp = recommandedKeyword.filter((e) => false);
     if (value === "") {
@@ -70,7 +76,7 @@ export const CryptoSearchBox = ({ onSelected }) => {
     setInputText("");
   }
 
-  function onSubmit(id) {
+  function onSubmit(id: string) {
     reset();
     if (onSelected) {
       onSelected();
@@ -89,13 +95,25 @@ export const CryptoSearchBox = ({ onSelected }) => {
     setPopUp(!isPopUp);
   }
 
-  function handleKeyPress(e) {
+  function handleKeyPress(e: any) {
     if (e.key === "Enter") {
-      onSubmit(recommandedKeyword[selectedIndex].id);
+      let toRemoveFromID = "";
+      if (recommandedKeyword[selectedIndex].name.includes("(")) {
+        toRemoveFromID = recommandedKeyword[selectedIndex].name
+          .split("(")[1]
+          .split(")")[0]
+          .toLowerCase();
+      }
+      onSubmit(
+        recommandedKeyword[selectedIndex].id
+          .split(toRemoveFromID)[0]
+          .slice(0, -1)
+      );
     }
   }
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: any) {
+    console.log(e);
     if (e.code === "ArrowUp" && selectedIndex !== 0) {
       setSelectedIndex(selectedIndex - 1);
     } else if (

@@ -7,18 +7,21 @@ import { logout } from "../../Service/FirebaseAuth";
 import { SColumn, SInput, SSizedBox } from "../GlobalComponents";
 import { TitleText, Button } from "../TransComponants";
 
-export const UserModalBox = ({ setShowModal }) => {
+export const UserModalBox = ({ setShowModal }: { setShowModal: Function }) => {
   const [input, setInput] = useState("");
   const { t } = useTranslation();
 
-  function changeInput(e) {
+  function changeInput(e: any) {
     setInput(e.target.value);
   }
 
-  function changeDisplayName(e) {
-    updateProfile(authService.currentUser, { displayName: input }).then(() => {
-      setShowModal(false);
-    });
+  function changeDisplayName(e: any) {
+    if (authService.currentUser !== null)
+      updateProfile(authService.currentUser, { displayName: input }).then(
+        () => {
+          setShowModal(false);
+        }
+      );
   }
 
   return (

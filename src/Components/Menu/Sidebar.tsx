@@ -15,12 +15,20 @@ import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
 
 export const Sidebar = React.memo(
-  ({ forPopup = false, isOpened = false, setClose }) => {
+  ({
+    forPopup = false,
+    isOpened = false,
+    setClose,
+  }: {
+    forPopup: boolean;
+    isOpened: boolean;
+    setClose: any;
+  }) => {
     const pathName = useLocation().pathname;
     const history = useHistory();
     const { t, i18n } = useTranslation();
 
-    function onClickLogo(e) {
+    function onClickLogo(e: any) {
       history.push("/");
       if (setClose !== undefined) setClose();
     }
@@ -31,7 +39,7 @@ export const Sidebar = React.memo(
 
     return (
       <>
-        <Dimmer isOpened={isOpened} onClick={setClose}></Dimmer>
+        <Dimmer isOpened={isOpened} onClick={(e) => setClose()}></Dimmer>
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
             <Logo src={logoImg} alt="Logo" />
@@ -50,7 +58,7 @@ export const Sidebar = React.memo(
                     key={e.name}
                     selected={e.path.toLowerCase() === pathName.toLowerCase()}
                   >
-                    {t(e.name)}
+                    {`${t(e.name)}`}
                   </CategoryRow>
                 </div>
               )

@@ -2,7 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { SStyledDimmer } from "./GlobalComponents";
 
-export const Dialog = ({ setShowModal, children }) => {
+export const Dialog = ({
+  setShowModal,
+  children,
+}: {
+  setShowModal: (value: boolean) => void;
+  children: any;
+}) => {
   return (
     <Dimmer onClick={() => setShowModal(false)}>
       <Inner onClick={(e) => e.stopPropagation()}>{children}</Inner>

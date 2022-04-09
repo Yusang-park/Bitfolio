@@ -22,7 +22,7 @@ export const UserBox = () => {
       )}
       <UserBtn setShowModal={setShowModal} />
       <UserContainer onClick={onClickHandler}>
-        {authService.currentUser.displayName}
+        {authService.currentUser?.displayName}
         <SSizedBox width="16px" />
         <LogoutBtn />
       </UserContainer>

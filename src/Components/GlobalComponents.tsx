@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
+import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 // ====================================================================================
 export const STitleText = styled.p`
@@ -90,12 +91,23 @@ export const SYellowTitleCircle = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-export const SBookmark = ({ isSelected, onClick, size }) => {
+export const SBookmark = ({
+  isSelected,
+  onClick,
+  size,
+}: {
+  isSelected: boolean;
+  onClick: Function;
+  size: SizeProp;
+}) => {
   return (
     <SStyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
-        onClick={(m) => m.stopPropagation(onClick())}
+        onClick={(m) => {
+          m.stopPropagation();
+          onClick();
+        }}
         size={size}
       />
     </SStyledBookmark>
@@ -122,7 +134,6 @@ export const SDivider = styled.div`
 
 export const SSizedBox = styled.div`
   align-self: center;
-
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;

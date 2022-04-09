@@ -19,19 +19,6 @@ import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 function App() {
   const [theme] = useState(lightTheme);
 
-  // const [currentThemeText, setCurrentThemeText] = useState("Light Theme");
-
-  // const [initFirebase, setInitFirebase] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // 각 theme은 state로 관리되며 버튼 클릭 이벤트 시 변경됩니다.
-  // const switchTheme = () => {
-  //   const nextTheme = theme === lightTheme ? darkTheme : lightTheme;
-  //   setTheme(nextTheme);
-  //   const nextThemeText = theme === lightTheme ? "Dark Theme" : "Light Theme";
-  //   setCurrentThemeText(nextThemeText);
-  // };
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalDataProvider>
@@ -46,7 +33,7 @@ function App() {
                     <Route exact path="/dashboard">
                       <DashBoard />
                     </Route>
-                    <Route exact path="/rank">
+                    <Route exact path="/">
                       <CryptoRank />
                     </Route>
                     <Route exact path="/exchanges">
@@ -58,7 +45,7 @@ function App() {
                     <Route exact path="/indexes">
                       <Indexes />
                     </Route>
-                    <Route exact path="/">
+                    <Route exact path="/openchat">
                       <Chat expand={true} />
                     </Route>
                     <Route exact path="/details/:id">

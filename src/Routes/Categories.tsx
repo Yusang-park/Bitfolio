@@ -1,9 +1,9 @@
 export const categories = [
   // { name: "Portfolio", path: "/portfolio" },
-  { name: "CryptoRank", path: "/rank" },
+  { name: "CryptoRank", path: "/" },
   { name: "Dashboard", path: "/dashboard" },
   // { name: "Exchanges", path: "/exchanges" },
   { name: "Indexes", path: "/indexes" },
-  { name: "OpenChat", path: "/" },
+  { name: "OpenChat", path: "/openchat" },
   { name: "Details", path: "/details", isNotMenu: false },
 ];
