@@ -50,6 +50,11 @@
 * Integration Chat room
 * CryptoRank Filter
 
+2022.04
+* TypeScript applied
+* React.lazy applied
+
+
 # Todo list
 * Board for each crypto
 * Hot crypto
