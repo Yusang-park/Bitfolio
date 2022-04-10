@@ -16,14 +16,13 @@ import { getCryptoSummaryDataList } from "../Service/Apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 import { useHistory } from "react-router-dom";
-
 import { UserContext } from "../Provider/UserProvider";
 import { fadeIn } from "../Styles/Animation";
 import { GrayText, Text, TextBlue } from "../Components/TransComponants";
 
 const maxPage = 179;
 
-export const CryptoRank = () => {
+const CryptoRank = React.memo(() => {
   const [cryptoList, setCryptoList] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
@@ -111,7 +110,7 @@ export const CryptoRank = () => {
       </SRow>
     </Wrapper>
   );
-};
+});
 
 const BasicInfoSectionContainer = React.memo(
   ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
@@ -364,3 +363,5 @@ const CategoryText = ({ children, flex, enableClick, selected, onClick }) => {
     </Element>
   );
 };
+
+export default CryptoRank;

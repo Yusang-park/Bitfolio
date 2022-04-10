@@ -1,5 +1,7 @@
 import React from "react";
 
-export const Exchanges = () => {
+const Exchanges = () => {
   return <div>Exchanges</div>;
 };
+
+export default Exchanges;

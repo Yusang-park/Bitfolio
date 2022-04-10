@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { lightTheme } from "./Styles/Theme";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Sidebar } from "./Components/Menu/Sidebar";
-import { DashBoard } from "./Routes/DashBoard";
-import { CryptoRank } from "./Routes/CryptoRank";
-import { Exchanges } from "./Routes/Exchanges";
-import { Portfolio } from "./Routes/Portfolio";
+
 import { Nav } from "./Components/Menu/Nav";
 import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
@@ -16,6 +12,12 @@ import { Indexes } from "./Routes/Indexes/Indexes";
 import { Chat } from "./Routes/Details/Chat";
 import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 
+const CryptoRank = React.lazy(() => import("./Routes/CryptoRank"));
+const Sidebar = React.lazy(() => import("./Components/Menu/Sidebar"));
+const DashBoard = React.lazy(() => import("./Routes/DashBoard"));
+const Exchanges = React.lazy(() => import("./Routes/Exchanges"));
+const Portfolio = React.lazy(() => import("./Routes/Portfolio"));
+
 function App() {
   const [theme] = useState(lightTheme);
 
@@ -23,39 +25,41 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalDataProvider>
         <UserProvider>
-          <Container>
-            <BrowserRouter>
-              <Sidebar />
-              <Wrapper>
-                <Nav />
-                <Content>
-                  <Switch>
-                    <Route exact path="/dashboard">
-                      <DashBoard />
-                    </Route>
-                    <Route exact path="/">
-                      <CryptoRank />
-                    </Route>
-                    <Route exact path="/exchanges">
-                      <Exchanges />
-                    </Route>
-                    <Route exact path="/portfolio">
-                      <Portfolio />
-                    </Route>
-                    <Route exact path="/indexes">
-                      <Indexes />
-                    </Route>
-                    <Route exact path="/openchat">
-                      <Chat expand={true} />
-                    </Route>
-                    <Route exact path="/details/:id">
-                      <Details />
-                    </Route>
-                  </Switch>
-                </Content>
-              </Wrapper>
-            </BrowserRouter>
-          </Container>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Container>
+              <BrowserRouter>
+                <Sidebar />
+                <Wrapper>
+                  <Nav />
+                  <Content>
+                    <Switch>
+                      <Route exact path="/dashboard">
+                        <DashBoard />
+                      </Route>
+                      <Route exact path="/">
+                        <CryptoRank />
+                      </Route>
+                      <Route exact path="/exchanges">
+                        <Exchanges />
+                      </Route>
+                      <Route exact path="/portfolio">
+                        <Portfolio />
+                      </Route>
+                      <Route exact path="/indexes">
+                        <Indexes />
+                      </Route>
+                      <Route exact path="/openchat">
+                        <Chat expand={true} />
+                      </Route>
+                      <Route exact path="/details/:id">
+                        <Details />
+                      </Route>
+                    </Switch>
+                  </Content>
+                </Wrapper>
+              </BrowserRouter>
+            </Container>
+          </Suspense>
         </UserProvider>
       </GlobalDataProvider>
     </ThemeProvider>

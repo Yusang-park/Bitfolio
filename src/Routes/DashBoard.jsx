@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { SRow } from "../Components/GlobalComponents";
 import { FavoriteContainer } from "./DashBoard/Favorites";
 
-export const DashBoard = () => {
+const DashBoard = () => {
   return (
     <Wrapper>
       <LeftContent>
@@ -37,3 +37,5 @@ const LeftContent = styled.div`
     margin-right: 0px;
   }
 `;
+
+export default DashBoard;
