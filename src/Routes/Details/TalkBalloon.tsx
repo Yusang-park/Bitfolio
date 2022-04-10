@@ -1,32 +1,47 @@
 import styled, { css } from "styled-components";
 import React from "react";
 import { Timestamp } from "@firebase/firestore";
-import { SDivider, SRow, SSizedBox } from "../../Components/GlobalComponents";
+import {
+  Props,
+  SDivider,
+  SRow,
+  SSizedBox,
+} from "../../Components/GlobalComponents";
 
-export const TalkBox = React.memo(({ docKey, data, isMine }) => {
-  const { createdAt, message, name } = data[1];
-  let date = new Timestamp(createdAt.seconds, createdAt.nanoseconds).toDate();
+export const TalkBox = React.memo(
+  ({
+    docKey,
+    data,
+    isMine,
+  }: {
+    docKey: string;
+    data: any;
+    isMine: boolean;
+  }) => {
+    const { createdAt, message, name } = data[1];
+    let date = new Timestamp(createdAt.seconds, createdAt.nanoseconds).toDate();
 
-  return (
-    <Container>
-      <RowCustom justify_content="space-between">
-        <span>
-          <NameText isMine={isMine}> {name}</NameText>
-        </span>
-        <TimeText>
-          {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
-          {date.getMinutes()}
-        </TimeText>
-      </RowCustom>
-      <SSizedBox height="12px" />
-      <SDivider />
-      <SSizedBox height="12px" />
-      <Message> {message}</Message>
-    </Container>
-  );
-});
+    return (
+      <Container>
+        <RowCustom justify_content="space-between">
+          <span>
+            <NameText isMine={isMine}> {name}</NameText>
+          </span>
+          <TimeText>
+            {date.getMonth() + 1}.{date.getDate()} {date.getHours()}:
+            {date.getMinutes()}
+          </TimeText>
+        </RowCustom>
+        <SSizedBox height="12px" />
+        <SDivider />
+        <SSizedBox height="12px" />
+        <Message> {message}</Message>
+      </Container>
+    );
+  }
+);
 
-const NameText = styled.p`
+const NameText = styled.p<Props>`
   color: ${({ theme, isMine }) => (isMine ? theme.colors.blue : css`white`)};
   font-size: 1.6rem;
 `;

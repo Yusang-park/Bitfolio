@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import {
+  Props,
   SDivider,
   SRow,
   SSizedBox,
@@ -20,9 +21,9 @@ export const Sidebar = React.memo(
     isOpened = false,
     setClose,
   }: {
-    forPopup: boolean;
-    isOpened: boolean;
-    setClose: any;
+    forPopup?: boolean;
+    isOpened?: boolean;
+    setClose?: any;
   }) => {
     const pathName = useLocation().pathname;
     const history = useHistory();
@@ -111,14 +112,14 @@ const LogoRow = styled(SRow)`
   } */
 
   &:hover ${STitleText} {
-    font-size: 2rem;
+    /* color: ${({ theme }) => theme.colors.gray}; */
   }
   /* &:hover ${Logo} {
     width: 89px;
   } */
 `;
 
-const SidebarContainer = styled.div`
+const SidebarContainer = styled.div<Props>`
   display: ${({ forPopup }) => (!forPopup ? css`block` : css`none`)};
   width: 16.66vw;
   max-width: 320px;
@@ -160,7 +161,7 @@ const CategoryRow = styled(Link)`
   padding: 16px 32px;
   margin-bottom: 0px;
   text-decoration: inherit;
-  color: ${({ selected, theme }) =>
+  color: ${({ selected, theme }: { selected: boolean; theme: any }) =>
     selected ? css`white` : theme.colors.gray3};
   cursor: pointer;
   transition: background-color 300ms ease-out 100ms;

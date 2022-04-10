@@ -6,16 +6,12 @@ import {
   SRow,
   SInnerInput,
   SStyledDimmer,
+  Props,
 } from "../GlobalComponents";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "../TransComponants";
 import { GlobalDataContext } from "../../Provider/\bGlobalDataProvider";
-
-interface student {
-  name?: string;
-  index?: number;
-}
 
 function searchObject(trieTree: any, key: string): any {
   let res: string[] = [];
@@ -217,7 +213,7 @@ const RecommendContainer = styled.div`
   background-color: ${(props) => props.theme.colors.gray};
 `;
 
-const ElementRow = styled.div`
+const ElementRow = styled.div<Props>`
   display: flex;
   padding: 12px 12px;
   font-size: 1.6rem;

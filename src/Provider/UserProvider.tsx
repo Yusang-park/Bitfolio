@@ -8,6 +8,7 @@ const initialState = {
   isLoggedIn: false,
   tempNickname: "",
   favorites: {},
+  setFavoriteCrypto: () => {},
 };
 
 const UserContext = createContext(initialState);
@@ -79,7 +80,7 @@ function UserProvider(props: any, children: any) {
   }
 
   function setFavoriteCrypto(
-    cryptoId: number,
+    cryptoId: string,
     fullName: string,
     imageUrl: string
   ) {

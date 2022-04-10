@@ -14,8 +14,12 @@ import {
 import { useTranslation } from "react-i18next";
 
 export const DetailsHeader = () => {
-  const { setFavoriteCrypto, favorites } = useContext(UserContext);
-  const { data } = useContext(CryptoDataContext);
+  const {
+    setFavoriteCrypto,
+    favorites,
+  }: { setFavoriteCrypto: Function; favorites: { [key: string]: any } } =
+    useContext(UserContext);
+  const { data }: { data: any } = useContext(CryptoDataContext);
   const { i18n } = useTranslation();
 
   return (

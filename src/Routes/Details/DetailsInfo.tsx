@@ -17,7 +17,7 @@ import {
 } from "../../Components/TransComponants";
 
 export const DetailsInfo = () => {
-  const { data } = useContext(CryptoDataContext);
+  const { data }: { data: any } = useContext(CryptoDataContext);
 
   const MarketCapItem = () => (
     <InfoElementContainer>

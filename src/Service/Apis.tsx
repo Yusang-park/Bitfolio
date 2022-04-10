@@ -22,10 +22,10 @@ export async function getCryptoSummaryDataList(
 }
 
 export async function getCryptoObject() {
-  let res: object = {};
+  let res = {};
   try {
     const response = await axios.get<any>(`${cryptoProviderURL}/coins/list`);
-    response.data.forEach((e: any, index: number) => {
+    response.data.forEach((e: any, index: any) => {
       let str = [
         e.name.replaceAll(" ", "").toLowerCase(),
         e.symbol.replaceAll(" ", "").toLowerCase(),
@@ -35,7 +35,7 @@ export async function getCryptoObject() {
         for (let i = 1; i <= s.length; i++) {
           if (i === s.length) {
             root[s.substring(0, i)] = root[s.substring(0, i)] ?? {};
-            Object.assign(root[s.substringt(0, i)], { "*key": e });
+            Object.assign(root[s.substring(0, i)], { "*key": e });
           } else if (!root.hasOwnProperty(s.substring(0, i))) {
             root[s.substring(0, i)] = {};
           }

@@ -31,6 +31,8 @@ function GlobalDataProvider({ children }: { children: any }) {
   async function setCryptoListObject() {
     let response = await getCryptoObject();
 
+    console.log(response);
+
     dispatch({
       type: "setCryptoListObject",
       payload: {

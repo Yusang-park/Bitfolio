@@ -1,13 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BoxStyle } from '../../Components/GlobalComponents';
-
+import React from "react";
+import styled from "styled-components";
 
 export const HotCrypto = () => {
-    return <Container></Container>
-}
+  return <Container></Container>;
+};
 
-
-const Container = styled(BoxStyle)`
-flex:1;
+const Container = styled.div`
+  flex: 1;
 `;
