@@ -15,18 +15,22 @@ import { getCryptoPricesList } from "../../Service/Apis";
 
 export const FavoriteContainer = () => {
   const history = useHistory();
-  const [prices, setPrices] = useState({});
-  const { favorites, isLoggedIn } = useContext(UserContext);
+  const [prices, setPrices] = useState<{ [key: string]: any }>({});
+  const {
+    favorites,
+    isLoggedIn,
+  }: { favorites: { [key: string]: any }; isLoggedIn: boolean } =
+    useContext(UserContext);
 
   useEffect(() => {
     if (Object.keys(favorites).length !== 0) {
       getCryptoPricesList(Object.keys(favorites)).then((response) => {
-        setPrices(response);
+        setPrices(response !== null ? response : {});
       });
     }
   }, [favorites]);
 
-  function routeDetails(id) {
+  function routeDetails(id: string) {
     history.push({
       pathname: `/details/${id}`,
       state: {
@@ -45,7 +49,7 @@ export const FavoriteContainer = () => {
             Object.keys(favorites).map((e, i) => (
               <span key={i} onClick={() => routeDetails(e)}>
                 <ElementContainer>
-                  <Logo src={favorites[e].imageUrl} />
+                  <Logo src={favorites[e].imageUrl.toString()} />
                   <div>
                     <CryptoName>{favorites[e].fullName}</CryptoName>
                     <SSizedBox height="4px" />
