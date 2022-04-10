@@ -12,11 +12,11 @@ import { Indexes } from "./Routes/Indexes/Indexes";
 import { Chat } from "./Routes/Details/Chat";
 import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 
-const CryptoRank = React.lazy(() => import("./Routes/CryptoRank"));
-const Sidebar = React.lazy(() => import("./Components/Menu/Sidebar"));
-const DashBoard = React.lazy(() => import("./Routes/DashBoard"));
-const Exchanges = React.lazy(() => import("./Routes/Exchanges"));
-const Portfolio = React.lazy(() => import("./Routes/Portfolio"));
+const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
+const Sidebar = lazy(() => import("./Components/Menu/Sidebar"));
+const DashBoard = lazy(() => import("./Routes/DashBoard"));
+const Exchanges = lazy(() => import("./Routes/Exchanges"));
+const Portfolio = lazy(() => import("./Routes/Portfolio"));
 
 function App() {
   const [theme] = useState(lightTheme);
