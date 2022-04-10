@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
 import { UserContext } from "../../Provider/UserProvider";
 import { LoginBtn } from "../User/LoginBtn";
-import { Sidebar } from "./Sidebar";
+import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
 import { TitleText } from "../TransComponants";
 

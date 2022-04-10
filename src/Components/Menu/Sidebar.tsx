@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
 
-export const Sidebar = React.memo(
+const Sidebar = React.memo(
   ({
     forPopup = false,
     isOpened = false,
@@ -74,6 +74,8 @@ export const Sidebar = React.memo(
     );
   }
 );
+
+export default Sidebar;
 
 const ChangeLanguageContainer = styled.div`
   display: flex;
