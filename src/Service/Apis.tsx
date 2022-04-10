@@ -4,16 +4,19 @@ import { CryptoSummaryData, CryptoDetailData } from "./Models";
 const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
-export async function getCryptoSummaryDataList(pageIndex, order) {
+export async function getCryptoSummaryDataList(
+  pageIndex: number,
+  order: string
+): Promise<Array<any>> {
   let orderTranslated =
     order === "MarketCap" ? "market_cap_desc" : "volume_desc";
 
-  let res = [];
+  let res: Array<any> = [];
   try {
-    const response = await axios.get(
+    const response = await axios.get<any>(
       `${cryptoProviderURL}/coins/markets?vs_currency=usd&order=${orderTranslated}&per_page=10&page=${pageIndex}&sparkline=false`
     );
-    response.data.forEach((e) => res.push(new CryptoSummaryData(e)));
+    response.data.forEach((e: any) => res.push(new CryptoSummaryData(e)));
   } catch (e) {}
   return res;
 }
@@ -21,14 +24,14 @@ export async function getCryptoSummaryDataList(pageIndex, order) {
 export async function getCryptoObject() {
   let res = {};
   try {
-    const response = await axios.get(`${cryptoProviderURL}/coins/list`);
-    response.data.forEach((e, index) => {
+    const response = await axios.get<any>(`${cryptoProviderURL}/coins/list`);
+    response.data.forEach((e: any, index: any) => {
       let str = [
         e.name.replaceAll(" ", "").toLowerCase(),
         e.symbol.replaceAll(" ", "").toLowerCase(),
       ];
       str.forEach((s) => {
-        let root = res;
+        let root: any = res;
         for (let i = 1; i <= s.length; i++) {
           if (i === s.length) {
             root[s.substring(0, i)] = root[s.substring(0, i)] ?? {};
@@ -44,7 +47,7 @@ export async function getCryptoObject() {
   return res;
 }
 
-export async function getCryptoDetails(id) {
+export async function getCryptoDetails(id: number) {
   try {
     const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
 
@@ -54,14 +57,16 @@ export async function getCryptoDetails(id) {
   }
 }
 
-export async function getCryptoPricesList(idList) {
+export async function getCryptoPricesList(
+  idList: Array<any>
+): Promise<object | null> {
   let s = idList.join(",");
   try {
-    const response = await axios.get(
+    const response = await axios.get<any>(
       `${cryptoProviderURL}/simple/price?ids=${s}&vs_currencies=usd`
     );
 
-    return response.data;
+    return response?.data;
   } catch (e) {
     return null;
   }
@@ -69,7 +74,7 @@ export async function getCryptoPricesList(idList) {
 
 export async function getFearAndGreedIndex() {
   try {
-    const response = await axios.get(`${fearAndGreedIndexProviderURL}1`);
+    const response = await axios.get<any>(`${fearAndGreedIndexProviderURL}1`);
 
     return parseInt(response.data["data"][0]["value"]);
   } catch (e) {

@@ -17,7 +17,11 @@ import {
 } from "@firebase/firestore";
 import { authService, dbService, realtimeDbService } from "../firebase_config";
 
-export async function sendChatMessage(cryptoId, message, tempNickname) {
+export async function sendChatMessage(
+  cryptoId: string,
+  message: string,
+  tempNickname: string
+) {
   const locate = ref(realtimeDbService, `chat/${cryptoId}/`);
   push(locate, {
     uid: authService.currentUser ? authService.currentUser.uid : -1,
@@ -29,7 +33,7 @@ export async function sendChatMessage(cryptoId, message, tempNickname) {
   });
 }
 
-export async function getChatMessages(cryptoId, callBack) {
+export async function getChatMessages(cryptoId: string, callBack: Function) {
   const chatRef = query(
     ref(realtimeDbService, `chat/${cryptoId}/`),
     orderByChild("createdAt"),
@@ -40,12 +44,17 @@ export async function getChatMessages(cryptoId, callBack) {
   });
 }
 
-export async function delChatMessage(cryptoId, docKey) {
+export async function delChatMessage(cryptoId: string, docKey: string) {
   remove(ref(realtimeDbService, `chat/${cryptoId}/${docKey}`));
 }
 
-export async function updateFavorites(cryptoId, fullNameEn, imageUrl, existed) {
-  if (authService.currentUser.uid != null) {
+export async function updateFavorites(
+  cryptoId: string,
+  fullNameEn: string,
+  imageUrl: string,
+  existed: boolean
+) {
+  if (authService.currentUser !== null) {
     const ref = doc(dbService, "User", authService.currentUser.uid);
     if (existed)
       setDoc(
@@ -60,7 +69,13 @@ export async function updateFavorites(cryptoId, fullNameEn, imageUrl, existed) {
 }
 
 export async function getFavorites() {
-  const ref = doc(dbService, "User", authService.currentUser.uid);
-  let res = await getDoc(ref);
-  return res.data() ?? {};
+  if (authService.currentUser !== null) {
+    const ref = doc(dbService, "User", authService.currentUser.uid);
+    let res = await getDoc(ref);
+
+    return res.data() ?? {};
+  } else {
+    alert("로그인 후 이용 가능합니다.");
+    return {};
+  }
 }

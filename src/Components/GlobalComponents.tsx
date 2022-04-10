@@ -2,6 +2,24 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { fadeIn } from "../Styles/Animation";
+import { SizeProp } from "@fortawesome/fontawesome-svg-core";
+
+export interface Props {
+  negative?: string;
+  isSelected?: boolean;
+  horizontal?: string;
+  vertical?: string;
+  width?: string;
+  height?: string;
+  justify_content?: string;
+  align_items?: string;
+  flex?: string;
+  selected?: boolean;
+  forPopup?: boolean;
+  isOpened?: boolean;
+  expand?: boolean;
+  isMine?: boolean;
+}
 
 // ====================================================================================
 export const STitleText = styled.p`
@@ -23,7 +41,7 @@ export const SGrayText = styled.p`
   color: ${(props) => props.theme.colors.gray};
 `;
 
-export const SPercentText = styled.p`
+export const SPercentText = styled.p<Props>`
   font-size: 1.6rem;
   color: ${({ theme, negative }) =>
     negative ? theme.colors.negative : theme.colors.positive};
@@ -64,7 +82,7 @@ export const SURLText = styled.a`
 `;
 // ====================================================================================
 
-export const SAnimatedDiv = styled.div`
+export const SAnimatedDiv = styled.div<Props>`
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
@@ -90,19 +108,30 @@ export const SYellowTitleCircle = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-export const SBookmark = ({ isSelected, onClick, size }) => {
+export const SBookmark = ({
+  isSelected,
+  onClick,
+  size,
+}: {
+  isSelected: boolean;
+  onClick: Function;
+  size: SizeProp;
+}) => {
   return (
     <SStyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
-        onClick={(m) => m.stopPropagation(onClick())}
+        onClick={(m) => {
+          m.stopPropagation();
+          onClick();
+        }}
         size={size}
       />
     </SStyledBookmark>
   );
 };
 
-const SStyledBookmark = styled.div`
+const SStyledBookmark = styled.div<Props>`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
   cursor: auto;
@@ -114,27 +143,26 @@ const SStyledBookmark = styled.div`
 
 // ====================================================================================
 
-export const SDivider = styled.div`
+export const SDivider = styled.div<Props>`
   height: 1px;
   margin: ${({ horizontal, vertical }) => `${vertical} ${horizontal}`};
   background-color: ${(props) => props.theme.colors.gray3};
 `;
 
-export const SSizedBox = styled.div`
+export const SSizedBox = styled.div<Props>`
   align-self: center;
-
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
 
-export const SExpanded = styled.div`
+export const SExpanded = styled.div<Props>`
   display: flex;
   justify-content: ${(props) => props.justify_content ?? "left"};
   align-items: center;
   flex: ${(props) => props.flex ?? 1};
 `;
 
-export const SRow = styled.div`
+export const SRow = styled.div<Props>`
   display: flex;
   justify-content: ${({ justify_content }) =>
     justify_content ? justify_content : css`center`};
@@ -144,7 +172,7 @@ export const SRow = styled.div`
   height: ${({ height }) => (height ? height : css`auto`)};
 `;
 
-export const SColumn = styled.div`
+export const SColumn = styled.div<Props>`
   display: flex;
   flex-direction: column;
   justify-content: ${({ justify_content }) =>
@@ -171,7 +199,7 @@ export const SScrollColumn = styled(SColumn)`
   }
 `;
 
-export const SStyledDimmer = styled.div`
+export const SStyledDimmer = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,7 +219,7 @@ export const SStyledDimmer = styled.div`
 
 // =========================================================================
 
-export const SButton = styled.button`
+export const SButton = styled.button<Props>`
   vertical-align: middle;
   width: ${(props) => (props.width ? props.width : null)};
   height: ${(props) => (props.height ? props.height : css`38px`)};

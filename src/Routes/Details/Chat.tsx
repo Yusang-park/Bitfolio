@@ -29,7 +29,15 @@ const categories = [
 ];
 
 export const Chat = React.memo(
-  ({ cryptoId = categories[0], fullName, expand }) => {
+  ({
+    cryptoId = categories[0],
+    fullName,
+    expand,
+  }: {
+    cryptoId?: string;
+    fullName?: { [key: string]: any };
+    expand: boolean;
+  }) => {
     const [id, setId] = useState(cryptoId);
     const [inputText, setInputText] = useState("");
     const { tempNickname } = useContext(UserContext);
@@ -37,7 +45,7 @@ export const Chat = React.memo(
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
-      getChatMessages(id, (value) => {
+      getChatMessages(id, (value: object) => {
         if (value) {
           let res = Object.entries(value).reverse();
           setChatData(res);
@@ -47,17 +55,17 @@ export const Chat = React.memo(
       });
     }, [setChatData, id]);
 
-    function onChange(e) {
+    function onChange(e: any) {
       if (e.target.value.endsWith("\n")) {
         onSubmit(e.target.value.replace("\n", ""));
       } else setInputText(e.target.value);
     }
 
-    function onChangeSelect(e) {
+    function onChangeSelect(e: any) {
       setId(e.target.value);
     }
 
-    function onSubmit(message) {
+    function onSubmit(message: string) {
       if (message.replace(" ", "").length > 0) {
         sendChatMessage(id, message, tempNickname);
         setInputText("");
@@ -74,12 +82,12 @@ export const Chat = React.memo(
             <select onChange={onChangeSelect}>
               {categories.map((e, i) => (
                 <option value={e} key={i}>
-                  {t(e)}
+                  {t<string>(e)}
                 </option>
               ))}
             </select>
           ) : (
-            <SGrayText> ({fullName[i18n.language]})</SGrayText>
+            <SGrayText> ({fullName![i18n.language].toString()})</SGrayText>
           )}
         </SRow>
 
@@ -88,8 +96,8 @@ export const Chat = React.memo(
         <ChatContainer>
           {useMemo(() => {
             return (
-              <ChatScrollItem id="chatContent" ChatHistory>
-                {Object.values(chatData).map((e, i) => (
+              <ChatScrollItem id="chatContent">
+                {Object.values(chatData).map((e: any, i) => (
                   <TalkBox
                     key={i}
                     docKey={Object.keys(chatData)[i]}
@@ -139,7 +147,7 @@ const Wrapper = styled(SStyledBox)`
   ${({ expand }) =>
     expand &&
     css`
-      width: 100%;
+      width: 40%;
     `}
   ${({ theme }) => theme.device.tablet} {
     ${({ expand }) =>

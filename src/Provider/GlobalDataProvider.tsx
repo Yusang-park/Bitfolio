@@ -6,11 +6,11 @@ const initialState = {
   cryptoListObject: [],
 };
 
-const GlobalDataContext = createContext();
+const GlobalDataContext = createContext(initialState);
 
 //==============================================================================//
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case "setCryptoListObject":
       return {
@@ -22,7 +22,7 @@ function reducer(state, action) {
   }
 }
 
-function GlobalDataProvider({ children }) {
+function GlobalDataProvider({ children }: { children: any }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     setCryptoListObject();
@@ -30,6 +30,8 @@ function GlobalDataProvider({ children }) {
 
   async function setCryptoListObject() {
     let response = await getCryptoObject();
+
+    console.log(response);
 
     dispatch({
       type: "setCryptoListObject",

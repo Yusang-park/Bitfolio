@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import {
+  Props,
   SDivider,
   SRow,
   SSizedBox,
@@ -15,12 +16,20 @@ import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
 
 export const Sidebar = React.memo(
-  ({ forPopup = false, isOpened = false, setClose }) => {
+  ({
+    forPopup = false,
+    isOpened = false,
+    setClose,
+  }: {
+    forPopup?: boolean;
+    isOpened?: boolean;
+    setClose?: any;
+  }) => {
     const pathName = useLocation().pathname;
     const history = useHistory();
     const { t, i18n } = useTranslation();
 
-    function onClickLogo(e) {
+    function onClickLogo(e: any) {
       history.push("/");
       if (setClose !== undefined) setClose();
     }
@@ -31,7 +40,7 @@ export const Sidebar = React.memo(
 
     return (
       <>
-        <Dimmer isOpened={isOpened} onClick={setClose}></Dimmer>
+        <Dimmer isOpened={isOpened} onClick={(e) => setClose()}></Dimmer>
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
             <Logo src={logoImg} alt="Logo" />
@@ -50,7 +59,7 @@ export const Sidebar = React.memo(
                     key={e.name}
                     selected={e.path.toLowerCase() === pathName.toLowerCase()}
                   >
-                    {t(e.name)}
+                    {`${t(e.name)}`}
                   </CategoryRow>
                 </div>
               )
@@ -103,14 +112,14 @@ const LogoRow = styled(SRow)`
   } */
 
   &:hover ${STitleText} {
-    font-size: 2rem;
+    /* color: ${({ theme }) => theme.colors.gray}; */
   }
   /* &:hover ${Logo} {
     width: 89px;
   } */
 `;
 
-const SidebarContainer = styled.div`
+const SidebarContainer = styled.div<Props>`
   display: ${({ forPopup }) => (!forPopup ? css`block` : css`none`)};
   width: 16.66vw;
   max-width: 320px;
@@ -152,7 +161,7 @@ const CategoryRow = styled(Link)`
   padding: 16px 32px;
   margin-bottom: 0px;
   text-decoration: inherit;
-  color: ${({ selected, theme }) =>
+  color: ${({ selected, theme }: { selected: boolean; theme: any }) =>
     selected ? css`white` : theme.colors.gray3};
   cursor: pointer;
   transition: background-color 300ms ease-out 100ms;

@@ -10,7 +10,7 @@ import { YellowTitleCircle } from "../../Components/TransComponants";
 import { CryptoDataContext } from "../Details";
 
 export const DetailsCommunity = () => {
-  const { data } = useContext(CryptoDataContext);
+  const { data }: { data: any } = useContext(CryptoDataContext);
 
   const type = [
     { name: "Homepage", key: "homepage", prefix: "" },

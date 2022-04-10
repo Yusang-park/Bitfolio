@@ -1,7 +1,7 @@
 import React from "react";
 import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
-export const Chart = ({ chartSize, coin }) => {
+export const Chart = ({ coin }) => {
   return (
     <TradingViewWidget
       symbol={coin}

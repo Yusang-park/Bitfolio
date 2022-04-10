@@ -12,12 +12,12 @@ import {
 import { CryptoDataContext } from "../Details";
 
 export const DetailsMarket = () => {
-  const { data } = useContext(CryptoDataContext);
+  const { data }: { data: any } = useContext(CryptoDataContext);
 
   return (
     <Wrapper>
       <SScrollColumn>
-        {data.exchanges.map((e, i) => (
+        {data.exchanges.map((e: any, i: number) => (
           <ItemRow key={i}>
             <YellowTitleCircle>{i + 1}</YellowTitleCircle>
             <SURLText href={e.trade_url}>{e.name}</SURLText>

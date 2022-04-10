@@ -59,7 +59,7 @@ const TitleContainer = styled.div`
   align-items: center;
 `;
 
-const HambergerBtn = ({ onClick }) => (
+const HambergerBtn = ({ onClick }: { onClick?: any }) => (
   <HambergerStyle>
     <FontAwesomeIcon icon="bars" onClick={onClick} />
   </HambergerStyle>

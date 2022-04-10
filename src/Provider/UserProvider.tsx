@@ -8,13 +8,14 @@ const initialState = {
   isLoggedIn: false,
   tempNickname: "",
   favorites: {},
+  setFavoriteCrypto: () => {},
 };
 
-const UserContext = createContext();
+const UserContext = createContext(initialState);
 
 //==============================================================================//
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   switch (action.type) {
     case "setLogout":
       return {
@@ -48,11 +49,11 @@ function reducer(state, action) {
   }
 }
 
-function UserProvider(props, children) {
+function UserProvider(props: any, children: any) {
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true);
+        setIsLoggedIn();
       } else {
         setLogout();
       }
@@ -78,7 +79,11 @@ function UserProvider(props, children) {
     });
   }
 
-  function setFavoriteCrypto(cryptoId, fullName, imageUrl) {
+  function setFavoriteCrypto(
+    cryptoId: string,
+    fullName: string,
+    imageUrl: string
+  ) {
     if (!state.isLoggedIn) return;
     let existed = !state.favorites[cryptoId] === true;
     updateFavorites(cryptoId, fullName, imageUrl, existed);
