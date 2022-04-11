@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { SRow } from "../Components/GlobalComponents";
 import { FavoriteContainer } from "./DashBoard/Favorites";
 
+console.log("preload this file");
+
 const DashBoard = () => {
   return (
     <Wrapper>
