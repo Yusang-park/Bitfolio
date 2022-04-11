@@ -4,12 +4,17 @@ import { CryptoSummaryData, CryptoDetailData } from "./Models";
 const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
+export enum sortCryptoRank {
+  MarketCap,
+  Volumn,
+}
+
 export async function getCryptoSummaryDataList(
   pageIndex: number,
-  order: string
+  sort: sortCryptoRank
 ): Promise<Array<any>> {
   let orderTranslated =
-    order === "MarketCap" ? "market_cap_desc" : "volume_desc";
+    sort === sortCryptoRank.MarketCap ? "market_cap_desc" : "volume_desc";
 
   let res: Array<any> = [];
   try {
@@ -47,7 +52,7 @@ export async function getCryptoObject() {
   return res;
 }
 
-export async function getCryptoDetails(id: number) {
+export async function getCryptoDetails(id: string) {
   try {
     const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
 

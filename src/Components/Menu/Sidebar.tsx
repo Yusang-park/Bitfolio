@@ -36,6 +36,7 @@ const Sidebar = React.memo(
 
     function changeLanguage() {
       i18n.changeLanguage(i18n.language === "ko" ? "en" : "ko");
+      localStorage.setItem("language", i18n.language);
     }
 
     return (

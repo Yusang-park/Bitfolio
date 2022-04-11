@@ -106,11 +106,11 @@ section {
   display: block;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap");
 html,
 body {
   font-size: 10px;
-  font-family: "Lato", sans-serif;
+  font-family: Maven Pro;
   position: absolute;
   height: 100%;
 

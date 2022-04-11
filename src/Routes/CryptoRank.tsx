@@ -12,7 +12,7 @@ import {
   SGrayText,
   SBookmark,
 } from "../Components/GlobalComponents";
-import { getCryptoSummaryDataList } from "../Service/Apis";
+import { getCryptoSummaryDataList, sortCryptoRank } from "../Service/Apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 import { useHistory } from "react-router-dom";
@@ -27,30 +27,33 @@ const CryptoRank = React.memo(() => {
   const [pageIndex, setPageIndex] = useState(1);
   const [pageSectionIndex, setPageSectionIndex] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(-1);
-  const [order, setOrder] = useState("MarketCap");
+  const [sort, setSort] = useState(sortCryptoRank.MarketCap);
   const history = useHistory();
 
   useEffect(() => {
-    getCryptoSummaryDataList(pageIndex, order).then((e) => {
+    //in order to except the property in deps, use  useState of function type.
+    setCryptoList((l) => l.filter((e) => false));
+
+    getCryptoSummaryDataList(pageIndex, sort).then((e: any) => {
       setCryptoList(e);
     });
-  }, [pageIndex, order]); //It is performed when mounted.
+  }, [pageIndex, sort]); //It is performed when mounted.
 
-  function changePageIndex(e) {
+  function changePageIndex(e: any) {
     if (e.target.id !== pageIndex) {
       setCryptoList(cryptoList.filter((e) => false));
       setPageIndex(e.target.id);
     }
   }
 
-  function prevPagePagination(e) {
+  function prevPagePagination(e: any) {
     if (pageSectionIndex !== 0) setPageSectionIndex(pageSectionIndex - 1);
   }
-  function nextPagePagination(e) {
+  function nextPagePagination(e: any) {
     if (pageSectionIndex !== maxPage) setPageSectionIndex(pageSectionIndex + 1);
   }
 
-  function routeDetails(id) {
+  function routeDetails(id: string) {
     history.push({
       pathname: `/details/${id}`,
       state: {
@@ -79,8 +82,8 @@ const CryptoRank = React.memo(() => {
               routeDetails={routeDetails}
               hoverIndex={hoverIndex}
               setHoverIndex={setHoverIndex}
-              order={order}
-              setOrder={setOrder}
+              sort={sort}
+              setSort={setSort}
             ></DetailInfoSectionContainer>
           </>
         )}
@@ -95,8 +98,11 @@ const CryptoRank = React.memo(() => {
         {[...Array(5)].map((n, index) => (
           <SPressButton
             key={index}
-            selected={index + 1 + pageSectionIndex * 5 === parseInt(pageIndex)}
-            id={index + 1 + pageSectionIndex * 5}
+            selected={
+              index + 1 + pageSectionIndex * 5 ===
+              parseInt(pageIndex.toString())
+            }
+            id={`${index + 1 + pageSectionIndex * 5}`}
             onClick={changePageIndex}
             width={"38px"}
           >
@@ -113,8 +119,23 @@ const CryptoRank = React.memo(() => {
 });
 
 const BasicInfoSectionContainer = React.memo(
-  ({ cryptoList, pageIndex, routeDetails, hoverIndex, setHoverIndex }) => {
-    const { favorites, setFavoriteCrypto } = useContext(UserContext);
+  ({
+    cryptoList,
+    pageIndex,
+    routeDetails,
+    hoverIndex,
+    setHoverIndex,
+  }: {
+    cryptoList: any;
+    pageIndex: number;
+    routeDetails: any;
+    hoverIndex: number;
+    setHoverIndex: any;
+  }) => {
+    const {
+      favorites,
+      setFavoriteCrypto,
+    }: { favorites: any; setFavoriteCrypto: any } = useContext(UserContext);
     return (
       <BasicInfoWrapper>
         <CategoryTitleContainer>
@@ -123,7 +144,7 @@ const BasicInfoSectionContainer = React.memo(
         </CategoryTitleContainer>
         <SSizedBox height="16px" />
 
-        {cryptoList.map((e, i) => (
+        {cryptoList.map((e: any, i: any) => (
           <ElementRow
             onMouseOver={() => {
               if (hoverIndex !== i) setHoverIndex(i);
@@ -175,8 +196,16 @@ const DetailInfoSectionContainer = React.memo(
     routeDetails,
     hoverIndex,
     setHoverIndex,
-    order,
-    setOrder,
+    sort,
+    setSort,
+  }: {
+    cryptoList: any;
+    pageIndex: number;
+    routeDetails: any;
+    hoverIndex: number;
+    setHoverIndex: any;
+    sort: sortCryptoRank;
+    setSort: Function;
   }) => {
     return (
       <DetailInfoWrapper>
@@ -186,8 +215,8 @@ const DetailInfoSectionContainer = React.memo(
             <CategoryText
               flex="6"
               enableClick={true}
-              selected={order === "MarketCap"}
-              onClick={() => setOrder("MarketCap")}
+              selected={sort === sortCryptoRank.MarketCap}
+              onClick={() => setSort(sortCryptoRank.MarketCap)}
             >
               MarketCap
             </CategoryText>
@@ -195,15 +224,15 @@ const DetailInfoSectionContainer = React.memo(
             <CategoryText
               flex="6"
               enableClick={true}
-              selected={order === "Volumn"}
-              onClick={() => setOrder("Volumn")}
+              selected={sort === sortCryptoRank.Volumn}
+              onClick={() => setSort(sortCryptoRank.Volumn)}
             >
               Volume
             </CategoryText>
             <CategoryText flex="4">24Hours</CategoryText>
           </CategoryTitleContainer>
           <SSizedBox height="16px" />
-          {cryptoList.map((e, i) => (
+          {cryptoList.map((e: any, i: any) => (
             <ElementRow
               onMouseOver={() => {
                 if (hoverIndex !== i) setHoverIndex(i);
@@ -246,7 +275,8 @@ const ElementRow = styled(SRow)`
   height: 100%;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${({ isHovered }) => isHovered && css`grey`};
+  background-color: ${({ isHovered }: { isHovered: any }) =>
+    isHovered && css`grey`};
   /* border-bottom: 1px solid; */
   ${SGrayText} {
     color: ${({ isHovered }) => isHovered && css`white`};
@@ -344,7 +374,19 @@ const NumberingContainer = styled(SRow)`
   }
 `;
 
-const CategoryText = ({ children, flex, enableClick, selected, onClick }) => {
+const CategoryText = ({
+  children,
+  flex,
+  enableClick,
+  selected,
+  onClick,
+}: {
+  children?: any;
+  flex?: any;
+  enableClick?: any;
+  selected?: any;
+  onClick?: any;
+}) => {
   return (
     <Element
       onClick={onClick}
