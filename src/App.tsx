@@ -3,20 +3,19 @@ import { lightTheme } from "./Styles/Theme";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
 import { Nav } from "./Components/Menu/Nav";
 import { Details } from "./Routes/Details";
 import { UserProvider } from "./Provider/UserProvider";
 import { SColumn } from "./Components/GlobalComponents";
-import { Indexes } from "./Routes/Indexes/Indexes";
 import { Chat } from "./Routes/Details/Chat";
 import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
+import Sidebar from "./Components/Menu/Sidebar";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
-const Sidebar = lazy(() => import("./Components/Menu/Sidebar"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
 const Exchanges = lazy(() => import("./Routes/Exchanges"));
 const Portfolio = lazy(() => import("./Routes/Portfolio"));
+const Indexes = lazy(() => import("./Routes/Indexes/Indexes"));
 
 function App() {
   const [theme] = useState(lightTheme);
@@ -25,12 +24,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalDataProvider>
         <UserProvider>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Container>
-              <BrowserRouter>
-                <Sidebar />
-                <Wrapper>
-                  <Nav />
+          <Container>
+            <BrowserRouter>
+              <Sidebar />
+              <Wrapper>
+                <Nav />
+                <Suspense fallback={<div></div>}>
                   <Content>
                     <Switch>
                       <Route exact path="/dashboard">
@@ -56,10 +55,10 @@ function App() {
                       </Route>
                     </Switch>
                   </Content>
-                </Wrapper>
-              </BrowserRouter>
-            </Container>
-          </Suspense>
+                </Suspense>
+              </Wrapper>
+            </BrowserRouter>
+          </Container>
         </UserProvider>
       </GlobalDataProvider>
     </ThemeProvider>

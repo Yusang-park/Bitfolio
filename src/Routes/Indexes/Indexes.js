@@ -20,7 +20,7 @@ const fearIndexTitle = [
   "Very Greed",
 ];
 
-export const Indexes = () => {
+const Indexes = () => {
   const [fearIndex, setFearIndex] = useState();
 
   useEffect(() => {
@@ -115,3 +115,5 @@ const Container = styled.div`
   height: 30%;
   max-width: 600px;
 `;
+
+export default Indexes;
