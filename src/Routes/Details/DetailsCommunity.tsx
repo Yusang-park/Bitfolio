@@ -8,6 +8,8 @@ import {
 } from "../../Components/GlobalComponents";
 import { YellowTitleCircle } from "../../Components/TransComponants";
 import { CryptoDataContext } from "../Details";
+import { Timeline } from "react-twitter-widgets";
+import i18n from "../../Service/Translation/i18n";
 
 export const DetailsCommunity = () => {
   const { data }: { data: any } = useContext(CryptoDataContext);
@@ -50,6 +52,20 @@ export const DetailsCommunity = () => {
               <YellowTitleCircle>{e.name}</YellowTitleCircle>
               <SSizedBox height="8px" />
               <SURLText href={url}>{url}</SURLText>
+              <SSizedBox height="8px" />
+              {e.name === "Twitter" && (
+                <Timeline
+                  dataSource={{
+                    sourceType: "profile",
+                    screenName: "TwitterDev",
+                  }}
+                  options={{
+                    chrome: "noheader, nofooter",
+                    height: "400",
+                    lang: i18n.language,
+                  }}
+                />
+              )}
             </ElementContainer>
           );
         })}
