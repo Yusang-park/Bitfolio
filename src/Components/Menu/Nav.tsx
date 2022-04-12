@@ -8,7 +8,7 @@ import { UserContext } from "../../Provider/UserProvider";
 import { LoginBtn } from "../User/LoginBtn";
 import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
-import { TitleText } from "../TransComponants";
+import { Text, TitleText } from "../TransComponants";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 
@@ -41,7 +41,7 @@ export const Nav = React.memo(() => {
       <CryptoSearchBox />
       <SSizedBox width="16px" />
 
-      {!initialize ? <div></div> : isLoggedIn ? <UserBox /> : <LoginBtn />}
+      {!initialize ? "" : isLoggedIn ? <UserBox /> : <LoginBtn />}
     </Wrapper>
   );
 });

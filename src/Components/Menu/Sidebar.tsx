@@ -14,6 +14,7 @@ import { categories } from "../../Routes/Categories";
 import { useHistory } from "react-router-dom";
 import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
+import { fadeInSidebar } from "../../Styles/Animation";
 
 const Sidebar = React.memo(
   ({
@@ -128,17 +129,7 @@ const SidebarContainer = styled.div<Props>`
   max-width: 320px;
   background-color: ${(props) => props.theme.colors.boxBackground};
   color: white;
-  animation: fadeIn 0.5s;
-
-  @keyframes fadeIn {
-    from {
-      left: -150px;
-    }
-
-    to {
-      top: 0;
-    }
-  }
+  animation: ${fadeInSidebar} 0.3s;
 
   ${({ theme }) => theme.device.desktopM} {
     ${({ isOpened }) =>

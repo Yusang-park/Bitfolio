@@ -27,3 +27,15 @@ export const slideFadeIn = keyframes`
       transform: translateZ(0);
   }
 `;
+
+export const fadeInSidebar = keyframes`
+    from {
+      opactiy: 0;
+      left: -100px;
+    }
+
+    to {
+      opactiy: 1;
+      top: 0;
+    }
+`;

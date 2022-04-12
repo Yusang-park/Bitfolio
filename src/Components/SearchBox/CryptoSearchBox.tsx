@@ -208,7 +208,6 @@ const RecommendContainer = styled.div`
   z-index: 1;
   top: 48px;
 
-  overflow-y: scroll;
   max-height: 40vh;
   background-color: ${(props) => props.theme.colors.gray};
 `;

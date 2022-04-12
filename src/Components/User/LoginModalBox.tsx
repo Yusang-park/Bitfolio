@@ -107,7 +107,7 @@ export const LoginModalBox = () => {
           <WhiteButton onClick={() => loginWithSocial("google")}>
             <SRow>
               <Logo src="https://freesvg.org/img/1534129544.png" />{" "}
-              <TextBlack>Google Sign In</TextBlack>
+              <TextBlack>Sign In with Google</TextBlack>
             </SRow>
           </WhiteButton>
         </Container>
