@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { slideFadeIn } from "../Styles/Animation";
 import { SStyledDimmer } from "./GlobalComponents";
 
 export const Dialog = ({
@@ -28,4 +29,5 @@ const Inner = styled.div`
 
   background-color: ${({ theme }) => theme.colors.boxBackground};
   border-radius: 20px;
+  animation: ${slideFadeIn} 1s;
 `;

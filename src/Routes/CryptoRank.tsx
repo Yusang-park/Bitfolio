@@ -300,6 +300,10 @@ const DetailInfoWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
 `;
 
 const Icon = styled.img`

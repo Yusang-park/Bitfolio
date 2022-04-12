@@ -84,7 +84,7 @@ export const SURLText = styled.a`
 // ====================================================================================
 
 export const SAnimatedDiv = styled.div<Props>`
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
