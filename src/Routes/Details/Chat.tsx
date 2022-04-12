@@ -36,7 +36,7 @@ export const Chat = React.memo(
   }: {
     cryptoId?: string;
     fullName?: { [key: string]: any };
-    expand: boolean;
+    expand?: boolean;
   }) => {
     const [id, setId] = useState(cryptoId);
     const [inputText, setInputText] = useState("");
@@ -147,7 +147,7 @@ const Wrapper = styled(SStyledBox)`
   ${({ expand }) =>
     expand &&
     css`
-      width: 40%;
+      width: 60%;
     `}
   ${({ theme }) => theme.device.tablet} {
     ${({ expand }) =>

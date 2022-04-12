@@ -17,15 +17,15 @@ export const CryptoDataContext = createContext({
   data: null,
 });
 
-export const Details = (props) => {
+export const Details = (props: any) => {
   let temp = useLocation().pathname.split("/");
 
   const id = temp[temp.length - 1];
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [selectedMenuIndex, setMenuIndex] = useState(0);
 
   useEffect(() => {
-    getCryptoDetails(id).then((response) => {
+    getCryptoDetails(id).then((response: any) => {
       setData(response);
     });
   }, [id, setData]);
@@ -36,7 +36,7 @@ export const Details = (props) => {
     { key: "Community", component: <DetailsCommunity /> },
   ];
 
-  function changeMenu(e) {
+  function changeMenu(e: any) {
     setMenuIndex(e.target.id);
   }
 
@@ -53,7 +53,9 @@ export const Details = (props) => {
             <PressButton
               id={i}
               key={i}
-              selected={i === parseInt(selectedMenuIndex) ? true : false}
+              selected={
+                i === parseInt(selectedMenuIndex.toString()) ? true : false
+              }
               onClick={changeMenu}
             >
               {e.key}

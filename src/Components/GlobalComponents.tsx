@@ -19,6 +19,7 @@ export interface Props {
   isOpened?: boolean;
   expand?: boolean;
   isMine?: boolean;
+  align?: string;
 }
 
 // ====================================================================================
@@ -264,6 +265,7 @@ export const SPressButton = styled(SButton)`
 `;
 
 export const SInput = styled.input`
+  width: ${({ width }) => (width ? width : css`auto`)};
   height: 48px;
   padding: 0px 16px;
   border: 1px solid white;

@@ -130,8 +130,8 @@ const Logo = styled.img`
 
 const WhiteButton = styled(SButton)`
   width: 100%;
-  background: linear-gradient(#f4f4f4 0%, #cdcdcd 100%);
+  background: linear-gradient(#f4f4f4 0%, #e8e8e8 100%);
   &:hover {
-    background: linear-gradient(#bdbdbd 0%, #b0b0b0 100%);
+    background: linear-gradient(#e4e4e4 0%, #f1f1f1 100%);
   }
 `;

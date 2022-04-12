@@ -4,11 +4,13 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { authService } from "../../firebase_config";
 import { logout } from "../../Service/FirebaseAuth";
-import { SColumn, SInput, SSizedBox } from "../GlobalComponents";
-import { TitleText, Button } from "../TransComponants";
+import { SColumn, SInput, SRow, SSizedBox } from "../GlobalComponents";
+import { TitleText, Button, Text } from "../TransComponants";
 
 export const UserModalBox = ({ setShowModal }: { setShowModal: Function }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(
+    authService.currentUser?.displayName ?? ""
+  );
   const { t } = useTranslation();
 
   function changeInput(e: any) {
@@ -30,16 +32,23 @@ export const UserModalBox = ({ setShowModal }: { setShowModal: Function }) => {
       <SSizedBox height="32px" />
 
       <form onSubmit={changeDisplayName}>
+        <Text>{t("Nickname")}</Text>
+        <SSizedBox height="8px" />
         <SColumn align_items="center">
-          <SInput
-            value={input}
-            onChange={changeInput}
-            placeholder={t("Nickname")}
-            minLength={3}
-            required
-          ></SInput>{" "}
-          <SSizedBox height="16px" />
-          <Button>Change Nickname</Button>
+          <SRow>
+            <SInput
+              width="100%"
+              value={input}
+              onChange={changeInput}
+              placeholder={t("Nickname")}
+              minLength={3}
+              maxLength={10}
+              required
+            ></SInput>
+            <SSizedBox width="16px" />
+
+            <Button onClick={changeDisplayName}>{t("Change")}</Button>
+          </SRow>
         </SColumn>
       </form>
 
