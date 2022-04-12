@@ -106,11 +106,11 @@ section {
   display: block;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 html,
 body {
-  font-size: 10px;
-  font-family: Maven Pro;
+  font-size: 10.4px;
+  font-family: Source Sans Pro;
   position: absolute;
   height: 100%;
 

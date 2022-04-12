@@ -1,6 +1,8 @@
 import React from "react";
 import "./Speedmeter.css";
 
+let root = document.documentElement;
+
 export const SpeedMeter = ({
   level,
   index,
@@ -8,6 +10,7 @@ export const SpeedMeter = ({
   level: string;
   index: number | null;
 }) => {
+  root.style.setProperty("--deg", `${index}deg`);
   return (
     <div>
       <div className="gauge-wrapper">

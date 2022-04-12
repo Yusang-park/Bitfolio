@@ -9,15 +9,18 @@ import { LoginBtn } from "../User/LoginBtn";
 import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
 import { TitleText } from "../TransComponants";
+import { useLocation } from "react-router-dom";
+import { categories } from "../../Routes/Categories";
 
 export const Nav = React.memo(() => {
   const { isLoggedIn, initialize } = useContext(UserContext);
   const [openedSideBar, setOpenedSideBar] = useState(false);
-  // const pathName = useLocation().pathname;
+  const pathName = useLocation().pathname;
 
-  // function getName() {
-  //   return categories.find((c) => c.path.includes(pathName.split("/")[1])).name;
-  // }
+  function getName() {
+    return categories.find((c) => c["path"].includes(pathName.split("/")[1]))
+      ?.name;
+  }
 
   function onClickHamberger() {
     setOpenedSideBar(!openedSideBar);
@@ -33,7 +36,7 @@ export const Nav = React.memo(() => {
 
       <HambergerBtn onClick={onClickHamberger} />
       <TitleContainer>
-        <TitleText>CryptoFolio</TitleText>
+        <TitleText>{getName()}</TitleText>
       </TitleContainer>
       <CryptoSearchBox />
       <SSizedBox width="16px" />

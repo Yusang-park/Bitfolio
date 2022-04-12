@@ -57,7 +57,7 @@ export const DetailsCommunity = () => {
                 <Timeline
                   dataSource={{
                     sourceType: "profile",
-                    screenName: "TwitterDev",
+                    screenName: url.split("/")[3],
                   }}
                   options={{
                     chrome: "noheader, nofooter",
