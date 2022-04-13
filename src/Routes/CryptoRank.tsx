@@ -41,10 +41,10 @@ const CryptoRank = React.memo(() => {
     });
   }, [pageIndex, sort]); //It is performed when mounted.
 
-  function changePageIndex(e: any) {
-    if (e.target.id !== pageIndex) {
+  function changePageIndex(id: number) {
+    if (id !== pageIndex) {
       setCryptoList(cryptoList.filter((e) => false));
-      setPageIndex(e.target.id);
+      setPageIndex(id);
     }
   }
 
@@ -100,12 +100,14 @@ const CryptoRank = React.memo(() => {
         {[...Array(5)].map((n, index) => (
           <SPressButton
             key={index}
+            id={index.toString()}
             selected={
               index + 1 + pageSectionIndex * 5 ===
               parseInt(pageIndex.toString())
             }
-            id={`${index + 1 + pageSectionIndex * 5}`}
-            onClick={changePageIndex}
+            onClick={() => {
+              changePageIndex(index + 1 + pageSectionIndex * 5);
+            }}
             width={"38px"}
           >
             {index + 1 + pageSectionIndex * 5}
@@ -388,6 +390,7 @@ const CategoryText = ({
 }) => {
   return (
     <Element
+      id={children!}
       onClick={onClick}
       flex={flex}
       style={enableClick && { cursor: "pointer" }}
