@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
-import { fadeIn } from "../Styles/Animation";
+import { fadeIn, simpleSlideIn } from "../Styles/Animation";
 import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 export interface Props {
@@ -86,7 +86,7 @@ export const SURLText = styled.a`
 export const SAnimatedDiv = styled.div<Props>`
   animation-duration: 1s;
   animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
+  animation-name: ${simpleSlideIn};
   animation-fill-mode: forwards;
 `;
 
@@ -215,7 +215,6 @@ export const SStyledDimmer = styled.div<Props>`
   animation-duration: 0.2s;
   animation-timing-function: ease-out;
   animation-name: ${fadeIn};
-  animation-fill-mode: forwards;
 `;
 
 // =========================================================================

@@ -1,5 +1,15 @@
 import { keyframes } from "styled-components";
+
 export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const simpleSlideIn = keyframes`
   0% {
     opacity: 0; transform: translate3d(0, 2%, 0);
   }
@@ -17,7 +27,7 @@ export const fadeOut = keyframes`
   }
 `;
 
-export const slideFadeIn = keyframes`
+export const slideIn = keyframes`
  0% {
       opacity: 0;
       transform: translate3d(0, 10%, 0);

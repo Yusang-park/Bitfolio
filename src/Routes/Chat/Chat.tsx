@@ -2,22 +2,21 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import styled, { css } from "styled-components";
 
+import { UserContext } from "../../Provider/UserProvider";
 import { authService } from "../../firebase_config";
-import {
-  getChatMessages,
-  sendChatMessage,
-} from "../../Service/FirebaseFunctions";
-import { TalkBox } from "./TalkBalloon";
-// import $ from "jquery";
+import { getChatMessages } from "../../Service/FirebaseFunctions";
+import { TalkBox } from "../Details/TalkBalloon";
+
 import {
   SStyledBox,
   SRow,
   SSizedBox,
   SGrayText,
 } from "../../Components/GlobalComponents";
-import { UserContext } from "../../Provider/UserProvider";
-import { TitleText } from "../../Components/TransComponants";
+
 import { useTranslation } from "react-i18next";
+import { ChatInput } from "./ChatInput";
+import { TitleText } from "../../Components/TransComponants";
 
 const categories = [
   "Free",
@@ -28,7 +27,7 @@ const categories = [
   "Bithumb",
 ];
 
-export const Chat = React.memo(
+const Chat = React.memo(
   ({
     cryptoId = categories[0],
     fullName,
@@ -39,10 +38,9 @@ export const Chat = React.memo(
     expand?: boolean;
   }) => {
     const [id, setId] = useState(cryptoId);
-    const [inputText, setInputText] = useState("");
-    const { tempNickname } = useContext(UserContext);
     const [chatData, setChatData] = useState({});
     const { t, i18n } = useTranslation();
+    const { tempNickname } = useContext(UserContext);
 
     useEffect(() => {
       getChatMessages(id, (value: object) => {
@@ -55,21 +53,8 @@ export const Chat = React.memo(
       });
     }, [setChatData, id]);
 
-    function onChange(e: any) {
-      if (e.target.value.endsWith("\n")) {
-        onSubmit(e.target.value.replace("\n", ""));
-      } else setInputText(e.target.value);
-    }
-
     function onChangeSelect(e: any) {
       setId(e.target.value);
-    }
-
-    function onSubmit(message: string) {
-      if (message.replace(" ", "").length > 0) {
-        sendChatMessage(id, message, tempNickname);
-        setInputText("");
-      }
     }
 
     return (
@@ -114,23 +99,13 @@ export const Chat = React.memo(
             );
           }, [chatData, tempNickname])}
         </ChatContainer>
-
-        <InputContainer>
-          <Input
-            // disabled={authService.currentUser === null}
-            placeholder={
-              authService.currentUser === null ? `${tempNickname}` : ""
-            }
-            value={inputText}
-            onChange={onChange}
-            maxLength={70}
-          ></Input>
-          <SendButton onClick={() => onSubmit(inputText)}>SEND</SendButton>
-        </InputContainer>
+        <ChatInput id={id} />
       </Wrapper>
     );
   }
 );
+
+export default Chat;
 
 const ChatContainer = styled.div`
   height: 100%;
@@ -181,55 +156,5 @@ const ChatScrollItem = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: gray;
     border-radius: 4px;
-  }
-`;
-
-const InputContainer = styled(SRow)`
-  height: 15%;
-  max-height: 96px;
-  padding: 12px 0px;
-  border-radius: 25px;
-  border: 1px solid white;
-
-  background-color: ${({ theme }) => theme.colors.gray2};
-
-  ${({ theme }) => theme.device.tablet} {
-    height: 6%;
-  }
-`;
-
-const SendButton = styled.div`
-  display: flex;
-  width: 20%;
-  min-width: 45px;
-  max-width: 85px;
-  height: 100%;
-  margin-right: 12px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  font-size: 1.6rem;
-  color: black;
-  background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
-
-  &:hover {
-    background: linear-gradient(#f9de73 0%, #f9de73 100%);
-  }
-`;
-
-const Input = styled.textarea`
-  width: 100%;
-  height: 100%;
-  padding-left: 12px;
-  box-sizing: border-box;
-  resize: none;
-  color: white;
-  background-color: transparent;
-  border: 0px;
-  font-size: 1.8rem;
-  &:focus {
-    outline: transparent;
-    border: 0px solid transparent;
-    box-shadow: 0 0 10px transparent;
   }
 `;

@@ -99,6 +99,7 @@ const Dimmer = styled(SStyledDimmer)`
 
 const Logo = styled.img`
   width: 96px;
+  height: 96px;
 `;
 
 const LogoRow = styled(SRow)`

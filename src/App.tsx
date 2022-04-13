@@ -1,23 +1,26 @@
 import React, { useState, lazy, Suspense } from "react";
-import { lightTheme } from "./Styles/Theme";
-import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import { Nav } from "./Components/Menu/Nav";
-import { Details } from "./Routes/Details";
-import { UserProvider } from "./Provider/UserProvider";
-import { SColumn } from "./Components/GlobalComponents";
-import { Chat } from "./Routes/Details/Chat";
-import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 import Sidebar from "./Components/Menu/Sidebar";
+
+import { lightTheme } from "./Styles/Theme";
+import { ThemeProvider } from "styled-components";
+import { UserProvider } from "./Provider/UserProvider";
+import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
+
+import { SColumn } from "./Components/GlobalComponents";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
 const Exchanges = lazy(() => import("./Routes/Exchanges"));
 const Portfolio = lazy(() => import("./Routes/Portfolio"));
 const Indexes = lazy(() => import("./Routes/Indexes/Indexes"));
+const Details = lazy(() => import("./Routes/Details"));
+const Chat = lazy(() => import("./Routes/Chat/Chat"));
 
-function App() {
+const App = () => {
   const [theme] = useState(lightTheme);
 
   return (
@@ -63,7 +66,7 @@ function App() {
       </GlobalDataProvider>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
 

@@ -13,7 +13,7 @@ import {
 } from "../../Components/GlobalComponents";
 import { useTranslation } from "react-i18next";
 
-export const DetailsHeader = () => {
+export const DetailsHeader = React.memo(() => {
   const {
     setFavoriteCrypto,
     favorites,
@@ -50,7 +50,7 @@ export const DetailsHeader = () => {
       />
     </Container>
   );
-};
+});
 
 const Container = styled.div`
   display: flex;

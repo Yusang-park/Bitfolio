@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../Provider/UserProvider";
-import { fadeIn } from "../Styles/Animation";
+import { simpleSlideIn } from "../Styles/Animation";
 import { GrayText, Text, TextBlue } from "../Components/TransComponants";
 
 const maxPage = 179;
@@ -174,7 +174,7 @@ const BasicInfoSectionContainer = React.memo(
                 />
               </NumberingContainer>
               <SExpanded flex="2">
-                <Icon src={e.imageUrl} />
+                <Icon src={e.imageUrl} alt={e.id} />
                 <SColumn>
                   {e.fullName}
                   <br></br>
@@ -302,16 +302,18 @@ const DetailInfoWrapper = styled.div`
   height: 100%;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
+  animation-name: ${simpleSlideIn};
   animation-fill-mode: forwards;
 `;
 
 const Icon = styled.img`
   width: 42px;
+  height: 42px;
   margin-right: 16px;
   border-radius: 50px;
   ${({ theme }) => theme.device.tablet} {
     width: 28px;
+    height: 28px;
   }
 `;
 
@@ -323,7 +325,7 @@ const BasicInfoWrapper = styled(SColumn)`
   flex: 3;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
-  animation-name: ${fadeIn};
+  animation-name: ${simpleSlideIn};
   animation-fill-mode: forwards;
 `;
 
