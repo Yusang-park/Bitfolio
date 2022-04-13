@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import styled from "styled-components";
-import { loginWithEamil } from "../../Service/FirebaseAuth";
-import { SButton, SColumn, SRow, SText, SSizedBox } from "../GlobalComponents";
+import { SColumn, SRow, SSizedBox } from "../GlobalComponents";
 import { Text, TextButton, TitleText } from "../TransComponants";
 import { SignInModalBox } from "./SignInModalBox";
 import { SignUpModalBox } from "./SignUpModalBox";

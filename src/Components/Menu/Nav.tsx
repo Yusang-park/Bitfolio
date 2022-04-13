@@ -8,7 +8,7 @@ import { UserContext } from "../../Provider/UserProvider";
 import { LoginBtn } from "../User/LoginBtn";
 import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
-import { Text, TitleText } from "../TransComponants";
+import { TitleText } from "../TransComponants";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 

@@ -7,6 +7,20 @@ import { DetailsMarket } from "./DetailsMarket";
 
 const menu = ["Information", "Exchanges", "Community"];
 
+const ArticleContainer = ({
+  selectedMenuIndex,
+}: {
+  selectedMenuIndex: string;
+}) => {
+  return selectedMenuIndex === "0" ? (
+    <DetailsInfo />
+  ) : selectedMenuIndex === "1" ? (
+    <DetailsMarket />
+  ) : (
+    <DetailsCommunity />
+  );
+};
+
 export const DetailArticle = () => {
   const [selectedMenuIndex, setMenuIndex] = useState<number>(0);
   function changeMenu(e: any) {
@@ -16,22 +30,8 @@ export const DetailArticle = () => {
   return (
     <>
       <TabBar onChange={changeMenu} selectedMenuIndex={selectedMenuIndex} />
-      <ArticleContainer selectedMenuIndex={selectedMenuIndex} />
+      <ArticleContainer selectedMenuIndex={selectedMenuIndex.toString()} />
     </>
-  );
-};
-
-const ArticleContainer = ({
-  selectedMenuIndex,
-}: {
-  selectedMenuIndex: number;
-}) => {
-  return selectedMenuIndex == 0 ? (
-    <DetailsInfo />
-  ) : selectedMenuIndex == 1 ? (
-    <DetailsMarket />
-  ) : (
-    <DetailsCommunity />
   );
 };
 
