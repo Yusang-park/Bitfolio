@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
 import styled, { css } from "styled-components";
 import {
   SDivider,
@@ -19,6 +19,8 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../Provider/UserProvider";
 import { simpleSlideIn } from "../Styles/Animation";
 import { GrayText, Text, TextBlue } from "../Components/TransComponants";
+
+const Icon = lazy(() => import("../Components/Icon"));
 
 const maxPage = 179;
 
@@ -174,7 +176,9 @@ const BasicInfoSectionContainer = React.memo(
                 />
               </NumberingContainer>
               <SExpanded flex="2">
-                <Icon src={e.imageUrl} alt={e.id} />
+                <Suspense fallback={<div></div>}>
+                  <Icon src={e.imageUrl} name={e.id} />
+                </Suspense>
                 <SColumn>
                   {e.fullName}
                   <br></br>
@@ -304,17 +308,6 @@ const DetailInfoWrapper = styled.div`
   animation-timing-function: ease-out;
   animation-name: ${simpleSlideIn};
   animation-fill-mode: forwards;
-`;
-
-const Icon = styled.img`
-  width: 42px;
-  height: 42px;
-  margin-right: 16px;
-  border-radius: 50px;
-  ${({ theme }) => theme.device.tablet} {
-    width: 28px;
-    height: 28px;
-  }
 `;
 
 const Row = styled(SRow)`
