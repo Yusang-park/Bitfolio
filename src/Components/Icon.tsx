@@ -18,15 +18,14 @@ const Icon = ({
 }) => {
   return (
     <span>
-      {" "}
-      <Image src={src} alt={name} />
+      <Image src={src} />
     </span>
   );
 };
 
 export default Icon;
 
-const Image = styled.img`
+const Image = styled.img.attrs({ alt: "Logo" })`
   width: 42px;
   height: 42px;
   margin-right: 16px;
