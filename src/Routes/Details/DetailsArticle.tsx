@@ -27,6 +27,7 @@ export const DetailArticle = () => {
     console.log(e.target.id);
     setMenuIndex(e.target.id);
   }
+
   return (
     <>
       <TabBar onChange={changeMenu} selectedMenuIndex={selectedMenuIndex} />

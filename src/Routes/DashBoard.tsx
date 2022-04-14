@@ -1,26 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import { SRow } from "../Components/GlobalComponents";
-import { FavoriteContainer } from "./DashBoard/Favorites";
+import { Favorite } from "./DashBoard/Favorites";
+import { HotCrypto } from "./DashBoard/HotCrypto";
 
 console.log("preload this file");
 
 const DashBoard = () => {
   return (
     <Wrapper>
-      <LeftContent>
-        <FavoriteContainer />
-      </LeftContent>
-      {/* <HotCrypto /> */}
-      {/* <RightContent>Portfolio</RightContent> */}
+      <Container>
+        <LeftContent>
+          <Favorite />
+          <HotCrypto />
+        </LeftContent>
+        {/* <RightContent>Portfolio</RightContent> */}
+      </Container>
     </Wrapper>
   );
 };
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
 
-const Wrapper = styled(SRow)`
+const Container = styled(SRow)`
   justify-content: left;
   align-items: flex-start;
-  width: 100%;
+  height: 100%;
   ${({ theme }) => theme.device.tablet} {
     flex-direction: column;
   }

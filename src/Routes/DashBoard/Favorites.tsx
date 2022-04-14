@@ -13,7 +13,7 @@ import { BoldText, TitleText } from "../../Components/TransComponants";
 import { UserContext } from "../../Provider/UserProvider";
 import { getCryptoPricesList } from "../../Service/Apis";
 
-export const FavoriteContainer = () => {
+export const Favorite = () => {
   const history = useHistory();
   const [prices, setPrices] = useState<{ [key: string]: any }>({});
   const {
@@ -74,13 +74,16 @@ export const FavoriteContainer = () => {
     </Wrapper>
   );
 };
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  height: 44vh;
+`;
 
 const CryptoName = styled(SSubTitleText)``;
 
 const Container = styled.div`
-  position: relative;
+  position: sticky;
   width: 100%;
+  height: 100%;
 `;
 
 const ScrollRow = styled.div`

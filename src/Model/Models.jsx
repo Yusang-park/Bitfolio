@@ -1,4 +1,4 @@
-class CryptoSimpleData {
+export class CryptoSimpleData {
   id;
   symbol;
   fullName;
@@ -24,16 +24,18 @@ export class CryptoSummaryData extends CryptoSimpleData {
 
   constructor(data) {
     super(data);
-    this.imageUrl = data.image;
-    this.current_price = data.price;
-    this.marketCap = data.market_cap;
+    this.imageUrl = data.image ?? data.small;
+    this.current_price = data.price ?? data.price_btc;
+    this.marketCap = data.market_cap ?? "";
 
-    this.volume = data.total_volume;
-    this.price = data.current_price;
-    this.pricePercent24h = data.price_change_percentage_24h.toFixed(2) + "%";
-    this.currentSupply = data.circulating_supply;
-    this.totalSupply = data.total_supply;
-    this.maxSupply = data.max_supply;
+    this.volume = data.total_volume ?? "";
+    this.price = data.current_price ?? data.price_btc;
+    this.pricePercent24h = data.hasOwnProperty("price_change_percentage_24h")
+      ? data.price_change_percentage_24h.toFixed(2) + "%"
+      : "";
+    this.currentSupply = data.circulating_supply ?? "";
+    this.totalSupply = data.total_supply ?? "";
+    this.maxSupply = data.max_supply ?? "";
   }
 }
 

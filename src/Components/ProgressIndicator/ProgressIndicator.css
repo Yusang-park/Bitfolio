@@ -19,9 +19,9 @@ HTML CSS JSResult Skip Results Iframe EDIT ON #link {
 }
 
 /** BEGIN CSS **/
-body {
+/* body {
   background: #333333;
-}
+} */
 @keyframes rotate-loading {
   0% {
     transform: rotate(0deg);

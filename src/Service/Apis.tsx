@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CryptoSummaryData, CryptoDetailData } from "./Models";
+import { CryptoSummaryData, CryptoDetailData } from "../Model/Models";
 
 const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
@@ -82,6 +82,23 @@ export async function getFearAndGreedIndex() {
     const response = await axios.get<any>(`${fearAndGreedIndexProviderURL}1`);
 
     return parseInt(response.data["data"][0]["value"]);
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function getTopSearchedCrypto() {
+  try {
+    const response = await axios.get<any>(
+      `${cryptoProviderURL}/search/trending`
+    );
+    let res: Array<any> = [];
+
+    response.data["coins"].forEach((e: any) => {
+      res.push(new CryptoSummaryData(e["item"]));
+    });
+
+    return res;
   } catch (e) {
     return null;
   }
