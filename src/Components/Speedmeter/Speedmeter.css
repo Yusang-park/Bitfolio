@@ -65,7 +65,7 @@
   transform-origin: 100% 4px;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.38);
   z-index: 9;
-  animation: fourspeed3 2s 1 both;
+  animation: fourspeed 2s 1 both;
   /* 0 ~ 164 */
   animation-delay: 1s;
   display: block;
@@ -96,38 +96,11 @@
   background-color: #e67e22;
 }
 
-@keyframes fourspeed1 {
+@keyframes fourspeed {
   0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(16deg);
-  }
-}
-
-@keyframes fourspeed2 {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(65deg);
-  }
-}
-
-@keyframes fourspeed3 {
-  0% {
-    transform: rotate(0);
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(var(--deg));
-  }
-}
-
-@keyframes fourspeed4 {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(164deg);
   }
 }

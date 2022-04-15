@@ -59,7 +59,7 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
     if (value === "") {
       setRecommendedKeyword(temp);
     } else if (cryptoListObject != null) {
-      temp = temp.concat(searchObject(cryptoListObject, value));
+      temp = temp.concat(searchObject(cryptoListObject, value.toLowerCase()));
       setRecommendedKeyword(temp);
     }
     setSelectedIndex(0);
@@ -89,6 +89,7 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
 
   function onClickPopUp() {
     setPopUp(!isPopUp);
+    reset();
   }
 
   function handleKeyPress(e: any) {
@@ -120,19 +121,29 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
     }
   }
 
-  const Recommend = () => (
-    <RecommendContainer>
-      {recommandedKeyword.map((e, i) => (
-        <ElementRow
-          key={i}
-          selected={selectedIndex === i}
-          onClick={() => onSubmit(e.id)}
-        >
-          {e.name} ({e.symbol.toUpperCase()})
-        </ElementRow>
-      ))}
-    </RecommendContainer>
-  );
+  const Recommend = () => {
+    function onClickHandler(e: any) {
+      let toRemoveFromID = "";
+      if (e.name.includes("(")) {
+        toRemoveFromID = e.name.split("(")[1].split(")")[0].toLowerCase();
+      }
+      console.log(toRemoveFromID);
+      onSubmit(e.id.split(toRemoveFromID)[0].slice(0, -1));
+    }
+    return (
+      <RecommendContainer>
+        {recommandedKeyword.map((e, i) => (
+          <ElementRow
+            key={i}
+            selected={selectedIndex === i}
+            onClick={() => onClickHandler(e)}
+          >
+            {e.name} ({e.symbol.toUpperCase()})
+          </ElementRow>
+        ))}
+      </RecommendContainer>
+    );
+  };
 
   return (
     <Wrapper>
@@ -163,7 +174,6 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
               />
               <Button onClick={onClickPopUp}>EXIT</Button>
             </PopUpInputContainer>
-
             <Recommend />
           </PopUpWrapper>
         </PopUpDimmer>

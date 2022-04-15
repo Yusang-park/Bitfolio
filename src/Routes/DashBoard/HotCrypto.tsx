@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import {
   SSizedBox,
-  SStyledBox,
+  SAnimatedDiv,
   InnerBox,
   SGrayText,
   SSubTitleText,
@@ -105,9 +105,8 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const ArticleContainer = styled(SStyledBox)`
+const ArticleContainer = styled(SAnimatedDiv)`
   flex: 1;
-  /* justify-content: center; */
 `;
 
 const GridContainer = styled.div`
@@ -117,7 +116,7 @@ const GridContainer = styled.div`
   grid-gap: 24px;
 
   ${({ theme }) => theme.device.tablet} {
-    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
   }
 `;
 

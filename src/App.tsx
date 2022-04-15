@@ -11,6 +11,7 @@ import { UserProvider } from "./Provider/UserProvider";
 import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 
 import { SColumn } from "./Components/GlobalComponents";
+import { ProgressIndicator } from "./Components/ProgressIndicator/ProgressIndicator";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
@@ -32,7 +33,13 @@ const App = () => {
               <Sidebar />
               <Wrapper>
                 <Nav />
-                <Suspense fallback={<div></div>}>
+                <Suspense
+                  fallback={
+                    <SColumn>
+                      <ProgressIndicator />
+                    </SColumn>
+                  }
+                >
                   <Content>
                     <Switch>
                       <Route exact path="/dashboard">

@@ -86,8 +86,8 @@ const Container = styled.div`
 `;
 const WhiteButton = styled(SButton)`
   width: 100%;
-  background: linear-gradient(#f4f4f4 0%, #e8e8e8 100%);
+  background: linear-gradient(#eae8e8 0%, #e9e9e9 100%);
   &:hover {
-    background: linear-gradient(#e4e4e4 0%, #f1f1f1 100%);
+    background: linear-gradient(#bebebe 0%, #d1d1d1 100%);
   }
 `;
