@@ -4,9 +4,9 @@ import styled from "styled-components";
 import {
   SSizedBox,
   SAnimatedDiv,
-  InnerBox,
   SGrayText,
   SSubTitleText,
+  SStyledBox,
 } from "../../Components/GlobalComponents";
 import { IconSize } from "../../Components/Icon";
 import { ProgressIndicator } from "../../Components/ProgressIndicator/ProgressIndicator";
@@ -75,7 +75,7 @@ const TextBox = styled.div`
   align-items: center;
 `;
 
-const ContentContainer = styled(InnerBox)`
+const ContentContainer = styled(SStyledBox)`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -114,6 +114,10 @@ const GridContainer = styled.div`
 
   grid-template-columns: repeat(auto-fill, minmax(16%, 1fr));
   grid-gap: 24px;
+
+  ${({ theme }) => theme.device.desktopL} {
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  }
 
   ${({ theme }) => theme.device.tablet} {
     grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
