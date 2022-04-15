@@ -36,7 +36,12 @@ export const HotCrypto = () => {
 
   return (
     <Wrapper>
-      <TitleText>Hot Crypto🔥</TitleText>
+      <TitleText>
+        Hot Crypto
+        <span role="img" aria-label="fire">
+          🔥
+        </span>
+      </TitleText>
       <SSizedBox height="16px" />
       <ArticleContainer>
         {data.length === 0 ? (
