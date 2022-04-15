@@ -32,7 +32,9 @@ const Image = styled.img.attrs({ alt: "Logo" })`
 
   border-radius: 50px;
   ${({ theme }) => theme.device.tablet} {
-    width: 28px;
-    height: 28px;
+    width: ${({ iconSize }: { iconSize: IconSize }) =>
+      iconSize === IconSize.Small ? css`28px` : css`36px`};
+    height: ${({ iconSize }: { iconSize: IconSize }) =>
+      iconSize === IconSize.Small ? css`28px` : css`36px`};
   }
 `;

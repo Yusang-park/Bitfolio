@@ -4,9 +4,9 @@ import styled from "styled-components";
 import {
   SSizedBox,
   SStyledBox,
-  SText,
   InnerBox,
   SGrayText,
+  SSubTitleText,
 } from "../../Components/GlobalComponents";
 import { IconSize } from "../../Components/Icon";
 import { ProgressIndicator } from "../../Components/ProgressIndicator/ProgressIndicator";
@@ -53,7 +53,7 @@ export const HotCrypto = () => {
                 <Icon
                   src={e.imageUrl}
                   name={e.fullName}
-                  size={IconSize.Small}
+                  size={IconSize.Large}
                 />
 
                 <TextBox>
@@ -77,10 +77,11 @@ const TextBox = styled.div`
 
 const ContentContainer = styled(InnerBox)`
   display: flex;
-
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 130px;
+  min-height: 70px;
+
   margin: 0px;
   padding: 8px 8px;
   transition: background-color 300ms ease-out 100ms;
@@ -91,6 +92,10 @@ const ContentContainer = styled(InnerBox)`
   }
   &:hover ${SGrayText} {
     color: white;
+  }
+  ${({ theme }) => theme.device.desktopL} {
+    flex-direction: column;
+    height: 130px;
   }
 `;
 
@@ -110,8 +115,12 @@ const GridContainer = styled.div`
 
   grid-template-columns: repeat(auto-fill, minmax(16%, 1fr));
   grid-gap: 24px;
+
+  ${({ theme }) => theme.device.tablet} {
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  }
 `;
 
-const NameText = styled(SText)`
+const NameText = styled(SSubTitleText)`
   text-align: center;
 `;

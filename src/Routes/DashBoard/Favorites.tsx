@@ -75,12 +75,8 @@ export const Favorite = () => {
   );
 };
 const Wrapper = styled.div`
-  height: auto;
+  height: 40%;
   min-height: 272px;
-
-  ${({ theme }) => theme.device.tablet} {
-    height: 400px;
-  }
 `;
 
 const CryptoName = styled(SSubTitleText)``;
