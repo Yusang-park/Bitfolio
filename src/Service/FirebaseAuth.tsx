@@ -18,7 +18,7 @@ export async function registerWithEamil(
   try {
     await createUserWithEmailAndPassword(authService, email, password).then(
       (e) => {
-        alert("Complete create an account! Login now!");
+        alert("Complete create an account! Welcome!");
         if (authService.currentUser !== null)
           updateProfile(authService.currentUser, { displayName: nickname });
       }
