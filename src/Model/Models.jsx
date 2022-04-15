@@ -24,7 +24,7 @@ export class CryptoSummaryData extends CryptoSimpleData {
 
   constructor(data) {
     super(data);
-    this.imageUrl = data.image ?? data.small;
+    this.imageUrl = data.image ?? data.large;
     this.current_price = data.price ?? data.price_btc;
     this.marketCap = data.market_cap ?? "";
 

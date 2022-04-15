@@ -63,8 +63,6 @@ export async function updateFavorites(
         { merge: true }
       );
     else updateDoc(ref, { [cryptoId]: deleteField() });
-  } else {
-    alert("로그인 후 이용 가능한 기능입니다.");
   }
 }
 

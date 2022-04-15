@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-enum IconSize {
+export enum IconSize {
   Small,
   Large,
-  Middle,
 }
 
 const Icon = ({
@@ -18,7 +17,7 @@ const Icon = ({
 }) => {
   return (
     <span>
-      <Image src={src} />
+      <Image src={src} iconSize={size} />
     </span>
   );
 };
@@ -26,9 +25,11 @@ const Icon = ({
 export default Icon;
 
 const Image = styled.img.attrs({ alt: "Logo" })`
-  width: 42px;
-  height: 42px;
-  margin-right: 16px;
+  width: ${({ iconSize }: { iconSize: IconSize }) =>
+    iconSize === IconSize.Small ? css`42px` : css`50px`};
+  height: ${({ iconSize }: { iconSize: IconSize }) =>
+    iconSize === IconSize.Small ? css`42px` : css`50px`};
+
   border-radius: 50px;
   ${({ theme }) => theme.device.tablet} {
     width: 28px;

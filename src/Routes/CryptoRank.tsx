@@ -180,6 +180,7 @@ const BasicInfoSectionContainer = React.memo(
               <SExpanded flex="2">
                 <Suspense fallback={<div></div>}>
                   <Icon src={e.imageUrl} name={e.id} />
+                  <SSizedBox width="16px" />
                 </Suspense>
                 <SColumn>
                   {e.fullName}

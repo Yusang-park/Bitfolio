@@ -98,6 +98,10 @@ export const SStyledBox = styled(SAnimatedDiv)`
   background: ${({ theme }) => theme.colors.boxBackground};
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   transition: background-color 300ms ease-out 100ms;
+
+  ${({ theme }) => theme.device.mobile} {
+    padding: 16px;
+  }
 `;
 
 export const SYellowTitleCircle = styled.div`
@@ -278,6 +282,22 @@ export const SInput = styled.input`
     outline: transparent;
     border: 3px solid ${({ theme }) => theme.colors.blue};
     box-shadow: 0 0 10px transparent;
+  }
+`;
+
+export const InnerBox = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  margin: 16px 0px;
+  padding: 16px;
+  border-radius: 21px;
+  border: 1px solid gray;
+  background: #2b2a37;
+  color: white;
+
+  ${({ theme }) => theme.device.mobile} {
+    margin: 12px 0px;
   }
 `;
 

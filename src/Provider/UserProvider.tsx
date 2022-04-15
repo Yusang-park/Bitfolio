@@ -84,7 +84,10 @@ function UserProvider(props: any, children: any) {
     fullName: string,
     imageUrl: string
   ) {
-    if (!state.isLoggedIn) return;
+    if (!state.isLoggedIn) {
+      alert("Login to add your favorites!");
+      return;
+    }
     let existed = !state.favorites[cryptoId] === true;
     updateFavorites(cryptoId, fullName, imageUrl, existed);
     if (existed) {

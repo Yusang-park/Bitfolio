@@ -22,7 +22,6 @@ const Wrapper = styled(SStyledBox)`
     margin-bottom: 32px;
   }
   ${({ theme }) => theme.device.mobile} {
-    padding: 16px;
     margin-bottom: 24px;
   }
 `;

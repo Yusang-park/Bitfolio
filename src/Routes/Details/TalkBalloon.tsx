@@ -6,6 +6,7 @@ import {
   SDivider,
   SRow,
   SSizedBox,
+  InnerBox,
 } from "../../Components/GlobalComponents";
 
 export const TalkBox = React.memo(
@@ -50,21 +51,7 @@ const RowCustom = styled(SRow)`
   flex-wrap: wrap;
 `;
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  margin: 16px 0px;
-  padding: 16px;
-  border-radius: 21px;
-  border: 1px solid gray;
-  background: #2b2a37;
-  color: white;
-
-  ${({ theme }) => theme.device.mobile} {
-    margin: 12px 0px;
-  }
-`;
+const Container = styled(InnerBox)``;
 
 const TimeText = styled.div`
   font-size: 1.4rem;
