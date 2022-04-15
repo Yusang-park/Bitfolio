@@ -46,7 +46,7 @@ const Sidebar = React.memo(
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
           <LogoRow onClick={onClickLogo}>
             <Logo src={logoImg} alt="Logo" />
-            <STitleText>CryptoFolio</STitleText>
+            <STitleText>Bitfolio</STitleText>
             <SSizedBox width="24px"></SSizedBox>
           </LogoRow>
 

@@ -27,7 +27,7 @@ export const LoginModalBox = () => {
           </SRow>
         ) : (
           <SRow justify_content="flex-start">
-            <Text>New to CryptoFolio?</Text>
+            <Text>New to Bitfolio?</Text>
             <SSizedBox width="8px" />
             <TextButton onClick={onClickChangeMode}>
               Create an account
