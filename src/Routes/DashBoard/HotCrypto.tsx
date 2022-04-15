@@ -1,19 +1,16 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import {
-  SRow,
   SSizedBox,
   SStyledBox,
   SText,
-  SExpanded,
   InnerBox,
-  SColumn,
   SGrayText,
 } from "../../Components/GlobalComponents";
 import { IconSize } from "../../Components/Icon";
 import { ProgressIndicator } from "../../Components/ProgressIndicator/ProgressIndicator";
-import { GrayText, TitleText } from "../../Components/TransComponants";
+import { TitleText } from "../../Components/TransComponants";
 import { CryptoSummaryData } from "../../Model/Models";
 import { getTopSearchedCrypto } from "../../Service/Apis";
 
