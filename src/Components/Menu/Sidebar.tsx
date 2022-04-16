@@ -52,20 +52,22 @@ const Sidebar = React.memo(
 
           <SDivider vertical="0px" horizontal="5%" />
           <SSizedBox height="16px" />
-          {categories.map(
-            (e, i) =>
-              e.isNotMenu !== false && (
-                <div key={i} onClick={setClose}>
-                  <CategoryRow
-                    to={e.path}
-                    key={e.name}
-                    selected={e.path.toLowerCase() === pathName.toLowerCase()}
-                  >
-                    {`${t(e.name)}`}
-                  </CategoryRow>
-                </div>
-              )
-          )}
+          <ul>
+            {categories.map(
+              (e, i) =>
+                e.isNotMenu !== false && (
+                  <li key={i} onClick={setClose}>
+                    <CategoryRow
+                      to={e.path}
+                      key={e.name}
+                      selected={e.path.toLowerCase() === pathName.toLowerCase()}
+                    >
+                      {`${t(e.name)}`}
+                    </CategoryRow>
+                  </li>
+                )
+            )}
+          </ul>
           <ChangeLanguageContainer>
             <STextButton onClick={changeLanguage}>
               {i18n.language === "ko" ? "Change to en" : "한국어로"}

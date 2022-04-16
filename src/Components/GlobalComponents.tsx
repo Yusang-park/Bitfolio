@@ -23,17 +23,20 @@ export interface Props {
 }
 
 // ====================================================================================
-export const STitleText = styled.p`
+export const STitleText = styled.h1`
   font-size: 2.5rem;
+  cursor: default;
 `;
 
-export const SBoldTitleText = styled.p`
+export const SBoldTitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: bold;
+  cursor: default;
 `;
 
-export const SSubTitleText = styled.p`
+export const SSubTitleText = styled.h2`
   font-size: 1.8rem;
+  cursor: default;
 `;
 
 export const SGrayText = styled.p`
@@ -104,7 +107,7 @@ export const SStyledBox = styled(SAnimatedDiv)`
   }
 `;
 
-export const SYellowTitleCircle = styled.div`
+export const SYellowTitleCircle = styled.span`
   width: fit-content;
   padding: 6px 16px;
   border-radius: 35px;
@@ -136,7 +139,7 @@ export const SBookmark = ({
   );
 };
 
-const SStyledBookmark = styled.div<Props>`
+const SStyledBookmark = styled.span<Props>`
   color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.blue : "white"};
   cursor: auto;
@@ -245,6 +248,7 @@ export const SIconButton = styled(SButton)`
   width: 38px;
   padding: 0px 0px;
   border-radius: 12px;
+  cursor: pointer;
 `;
 
 export const SPressButton = styled(SButton)`
@@ -254,11 +258,12 @@ export const SPressButton = styled(SButton)`
   margin: 0px 2px;
   border-radius: 12px;
   border: 0;
+  color: white;
   background: ${(props) =>
     props.selected
       ? css`linear-gradient(#4294f3 0%, #2c62a3 100%)`
       : css`transparent`};
-  color: white;
+  cursor: pointer;
   &:hover {
     background: ${(props) =>
       props.selected
