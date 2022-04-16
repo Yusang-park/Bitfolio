@@ -107,7 +107,7 @@ export const SStyledBox = styled(SAnimatedDiv)`
   }
 `;
 
-export const SYellowTitleCircle = styled.span`
+export const SYellowTitleCircle = styled.div`
   width: fit-content;
   padding: 6px 16px;
   border-radius: 35px;
