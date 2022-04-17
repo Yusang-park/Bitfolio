@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense, useEffect } from "react";
 import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -7,11 +7,15 @@ import Sidebar from "./Components/Menu/Sidebar";
 
 import { lightTheme } from "./Styles/Theme";
 import { ThemeProvider } from "styled-components";
-import { UserProvider } from "./Provider/UserProvider";
-import { GlobalDataProvider } from "./Provider/\bGlobalDataProvider";
 
 import { SColumn } from "./Components/GlobalComponents";
 import { ProgressIndicator } from "./Components/ProgressIndicator/ProgressIndicator";
+import { authService } from "./firebase_config";
+import { User } from "@firebase/auth";
+
+import { useDispatch } from "react-redux";
+import { fetchLogin, logout } from "./Reducer/UserReducer";
+import { fetchCryptoOBJ } from "./Reducer/CryptoDataReducer";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
@@ -22,55 +26,64 @@ const Details = lazy(() => import("./Routes/Details"));
 const Chat = lazy(() => import("./Routes/Chat/Chat"));
 
 const App = () => {
+  const dispatch = useDispatch();
   const [theme] = useState(lightTheme);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user: User | null) => {
+      if (user) {
+        dispatch(fetchLogin() as any);
+      } else {
+        dispatch(logout());
+      }
+    });
+
+    dispatch(fetchCryptoOBJ() as any);
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalDataProvider>
-        <UserProvider>
-          <Container>
-            <BrowserRouter>
-              <Sidebar />
-              <Wrapper>
-                <Nav />
-                <Suspense
-                  fallback={
-                    <SColumn>
-                      <ProgressIndicator />
-                    </SColumn>
-                  }
-                >
-                  <Content>
-                    <Switch>
-                      <Route exact path="/dashboard">
-                        <DashBoard />
-                      </Route>
-                      <Route exact path="/">
-                        <CryptoRank />
-                      </Route>
-                      <Route exact path="/exchanges">
-                        <Exchanges />
-                      </Route>
-                      <Route exact path="/portfolio">
-                        <Portfolio />
-                      </Route>
-                      <Route exact path="/indexes">
-                        <Indexes />
-                      </Route>
-                      <Route exact path="/openchat">
-                        <Chat expand={true} />
-                      </Route>
-                      <Route exact path="/details/:id">
-                        <Details />
-                      </Route>
-                    </Switch>
-                  </Content>
-                </Suspense>
-              </Wrapper>
-            </BrowserRouter>
-          </Container>
-        </UserProvider>
-      </GlobalDataProvider>
+      <Container>
+        <BrowserRouter>
+          <Sidebar />
+          <Wrapper>
+            <Nav />
+            <Suspense
+              fallback={
+                <SColumn>
+                  <ProgressIndicator />
+                </SColumn>
+              }
+            >
+              <Content>
+                <Switch>
+                  <Route exact path="/dashboard">
+                    <DashBoard />
+                  </Route>
+                  <Route exact path="/">
+                    <CryptoRank />
+                  </Route>
+                  <Route exact path="/exchanges">
+                    <Exchanges />
+                  </Route>
+                  <Route exact path="/portfolio">
+                    <Portfolio />
+                  </Route>
+                  <Route exact path="/indexes">
+                    <Indexes />
+                  </Route>
+                  <Route exact path="/openchat">
+                    <Chat expand={true} />
+                  </Route>
+                  <Route exact path="/details/:id">
+                    <Details />
+                  </Route>
+                </Switch>
+              </Content>
+            </Suspense>
+          </Wrapper>
+        </BrowserRouter>
+      </Container>
     </ThemeProvider>
   );
 };

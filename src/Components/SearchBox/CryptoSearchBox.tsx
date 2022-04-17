@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   SIconButton,
@@ -11,7 +11,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "../TransComponants";
-import { GlobalDataContext } from "../../Provider/\bGlobalDataProvider";
+import { useAppSelector } from "../../Reducer/RootReducer";
 
 function searchObject(trieTree: any, key: string): any {
   let res: string[] = [];
@@ -43,8 +43,9 @@ function findLastElement(trieTree: any, res: string[]) {
 }
 
 export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
-  const { cryptoListObject }: { cryptoListObject: any } =
-    useContext(GlobalDataContext);
+  const cryptoList = useAppSelector(
+    (state) => state.cryptoDataReducer.cryptoList
+  );
 
   const [inputText, setInputText] = useState("");
   const [recommandedKeyword, setRecommendedKeyword] = useState<Array<any>>([]);
@@ -58,8 +59,8 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
     let temp = recommandedKeyword.filter((e) => false);
     if (value === "") {
       setRecommendedKeyword(temp);
-    } else if (cryptoListObject != null) {
-      temp = temp.concat(searchObject(cryptoListObject, value.toLowerCase()));
+    } else if (cryptoList != null) {
+      temp = temp.concat(searchObject(cryptoList, value.toLowerCase()));
       setRecommendedKeyword(temp);
     }
     setSelectedIndex(0);

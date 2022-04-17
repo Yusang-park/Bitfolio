@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 
 import { useHistory } from "react-router";
@@ -10,17 +10,15 @@ import {
   SSizedBox,
 } from "../../Components/GlobalComponents";
 import { BoldText, TitleText } from "../../Components/TransComponants";
-import { UserContext } from "../../Provider/UserProvider";
+import { useAppSelector } from "../../Reducer/RootReducer";
+
 import { getCryptoPricesList } from "../../Service/Apis";
 
 export const Favorite = () => {
   const history = useHistory();
   const [prices, setPrices] = useState<{ [key: string]: any }>({});
-  const {
-    favorites,
-    isLoggedIn,
-  }: { favorites: { [key: string]: any }; isLoggedIn: boolean } =
-    useContext(UserContext);
+  const isLoggedIn = useAppSelector((state) => state.userReducer.isLoggedIn);
+  const favorites = useAppSelector((state) => state.userReducer.favorites);
 
   useEffect(() => {
     if (Object.keys(favorites).length !== 0) {

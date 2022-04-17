@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import styled, { css } from "styled-components";
 import {
   SDivider,
@@ -16,9 +16,11 @@ import { getCryptoSummaryDataList, sortCryptoRank } from "../Service/Apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../Provider/UserProvider";
 import { simpleSlideIn } from "../Styles/Animation";
 import { GrayText, Text, TextBlue } from "../Components/TransComponants";
+import { useAppSelector } from "../Reducer/RootReducer";
+import { fetchFavoriteCrypto } from "../Reducer/UserReducer";
+import { useDispatch } from "react-redux";
 
 const Icon = lazy(() => import("../Components/Icon"));
 
@@ -136,10 +138,8 @@ const BasicInfoSectionContainer = React.memo(
     hoverIndex: number;
     setHoverIndex: any;
   }) => {
-    const {
-      favorites,
-      setFavoriteCrypto,
-    }: { favorites: any; setFavoriteCrypto: any } = useContext(UserContext);
+    const favorites = useAppSelector((state) => state.userReducer.favorites);
+    const dispatch = useDispatch();
     return (
       <BasicInfoWrapper>
         <CategoryTitleContainer>
@@ -172,7 +172,9 @@ const BasicInfoSectionContainer = React.memo(
                 <SBookmark
                   isSelected={favorites[e.id]}
                   onClick={() =>
-                    setFavoriteCrypto(e.id, e.fullName, e.imageUrl)
+                    dispatch(
+                      fetchFavoriteCrypto(e.id, e.fullName, e.imageUrl) as any
+                    )
                   }
                   size="1x"
                 />

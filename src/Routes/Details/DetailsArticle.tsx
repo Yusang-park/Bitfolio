@@ -24,7 +24,6 @@ const ArticleContainer = ({
 export const DetailArticle = () => {
   const [selectedMenuIndex, setMenuIndex] = useState<number>(0);
   function changeMenu(e: any) {
-    console.log(e.target.id);
     setMenuIndex(e.target.id);
   }
 

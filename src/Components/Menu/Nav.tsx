@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 import { SSizedBox } from "../GlobalComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CryptoSearchBox } from "../SearchBox/CryptoSearchBox";
-import { UserContext } from "../../Provider/UserProvider";
+
 import { LoginBtn } from "../User/LoginBtn";
 import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
@@ -12,8 +12,12 @@ import { TitleText } from "../TransComponants";
 import { useLocation } from "react-router-dom";
 import { categories } from "../../Routes/Categories";
 
+import { useAppSelector } from "../../Reducer/RootReducer";
+
 export const Nav = React.memo(() => {
-  const { isLoggedIn, initialize } = useContext(UserContext);
+  const isLoggedIn = useAppSelector((state) => state.userReducer.isLoggedIn);
+  const initialize = useAppSelector((state) => state.userReducer.initialize);
+
   const [openedSideBar, setOpenedSideBar] = useState(false);
   const pathName = useLocation().pathname;
 

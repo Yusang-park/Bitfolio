@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import styled, { css } from "styled-components";
 
-import { UserContext } from "../../Provider/UserProvider";
 import { authService } from "../../firebase_config";
 import { getChatMessages } from "../../Service/FirebaseFunctions";
 import { TalkBox } from "../Details/TalkBalloon";
@@ -17,6 +16,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { ChatInput } from "./ChatInput";
 import { TitleText } from "../../Components/TransComponants";
+import { useAppSelector } from "../../Reducer/RootReducer";
 
 const categories = [
   "Free",
@@ -40,7 +40,10 @@ const Chat = React.memo(
     const [id, setId] = useState(cryptoId);
     const [chatData, setChatData] = useState({});
     const { t, i18n } = useTranslation();
-    const { tempNickname } = useContext(UserContext);
+
+    const tempNickname = useAppSelector(
+      (state) => state.userReducer.tempNickname
+    );
 
     useEffect(() => {
       getChatMessages(id, (value: object) => {

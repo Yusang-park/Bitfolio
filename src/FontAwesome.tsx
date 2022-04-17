@@ -13,6 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSearch);
+
+library.add(faSearch);
 library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faChevronDown);

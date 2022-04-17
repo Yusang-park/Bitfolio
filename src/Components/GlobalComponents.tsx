@@ -129,7 +129,7 @@ export const SBookmark = ({
     <SStyledBookmark isSelected={isSelected}>
       <FontAwesomeIcon
         icon={"bookmark"}
-        onClick={(m) => {
+        onClick={(m: any) => {
           m.stopPropagation();
           onClick();
         }}

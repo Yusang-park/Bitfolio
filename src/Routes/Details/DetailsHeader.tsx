@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "../../Provider/UserProvider";
 import { CryptoDataContext } from "../Details";
 import {
   SExpanded,
@@ -12,13 +11,14 @@ import {
   SBookmark,
 } from "../../Components/GlobalComponents";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../../Reducer/RootReducer";
+import { fetchFavoriteCrypto } from "../../Reducer/UserReducer";
+import { useDispatch } from "react-redux";
 
 export const DetailsHeader = React.memo(() => {
-  const {
-    setFavoriteCrypto,
-    favorites,
-  }: { setFavoriteCrypto: Function; favorites: { [key: string]: any } } =
-    useContext(UserContext);
+  const dispatch = useDispatch();
+  const favorites = useAppSelector((state) => state.userReducer.favorites);
+
   const { data }: { data: any } = useContext(CryptoDataContext);
   const { i18n } = useTranslation();
 
@@ -44,7 +44,13 @@ export const DetailsHeader = React.memo(() => {
       <SBookmark
         isSelected={favorites[data.id]}
         onClick={() =>
-          setFavoriteCrypto(data.id, data.fullName["en"], data.imageUrl)
+          dispatch(
+            fetchFavoriteCrypto(
+              data.id,
+              data.fullName["en"],
+              data.imageUrl
+            ) as any
+          )
         }
         size="2x"
       />

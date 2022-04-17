@@ -1,12 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SRow } from "../../Components/GlobalComponents";
 import { authService } from "../../firebase_config";
+import { useAppSelector } from "../../Reducer/RootReducer";
 
-import { UserContext } from "../../Provider/UserProvider";
 import { sendChatMessage } from "../../Service/FirebaseFunctions";
 export const ChatInput = ({ id }: { id: string }) => {
-  const { tempNickname } = useContext(UserContext);
+  const tempNickname = useAppSelector(
+    (state) => state.userReducer.tempNickname
+  );
 
   const [inputText, setInputText] = useState("");
 
