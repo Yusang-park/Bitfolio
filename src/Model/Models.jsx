@@ -28,7 +28,7 @@ export class CryptoSimpleModel {
     this.id = data.id;
     this.symbol = data.symbol.toUpperCase();
     this.fullName = data.localization ?? data.name; //Object
-    this.marketCapRank = data.market_cap_rank;
+    this.marketCapRank = data.market_cap_rank ?? "";
   }
 }
 
@@ -99,72 +99,79 @@ export class CryptoDetailModel extends CryptoSimpleModel {
   maxSupply;
   tradingViewCoinId;
   exchanges = [];
+  description;
   constructor(data) {
     super(data);
-    this.price = data.market_data.current_price.usd;
-    this.volume = data.market_data.total_volume.usd;
-    this.marketCap = data.market_data.market_cap.usd;
-    this.priceHigh24h = data.market_data.high_24h.usd;
-    this.priceLow24h = data.market_data.low_24h.usd;
-    this.priceChange24h = data.market_data.price_change_24h;
+    this.price = data.market_data.current_price.usd ?? "";
+    this.volume = data.market_data.total_volume.usd ?? "";
+    this.marketCap = data.market_data.market_cap.usd ?? "";
+    this.priceHigh24h = data.market_data.high_24h.usd ?? "";
+    this.priceLow24h = data.market_data.low_24h.usd ?? "";
+    this.priceChange24h = data.market_data.price_change_24h ?? "";
     this.pricePercent24h =
-      data.market_data.price_change_percentage_24h.toFixed(2) + "%";
-    this.priceChangePercentage1y = data.market_data.price_change_percentage;
+      typeof data.market_data.price_change_percentage_24h === "number"
+        ? data.market_data.price_change_percentage_24h.toFixed(2) + "%"
+        : "";
+    this.priceChangePercentage1y =
+      data.market_data.price_change_percentage ?? "";
 
-    this.currentSupply = Math.floor(data.market_data.circulating_supply);
+    this.currentSupply = Math.floor(data.market_data.circulating_supply) ?? "";
 
     this.maxSupply = data.market_data.max_supply
       ? Math.floor(data.market_data.max_supply)
       : "";
 
-    this.imageUrl = data.image.small;
-    this.imageUrl = data.image.large;
-    this.genesisDate = data.genesis_date;
-    this.homepage = data.links.homepage;
-    this.blockchain_site = data.links.blockchain_site;
-    this.official_forrum_url = data.links.official_forrum_url;
-    this.chat_url = data.links.chat_url;
-    this.announcement_url = data.links.announcement_url;
-    this.twitter_screen_name = data.links.twitter_screen_name;
-    this.facebook_username = data.links.facebook_username;
+    this.imageUrl = data.image.small ?? "";
+    this.imageUrl = data.image.large ?? "";
+    this.genesisDate = data.genesis_date ?? "";
+    this.homepage = data.links.homepage ?? "";
+    this.blockchain_site = data.links.blockchain_site ?? "";
+    this.official_forrum_url = data.links.official_forrum_url ?? "";
+    this.chat_url = data.links.chat_url ?? "";
+    this.announcement_url = data.links.announcement_url ?? "";
+    this.twitter_screen_name = data.links.twitter_screen_name ?? "";
+    this.facebook_username = data.links.facebook_username ?? "";
     this.bitcointalk_thread_identifier =
-      data.links.bitcointalk_thread_identifier;
-    this.telegram_channel_identifier = data.links.telegram_channel_identifier;
-    this.subreddit_url = data.links.subreddit_url;
-    this.github_url = data.links.repos_url.github;
+      data.links.bitcointalk_thread_identifier ?? "";
+    this.telegram_channel_identifier =
+      data.links.telegram_channel_identifier ?? "";
+    this.subreddit_url = data.links.subreddit_url ?? "";
+    this.github_url = data.links.repos_url.github ?? "";
+    this.description = data.description;
 
     // ================================================================================================================
-
-    data.tickers.forEach((e) => {
-      this.exchanges.push({
-        name: e.market.name,
-        trade_url: e.trade_url,
-        target: e.target,
-        price: e.converted_last.usd,
+    try {
+      data.tickers.forEach((e) => {
+        this.exchanges.push({
+          name: e.market.name,
+          trade_url: e.trade_url,
+          target: e.target,
+          price: e.converted_last.usd,
+        });
       });
-    });
-
+    } catch (e) {}
     // ================================================================================================================
     let i = 0;
-
-    const exceptedCurrncyUnit = ["GBP", "JPY", "EUR", "BTC"];
-    while (true) {
-      if (
-        !supportingExchangesByTradingView.includes(
-          data.tickers[i].market.name.toLowerCase()
-        ) ||
-        exceptedCurrncyUnit.includes(data.tickers[i].target)
-      ) {
-        i++;
-        if (data.tickers.length === i) {
-          this.tradingViewCoinId = null;
+    try {
+      const exceptedCurrncyUnit = ["GBP", "JPY", "EUR", "BTC"];
+      while (true) {
+        if (
+          !supportingExchangesByTradingView.includes(
+            data.tickers[i].market.name.toLowerCase()
+          ) ||
+          exceptedCurrncyUnit.includes(data.tickers[i].target)
+        ) {
+          i++;
+          if (data.tickers.length === i) {
+            this.tradingViewCoinId = null;
+            break;
+          }
+        } else {
+          this.tradingViewCoinId = `${data.tickers[i].market.name}:${data.tickers[i].base}${data.tickers[i].target}`;
           break;
         }
-      } else {
-        this.tradingViewCoinId = `${data.tickers[i].market.name}:${data.tickers[i].base}${data.tickers[i].target}`;
-        break;
       }
-    }
+    } catch (e) {}
   }
 }
 

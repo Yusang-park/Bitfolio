@@ -284,10 +284,11 @@ export const SInput = styled.input`
   color: white;
   box-sizing: border-box;
   resize: none;
+  transition: all 0.1s;
   &:focus {
     outline: transparent;
-    border: 3px solid ${({ theme }) => theme.colors.blue};
-    box-shadow: 0 0 10px transparent;
+    border: 1px solid ${({ theme }) => theme.colors.blue};
+    box-shadow: 0 0 3px ${({ theme }) => theme.colors.blue};
   }
 `;
 

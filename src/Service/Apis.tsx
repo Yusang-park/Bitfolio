@@ -59,9 +59,11 @@ export async function getCryptoObject() {
 export async function getCryptoDetails(id: string) {
   try {
     const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
-
+    console.log(response.data);
+    console.log(new CryptoDetailModel(response.data));
     return new CryptoDetailModel(response.data);
   } catch (e) {
+    console.log(e);
     return null;
   }
 }

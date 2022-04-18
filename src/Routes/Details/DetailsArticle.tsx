@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { TabBar } from "../../Components/Menu/TabBar";
 
 import { DetailsCommunity } from "./DetailsCommunity";
+import { DetailsDescription } from "./DetailsDescription";
 import { DetailsInfo } from "./DetailsInfo";
 import { DetailsMarket } from "./DetailsMarket";
 
-const menu = ["Information", "Exchanges", "Community"];
+const menu = ["Information", "Exchanges", "Community", "Description"];
 
 const ArticleContainer = ({
   selectedMenuIndex,
@@ -16,8 +17,10 @@ const ArticleContainer = ({
     <DetailsInfo />
   ) : selectedMenuIndex === "1" ? (
     <DetailsMarket />
-  ) : (
+  ) : selectedMenuIndex === "2" ? (
     <DetailsCommunity />
+  ) : (
+    <DetailsDescription />
   );
 };
 

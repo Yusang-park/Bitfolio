@@ -74,6 +74,7 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
   }
 
   function onSubmit(id: string) {
+    console.log(id);
     reset();
     if (onSelected) {
       onSelected();
@@ -101,12 +102,14 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
           .split("(")[1]
           .split(")")[0]
           .toLowerCase();
+        onSubmit(
+          recommandedKeyword[selectedIndex].id
+            .split(toRemoveFromID)[0]
+            .slice(0, -1)
+        );
+      } else {
+        onSubmit(recommandedKeyword[selectedIndex].id);
       }
-      onSubmit(
-        recommandedKeyword[selectedIndex].id
-          .split(toRemoveFromID)[0]
-          .slice(0, -1)
-      );
     }
   }
 
@@ -124,12 +127,13 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
 
   const Recommend = () => {
     function onClickHandler(e: any) {
-      let toRemoveFromID = "";
+      let rubbishString = "";
       if (e.name.includes("(")) {
-        toRemoveFromID = e.name.split("(")[1].split(")")[0].toLowerCase();
+        rubbishString = e.name.split("(")[1].split(")")[0].toLowerCase();
+        onSubmit(e.id.split(rubbishString)[0].slice(0, -1));
+      } else {
+        onSubmit(e.id);
       }
-      console.log(toRemoveFromID);
-      onSubmit(e.id.split(toRemoveFromID)[0].slice(0, -1));
     }
     return (
       <RecommendContainer>
