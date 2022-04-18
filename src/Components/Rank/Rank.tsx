@@ -331,16 +331,16 @@ const DetailInfoSectionContainer = React.memo(
             >
               {additinalCategories.map((c, i) => (
                 <Element key={i} flex={c.flex}>
-                  {typeof e[c.valueType] === "number" &&
-                  `${e[c.valueType]}`.includes("%") ? (
+                  {typeof e[c.valueType] === "string" &&
+                  e[c.valueType].toString().includes("%") ? (
                     <SPercentText negative={e[c.valueType].includes("-")}>
                       {e[c.valueType]}
                     </SPercentText>
                   ) : (
                     <p>
-                      {typeof e[c.valueType] === "string"
-                        ? e[c.valueType]
-                        : e[c.valueType.toLocaleString()]}
+                      {typeof e[c.valueType] === "number"
+                        ? e[c.valueType].toLocaleString()
+                        : e[c.valueType]}
                     </p>
                   )}
                 </Element>

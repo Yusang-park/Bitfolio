@@ -10,7 +10,8 @@ export class ExchangesModel {
   constructor(data) {
     this.id = data.url;
     this.name = data.name;
-    this.establishedYear = data.year_established;
+    this.establishedYear =
+      data.year_established !== null ? data.year_established + "" : "";
     this.imageUrl = data.image;
     this.trustScore = data.trust_score;
     this.volumnBtc = data.trade_volume_24h_btc;
