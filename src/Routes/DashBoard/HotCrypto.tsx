@@ -11,16 +11,17 @@ import {
 import { IconSize } from "../../Components/Icon";
 import { ProgressIndicator } from "../../Components/ProgressIndicator/ProgressIndicator";
 import { TitleText } from "../../Components/TransComponants";
-import { CryptoSummaryData } from "../../Model/Models";
+import { CryptoSummaryModel } from "../../Model/Models";
 import { getTopSearchedCrypto } from "../../Service/Apis";
 
 const Icon = lazy(() => import("../../Components/Icon"));
 
 export const HotCrypto = () => {
   const history = useHistory();
-  const [data, setData] = useState<Array<CryptoSummaryData>>([]);
+  const [data, setData] = useState<Array<CryptoSummaryModel>>([]);
   useEffect(() => {
     getTopSearchedCrypto().then((e) => {
+      console.log(e);
       if (e !== null) setData(e);
     });
   }, []);

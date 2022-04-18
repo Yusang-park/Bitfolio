@@ -10,7 +10,7 @@ import {
   STitleText,
 } from "../GlobalComponents";
 import { Link, useLocation } from "react-router-dom";
-import { categories } from "../../Routes/Categories";
+import { sidebarCategories } from "../../Routes/RoutesCategories";
 import { useHistory } from "react-router-dom";
 import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
@@ -35,7 +35,7 @@ const Sidebar = React.memo(
       if (setClose !== undefined) setClose();
     }
 
-    function changeLanguage() {
+    function onClickLanguage() {
       i18n.changeLanguage(i18n.language === "ko" ? "en" : "ko");
       localStorage.setItem("language", i18n.language);
     }
@@ -44,32 +44,46 @@ const Sidebar = React.memo(
       <>
         <Dimmer isOpened={isOpened} onClick={(e) => setClose()}></Dimmer>
         <SidebarContainer forPopup={forPopup} isOpened={isOpened}>
-          <LogoRow onClick={onClickLogo}>
+          <LogoContainer onClick={onClickLogo}>
             <Logo src={logoImg} alt="Logo" />
             <STitleText>Bitfolio</STitleText>
             <SSizedBox width="24px"></SSizedBox>
-          </LogoRow>
+          </LogoContainer>
 
           <SDivider vertical="0px" horizontal="5%" />
           <SSizedBox height="16px" />
           <ul>
-            {categories.map(
+            {sidebarCategories.map(
               (e, i) =>
-                e.isNotMenu !== false && (
+                e.hide !== false && (
                   <li key={i} onClick={setClose}>
-                    <CategoryRow
-                      to={e.path}
-                      key={e.name}
-                      selected={e.path.toLowerCase() === pathName.toLowerCase()}
-                    >
-                      {`${t(e.name)}`}
-                    </CategoryRow>
+                    {e.hasOwnProperty("href") ? (
+                      <CategoryAtage
+                        href={e.href}
+                        key={e.name}
+                        selected={
+                          e.path.toLowerCase() === pathName.toLowerCase()
+                        }
+                      >
+                        {`${t(e.name)}▸`}
+                      </CategoryAtage>
+                    ) : (
+                      <CategoryLink
+                        to={e.path}
+                        key={e.name}
+                        selected={
+                          e.path.toLowerCase() === pathName.toLowerCase()
+                        }
+                      >
+                        {`${t(e.name)}`}
+                      </CategoryLink>
+                    )}
                   </li>
                 )
             )}
           </ul>
           <ChangeLanguageContainer>
-            <STextButton onClick={changeLanguage}>
+            <STextButton onClick={onClickLanguage}>
               {i18n.language === "ko" ? "Change to en" : "한국어로"}
             </STextButton>
           </ChangeLanguageContainer>
@@ -104,7 +118,7 @@ const Logo = styled.img`
   height: 96px;
 `;
 
-const LogoRow = styled(SRow)`
+const LogoContainer = styled(SRow)`
   height: 260px;
   cursor: pointer;
 
@@ -152,7 +166,7 @@ const SidebarContainer = styled.div<Props>`
   }
 `;
 
-const CategoryRow = styled(Link)`
+const CategoryStyle = styled.div`
   display: flex;
   font-size: 2rem;
   padding: 16px 32px;
@@ -168,3 +182,6 @@ const CategoryRow = styled(Link)`
     background-color: gray;
   }
 `;
+
+const CategoryLink = CategoryStyle.withComponent(Link);
+const CategoryAtage = CategoryStyle.withComponent("a");

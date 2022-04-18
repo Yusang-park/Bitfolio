@@ -19,7 +19,7 @@ import { fetchCryptoOBJ } from "./Reducer/CryptoDataReducer";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
-const Exchanges = lazy(() => import("./Routes/Exchanges"));
+const ExchangesRank = lazy(() => import("./Routes/ExchangesRank"));
 const Portfolio = lazy(() => import("./Routes/Portfolio"));
 const Indexes = lazy(() => import("./Routes/Indexes/Indexes"));
 const Details = lazy(() => import("./Routes/Details"));
@@ -64,7 +64,7 @@ const App = () => {
                     <CryptoRank />
                   </Route>
                   <Route exact path="/exchanges">
-                    <Exchanges />
+                    <ExchangesRank />
                   </Route>
                   <Route exact path="/portfolio">
                     <Portfolio />

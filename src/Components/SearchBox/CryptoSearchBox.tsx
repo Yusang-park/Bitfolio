@@ -151,7 +151,7 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
       <SearchContainer>
         <FontAwesomeIcon icon="search" size="1x" color="grey" />
         <SInnerInput
-          placeholder={t("Search")}
+          placeholder={t("Search Crypto")}
           value={inputText}
           onChange={onChangeInput}
           onKeyPress={handleKeyPress}

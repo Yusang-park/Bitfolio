@@ -1,19 +1,38 @@
-import { convertToObject } from "typescript";
+export class ExchangesModel {
+  id;
+  name;
+  establishedYear;
+  imageUrl;
+  trustScore;
+  trustRank;
+  volumnBtc;
+  country;
+  constructor(data) {
+    this.id = data.url;
+    this.name = data.name;
+    this.establishedYear = data.year_established;
+    this.imageUrl = data.image;
+    this.trustScore = data.trust_score;
+    this.volumnBtc = data.trade_volume_24h_btc;
+    this.trustRank = data.trust_score_rank;
+    this.country = data.country;
+  }
+}
 
-export class CryptoSimpleData {
+export class CryptoSimpleModel {
   id;
   symbol;
   fullName;
   marketCapRank;
   constructor(data) {
     this.id = data.id;
-    this.symbol = data.symbol;
+    this.symbol = data.symbol.toUpperCase();
     this.fullName = data.localization ?? data.name; //Object
     this.marketCapRank = data.market_cap_rank;
   }
 }
 
-export class CryptoSummaryData extends CryptoSimpleData {
+export class CryptoSummaryModel extends CryptoSimpleModel {
   imageUrl;
   price;
   pricePercent24h;
@@ -27,21 +46,34 @@ export class CryptoSummaryData extends CryptoSimpleData {
   constructor(data) {
     super(data);
     this.imageUrl = data.image ?? data.large;
+
     this.current_price = data.price ?? data.price_btc;
+
     this.marketCap = data.market_cap ?? "";
 
     this.volume = data.total_volume ?? "";
-    this.price = data.current_price ?? data.price_btc;
+    this.price = "$" + data.current_price ?? data.price_btc;
     this.pricePercent24h = data.hasOwnProperty("price_change_percentage_24h")
       ? data.price_change_percentage_24h.toFixed(2) + "%"
       : "";
     this.currentSupply = data.circulating_supply ?? "";
     this.totalSupply = data.total_supply ?? "";
     this.maxSupply = data.max_supply ?? "";
+
+    // this.marketCap = data.market_cap.toLocaleString() ?? "";
+
+    // this.volume = data.total_volume.toLocaleString() ?? "";
+    // this.price = "$" + data.current_price ?? data.price_btc;
+    // this.pricePercent24h = data.hasOwnProperty("price_change_percentage_24h")
+    //   ? data.price_change_percentage_24h.toFixed(2) + "%"
+    //   : "";
+    // this.currentSupply = data.circulating_supply.toLocaleString() ?? "";
+    // this.totalSupply = data.total_supply ?? "";
+    // this.maxSupply = data.max_supply ?? "";
   }
 }
 
-export class CryptoDetailData extends CryptoSimpleData {
+export class CryptoDetailModel extends CryptoSimpleModel {
   marketCap;
   imageUrl;
   genesisDate;

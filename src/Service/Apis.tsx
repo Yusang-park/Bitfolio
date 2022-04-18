@@ -1,27 +1,31 @@
 import axios from "axios";
-import { CryptoSummaryData, CryptoDetailData } from "../Model/Models";
+import {
+  CryptoSummaryModel,
+  CryptoDetailModel,
+  ExchangesModel,
+} from "../Model/Models";
 
 const cryptoProviderURL = "https://api.coingecko.com/api/v3";
 const fearAndGreedIndexProviderURL = "https://api.alternative.me/fng/?limit=";
 
-export enum sortCryptoRank {
+export enum CryptoRankSortTypes {
   MarketCap,
-  Volumn,
+  Volume,
 }
 
 export async function getCryptoSummaryDataList(
   pageIndex: number,
-  sort: sortCryptoRank
+  sort: CryptoRankSortTypes
 ): Promise<Array<any>> {
   let orderTranslated =
-    sort === sortCryptoRank.MarketCap ? "market_cap_desc" : "volume_desc";
+    sort === CryptoRankSortTypes.MarketCap ? "market_cap_desc" : "volume_desc";
 
   let res: Array<any> = [];
   try {
     const response = await axios.get<any>(
       `${cryptoProviderURL}/coins/markets?vs_currency=usd&order=${orderTranslated}&per_page=10&page=${pageIndex}&sparkline=false`
     );
-    response.data.forEach((e: any) => res.push(new CryptoSummaryData(e)));
+    response.data.forEach((e: any) => res.push(new CryptoSummaryModel(e)));
   } catch (e) {}
   return res;
 }
@@ -56,7 +60,7 @@ export async function getCryptoDetails(id: string) {
   try {
     const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
 
-    return new CryptoDetailData(response.data);
+    return new CryptoDetailModel(response.data);
   } catch (e) {
     return null;
   }
@@ -95,11 +99,26 @@ export async function getTopSearchedCrypto() {
     let res: Array<any> = [];
 
     response.data["coins"].forEach((e: any) => {
-      res.push(new CryptoSummaryData(e["item"]));
+      res.push(new CryptoSummaryModel(e["item"]));
     });
 
     return res;
   } catch (e) {
     return null;
   }
+}
+
+export async function getExchanges(pageIndex: number) {
+  try {
+    const response = await axios.get<any>(
+      `${cryptoProviderURL}/exchanges?per_page=10&page=${pageIndex}`
+    );
+    let res: Array<any> = [];
+
+    response.data.forEach((e: any) => {
+      res.push(new ExchangesModel(e));
+    });
+    console.log(res);
+    return res;
+  } catch (e) {}
 }

@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
 import { TitleText } from "../TransComponants";
 import { useLocation } from "react-router-dom";
-import { categories } from "../../Routes/Categories";
+import { sidebarCategories } from "../../Routes/RoutesCategories";
 
 import { useAppSelector } from "../../Reducer/RootReducer";
 
@@ -18,29 +18,30 @@ export const Nav = React.memo(() => {
   const isLoggedIn = useAppSelector((state) => state.userReducer.isLoggedIn);
   const initialize = useAppSelector((state) => state.userReducer.initialize);
 
-  const [openedSideBar, setOpenedSideBar] = useState(false);
+  const [checkOpenSidebar, setOpenSidebar] = useState(false);
   const pathName = useLocation().pathname;
 
-  function getName() {
-    return categories.find((c) => c["path"].includes(pathName.split("/")[1]))
-      ?.name;
+  function getMenuName() {
+    return sidebarCategories.find((c) =>
+      c["path"].includes(pathName.split("/")[1])
+    )?.name;
   }
 
   function onClickHamberger() {
-    setOpenedSideBar(!openedSideBar);
+    setOpenSidebar(!checkOpenSidebar);
   }
 
   return (
     <Wrapper>
       <Sidebar
         forPopup={true}
-        isOpened={openedSideBar}
+        isOpened={checkOpenSidebar}
         setClose={onClickHamberger}
       />
 
       <HambergerBtn onClick={onClickHamberger} />
       <TitleContainer>
-        <TitleText>{getName()}</TitleText>
+        <TitleText>{getMenuName()}</TitleText>
       </TitleContainer>
       <CryptoSearchBox />
       <SSizedBox width="16px" />

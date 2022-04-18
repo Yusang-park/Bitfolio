@@ -11,7 +11,6 @@ import {
   SURLText,
   Props,
 } from "../../Components/GlobalComponents";
-import { Text } from "../../Components/TransComponants";
 import { CryptoDataContext } from "../Details";
 
 export const DetailsMarket = () => {
@@ -29,11 +28,15 @@ export const DetailsMarket = () => {
     switch (e.target.value) {
       case "Volumn":
         sorted.sort((a, b) => parseInt(a.volume) - parseInt(b.volume));
+        break;
       case "High Price":
         sorted.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+        break;
       case "Low Price":
         sorted.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+        break;
       default:
+        break;
     }
     setExchagnesData(sorted);
   }
