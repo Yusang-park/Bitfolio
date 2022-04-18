@@ -1,3 +1,5 @@
+import { convertToObject } from "typescript";
+
 export class CryptoSimpleData {
   id;
   symbol;
@@ -106,6 +108,7 @@ export class CryptoDetailData extends CryptoSimpleData {
         name: e.market.name,
         trade_url: e.trade_url,
         target: e.target,
+        price: e.converted_last.usd,
       });
     });
 

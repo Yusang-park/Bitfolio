@@ -20,6 +20,7 @@ export interface Props {
   expand?: boolean;
   isMine?: boolean;
   align?: string;
+  larger?: boolean;
 }
 
 // ====================================================================================

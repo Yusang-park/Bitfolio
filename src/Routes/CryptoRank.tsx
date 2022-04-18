@@ -221,6 +221,7 @@ const DetailInfoSectionContainer = React.memo(
         <Scroll>
           <CategoryTitleContainer id="1">
             <CategoryText flex="4">Price</CategoryText>
+            <CategoryText flex="4">24Hours</CategoryText>
             <CategoryText
               flex="6"
               enableClick={true}
@@ -238,7 +239,6 @@ const DetailInfoSectionContainer = React.memo(
             >
               Volume
             </CategoryText>
-            <CategoryText flex="4">24Hours</CategoryText>
           </CategoryTitleContainer>
           <SSizedBox height="16px" />
           {cryptoList.map((e: any, i: any) => (
@@ -254,14 +254,14 @@ const DetailInfoSectionContainer = React.memo(
               onClick={() => routeDetails(e.id)}
             >
               <Element flex="4">${e.price}</Element>
-              <Element flex="6">${e.marketCap.toLocaleString()}</Element>
-              <Element flex="6">{e.currentSupply.toLocaleString()}</Element>
-              <Element flex="6">${e.volume.toLocaleString()}</Element>
               <Element flex="4">
                 <SPercentText negative={e.pricePercent24h.includes("-")}>
                   {e.pricePercent24h}
                 </SPercentText>
               </Element>
+              <Element flex="6">${e.marketCap.toLocaleString()}</Element>
+              <Element flex="6">{e.currentSupply.toLocaleString()}</Element>
+              <Element flex="6">${e.volume.toLocaleString()}</Element>
             </ElementRow>
           ))}
         </Scroll>
