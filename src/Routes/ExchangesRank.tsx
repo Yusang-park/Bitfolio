@@ -3,11 +3,11 @@ import { Rank, RankArrayElement } from "../Components/Rank/Rank";
 import { getExchanges } from "../Service/Apis";
 
 const basicCategories: RankArrayElement[] = [
-  { type: "Name", flex: 2, valueType: "name" },
+  { type: "Exchange", flex: 2, valueType: "name" },
 ];
 const additinalCategories: RankArrayElement[] = [
   { type: "TrustScore", flex: 1, valueType: "trustScore" },
-  { type: "TrustRank", flex: 1, valueType: "trustRank" },
+  // { type: "TrustRank", flex: 1, valueType: "trustRank" },
   { type: "Country", flex: 2, valueType: "country" },
   {
     type: "establishedYear",
@@ -51,7 +51,7 @@ const ExchnagesRank = React.memo(() => {
       basicCategories={basicCategories}
       additinalCategories={additinalCategories}
       onClickHandler={onClickHandler}
-      maxPage={3}
+      maxPageLength={6}
     />
   );
 });

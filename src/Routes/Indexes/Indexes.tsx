@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SStyledBox } from "../../Components/GlobalComponents";
+import { TabBar } from "../../Components/Menu/TabBar";
 import BTCDominanceIndex from "./BTCDominanceIndex";
 import FearGreedIndex from "./FearGreedIndex";
 
+const menu = ["Dominance", "Fear/Greed"];
+
+const ArticleContainer = ({
+  selectedMenuIndex,
+}: {
+  selectedMenuIndex: string;
+}) => {
+  return selectedMenuIndex === "0" ? <BTCDominanceIndex /> : <FearGreedIndex />;
+};
+
 const Indexes = () => {
+  const [selectedMenuIndex, setMenuIndex] = useState<number>(0);
+  function changeMenu(e: any) {
+    setMenuIndex(e.target.id);
+  }
   return (
     <Wrapper>
-      <BTCDominanceIndex />
-      <FearGreedIndex />
+      <TabBar
+        onChange={changeMenu}
+        selectedMenuIndex={selectedMenuIndex}
+        menu={menu}
+      />
+      <ArticleContainer selectedMenuIndex={selectedMenuIndex.toString()} />
     </Wrapper>
   );
 };

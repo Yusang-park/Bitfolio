@@ -149,7 +149,9 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
   return (
     <Wrapper>
       <SearchContainer>
-        <FontAwesomeIcon icon="search" size="1x" color="grey" />
+        <SearchIconStyle>
+          <FontAwesomeIcon icon="search" size="1x" />
+        </SearchIconStyle>
         <SInnerInput
           placeholder={t("Search Crypto")}
           value={inputText}
@@ -167,7 +169,8 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
         <PopUpDimmer>
           <PopUpWrapper>
             <PopUpInputContainer>
-              <FontAwesomeIcon icon="search" size="1x" color="grey" />
+              <FontAwesomeIcon icon="search" size="1x" />
+
               <SInnerInput
                 placeholder={t("Search")}
                 value={inputText}
@@ -182,6 +185,10 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
     </Wrapper>
   );
 };
+
+const SearchIconStyle = styled.span`
+  color: gray;
+`;
 
 const SearchButton = styled(SIconButton)`
   display: none;
@@ -205,9 +212,18 @@ const SearchContainer = styled.div`
   border-radius: 20px;
   padding-left: 16px;
   padding-right: 16px;
+  transition: box-shadow 0.5s;
+
   background: ${(props) => props.theme.colors.gray2};
   ${({ theme }) => theme.device.tablet} {
     display: none;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2.5px ${({ theme }) => theme.colors.blue} inset;
+  }
+  &:hover ${SearchIconStyle} {
+    color: ${({ theme }) => theme.colors.blue};
   }
 `;
 

@@ -8,8 +8,8 @@ interface SidebarCategory {
 export const sidebarCategories: Array<SidebarCategory> = [
   // { name: "Portfolio", path: "/portfolio" },
   { name: "CryptoRank", path: "/" },
-  { name: "Dashboard", path: "/dashboard" },
   { name: "Exchanges", path: "/exchanges" },
+  { name: "Dashboard", path: "/dashboard" },
   { name: "Indexes", path: "/indexes" },
   { name: "OpenChat", path: "/openchat" },
   { name: "Details", path: "/details", hide: false },

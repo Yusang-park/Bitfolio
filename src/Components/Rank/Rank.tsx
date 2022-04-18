@@ -25,6 +25,8 @@ import { ExchangeRankSortTypes } from "../../Routes/ExchangesRank";
 
 const Icon = lazy(() => import("../Icon"));
 
+const pageElementLength = 5;
+
 export type RankSortTypes = CryptoRankSortTypes | ExchangeRankSortTypes;
 
 export type RankArrayElement = {
@@ -45,7 +47,8 @@ export const Rank = React.memo(
     additinalCategories,
     hasBookmark = false,
     onClickHandler,
-    maxPage,
+    maxPageLength,
+    refresh,
   }: {
     list: Array<any>;
     sortType: RankSortTypes;
@@ -56,18 +59,11 @@ export const Rank = React.memo(
     additinalCategories: RankArrayElement[];
     hasBookmark?: boolean;
     onClickHandler: Function;
-    maxPage: number;
+    maxPageLength: number;
+    refresh?: Function;
   }) => {
     const [hoverIndex, setHoverIndex] = useState(-1);
     const [pageSectionIndex, setPageSectionIndex] = useState(0);
-
-    function prevPagePagination(e: any) {
-      if (pageSectionIndex !== 0) setPageSectionIndex(pageSectionIndex - 1);
-    }
-    function nextPagePagination(e: any) {
-      if (pageSectionIndex !== maxPage)
-        setPageSectionIndex(pageSectionIndex + 1);
-    }
 
     return (
       <Wrapper>
@@ -99,65 +95,104 @@ export const Rank = React.memo(
           )}
         </Row>
         <BottomNavigationContainer
-          prevPagePagination={prevPagePagination}
-          nextPagePagination={nextPagePagination}
+          setPageSection={setPageSectionIndex}
           pageIndex={pageIndex}
           setPage={setPage}
           pageSectionIndex={pageSectionIndex}
+          maxPageLength={maxPageLength}
         />
+        {refresh && <RefreshBtn onClick={refresh} />}
       </Wrapper>
     );
   }
 );
 
+const RefreshBtn = ({ onClick }: { onClick: any }) => {
+  return (
+    <RefreshStyle onClick={onClick}>
+      <FontAwesomeIcon icon="refresh" size="lg" />
+    </RefreshStyle>
+  );
+};
+
 const BottomNavigationContainer = React.memo(
   ({
-    prevPagePagination,
-    nextPagePagination,
+    setPageSection,
     pageIndex,
     setPage,
     pageSectionIndex,
+    maxPageLength,
   }: {
-    prevPagePagination: React.MouseEventHandler<HTMLSpanElement>;
-    nextPagePagination: React.MouseEventHandler<HTMLSpanElement>;
+    setPageSection: Function;
     pageIndex: number;
     setPage: Function;
     pageSectionIndex: number;
+    maxPageLength: number;
   }) => {
+    function onClickPrevPagePagination(e: any) {
+      if (pageSectionIndex !== 0) setPageSection(pageSectionIndex - 1);
+    }
+    function onClickNextPagePagination(e: any) {
+      if (pageSectionIndex !== maxPageLength)
+        setPageSection(pageSectionIndex + 1);
+    }
+    function onClickFirstPagePagination(e: any) {
+      setPageSection(0);
+    }
+
+    function onClickLastPagePagination(e: any) {
+      setPageSection(maxPageLength);
+    }
     return (
       <div>
         <SDivider horizontal="32px" />
         <SSizedBox height="16px" />
         <SRow justify_content="center">
-          <span onClick={prevPagePagination}>
-            <FontAwesomeIcon icon="chevron-left" size="1x" color="white" />
-          </span>
-          <SSizedBox width="16px" />
-          {[...Array(10)].map((n, index) => (
+          <IconBox onClick={onClickFirstPagePagination}>
+            <FontAwesomeIcon icon="chevron-left" size="1x" />
+          </IconBox>
+          <IconBox onClick={onClickPrevPagePagination}>
+            <FontAwesomeIcon icon="chevron-circle-left" size="1x" />
+          </IconBox>
+
+          {[...Array(pageElementLength)].map((n, index) => (
             <SPressButton
               key={index}
               id={index.toString()}
               selected={
-                index + 1 + pageSectionIndex * 10 ===
+                index + 1 + pageSectionIndex * pageElementLength ===
                 parseInt(pageIndex.toString())
               }
               onClick={() => {
-                setPage(index + 1 + pageSectionIndex * 10);
+                setPage(index + 1 + pageSectionIndex * pageElementLength);
               }}
               width={"38px"}
             >
-              {index + 1 + pageSectionIndex * 10}
+              {index + 1 + pageSectionIndex * pageElementLength}
             </SPressButton>
           ))}
-          <SSizedBox width="16px" />
-          <span onClick={nextPagePagination}>
-            <FontAwesomeIcon icon="chevron-right" size="1x" color="white" />
-          </span>
+          <IconBox onClick={onClickNextPagePagination}>
+            <FontAwesomeIcon icon="chevron-circle-right" size="1x" />
+          </IconBox>
+          <IconBox onClick={onClickLastPagePagination}>
+            <FontAwesomeIcon icon="chevron-right" size="1x" />
+          </IconBox>
         </SRow>
       </div>
     );
   }
 );
+
+const IconBox = styled.span`
+  margin: 0px 16px;
+  color: grey;
+
+  cursor: pointer;
+  transition: color 0.5s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue};
+  }
+`;
 
 const BasicInfoSectionContainer = React.memo(
   ({
@@ -318,6 +353,39 @@ const DetailInfoSectionContainer = React.memo(
   }
 );
 
+const CategoryText = ({
+  children,
+  flex,
+  enableClick = false,
+  selected,
+  onClick,
+}: {
+  children?: any;
+  flex?: any;
+  enableClick?: boolean;
+  selected?: any;
+  onClick?: any;
+}) => {
+  return (
+    <Element
+      id={children!}
+      onClick={onClick}
+      flex={flex}
+      style={enableClick ? { cursor: "pointer" } : { cursor: "default" }}
+    >
+      {enableClick ? (
+        selected ? (
+          <TextBlue>{children}</TextBlue>
+        ) : (
+          <Text>{children}</Text>
+        )
+      ) : (
+        <GrayText>{children}</GrayText>
+      )}
+    </Element>
+  );
+};
+
 const CategoryTitleContainer = styled(SRow)`
   justify-content: flex-start;
   align-items: flex-start;
@@ -426,35 +494,21 @@ const NumberingContainer = styled(SRow)`
   }
 `;
 
-const CategoryText = ({
-  children,
-  flex,
-  enableClick = false,
-  selected,
-  onClick,
-}: {
-  children?: any;
-  flex?: any;
-  enableClick?: boolean;
-  selected?: any;
-  onClick?: any;
-}) => {
-  return (
-    <Element
-      id={children!}
-      onClick={onClick}
-      flex={flex}
-      style={enableClick ? { cursor: "pointer" } : { cursor: "default" }}
-    >
-      {enableClick ? (
-        selected ? (
-          <TextBlue>{children}</TextBlue>
-        ) : (
-          <Text>{children}</Text>
-        )
-      ) : (
-        <GrayText>{children}</GrayText>
-      )}
-    </Element>
-  );
-};
+const RefreshStyle = styled.span`
+  position: absolute;
+  top: 28px;
+  left: 48px;
+  color: gray;
+  transition: transform 1s 0.05s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue};
+    transform: rotate(360deg);
+  }
+
+  ${({ theme }) => theme.device.desktopL} {
+    left: 24px;
+  }
+  ${({ theme }) => theme.device.desktopM} {
+    left: 16px;
+  }
+`;

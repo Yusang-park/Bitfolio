@@ -5,14 +5,15 @@ import { logout } from "../../Service/FirebaseAuth";
 
 export const LogoutBtn = () => {
   return (
-    <SIconButton onClick={logout}>
+    <Box onClick={logout}>
       <FontAwesomeIcon icon="sign-out-alt"></FontAwesomeIcon>
-    </SIconButton>
+    </Box>
   );
 };
 
-const SIconButton = styled.div`
+const Box = styled.span`
   color: gray;
+  transition: color 0.5s;
   &:hover {
     color: ${({ theme }) => theme.colors.blue};
   }

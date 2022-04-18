@@ -42,7 +42,7 @@ const UserContainer = styled.div`
   background: #2b2a37;
   font-size: 2rem;
   cursor: pointer;
-
+  transition: background-color 0.5s;
   ${({ theme }) => theme.device.tablet} {
     display: none;
   }

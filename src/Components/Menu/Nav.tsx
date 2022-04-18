@@ -10,9 +10,9 @@ import Sidebar from "./Sidebar";
 import { UserBox } from "./UserBox";
 import { TitleText } from "../TransComponants";
 import { useLocation } from "react-router-dom";
-import { sidebarCategories } from "../../Routes/RoutesCategories";
 
 import { useAppSelector } from "../../Reducer/RootReducer";
+import { sidebarCategories } from "../../Routes/SidebarCategories";
 
 export const Nav = React.memo(() => {
   const isLoggedIn = useAppSelector((state) => state.userReducer.isLoggedIn);

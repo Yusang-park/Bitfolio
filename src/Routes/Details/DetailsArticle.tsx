@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { PressButton } from "../../Components/TransComponants";
+import { TabBar } from "../../Components/Menu/TabBar";
+
 import { DetailsCommunity } from "./DetailsCommunity";
 import { DetailsInfo } from "./DetailsInfo";
 import { DetailsMarket } from "./DetailsMarket";
@@ -29,37 +29,12 @@ export const DetailArticle = () => {
 
   return (
     <>
-      <TabBar onChange={changeMenu} selectedMenuIndex={selectedMenuIndex} />
+      <TabBar
+        onChange={changeMenu}
+        selectedMenuIndex={selectedMenuIndex}
+        menu={menu}
+      />
       <ArticleContainer selectedMenuIndex={selectedMenuIndex.toString()} />
     </>
   );
 };
-
-const TabBar = ({
-  onChange,
-  selectedMenuIndex,
-}: {
-  onChange: Function;
-  selectedMenuIndex: number;
-}) => {
-  return (
-    <TabContainer>
-      {menu.map((e, i) => (
-        <PressButton
-          id={i}
-          key={i}
-          selected={i === parseInt(selectedMenuIndex.toString()) ? true : false}
-          onClick={onChange}
-        >
-          {e}
-        </PressButton>
-      ))}
-    </TabContainer>
-  );
-};
-
-const TabContainer = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
-  padding-bottom: 4px;
-  margin-bottom: 24px;
-`;

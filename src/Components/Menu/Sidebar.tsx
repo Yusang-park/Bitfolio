@@ -10,7 +10,7 @@ import {
   STitleText,
 } from "../GlobalComponents";
 import { Link, useLocation } from "react-router-dom";
-import { sidebarCategories } from "../../Routes/RoutesCategories";
+import { sidebarCategories } from "../../Routes/SidebarCategories";
 import { useHistory } from "react-router-dom";
 import logoImg from "../../Assets/ico_logo.png";
 import { useTranslation } from "react-i18next";
@@ -84,7 +84,7 @@ const Sidebar = React.memo(
           </ul>
           <ChangeLanguageContainer>
             <STextButton onClick={onClickLanguage}>
-              {i18n.language === "ko" ? "Change to en" : "한국어로"}
+              {i18n.language === "ko" ? "Change to English" : "한국어로"}
             </STextButton>
           </ChangeLanguageContainer>
         </SidebarContainer>
@@ -119,7 +119,7 @@ const Logo = styled.img`
 `;
 
 const LogoContainer = styled(SRow)`
-  height: 260px;
+  height: 230px;
   cursor: pointer;
 
   ${({ theme }) => theme.device.desktopL} {

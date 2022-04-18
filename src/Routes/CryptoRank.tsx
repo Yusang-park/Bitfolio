@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 import { Rank, RankArrayElement } from "../Components/Rank/Rank";
 import { getCryptoSummaryDataList, CryptoRankSortTypes } from "../Service/Apis";
 
 const basicCategories: RankArrayElement[] = [
-  { type: "Name", flex: 1, valueType: "fullName" },
+  { type: "Coin", flex: 1, valueType: "fullName" },
 ];
 const additinalCategories: RankArrayElement[] = [
   { type: "Price", flex: 4, valueType: "price" },
@@ -40,6 +41,14 @@ const CryptoRank = React.memo(() => {
     });
   }, [pageIndex, sortType]);
 
+  function init() {
+    setCryptoList((l) => l.filter((e) => false));
+
+    getCryptoSummaryDataList(pageIndex, sortType).then((e: any) => {
+      setCryptoList(e);
+    });
+  }
+
   function onClickHandler(id: string) {
     history.push({
       pathname: `/details/${id}`,
@@ -60,8 +69,9 @@ const CryptoRank = React.memo(() => {
       additinalCategories={additinalCategories}
       hasBookmark={true}
       onClickHandler={onClickHandler}
-      maxPage={30}
-    />
+      maxPageLength={60}
+      refresh={init}
+    ></Rank>
   );
 });
 

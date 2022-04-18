@@ -8,7 +8,6 @@ const BTCDominanceIndex = () => {
   return (
     <Wrapper>
       <TitleText>BTC Dominance Index</TitleText>
-
       <SSizedBox height="16px" />
       <Chart coin="BTC.D" />
     </Wrapper>
@@ -16,10 +15,7 @@ const BTCDominanceIndex = () => {
 };
 
 const Wrapper = styled.div`
-  height: 300px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
-  padding-bottom: 64px;
-  margin-bottom: 24px;
+  height: 600px;
 `;
 
 export default BTCDominanceIndex;

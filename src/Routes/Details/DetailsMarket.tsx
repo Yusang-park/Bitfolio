@@ -19,8 +19,9 @@ export const DetailsMarket = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    setExchagnesData(data.exchanges);
-    console.log("asdf");
+    let sorted = [...data.exchanges];
+    sorted.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+    setExchagnesData(sorted);
   }, [data]);
 
   function onChangeSort(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -46,14 +47,14 @@ export const DetailsMarket = () => {
       <SScrollColumn>
         <DropdownBox>
           <select onChange={onChangeSort}>
-            <option value={"Volumn"} key={"Volumn"}>
-              {t("Volumn")}
-            </option>
             <option value={"Low Price"} key={"Low Price"}>
               {t("Low Price")}
             </option>
             <option value={"High Price"} key={"High Price"}>
               {t("High Price")}
+            </option>
+            <option value={"Volumn"} key={"Volumn"}>
+              {t("Volumn")}
             </option>
           </select>
         </DropdownBox>

@@ -36,7 +36,7 @@ const colors = {
   boxBackground: "#262736",
   gray: "#848490", //for text & hover background
   gray2: "#2b2a37", //for background of inputfield
-  gray3: "#3E3E3E", //for divider
+  gray3: "#504F4F", //for divider
   container: "#252634",
   btnStart: "#4294F3",
   btnEnd: "#2C62A3",
