@@ -136,13 +136,13 @@ const BottomNavigationContainer = React.memo(
       if (pageSectionIndex !== maxPageLength)
         setPageSection(pageSectionIndex + 1);
     }
-    function onClickFirstPagePagination(e: any) {
-      setPageSection(0);
-    }
+    // function onClickFirstPagePagination(e: any) {
+    //   setPageSection(0);
+    // }
 
-    function onClickLastPagePagination(e: any) {
-      setPageSection(maxPageLength);
-    }
+    // function onClickLastPagePagination(e: any) {
+    //   setPageSection(maxPageLength);
+    // }
     return (
       <div>
         <SDivider horizontal="32px" />
