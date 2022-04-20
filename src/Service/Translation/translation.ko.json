@@ -62,7 +62,7 @@
   "TrustScore": "신뢰 지수",
   "TrustRank": "신뢰 순위",
   "Country": "설립 국가",
-  "establishedYear": "설립 연도",
+  "established": "설립 연도",
   "Volume(BTC)": "거래량(BTC)",
   "Dominance": "도미넌스",
   "Fear/Greed": "공포지수",
