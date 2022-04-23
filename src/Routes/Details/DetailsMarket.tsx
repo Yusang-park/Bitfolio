@@ -20,21 +20,22 @@ export const DetailsMarket = () => {
 
   useEffect(() => {
     let sorted = [...data.exchanges];
-    sorted.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+    sorted.sort((a, b) => Number(a.price) - Number(b.price));
     setExchagnesData(sorted);
   }, [data]);
 
   function onChangeSort(e: React.ChangeEvent<HTMLSelectElement>) {
     let sorted = [...exchagnesData];
     switch (e.target.value) {
-      case "Volumn":
-        sorted.sort((a, b) => parseInt(a.volume) - parseInt(b.volume));
-        break;
+      case "Volume":
+        setExchagnesData([...data.exchanges]);
+        return;
+
       case "High Price":
-        sorted.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+        sorted.sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case "Low Price":
-        sorted.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+        sorted.sort((a, b) => Number(a.price) - Number(b.price));
         break;
       default:
         break;
@@ -53,8 +54,8 @@ export const DetailsMarket = () => {
             <option value={"High Price"} key={"High Price"}>
               {t("High Price")}
             </option>
-            <option value={"Volumn"} key={"Volumn"}>
-              {t("Volumn")}
+            <option value={"Volume"} key={"Volume"}>
+              {t("Volume")}
             </option>
           </select>
         </DropdownBox>
@@ -65,11 +66,11 @@ export const DetailsMarket = () => {
             <SSizedBox width="8px" />
             <SGrayText>
               {data.symbol.toUpperCase()} /{" "}
-              {e.target.includes("0X") ? "" : e.target}
+              {e.target.length > 10 ? t("Unknown") : e.target}
             </SGrayText>
             <SSizedBox width="8px" />
             <PriceOfEachMarketText
-              larger={parseInt(e.price) > parseInt(data.price)}
+              larger={Number(e.price) > Number(data.price)}
             >{`$${e.price}`}</PriceOfEachMarketText>
             <SGrayText>{e.volumn}</SGrayText>
           </ItemRow>
