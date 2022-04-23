@@ -54,16 +54,17 @@
 
   2021.12.15
 
-- Integration Chat room
+- Add integration Chat room
 - CryptoRank Filter
 
   2022.04
 
-- TypeScript applied
-- React.lazy applied
+- Apply TypeScript
+- Optimize React.lazy
+- Deploy Redux instead of Context API
+- Add ExchangeRank
+- Add HotCryptoCurrencies
+
 
 # Todo list
-
 - Board for each crypto
-- Hot crypto
-- Performance improve
