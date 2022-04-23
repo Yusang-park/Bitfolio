@@ -62,6 +62,6 @@
   "TrustScore": "TrustScore",
   "TrustRank": "TrustRank",
   "Country": "Country",
-  "establishedYear": "establishedYear",
+  "established": "established",
   "Volume(BTC)": "Volume(BTC)"
 }

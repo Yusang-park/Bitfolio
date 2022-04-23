@@ -136,21 +136,21 @@ const BottomNavigationContainer = React.memo(
       if (pageSectionIndex !== maxPageLength)
         setPageSection(pageSectionIndex + 1);
     }
-    function onClickFirstPagePagination(e: any) {
-      setPageSection(0);
-    }
+    // function onClickFirstPagePagination(e: any) {
+    //   setPageSection(0);
+    // }
 
-    function onClickLastPagePagination(e: any) {
-      setPageSection(maxPageLength);
-    }
+    // function onClickLastPagePagination(e: any) {
+    //   setPageSection(maxPageLength);
+    // }
     return (
       <div>
         <SDivider horizontal="32px" />
         <SSizedBox height="16px" />
         <SRow justify_content="center">
-          <IconBox onClick={onClickFirstPagePagination}>
+          {/* <IconBox onClick={onClickFirstPagePagination}>
             <FontAwesomeIcon icon="chevron-left" size="1x" />
-          </IconBox>
+          </IconBox> */}
           <IconBox onClick={onClickPrevPagePagination}>
             <FontAwesomeIcon icon="chevron-circle-left" size="1x" />
           </IconBox>
@@ -174,9 +174,9 @@ const BottomNavigationContainer = React.memo(
           <IconBox onClick={onClickNextPagePagination}>
             <FontAwesomeIcon icon="chevron-circle-right" size="1x" />
           </IconBox>
-          <IconBox onClick={onClickLastPagePagination}>
+          {/* <IconBox onClick={onClickLastPagePagination}>
             <FontAwesomeIcon icon="chevron-right" size="1x" />
-          </IconBox>
+          </IconBox> */}
         </SRow>
       </div>
     );

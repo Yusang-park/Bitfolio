@@ -15,7 +15,7 @@ const BTCDominanceIndex = () => {
 };
 
 const Wrapper = styled.div`
-  height: 600px;
+  height: 60vh;
 `;
 
 export default BTCDominanceIndex;

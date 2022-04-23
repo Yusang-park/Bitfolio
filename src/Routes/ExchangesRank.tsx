@@ -6,15 +6,15 @@ const basicCategories: RankArrayElement[] = [
   { type: "Exchange", flex: 2, valueType: "name" },
 ];
 const additinalCategories: RankArrayElement[] = [
-  { type: "TrustScore", flex: 1, valueType: "trustScore" },
+  { type: "TrustScore", flex: 2, valueType: "trustScore" },
   // { type: "TrustRank", flex: 1, valueType: "trustRank" },
-  { type: "Country", flex: 2, valueType: "country" },
+  { type: "Country", flex: 4, valueType: "country" },
   {
-    type: "establishedYear",
-    flex: 2,
+    type: "established",
+    flex: 3,
     valueType: "establishedYear",
   },
-  { type: "Volume(BTC)", flex: 3, valueType: "volumnBtc" },
+  { type: "Volume(BTC)", flex: 4, valueType: "volumnBtc" },
 ];
 
 export enum ExchangeRankSortTypes {
