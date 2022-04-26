@@ -45,11 +45,19 @@ const InputContainer = styled(SRow)`
   padding: 12px 0px;
   border-radius: 25px;
   border: 1px solid white;
-
   background-color: ${({ theme }) => theme.colors.gray2};
-
+  transition: all 0.5s;
   ${({ theme }) => theme.device.tablet} {
     height: 6%;
+  }
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.blue};
+    box-shadow: 0 0 0 2.5px ${({ theme }) => theme.colors.blue} inset;
+  }
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.blue};
+    box-shadow: 0 0 0 2.5px ${({ theme }) => theme.colors.blue} inset;
   }
 `;
 
