@@ -23,47 +23,48 @@
 - Chatting rooms
 - Google Sign In
 
-  2021.11.6
+2021.11.6
 
 - Favorites feature
 
-  2021.11.8
+2021.11.8
 
 - Add Favorites component to Dashboard
 
-  2021.11.14
+2021.11.14
 
 - Apply reactive design to mobile, tablet
 
-  2021.11.28
+2021.11.28
 
 - Add exchanges in crypto detail page
 
-  2021.12.7
+2021.12.7
 
 - Allow chat feature to anonymous user
 
-  2021.12.9
+2021.12.9
 
 - Add fear and greed index
 
-  2021.12.11
+2021.12.11
 
 - Translation
 - Expand chat
 
-  2021.12.15
+2021.12.15
 
-- Integration Chat room
+- Add integration Chat room
 - CryptoRank Filter
 
-  2022.04
+2022.04
 
-- TypeScript applied
-- React.lazy applied
+- Apply TypeScript
+- Optimize React.lazy
+- Deploy Redux instead of Context API
+- Add ExchangeRank
+- Add HotCryptoCurrencies
+
 
 # Todo list
-
 - Board for each crypto
-- Hot crypto
-- Performance improve

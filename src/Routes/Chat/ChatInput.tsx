@@ -74,7 +74,7 @@ const SendButton = styled.div`
   font-size: 1.6rem;
   color: black;
   background: linear-gradient(#ffcd00 0%, #ffcd00 100%);
-
+  cursor: pointer;
   &:hover {
     background: linear-gradient(#f9de73 0%, #f9de73 100%);
   }

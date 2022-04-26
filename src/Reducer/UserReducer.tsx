@@ -75,9 +75,13 @@ export default function userReducer(
         },
       };
     case DEL_FAVORITE_CRYPTO:
-      let temp: any = state.favorites;
-      delete temp[action.payload];
-      return { ...state, favorites: temp };
+      let immerObj: any = {};
+      Object.entries(state.favorites).forEach((e) => {
+        immerObj[e[0]] = e[1];
+      });
+
+      delete immerObj[action.payload];
+      return { ...state, favorites: immerObj };
     default:
       return state;
   }
