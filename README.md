@@ -18,7 +18,7 @@ https://bitfolio.me
 
 # Release Note
 
-2021.10.17 ~ 2021.10.24
+2021.10.17 ~ 
 
 - Crypto currencies list sorted with market cap
 - Search feature using Trie Algorithm
