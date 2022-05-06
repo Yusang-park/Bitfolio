@@ -1,5 +1,7 @@
 # Bitfolio_React
 
+https://bitfolio.me
+
 - Provide crypto currencies rank
 - Managing a crypto currencies portfolio
 - Provide Indexes related to crypto currency
@@ -15,7 +17,7 @@
 
 # Release Note
 
-2021.10.17 ~ 2021.10.24
+2021.10.17 ~ 
 
 - Crypto currencies list sorted with market cap
 - Search feature using Trie Algorithm
