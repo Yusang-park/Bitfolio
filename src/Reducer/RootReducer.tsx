@@ -5,16 +5,15 @@ import userReducer from "./UserReducer";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { TypedUseSelectorHook } from "react-redux/es/types";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import thunk from "redux-thunk";
+import thunk, { ThunkMiddleware } from "redux-thunk";
 
 export const store = createStore(
   combineReducers({
     cryptoDataReducer,
     userReducer,
   }),
-  applyMiddleware(thunk)
+  applyMiddleware(thunk as ThunkMiddleware)
 );
-
 export type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 

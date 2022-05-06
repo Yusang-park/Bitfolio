@@ -1,9 +1,10 @@
-import { Dispatch } from "redux";
+import { Action, ActionCreator, Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
 import { getFavorites, updateFavorites } from "../Service/FirebaseFunctions";
 import { RootState } from "./RootReducer";
 
-const LOGOUT = "user/LOGOUT" as const;
-const LOGIN = "user/LOGIN" as const;
+const LOGOUT = "user/Logout" as const;
+const LOGIN = "user/Login" as const;
 const ADD_FAVORITE_CRYPTO = "user/AddFavoriteCrypto" as const;
 const DEL_FAVORITE_CRYPTO = "user/DelFavoriteCrypto" as const;
 
@@ -87,11 +88,14 @@ export default function userReducer(
   }
 }
 
-export const fetchLogin = () => (dispatch: Dispatch<UserDispatchType>) => {
-  dispatch({ type: LOGIN });
-  getFavorites().then((response) => {
-    dispatch({ type: ADD_FAVORITE_CRYPTO, payload: response });
-  });
+export const fetchLogin: ActionCreator<
+  ThunkAction<void, RootState, null, UserDispatchType>
+> = () => {
+  return async (dispatch: Dispatch<UserDispatchType>): Promise<Action> => {
+    dispatch(login());
+    let response = await getFavorites();
+    return dispatch(addFavoriteCrypto(response));
+  };
 };
 
 export const fetchFavoriteCrypto =
@@ -106,14 +110,12 @@ export const fetchFavoriteCrypto =
     let existed = !state.favorites[cryptoId] === true;
     updateFavorites(cryptoId, fullName, imageUrl, existed);
     if (existed) {
-      dispatch({
-        type: ADD_FAVORITE_CRYPTO,
-        payload: { [cryptoId]: { fullName: fullName, imageUrl: imageUrl } },
-      });
+      dispatch(
+        addFavoriteCrypto({
+          [cryptoId]: { fullName: fullName, imageUrl: imageUrl },
+        })
+      );
     } else {
-      dispatch({
-        type: DEL_FAVORITE_CRYPTO,
-        payload: cryptoId,
-      });
+      dispatch(delFavoriteCrypto(cryptoId));
     }
   };

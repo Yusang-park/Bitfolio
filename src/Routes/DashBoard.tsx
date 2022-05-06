@@ -4,8 +4,6 @@ import { SRow } from "../Components/GlobalComponents";
 import { Favorite } from "./DashBoard/Favorites";
 import { HotCrypto } from "./DashBoard/HotCrypto";
 
-console.log("preload this file");
-
 const DashBoard = () => {
   return (
     <Wrapper>

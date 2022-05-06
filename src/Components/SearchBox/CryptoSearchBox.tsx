@@ -74,7 +74,6 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
   }
 
   function onSubmit(id: string) {
-    console.log(id);
     reset();
     if (onSelected) {
       onSelected();
@@ -114,7 +113,6 @@ export const CryptoSearchBox = ({ onSelected }: { onSelected?: Function }) => {
   }
 
   function handleKeyDown(e: any) {
-    console.log(e);
     if (e.code === "ArrowUp" && selectedIndex !== 0) {
       setSelectedIndex(selectedIndex - 1);
     } else if (

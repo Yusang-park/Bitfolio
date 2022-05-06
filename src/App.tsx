@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense, useEffect } from "react";
+import React, { useState, lazy, Suspense, useEffect, Dispatch } from "react";
 import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -14,8 +14,11 @@ import { authService } from "./firebase_config";
 import { User } from "@firebase/auth";
 
 import { useDispatch } from "react-redux";
-import { fetchLogin, logout } from "./Reducer/UserReducer";
+import { fetchLogin, logout, UserDispatchType } from "./Reducer/UserReducer";
 import { fetchCryptoOBJ } from "./Reducer/CryptoDataReducer";
+import { Action, AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { RootState } from "./Reducer/RootReducer";
 
 const CryptoRank = lazy(() => import("./Routes/CryptoRank"));
 const DashBoard = lazy(() => import("./Routes/DashBoard"));
@@ -32,7 +35,7 @@ const App = () => {
   useEffect(() => {
     authService.onAuthStateChanged((user: User | null) => {
       if (user) {
-        dispatch(fetchLogin() as any);
+        dispatch(fetchLogin());
       } else {
         dispatch(logout());
       }

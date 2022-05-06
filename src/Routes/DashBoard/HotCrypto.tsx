@@ -21,7 +21,6 @@ export const HotCrypto = () => {
   const [data, setData] = useState<Array<CryptoSummaryModel>>([]);
   useEffect(() => {
     getTopSearchedCrypto().then((e) => {
-      console.log(e);
       if (e !== null) setData(e);
     });
   }, []);

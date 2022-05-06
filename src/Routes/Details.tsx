@@ -22,7 +22,6 @@ const Details = (props: any) => {
 
   useEffect(() => {
     getCryptoDetails(id).then((response: any) => {
-      console.log(response);
       setData(response);
     });
   }, [id, setData]);

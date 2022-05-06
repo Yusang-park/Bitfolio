@@ -59,11 +59,9 @@ export async function getCryptoObject() {
 export async function getCryptoDetails(id: string) {
   try {
     const response = await axios.get(`${cryptoProviderURL}/coins/${id}`);
-    console.log(response.data);
-    console.log(new CryptoDetailModel(response.data));
+
     return new CryptoDetailModel(response.data);
   } catch (e) {
-    console.log(e);
     return null;
   }
 }
@@ -120,7 +118,7 @@ export async function getExchanges(pageIndex: number) {
     response.data.forEach((e: any) => {
       res.push(new ExchangesModel(e));
     });
-    console.log(res);
+
     return res;
   } catch (e) {}
 }

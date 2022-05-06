@@ -33,7 +33,6 @@ const ExchnagesRank = React.memo(() => {
 
     getExchanges(pageIndex).then((e: any) => {
       setExchangeList(e);
-      console.log(e[0].country);
     });
   }, [pageIndex, sortType]);
 
