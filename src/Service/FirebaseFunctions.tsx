@@ -15,6 +15,7 @@ import {
   Timestamp,
   updateDoc,
 } from "@firebase/firestore";
+import { getNodeText } from "@testing-library/react";
 import { authService, dbService, realtimeDbService } from "../firebase_config";
 
 export async function sendChatMessage(
@@ -69,9 +70,11 @@ export async function updateFavorites(
 export async function getFavorites() {
   if (authService.currentUser !== null) {
     const ref = doc(dbService, "User", authService.currentUser.uid);
-    let res = await getDoc(ref);
 
-    return res.data() ?? {};
+    return await getDoc(ref).then((e) => e.data() ?? {});
+    // let res = await getDoc(ref);
+
+    // return res.data() ?? {};
   } else {
     alert("로그인 후 이용 가능합니다.");
     return {};

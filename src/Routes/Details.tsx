@@ -3,21 +3,22 @@ import styled from "styled-components";
 import { getCryptoDetails } from "../Service/Apis";
 
 import { SSizedBox, SStyledBox } from "../Components/GlobalComponents";
-import { useLocation } from "react-router";
+
 import { ProgressIndicator } from "../Components/ProgressIndicator/ProgressIndicator";
 
 import { DetailsHeader } from "./Details/DetailsHeader";
 import Chat from "./Chat/Chat";
 import { DetailArticle } from "./Details/DetailsArticle";
 
+import { useParams } from "react-router-dom";
+
 export const CryptoDataContext = createContext({
   data: null,
 });
 
 const Details = (props: any) => {
-  let temp = useLocation().pathname.split("/");
+  const { id } = useParams<{ id: string }>(); //useLocation().state
 
-  const id = temp[temp.length - 1];
   const [data, setData] = useState<any>(null);
 
   useEffect(() => {
